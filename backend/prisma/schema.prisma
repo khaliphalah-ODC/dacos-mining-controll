@@ -1,0 +1,400 @@
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+model Zone {
+  origin String @default("legacy-demo")
+  id       String @id
+  name     String
+  depth    Int
+  geometry Json
+  workers  Worker[]
+  devices  Device[]
+}
+model Worker {
+  locations LocationObservation[]
+  locationState WorkerLocationState?
+  applications WorkerApplication[]
+  privateProfile WorkerPrivateProfile?
+  origin String @default("legacy-demo")
+  active Boolean @default(true)
+  id       String @id
+  name     String
+  role     String
+  shift    String
+  zoneId   String
+  zone     Zone @relation(fields: [zoneId], references: [id])
+  devices  Device[]
+}
+model Device {
+  id           String @id
+  type         String
+  workerId     String?
+  worker       Worker? @relation(fields: [workerId], references: [id])
+  zoneId       String
+  zone         Zone @relation(fields: [zoneId], references: [id])
+  capabilities Json
+}
+model Reading {
+  id        String @id
+  kind      String
+  workerId  String?
+  deviceId  String
+  zoneId    String
+  metric    String
+  value     Json
+  unit      String
+  timestamp DateTime
+  source    String
+  simulation Boolean
+  quality   String
+  sequence  Int
+  @@index([kind, zoneId])
+  @@index([workerId])
+}
+model Alert {
+  id         String @id
+  severity   String
+  type       String
+  zoneId     String
+  workerId   String?
+  status     String
+  timestamp  DateTime
+  source     String
+  simulation Boolean
+  quality    String
+  message    String
+}
+model Incident {
+  id         String @id
+  alertId    String
+  workerId   String?
+  zoneId     String
+  severity   String
+  status     String
+  timestamp  DateTime
+  source     String
+  simulation Boolean
+  quality    String
+  timeline   Json
+}
+
+// Independent of scenario state. Tokens are stored only as SHA-256 digests.
+model DeviceRegistration {
+  locationSequence Int @default(-1)
+  locations LocationObservation[]
+  model String @default("Unspecified")
+  serialNumber String? @unique
+  firmwareVersion String @default("Unknown")
+  id String @id
+  workerId String?
+  transport String
+  source String
+  tokenHash String
+  createdAt DateTime @default(now())
+  lastSeen DateTime?
+  measurementTimestamp DateTime?
+  sequence Int @default(-1)
+  timestamp DateTime?
+  connectionStatus String @default("unavailable")
+  metrics Json
+}
+model DeviceTelemetry {
+  id String @id
+  deviceId String
+  sequence Int
+  timestamp DateTime
+  receivedAt DateTime @default(now())
+  packet Json
+  @@unique([deviceId, sequence])
+}
+model IncidentEvent {
+  id String @id
+  deviceId String
+  workerId String
+  timestamp DateTime
+  receivedAt DateTime @default(now())
+  message String
+  simulation Boolean @default(true)
+}
+
+enum UserRole {
+  ADMIN
+  SUPERVISOR
+  OPERATOR
+}
+model User {
+  id String @id
+  email String @unique
+  name String
+  role UserRole
+  passwordHash String
+  active Boolean @default(true)
+  createdAt DateTime @default(now())
+  sessions Session[]
+}
+model Session {
+  socketTickets SocketTicket[]
+  id String @id
+  userId String
+  user User @relation(fields: [userId], references: [id])
+  csrfToken String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  @@index([userId])
+}
+model AuditEvent {
+  id String @id
+  actorId String?
+  action String
+  targetId String?
+  details Json
+  createdAt DateTime @default(now())
+  @@index([createdAt])
+}
+
+model DeviceAssignment {
+  id String @id
+  deviceId String
+  workerId String
+  actorId String
+  assignedAt DateTime @default(now())
+  endedAt DateTime?
+  @@index([deviceId, assignedAt])
+}
+
+model OperationalIncident {
+  sosActions SimulatedSosAction[]
+  sosEventId String? @unique
+  dedupKey String? @unique
+  lifecycleStatus IncidentLifecycleStatus @default(OPEN)
+  severityLevel IncidentSeverityLevel @default(MEDIUM)
+  kind String @default("ALERT")
+  updatedAt DateTime @default(now())
+  resolvedAt DateTime?
+  closedAt DateTime?
+  version Int @default(0)
+  ruleId String?
+  id String @id
+  deviceId String?
+  workerId String?
+  severity String
+  message String
+  simulation Boolean
+  status String @default("open")
+  ownerId String?
+  createdAt DateTime @default(now())
+  events OperationalIncidentEvent[]
+}
+model OperationalIncidentEvent {
+  fromStatus IncidentLifecycleStatus?
+  toStatus IncidentLifecycleStatus?
+  ownerId String?
+  escalationRuleId String?
+  id String @id
+  incidentId String
+  incident OperationalIncident @relation(fields:[incidentId],references:[id])
+  actorId String
+  action String
+  note String
+  createdAt DateTime @default(now())
+  @@index([incidentId, createdAt])
+}
+model AlertRule {
+  id String @id
+  metric String
+  comparator String
+  threshold Float
+  severity String
+  enabled Boolean @default(false)
+  createdBy String
+  reviewedBy String?
+  reviewNote String?
+  createdAt DateTime @default(now())
+}
+model LoginThrottle {
+  id String @id
+  hits Int
+  resetAt DateTime
+}
+
+enum IncidentLifecycleStatus {
+  OPEN
+  ACKNOWLEDGED
+  ASSIGNED
+  IN_PROGRESS
+  RESOLVED
+  CLOSED
+}
+enum IncidentSeverityLevel {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+model IncidentEscalationRule {
+  id String @id
+  name String
+  afterMinutes Int
+  targetSeverity IncidentSeverityLevel
+  enabled Boolean @default(false)
+  createdBy String
+  createdAt DateTime @default(now())
+}
+model SimulatedSosAction {
+  id String @id
+  incidentId String
+  incident OperationalIncident @relation(fields:[incidentId],references:[id])
+  createdAt DateTime @default(now())
+  @@index([incidentId])
+}
+model ReadingHistory {
+  id String @id
+  workerId String?
+  deviceId String
+  zoneId String
+  kind String
+  metric String
+  value Json
+  unit String
+  timestamp DateTime
+  receivedAt DateTime @default(now())
+  source String
+  simulation Boolean
+  quality String
+  sequence Int
+  @@index([timestamp,id])
+  @@index([workerId,timestamp])
+  @@index([zoneId,metric,timestamp])
+}
+model SocketTicket {
+  id String @id
+  sessionId String
+  session Session @relation(fields:[sessionId],references:[id],onDelete:Cascade)
+  expiresAt DateTime
+  sessionExpiresAt DateTime
+  usedAt DateTime?
+  @@index([sessionId,expiresAt])
+}
+
+// Public applications are isolated from operational telemetry and login accounts.
+enum WorkerApplicationStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+model WorkerApplication {
+  id String @id
+  fullName String
+  nameKey String
+  phone String
+  phoneKey String
+  employeeNumber String?
+  employeeKey String?
+  jobTitle String
+  workArea String
+  site String
+  siteKey String
+  shift String
+  emergencyContact String?
+  privacyVersion String
+  acknowledgedAt DateTime
+  fingerprint String
+  status WorkerApplicationStatus @default(PENDING)
+  createdAt DateTime @default(now())
+  reviewedAt DateTime?
+  reviewedBy String?
+  reviewNote String?
+  approvedWorkerId String?
+  approvedWorker Worker? @relation(fields:[approvedWorkerId],references:[id],onDelete:Restrict)
+  @@index([status,createdAt,id])
+  @@index([siteKey,employeeKey])
+  @@index([phoneKey])
+  @@index([nameKey])
+}
+// Sensitive personnel data is never spread into general Worker/snapshot responses.
+model WorkerPrivateProfile {
+  workerId String @id
+  worker Worker @relation(fields:[workerId],references:[id],onDelete:Restrict)
+  phone String
+  phoneKey String
+  employeeNumber String?
+  employeeKey String?
+  workArea String
+  site String
+  siteKey String
+  emergencyContact String?
+  createdAt DateTime @default(now())
+  @@unique([siteKey,employeeKey])
+  @@index([phoneKey])
+}
+model RegistrationThrottle {
+  id String @id
+  hits Int
+  resetAt DateTime
+  @@index([resetAt])
+}
+
+enum LocationSource {
+  GNSS
+  BLE
+  UWB
+  SIMULATED
+}
+model LocationObservation {
+  id String @id
+  workerId String
+  worker Worker @relation(fields:[workerId],references:[id],onDelete:Restrict)
+  deviceId String
+  device DeviceRegistration @relation(fields:[deviceId],references:[id],onDelete:Restrict)
+  source LocationSource
+  timestamp DateTime
+  receivedAt DateTime @default(now())
+  sequence Int
+  simulation Boolean
+  latitude Float?
+  longitude Float?
+  x Float?
+  y Float?
+  z Float?
+  coordinateFrame String?
+  zoneId String?
+  checkpointId String?
+  accuracyMeters Float?
+  confidence Float?
+  fingerprint String
+  state WorkerLocationState?
+  events LocationMovementEvent[]
+  @@unique([deviceId,sequence])
+  @@index([deviceId,receivedAt])
+  @@index([workerId,timestamp,id])
+  @@index([timestamp,id])
+}
+model WorkerLocationState {
+  workerId String @id
+  worker Worker @relation(fields:[workerId],references:[id],onDelete:Restrict)
+  observationId String? @unique
+  observation LocationObservation? @relation(fields:[observationId],references:[id],onDelete:SetNull)
+}
+model LocationMovementEvent {
+  id String @id
+  workerId String
+  observationId String
+  observation LocationObservation @relation(fields:[observationId],references:[id],onDelete:Cascade)
+  type String
+  zoneId String?
+  previousSource LocationSource?
+  source LocationSource
+  timestamp DateTime
+  simulation Boolean
+  @@index([workerId,timestamp,id])
+}
+model LocationPolicy {
+  id String @id
+  retentionDays Int @default(90)
+  staleSeconds Int @default(120)
+  updatedAt DateTime @updatedAt
+}

@@ -1,0 +1,71 @@
+/* Reference shell geometry is unchanged on desktop; the drawer adapts below 1024px. */
+.reference-ui{font-family:Inter,Arial,sans-serif;font-variant-numeric:normal;line-height:1.5;overflow-wrap:break-word}
+.reference-ui .reference-content{min-width:0}
+.reference-ui .reference-page{padding-top:68px;padding-bottom:16px;min-height:100vh}
+.reference-ui .reference-legacy{padding:92px 24px 24px}
+.reference-ui .reference-active{background:#00b8a9;color:#00423c;font-weight:600;border-radius:8px}
+.reference-ui .reference-avatar{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:#00423c;color:#4bdbcb;flex-shrink:0}
+.reference-ui .reference-toggle,.reference-ui .reference-close{display:none}
+.reference-ui button:disabled{opacity:.45;cursor:not-allowed}
+.reference-ui input,.reference-ui select{max-width:100%;min-width:0}
+.reference-ui table{min-width:650px}
+.reference-ui .reference-page td{overflow-wrap:normal}.reference-ui #section-users table{min-width:950px}.reference-ui #section-users table td{white-space:nowrap}
+.reference-ui .reference-login{min-height:100vh}
+.reference-ui .reference-backdrop{position:fixed;inset:0;background:#000a;z-index:45;border:0;width:100%;height:100%}
+.reference-ui .shell-skip{position:fixed;top:-100px;left:16px;z-index:100;background:#00423c;padding:12px}
+.reference-ui .shell-skip:focus{top:12px}
+@media(max-width:1023px){.reference-ui .reference-rail{transform:translateX(-100%);transition:transform .2s}.reference-ui .reference-rail.is-open{transform:translateX(0)}.reference-ui .reference-workspace{padding-left:0}.reference-ui .reference-header{left:0}.reference-ui .reference-toggle,.reference-ui .reference-close{display:inline-flex;align-items:center;justify-content:center;min-width:40px;min-height:40px;color:#4bdbcb}.reference-ui .reference-close{position:absolute;right:4px;top:0;background:#091d30;font-size:24px}.reference-ui .reference-toggle{flex-shrink:0}}
+@media(max-width:639px){.reference-ui .reference-header{padding-left:12px;padding-right:12px;gap:8px}.reference-ui .reference-page{padding-left:12px;padding-right:12px}.reference-ui #tab-users-btn,.reference-ui #tab-audit-btn{flex-wrap:wrap;font-size:12px}.reference-ui #section-users{min-width:0}.reference-ui #drawer-panel{max-width:100%}.reference-ui .reference-legacy{padding:84px 12px 16px}}
+@media(prefers-reduced-motion:reduce){.reference-ui *{animation:none!important;transition:none!important}}
+.reference-ui .reference-page section,.reference-ui .reference-page>.flex,.reference-ui .reference-page .grid>div{min-width:0}
+.reference-ui .reference-page .overflow-x-auto{max-width:100%}
+@media(max-width:767px){.reference-ui .reference-page .flex.justify-between{flex-wrap:wrap}.reference-ui .reference-page .shrink-0{flex-shrink:1}.reference-ui .reference-page .font-mono{overflow-wrap:anywhere}.reference-ui .reference-page .min-w-\[220px\]{min-width:0}.reference-ui .reference-page #section-users>div{max-width:100%}}
+.reference-ui .reference-page .flex{min-width:0}
+.reference-ui .reference-page .flex.items-baseline{flex-wrap:wrap}
+.reference-ui .reference-page .font-telemetry-md,.reference-ui .reference-page .font-telemetry-lg{overflow-wrap:break-word}
+.reference-ui{background-color:#011427;color:#d1e4fe}
+.reference-ui .material-symbols-outlined.hidden{display:none}
+.reference-ui button[role=tab]{background:transparent;color:#bbcac6;box-shadow:none}
+.reference-ui button[role=tab].reference-selected-tab{background:#192b3f;color:#4bdbcb;box-shadow:0 1px 2px #0002}
+.reference-ui .reference-page .flex>div{max-width:100%}
+@media(max-width:767px){.reference-ui .reference-page .truncate{white-space:normal;overflow-wrap:break-word}.reference-ui .reference-page .flex>div{min-width:0}.reference-ui .reference-page .flex.items-center{flex-wrap:wrap}}
+/* The supplied documents use the browser's 16px base and hide scrollbars. */
+.reference-ui{font-size:16px}
+.reference-ui ::-webkit-scrollbar,html:has(.reference-ui)::-webkit-scrollbar{display:none}
+/* Controls placed in the supplied device inspector and filter rows. */
+.reference-ui .reference-form label{display:block;font-size:12px;color:#bbcac6;margin-bottom:12px}
+.reference-ui .reference-form input:not([type=checkbox]):not([type=radio]),.reference-ui .reference-form select{display:block;width:100%;min-height:40px;background:#091d30;color:#d1e4fe;border:1px solid transparent;border-radius:6px;padding:9px 12px;margin-top:6px;font:inherit}
+.reference-ui .reference-form h2{font-size:16px;line-height:24px;font-weight:600;margin-bottom:12px}
+.reference-ui .reference-form p{font-size:12px;line-height:1.6;color:#bbcac6;margin:12px 0}
+.reference-ui .reference-form button{min-height:36px;padding:8px 12px;background:#192b3f;color:#d1e4fe;border-radius:6px;font-size:12px;margin:4px 4px 4px 0}
+.reference-ui .reference-form button[type=submit],.reference-ui .reference-form form>button:first-of-type{background:#00b8a9;color:#00423c;font-weight:600}
+.reference-ui .reference-form .credential-secret{display:block;max-width:100%;overflow-wrap:anywhere;white-space:normal;background:#000f20;padding:12px;border-radius:6px;color:#4bdbcb;font-size:12px}
+.reference-ui .dacos_device_management table{min-width:900px}
+.reference-ui .reference-map-artwork{opacity:.65}
+.reference-ui .dacos_fictional_mine_map .reading-tile{background:#0d2134;padding:12px;border-radius:8px}
+.reference-ui .dacos_fictional_mine_map .reading-tile strong{display:block;font-size:24px;margin:8px 0}
+.reference-ui .dacos_fictional_mine_map .reading-tile small{display:block;font-size:11px;color:#859491}
+@media(max-width:767px){.reference-ui .dacos_control_room_telemetry .grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.reference-ui .reference-form{max-width:100%}.reference-ui .dacos_control_room_telemetry .font-telemetry-lg,.reference-ui .dacos_environmental_monitoring .font-telemetry-lg{font-size:24px}}
+.reference-ui .dacos_device_management .overflow-x-auto{position:relative;width:100%;min-width:0}
+.reference-ui .reference-page .overflow-x-auto{position:relative;min-width:0}
+.reference-ui .reference-form textarea{display:block;width:100%;min-height:100px;resize:vertical;background:#091d30;color:#d1e4fe;border:1px solid transparent;border-radius:6px;padding:10px;margin-top:6px;font:inherit}
+.reference-ui .dacos_history_reports table{min-width:1100px}
+.reference-ui .dacos_live_workers_directory table{min-width:1100px}
+.reference-ui .dacos_my_account_security_profile input{min-width:0}
+.reference-ui .dacos_my_account_security_profile #signout-dialog{z-index:90}
+/* Match the supplied archival query controls, keeping extra filters collapsible. */
+.reference-ui .history-query label{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#859491}
+.reference-ui .history-query select,.reference-ui .history-query input{height:40px;background:#0d2134;border-radius:8px;font-size:13px;line-height:18px;font-weight:500;letter-spacing:normal;text-transform:none;padding:6px 12px}
+.reference-ui .history-query select{appearance:none;padding-right:32px}
+.reference-ui .history-query button[type=submit]{background:#00b8a9;color:#00423c;font-weight:600}
+.reference-ui .history-query button{text-transform:none;letter-spacing:normal}
+.reference-ui #reportModal{z-index:90}
+.reference-ui #reportModal>div{max-height:90vh;overflow:auto}
+.reference-ui .dacos_worker_management table{min-width:1000px}
+.reference-ui .dacos_wi_fi_device_simulator .detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.reference-ui .dacos_operational_threshold_rules [aria-pressed=true]{color:#4bdbcb;border-bottom:2px solid #4bdbcb}
+.reference-ui .dacos_operational_threshold_rules [aria-pressed=false]{background:transparent;border-bottom-color:transparent;color:#bbcac6}
+.reference-ui .reference-form section{margin-top:16px}
+.reference-ui .reference-form code{overflow-wrap:anywhere}
+@media(max-width:767px){.reference-ui .dacos_worker_management input,.reference-ui .dacos_worker_management select{max-width:100%}.reference-ui .dacos_worker_detail_peter_kollie_w_088 .font-telemetry-lg{font-size:24px}}
+.reference-ui .dacos_wi_fi_device_simulator input[type=range]{accent-color:#4bdbcb;padding:0}

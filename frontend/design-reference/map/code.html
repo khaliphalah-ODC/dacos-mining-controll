@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_dashboard" name="shell-type"/>
+<title>DACOS Ecosystem - Live Mine Safety Control Room</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Inter', sans-serif;
+      }
+      body {
+        overscroll-behavior: none;
+      }
+      .font-mono {
+        font-family: 'JetBrains Mono', monospace;
+      }
+      .font-sans {
+        font-family: 'Inter', sans-serif;
+      }
+    }
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0c1321;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #232a39;
+      border-radius: 4px;
+    }
+    .hazard-stripe {
+      background: repeating-linear-gradient(
+        -45deg,
+        rgba(239, 68, 68, 0.18),
+        rgba(239, 68, 68, 0.18) 10px,
+        rgba(15, 23, 42, 0.4) 10px,
+        rgba(15, 23, 42, 0.4) 20px
+      );
+    }
+    .amber-stripe {
+      background: repeating-linear-gradient(
+        -45deg,
+        rgba(245, 158, 11, 0.15),
+        rgba(245, 158, 11, 0.15) 8px,
+        transparent 8px,
+        transparent 16px
+      );
+    }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-container": "#131f33",
+            "surface-container-low": "#101928",
+            "surface-container-high": "#1b2a45",
+            "surface-container-highest": "#243552",
+            "surface-container-lowest": "#080e18",
+            "background": "#0a101d",
+            "surface": "#0c1321",
+            "primary": "#38bdf8",
+            "primary-container": "#0284c7",
+            "on-primary": "#002b40",
+            "secondary": "#a5b4fc",
+            "secondary-container": "#1e3a8a",
+            "tertiary": "#4ade80",
+            "tertiary-container": "#15803d",
+            "error": "#f87171",
+            "error-container": "#7f1d1d",
+            "outline": "#64748b",
+            "outline-variant": "#2a3c5a",
+            "on-surface": "#f1f5f9",
+            "on-surface-variant": "#94a3b8"
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-background font-sans text-on-surface antialiased text-[14px]">
+<!-- LEFT NAVIGATION SIDEBAR (~240px) -->
+<aside class="fixed left-0 top-0 h-screen w-60 bg-surface-container-low border-r border-slate-700/60 z-50 flex flex-col justify-between select-none">
+<div class="flex flex-col">
+<!-- Brand Header -->
+<div class="p-4 border-b border-slate-700/60 flex items-center gap-3">
+<img alt="DACOS Industrial Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrDVJgcZ64j3lLnY0OlIJB7wDSH_YmN5yXxgkdZSvZu0hb-RKZsRlK_2tCs2DchkTJ6pQiX0nZskkvPBmc_OA39cDGRaEnr_Z7TkNurcgcEODKyUWY9Id_po_4lWaC9V8k3U68j7ITEHr1SLYADSO2GC1E84vdGMvjo92qQWCT39OG_AWL4ywqk_Ea6VcOoZMVP3E9UGvClcIWJ4iz3_BJ-kzlJAAB3lbqamJt4RglPf"/>
+<div class="flex flex-col min-w-0">
+<span class="font-sans font-bold text-[15px] text-cyan-400 tracking-wider leading-tight truncate">DACOS ECOSYSTEM</span>
+<span class="font-mono text-[11px] text-slate-400 uppercase tracking-wider truncate">INTEL MINE SAFETY · MOD C</span>
+</div>
+</div>
+<!-- Sector Indicator Badge -->
+<div class="px-4 py-2 bg-surface-container-lowest/80 border-b border-slate-700/60 flex items-center justify-between">
+<div class="flex items-center gap-2 min-w-0">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+<span class="font-mono text-[12px] text-slate-300 font-medium truncate">Olympic Dam Sector 4</span>
+</div>
+<span class="font-mono text-[11px] px-2 py-0.5 rounded bg-surface-container-highest text-cyan-300 font-semibold border border-cyan-500/30 shrink-0">ACTIVE</span>
+</div>
+<!-- Nav Items -->
+<nav class="p-2.5 flex flex-col gap-1 overflow-y-auto max-h-[calc(100vh-190px)]">
+<!-- Overview (Active) -->
+<a class="flex items-center justify-between px-3.5 py-2.5 rounded-md text-slate-300 hover:bg-surface-container-high hover:text-white transition-colors" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-cyan-400">dashboard</span>
+<span class="text-[13px] tracking-wide">Overview</span>
+</div>
+<span class="font-mono text-[11px] px-1.5 py-0.5 rounded bg-cyan-950/80 text-cyan-300 border border-cyan-800/60">CTRL-01</span>
+</a>
+<!-- Live Workers -->
+<a class="flex items-center justify-between px-3.5 py-2.5 rounded-md text-slate-300 hover:bg-surface-container-high hover:text-white transition-colors" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-slate-400">engineering</span>
+<span class="text-[13px]">Live Workers</span>
+</div>
+<span class="font-mono text-[11px] px-2 py-0.5 rounded-full bg-emerald-950/80 text-emerald-400 border border-emerald-800/50 font-semibold">142</span>
+</a>
+<!-- Mine Map -->
+<a class="flex items-center justify-between px-3.5 py-2.5 rounded-md text-slate-300 hover:bg-surface-container-high hover:text-white transition-colors" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-slate-400">layers</span>
+<span class="text-[13px]">Mine Map</span>
+</div>
+<span class="font-mono text-[11px] text-slate-400">3D GIS</span>
+</a>
+<!-- Health Monitoring -->
+<a class="flex items-center justify-between px-3.5 py-2.5 rounded-md text-slate-300 hover:bg-surface-container-high hover:text-white transition-colors" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-slate-400">vital_signs</span>
+<span class="text-[13px]">Health Vitals</span>
+</div>
+<span class="font-mono text-[11px] text-emerald-400">Sync OK</span>
+</a>
+<!-- Environmental -->
+<a class="flex items-center justify-between px-3.5 py-2.5 rounded-md text-slate-300 hover:bg-surface-container-high hover:text-white transition-colors" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-slate-400">air</span>
+<span class="text-[13px]">Environmental</span>
+</div>
+<span class="font-mono text-[11px] px-1.5 py-0.5 rounded bg-surface-container text-cyan-300 border border-slate-700">10-Gas</span>
+</a>
+<!-- Emergency Center -->
+<a class="flex items-center justify-between px-3.5 py-2.5 rounded-md text-slate-300 hover:bg-surface-container-high hover:text-white transition-colors" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-rose-400">fmd_bad</span>
+<span class="text-[13px] text-rose-300 font-medium">Emergency Center</span>
+</div>
+<span class="font-mono text-[11px] px-2 py-0.5 rounded-full bg-rose-950 text-rose-400 font-bold border border-rose-700/60 animate-pulse">2 Alerts</span>
+</a>
+<!-- Evacuation -->
+<a class="flex items-center justify-between px-3.5 py-2.5 rounded-md text-slate-300 hover:bg-surface-container-high hover:text-white transition-colors" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-slate-400">departure_board</span>
+<span class="text-[13px]">Evacuation</span>
+</div>
+<span class="font-mono text-[11px] text-slate-400">Musters</span>
+</a>
+<!-- Alerts & Events -->
+<a class="flex items-center justify-between px-3.5 py-2.5 rounded-md text-slate-300 hover:bg-surface-container-high hover:text-white transition-colors" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-slate-400">notifications_active</span>
+<span class="text-[13px]">Alerts &amp; Events</span>
+</div>
+<span class="font-mono text-[11px] px-2 py-0.5 rounded-full bg-indigo-950 text-indigo-300 border border-indigo-700/50 font-semibold">5 New</span>
+</a>
+<!-- Reports & Analytics -->
+<a class="flex items-center justify-between px-3.5 py-2.5 rounded-md text-slate-300 hover:bg-surface-container-high hover:text-white transition-colors" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-slate-400">assignment</span>
+<span class="text-[13px]">Reports &amp; Logs</span>
+</div>
+<span class="font-mono text-[11px] text-slate-400">Shift B</span>
+</a>
+<!-- Devices & Nodes -->
+<a class="flex items-center justify-between px-3.5 py-2.5 rounded-md text-slate-300 hover:bg-surface-container-high hover:text-white transition-colors" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-slate-400">sensors</span>
+<span class="text-[13px]">Devices &amp; Nodes</span>
+</div>
+<span class="font-mono text-[11px] text-emerald-400">Mesh OK</span>
+</a>
+<!-- Settings -->
+<a class="flex items-center justify-between px-3.5 py-2.5 rounded-md text-slate-300 hover:bg-surface-container-high hover:text-white transition-colors" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-slate-400">tune</span>
+<span class="text-[13px]">Thresholds</span>
+</div>
+<span class="material-symbols-outlined text-[16px] text-slate-400">chevron_right</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Footer -->
+<div class="p-3 bg-surface-container-lowest border-t border-slate-700/60 flex flex-col gap-2">
+<div class="flex items-center justify-between font-mono text-[11px] text-slate-400 px-1">
+<span>LAT: <strong class="text-slate-200">14ms</strong> · GW: ONLINE</span>
+<span class="text-emerald-400 font-semibold">99.98%</span>
+</div>
+<button class="flex items-center justify-center gap-2 py-1.5 rounded bg-surface-container hover:bg-surface-container-high text-slate-300 hover:text-white border border-slate-700/60 transition-colors w-full font-mono text-[12px]" type="button">
+<span class="material-symbols-outlined text-[16px]">keyboard_double_arrow_left</span>
+<span>Collapse Sidebar</span>
+</button>
+</div>
+</aside>
+<!-- MAIN CONTENT CONTAINER (Margin Left 240px / 60 Tailwind units) -->
+<div class="pl-60 min-h-screen flex flex-col">
+<!-- TOP GLOBAL HEADER (Fixed height 64px) -->
+<header class="fixed top-0 left-60 right-0 h-16 bg-surface-container-lowest/95 backdrop-blur-md border-b border-slate-700/60 z-40 px-6 flex items-center justify-between gap-4">
+<!-- Breadcrumb and Title -->
+<div class="flex items-center gap-4 shrink-0">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5 font-mono text-[12px] text-slate-400">
+<span class="text-cyan-400 font-semibold">DACOS</span>
+<span>/</span>
+<span>Control Room</span>
+<span>/</span>
+<span class="text-slate-200 font-medium">Sector 4</span>
+</div>
+<span class="font-sans font-bold text-[18px] text-white tracking-tight leading-tight">Live Mine Telemetry</span>
+</div>
+<div class="h-6 w-px bg-slate-700/60 hidden xl:block"></div>
+<div class="hidden xl:flex items-center gap-2 px-2.5 py-1 rounded bg-surface-container border border-slate-700">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+<span class="font-mono text-[12px] text-emerald-400 font-bold tracking-wide">WS: 10Hz</span>
+</div>
+</div>
+<!-- PERSISTENT HIGH-VISIBILITY SIMULATION BANNER -->
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-md bg-amber-500/15 border border-amber-500/40 text-amber-300 amber-stripe shadow-sm">
+<span class="material-symbols-outlined text-[18px] text-amber-400 animate-pulse">warning</span>
+<div class="flex items-center gap-1.5 font-mono text-[12px] tracking-wide">
+<span class="font-bold text-amber-300">SIMULATION MODE</span>
+<span class="text-amber-400/80 hidden sm:inline">— NOT LIVE SAFETY DATA (TEST FIXTURE v2.4)</span>
+</div>
+</div>
+<!-- Search & Zone Select -->
+<div class="flex-1 max-w-md hidden lg:flex items-center gap-2">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400 text-[18px]">search</span>
+<input class="w-full pl-8 pr-3 py-1.5 rounded bg-surface-container border border-slate-700 font-mono text-[12px] text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-cyan-400 transition-colors" placeholder="Search worker ID, beacon, zone, gas sensor..." type="text"/>
+</div>
+<div class="relative">
+<select class="appearance-none pl-3 pr-8 py-1.5 rounded bg-surface-container border border-slate-700 font-mono text-[12px] text-slate-200 cursor-pointer focus:outline-none focus:border-cyan-400">
+<option>Sector 04 - Cu/U Stope L3</option>
+<option>Sector 01 - Main Decline</option>
+<option>Sector 02 - North Drift Shaft</option>
+<option>Sector 03 - Crusher Chamber</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-[16px]">expand_more</span>
+</div>
+</div>
+<!-- Right Profile & Shift info -->
+<div class="flex items-center gap-3 shrink-0">
+<div class="hidden md:flex flex-col text-right font-mono text-[12px]">
+<span class="text-white font-bold tracking-tight">14:42:18 UTC</span>
+<span class="text-slate-400 text-[11px]">SHIFT B · OLYMPIC DAM</span>
+</div>
+<button class="relative p-2 rounded bg-surface-container hover:bg-surface-container-high border border-slate-700 text-slate-200 transition-colors" title="Notifications" type="button">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute -top-1 -right-1 px-1.5 min-w-[18px] h-4 rounded-full bg-rose-500 text-white font-mono text-[10px] font-bold flex items-center justify-center leading-none">3</span>
+</button>
+<div class="flex items-center gap-2 pl-2 border-l border-slate-700/60">
+<img alt="Profile" class="w-8 h-8 rounded-full object-cover border border-cyan-500/50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNZB5LGnS0Pk-nhWWNyfGKRWWbggklr9eUlXZz_Lek_zWzuj8pY0rQCNGEJA15i46GEd3eftwsal_uqIU7lZw5QIRyOtGorku41Wo4j7kkH_FqrZFQvBKV3OyqGxlLWHRQ6UA4tXtUV-cH-6bxNYiONQ-apjYqYl2UF2P-IgD9bP-Od4vn87M_cLWebd28vjewc5w4yxuCWx4hRKwG8nUmVwYkeY-UHncnqnOUpY8"/>
+<div class="hidden xl:flex flex-col text-left">
+<span class="text-[13px] text-white font-semibold leading-tight">David Chen</span>
+<span class="font-mono text-[11px] text-slate-400 leading-tight">Sr. Safety Controller</span>
+</div>
+</div>
+</div>
+</header>
+<!-- MAIN SCROLLABLE CONTENT BODY -->
+<main class="w-full pt-16 bg-background min-h-screen flex flex-col"><div class="flex flex-col w-full text-on-surface">
+<!-- Top Map Utility & Viewport Controller Bar -->
+<section class="flex flex-col gap-2 p-3 bg-surface-container-low shadow-sm">
+<!-- Row 1: Subterranean Strata Chips & Quick Actions -->
+<div class="flex flex-wrap items-center justify-between gap-2">
+<!-- Strata Selectors -->
+<div class="flex flex-wrap items-center gap-1.5">
+<span class="font-label-caps text-label-caps uppercase text-outline mr-1 tracking-widest">STRATA SECTOR:</span>
+<button class="px-2.5 py-1 rounded bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-colors font-mono-sm text-mono-sm">
+          All Levels (-420m to -1,120m)
+        </button>
+<button class="px-2.5 py-1 rounded bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-colors font-mono-sm text-mono-sm">
+          L1 Portal (+420m)
+        </button>
+<button class="px-2.5 py-1 rounded bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-colors font-mono-sm text-mono-sm">
+          L2 West Haulage (-640m)
+        </button>
+<button class="px-2.5 py-1 rounded bg-error-container text-on-error-container font-mono-sm text-mono-sm flex items-center gap-1.5 shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-pulse"></span>
+<span>L3 Stope Drift (-880m) [ACTIVE INCIDENT]</span>
+</button>
+<button class="px-2.5 py-1 rounded bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-colors font-mono-sm text-mono-sm">
+          L4 Deep Bore (-1,120m)
+        </button>
+</div>
+<!-- Quick Action Buttons -->
+<div class="flex items-center gap-1.5">
+<button class="flex items-center gap-1 px-2.5 py-1 rounded bg-surface-container hover:bg-surface-container-high text-primary font-mono-sm text-mono-sm transition-colors">
+<span class="material-symbols-outlined text-[15px]">alt_route</span>
+<span>Evac Corridors</span>
+</button>
+<button class="flex items-center gap-1 px-2.5 py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-mono-sm text-mono-sm transition-colors">
+<span class="material-symbols-outlined text-[15px]">straighten</span>
+<span>Measure</span>
+</button>
+<button class="flex items-center gap-1 px-2.5 py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-mono-sm text-mono-sm transition-colors">
+<span class="material-symbols-outlined text-[15px]">sensors</span>
+<span>Pin Node</span>
+</button>
+<button class="flex items-center gap-1 px-2.5 py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-mono-sm text-mono-sm transition-colors">
+<span class="material-symbols-outlined text-[15px]">file_download</span>
+<span>GeoTIFF</span>
+</button>
+<button class="p-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-primary transition-colors" title="Toggle Fullscreen">
+<span class="material-symbols-outlined text-[18px]">fullscreen</span>
+</button>
+</div>
+</div>
+<!-- Row 2: GIS Spatial Projections & View Mode Switcher -->
+<div class="flex flex-wrap items-center justify-between gap-2 pt-1.5 bg-surface-container-lowest/60 px-3 py-1.5 rounded">
+<div class="flex items-center gap-3 font-mono-sm text-mono-sm text-on-surface-variant">
+<span class="text-primary font-bold">EPSG:9921</span>
+<span>•</span>
+<span>Olympic Dam Mine Grid</span>
+<span>•</span>
+<span class="flex items-center gap-1 text-tertiary">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+          UWB Acc: ±0.35m
+        </span>
+<span>•</span>
+<span class="text-on-surface">Mesh Anchors: 48/48 Synced</span>
+</div>
+<!-- Projection Switcher Chips -->
+<div class="flex items-center gap-1 bg-surface-container p-0.5 rounded">
+<button class="px-2 py-0.5 rounded bg-primary-container text-on-primary-container font-mono-sm text-mono-sm font-semibold shadow-xs">
+          3D Isometric
+        </button>
+<button class="px-2 py-0.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-mono-sm text-mono-sm transition-colors">
+          Profile X-Cut
+        </button>
+<button class="px-2 py-0.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-mono-sm text-mono-sm transition-colors">
+          2D Plan Ortho
+        </button>
+<button class="px-2 py-0.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-mono-sm text-mono-sm transition-colors">
+          CH4 Heatmap
+        </button>
+</div>
+</div>
+</section>
+<!-- 3D GIS Workspace Split Layout -->
+<div class="flex flex-1 relative overflow-hidden h-[calc(100vh-172px)] bg-surface-container-lowest">
+<!-- MAIN INTERACTIVE 3D GIS VIEWPORT (SVG Render Canvas) -->
+<div class="relative flex-1 h-full w-full overflow-hidden select-none bg-surface-container-lowest">
+<!-- Subterranean Isometric Vector Mesh Map -->
+<svg class="w-full h-full object-cover" fill="none" viewbox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<!-- Grid Pattern -->
+<pattern height="40" id="grid" patternunits="userSpaceOnUse" width="40">
+<path d="M 40 0 L 0 0 0 40" fill="none" stroke="#151b2a" stroke-width="0.8"></path>
+</pattern>
+<!-- Hazard Area Gradient -->
+<radialgradient cx="50%" cy="50%" id="hazardPulse" r="50%">
+<stop offset="0%" stop-color="#ffb4ab" stop-opacity="0.35"></stop>
+<stop offset="70%" stop-color="#93000a" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#ffb4ab" stop-opacity="0"></stop>
+</radialgradient>
+<!-- Shaft Gradient -->
+<lineargradient id="shaftGrad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#00c2ff" stop-opacity="0.8"></stop>
+<stop offset="100%" stop-color="#0053db" stop-opacity="0.2"></stop>
+</lineargradient>
+<!-- Strata L3 Gradient -->
+<lineargradient id="strataL3" x1="0" x2="1" y1="0" y2="0">
+<stop offset="0%" stop-color="#151b2a" stop-opacity="0.7"></stop>
+<stop offset="50%" stop-color="#232a39" stop-opacity="0.9"></stop>
+<stop offset="100%" stop-color="#151b2a" stop-opacity="0.7"></stop>
+</lineargradient>
+</defs>
+<!-- Coordinate Background Grid -->
+<rect fill="url(#grid)" height="800" width="1200"></rect>
+<!-- Strata Plane Outlines (Depth Indicators) -->
+<!-- Level 1 (-420m) -->
+<polygon fill="#151b2a" fill-opacity="0.3" points="200,120 1020,80 1120,220 300,260" stroke="#232a39" stroke-dasharray="4,4" stroke-width="1"></polygon>
+<text fill="#86929a" font-family="JetBrains Mono" font-size="11" font-weight="600" x="210" y="140">LEVEL 1 (-420m) · PORTAL &amp; DRIFT HAUL</text>
+<!-- Level 2 (-640m) -->
+<polygon fill="#151b2a" fill-opacity="0.4" points="170,290 990,250 1090,390 270,430" stroke="#232a39" stroke-dasharray="4,4" stroke-width="1"></polygon>
+<text fill="#86929a" font-family="JetBrains Mono" font-size="11" font-weight="600" x="180" y="310">LEVEL 2 (-640m) · CRUSHER VAULT &amp; SUB-DECLINE</text>
+<!-- Level 3 (-880m) - TARGET INCIDENT LEVEL -->
+<polygon fill="url(#strataL3)" points="140,460 960,420 1060,560 240,600" stroke="#3d484f" stroke-width="1.2"></polygon>
+<text fill="#ffb4ab" font-family="JetBrains Mono" font-size="11" font-weight="700" x="150" y="480">LEVEL 3 (-880m) · STOPE DRIFT CU-U [EXCURSION ZONE]</text>
+<!-- Level 4 (-1,120m) -->
+<polygon fill="#070e1c" fill-opacity="0.5" points="110,630 930,590 1030,730 210,770" stroke="#19202e" stroke-dasharray="3,3" stroke-width="1"></polygon>
+<text fill="#86929a" font-family="JetBrains Mono" font-size="11" font-weight="600" x="120" y="650">LEVEL 4 (-1,120m) · DEEP EXPLORATION BORE</text>
+<!-- Vertical Hoist Shafts & Ventilation Risers -->
+<!-- Main Shaft #1 Hoist -->
+<line stroke="url(#shaftGrad)" stroke-dasharray="6,3" stroke-width="4" x1="380" x2="380" y1="80" y2="680"></line>
+<circle cx="380" cy="80" fill="#00c2ff" r="6"></circle>
+<text fill="#92d9ff" font-family="JetBrains Mono" font-size="11" font-weight="bold" x="395" y="85">#1 HOIST SHAFT (CAGE TO SURFACE)</text>
+<circle cx="380" cy="260" fill="#92d9ff" r="3.5"></circle>
+<circle cx="380" cy="430" fill="#92d9ff" r="3.5"></circle>
+<circle cx="380" cy="560" fill="#ffb4ab" r="4.5" stroke="#93000a" stroke-width="2"></circle>
+<!-- Vent Shaft #2 North -->
+<line stroke="#31ce66" stroke-dasharray="4,2" stroke-width="2.5" x1="880" x2="880" y1="60" y2="640"></line>
+<circle cx="880" cy="60" fill="#31ce66" r="5"></circle>
+<text fill="#56eb7e" font-family="JetBrains Mono" font-size="11" x="895" y="65">VENT SHAFT #2 (EXHAUST 450 m³/s)</text>
+<!-- LEVEL 1 TUNNELS -->
+<path d="M 380 260 L 520 220 L 740 230 L 880 200" fill="none" stroke="#3d484f" stroke-linecap="round" stroke-width="3"></path>
+<path d="M 520 220 L 600 275 L 710 270" fill="none" stroke="#3d484f" stroke-linecap="round" stroke-width="2"></path>
+<!-- LEVEL 2 TUNNELS & DECLINE RAMP -->
+<!-- Spiral Ramp connection L1 to L2 -->
+<path d="M 740 230 C 790 270, 770 320, 720 340 S 630 350, 600 380" fill="none" stroke="#00c2ff" stroke-dasharray="2,2" stroke-width="2"></path>
+<path d="M 380 430 L 490 395 L 600 380 L 760 360 L 880 340" fill="none" stroke="#3d484f" stroke-linecap="round" stroke-width="3.5"></path>
+<path d="M 490 395 L 470 440 L 580 435" fill="none" stroke="#3d484f" stroke-linecap="round" stroke-width="2.5"></path>
+<!-- Safe Refuge Bay Alpha (Level 2) -->
+<rect fill="#31ce66" fill-opacity="0.25" height="14" rx="2" stroke="#31ce66" stroke-width="1.5" width="22" x="740" y="345"></rect>
+<text fill="#56eb7e" font-family="JetBrains Mono" font-size="10" x="770" y="356">REFUGE ALPHA [RC-1: READY 20/20]</text>
+<!-- LEVEL 3 TUNNELS & INCIDENT STOPE -->
+<!-- Main Haulage L3 -->
+<path d="M 380 560 L 510 520 L 680 500 L 880 480" fill="none" stroke="#86929a" stroke-linecap="round" stroke-width="4.5"></path>
+<!-- Crosscut 11 & 12 towards Stope 3B -->
+<path d="M 510 520 L 550 565 L 670 555" fill="none" stroke="#86929a" stroke-linecap="round" stroke-width="3"></path>
+<path d="M 680 500 L 720 545 L 810 540" fill="none" stroke="#ffb4ab" stroke-linecap="round" stroke-width="3"></path>
+<!-- HAZARD EXCURSION GAS PLUME (STOPE 3B) -->
+<ellipse cx="740" cy="540" fill="url(#hazardPulse)" rx="90" ry="45"></ellipse>
+<ellipse cx="740" cy="540" rx="90" ry="45" stroke="#ffb4ab" stroke-dasharray="6,4" stroke-width="1.5">
+<animate attributename="stroke-opacity" dur="2s" repeatcount="indefinite" values="1;0.2;1"></animate>
+</ellipse>
+<!-- Crosshatch Stope Volume Polygon -->
+<polygon fill="#93000a" fill-opacity="0.35" points="690,515 790,510 820,555 710,565" stroke="#ffb4ab" stroke-width="1.2"></polygon>
+<!-- Evacuation Vectors (Green Dashed Dynamic Escape Pathway) -->
+<path d="M 680 535 L 640 530 L 550 545 L 510 520 L 385 558" fill="none" stroke="#31ce66" stroke-dasharray="6,4" stroke-width="2.5">
+<animate attributename="stroke-dashoffset" dur="1.2s" repeatcount="indefinite" values="20;0"></animate>
+</path>
+<polygon fill="#31ce66" points="383,558 393,552 393,564"></polygon>
+<!-- Refuge Bay Bravo (L3 Stope Exit) -->
+<rect fill="#31ce66" fill-opacity="0.3" height="16" rx="2" stroke="#31ce66" stroke-width="1.5" width="24" x="540" y="555"></rect>
+<text fill="#56eb7e" font-family="JetBrains Mono" font-size="10" font-weight="600" x="500" y="585">REFUGE BRAVO (RC-2)</text>
+<!-- WORKER / ASSET NODES -->
+<!-- Worker Cluster: Crew 2A -->
+<g transform="translate(620, 260)">
+<circle cx="0" cy="0" fill="#19202e" r="12" stroke="#00c2ff" stroke-width="1.5"></circle>
+<text fill="#92d9ff" font-family="JetBrains Mono" font-size="10" font-weight="bold" text-anchor="middle" x="0" y="4">12</text>
+<text fill="#dce2f6" font-family="Inter" font-size="11" font-weight="500" x="16" y="4">Crew 2A (Sub-level 1)</text>
+</g>
+<!-- Worker Cluster: Haulage Drift -->
+<g transform="translate(560, 420)">
+<circle cx="0" cy="0" fill="#19202e" r="10" stroke="#31ce66" stroke-width="1.5"></circle>
+<text fill="#56eb7e" font-family="JetBrains Mono" font-size="10" font-weight="bold" text-anchor="middle" x="0" y="3.5">8</text>
+<text fill="#dce2f6" font-family="Inter" font-size="11" x="14" y="4">Haulage Sub-drift</text>
+</g>
+<!-- Individual Worker Marker: Safe -->
+<g transform="translate(460, 390)">
+<circle cx="0" cy="0" fill="#31ce66" r="4.5"></circle>
+<text fill="#bcc8d1" font-family="Inter" font-size="10" x="8" y="3">S. O'Connor</text>
+</g>
+<!-- CRITICAL INCIDENT PIN: Marcus Brody (WK-884) & Rig 4B -->
+<g transform="translate(745, 535)">
+<!-- Target Reticle Ring -->
+<circle cx="0" cy="0" fill="none" r="22" stroke="#ffb4ab" stroke-dasharray="4,2" stroke-width="1.5">
+<animatetransform attributename="transform" dur="8s" from="0" repeatcount="indefinite" to="360" type="rotate"></animatetransform>
+</circle>
+<circle cx="0" cy="0" fill="#93000a" r="7" stroke="#ffb4ab" stroke-width="2"></circle>
+<!-- Tooltip Callout Flag -->
+<line stroke="#ffb4ab" stroke-width="1.5" x1="0" x2="35" y1="-7" y2="-38"></line>
+<rect fill="#151b2a" height="34" rx="2" stroke="#93000a" stroke-width="1.5" width="220" x="35" y="-56"></rect>
+<text fill="#ffdad6" font-family="Inter" font-size="11" font-weight="bold" x="43" y="-42">Marcus Brody (WK-884)</text>
+<text fill="#ffb4ab" font-family="JetBrains Mono" font-size="10" x="43" y="-28">CRITICAL · CH4: 0.85% · STOPE 3B</text>
+</g>
+<!-- Sensor Nodes along Drift -->
+<!-- S-304 (Hazard Methane Outburst) -->
+<g transform="translate(780, 500)">
+<polygon fill="#ffb4ab" points="0,-7 7,5 -7,5" stroke="#93000a" stroke-width="1"></polygon>
+<rect fill="#151b2a" height="18" rx="2" stroke="#ffb4ab" stroke-width="0.8" width="112" x="10" y="-12"></rect>
+<text fill="#ffb4ab" font-family="JetBrains Mono" font-size="9" font-weight="bold" x="14" y="0">S-304: CH4 0.85% [!ALERT]</text>
+</g>
+<!-- S-208 (Normal) -->
+<g transform="translate(480, 485)">
+<polygon fill="#00c2ff" points="0,-6 6,4 -6,4"></polygon>
+<text fill="#bcc8d1" font-family="JetBrains Mono" font-size="9" x="10" y="2">S-208: CO 22ppm</text>
+</g>
+<!-- Booster Fan Node -->
+<g transform="translate(860, 450)">
+<circle cx="0" cy="0" fill="#151b2a" r="7" stroke="#31ce66" stroke-width="1.5"></circle>
+<text fill="#56eb7e" font-family="JetBrains Mono" font-size="9" x="-4" y="3">F4</text>
+<text fill="#56eb7e" font-family="JetBrains Mono" font-size="9" x="12" y="3">Fan #4: 100% Boost</text>
+</g>
+<!-- LEVEL 4 DEEP DRIFT NETWORK -->
+<path d="M 380 680 L 460 670 L 610 655 L 750 675" fill="none" stroke="#232a39" stroke-linecap="round" stroke-width="2.5"></path>
+<circle cx="610" cy="655" fill="#86929a" r="3.5"></circle>
+<text fill="#86929a" font-family="JetBrains Mono" font-size="9" x="620" y="658">Deep Core Sensor Node D-01</text>
+</svg>
+<!-- FLOATING HUD OVERLAY 1: Top-Left GIS Layer Panel -->
+<div class="absolute top-4 left-4 w-60 bg-surface-container/95 backdrop-blur-md p-3 rounded shadow-xl flex flex-col gap-2.5">
+<div class="flex items-center justify-between pb-1 bg-surface-container-high/40 px-1 py-0.5 rounded">
+<div class="flex items-center gap-1.5 font-label-caps text-label-caps text-primary font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px]">layers</span>
+<span>Spatial Layers</span>
+</div>
+<span class="font-mono-sm text-mono-sm text-on-surface-variant">6 Active</span>
+</div>
+<div class="flex flex-col gap-1.5 font-body-sm text-body-sm text-on-surface">
+<label class="flex items-center justify-between cursor-pointer hover:bg-surface-container-high p-1 rounded transition-colors">
+<span class="flex items-center gap-2">
+<input checked="" class="rounded bg-surface-container-low text-primary focus:ring-0 w-3.5 h-3.5" type="checkbox"/>
+<span>Workers &amp; Teams</span>
+</span>
+<span class="font-mono-sm text-mono-sm text-tertiary">142</span>
+</label>
+<label class="flex items-center justify-between cursor-pointer hover:bg-surface-container-high p-1 rounded transition-colors">
+<span class="flex items-center gap-2">
+<input checked="" class="rounded bg-surface-container-low text-primary focus:ring-0 w-3.5 h-3.5" type="checkbox"/>
+<span>Atmospheric Array</span>
+</span>
+<span class="font-mono-sm text-mono-sm text-on-surface-variant">86</span>
+</label>
+<label class="flex items-center justify-between cursor-pointer hover:bg-surface-container-high p-1 rounded transition-colors">
+<span class="flex items-center gap-2">
+<input checked="" class="rounded bg-surface-container-low text-primary focus:ring-0 w-3.5 h-3.5" type="checkbox"/>
+<span>Evac Vectors</span>
+</span>
+<span class="font-mono-sm text-mono-sm text-tertiary">Active</span>
+</label>
+<label class="flex items-center justify-between cursor-pointer hover:bg-surface-container-high p-1 rounded transition-colors bg-error-container/30">
+<span class="flex items-center gap-2">
+<input checked="" class="rounded bg-surface-container-low text-error focus:ring-0 w-3.5 h-3.5" type="checkbox"/>
+<span class="text-error font-medium">Hazard Geofences</span>
+</span>
+<span class="font-mono-sm text-mono-sm text-error">1 Trigger</span>
+</label>
+<label class="flex items-center justify-between cursor-pointer hover:bg-surface-container-high p-1 rounded transition-colors">
+<span class="flex items-center gap-2">
+<input checked="" class="rounded bg-surface-container-low text-primary focus:ring-0 w-3.5 h-3.5" type="checkbox"/>
+<span>Refuge Bays</span>
+</span>
+<span class="font-mono-sm text-mono-sm text-on-surface-variant">4 Pods</span>
+</label>
+<label class="flex items-center justify-between cursor-pointer hover:bg-surface-container-high p-1 rounded transition-colors">
+<span class="flex items-center gap-2">
+<input class="rounded bg-surface-container-low text-primary focus:ring-0 w-3.5 h-3.5" type="checkbox"/>
+<span>Seismic PPV Grid</span>
+</span>
+<span class="font-mono-sm text-mono-sm text-outline">Off</span>
+</label>
+</div>
+</div>
+<!-- FLOATING HUD OVERLAY 2: Top-Right Navigation Gizmo & 3D Controls -->
+<div class="absolute top-4 right-4 flex flex-col items-end gap-2">
+<!-- 3D Orientation Gizmo Box -->
+<div class="w-24 h-24 bg-surface-container/90 backdrop-blur-md rounded p-1.5 flex flex-col items-center justify-center shadow-lg relative">
+<div class="text-[9px] font-mono-sm text-primary uppercase font-bold tracking-widest absolute top-1">NAV CUBE</div>
+<!-- Isometric Axis Representation -->
+<div class="relative w-12 h-12 flex items-center justify-center mt-2">
+<div class="absolute w-8 h-8 rounded bg-surface-container-high transform rotate-45 flex items-center justify-center shadow-inner">
+<span class="font-mono-sm text-[10px] text-tertiary font-bold">N</span>
+</div>
+<span class="absolute -right-2 text-[9px] font-mono text-outline">E</span>
+<span class="absolute -bottom-2 text-[9px] font-mono text-outline">S</span>
+<span class="absolute -left-2 text-[9px] font-mono text-outline">W</span>
+</div>
+<span class="text-[9px] font-mono-sm text-on-surface-variant mt-1">EL: -34° · AZ: 128°</span>
+</div>
+<!-- Camera Actions Strip -->
+<div class="flex flex-col bg-surface-container/90 backdrop-blur-md rounded p-1 gap-1 shadow-md">
+<button class="w-8 h-8 flex items-center justify-center rounded hover:bg-surface-container-high text-on-surface-variant hover:text-primary transition-colors" title="Zoom In">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded hover:bg-surface-container-high text-on-surface-variant hover:text-primary transition-colors" title="Zoom Out">
+<span class="material-symbols-outlined text-[18px]">remove</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded hover:bg-surface-container-high text-on-surface-variant hover:text-primary transition-colors" title="Center View">
+<span class="material-symbols-outlined text-[18px]">filter_center_focus</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded hover:bg-surface-container-high text-on-surface-variant hover:text-primary transition-colors" title="Reset Camera Rotation">
+<span class="material-symbols-outlined text-[18px]">restart_alt</span>
+</button>
+</div>
+</div>
+<!-- FLOATING HUD OVERLAY 3: Bottom-Left Live Map Legend & Status Summary -->
+<div class="absolute bottom-4 left-4 bg-surface-container/95 backdrop-blur-md p-3 rounded shadow-xl flex items-center gap-6">
+<div class="flex items-center gap-2.5">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary animate-pulse"></span>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-outline">Underground Headcount</span>
+<span class="font-mono-md text-mono-md font-bold text-on-surface">118 Subterranean <span class="text-error">(1 in Excursion)</span></span>
+</div>
+</div>
+<div class="h-7 w-px bg-surface-container-high"></div>
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-error text-[20px]">warning</span>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-outline">Active Alarm</span>
+<span class="font-mono-md text-mono-md font-bold text-error">Stope 3B Gas Influx (CH4 0.85%)</span>
+</div>
+</div>
+<div class="h-7 w-px bg-surface-container-high"></div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">wifi_tethering</span>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-outline">Telemetry Mesh</span>
+<span class="font-mono-md text-mono-md text-primary font-bold">98.6% Nominal</span>
+</div>
+</div>
+</div>
+<!-- FLOATING HUD OVERLAY 4: Bottom-Right Incident Time-Scrubber -->
+<div class="absolute bottom-4 right-4 bg-surface-container/95 backdrop-blur-md px-3 py-2 rounded shadow-xl flex items-center gap-3">
+<div class="flex items-center gap-1.5 text-error font-mono-sm text-mono-sm font-bold">
+<span class="w-2 h-2 rounded-full bg-error animate-ping"></span>
+<span>LIVE RECORD</span>
+</div>
+<div class="flex items-center gap-1 bg-surface-container-lowest px-2 py-1 rounded">
+<button class="px-1.5 py-0.5 rounded text-outline hover:text-on-surface text-[10px] font-mono transition-colors">-15m</button>
+<button class="px-1.5 py-0.5 rounded text-outline hover:text-on-surface text-[10px] font-mono transition-colors">-10m</button>
+<button class="px-1.5 py-0.5 rounded text-outline hover:text-on-surface text-[10px] font-mono transition-colors">-5m</button>
+<button class="px-2 py-0.5 rounded bg-primary-container text-on-primary-container font-mono-sm text-[11px] font-bold">NOW</button>
+</div>
+<button class="p-1 rounded hover:bg-surface-container-high text-on-surface-variant transition-colors" title="Pause / Play Simulation">
+<span class="material-symbols-outlined text-[18px]">pause</span>
+</button>
+</div>
+</div>
+<!-- RIGHT-HAND INSPECTION & SPATIAL TELEMETRY DOCK (Collapsible ~380px) -->
+<aside class="w-96 bg-surface-container-low flex flex-col justify-between overflow-y-auto shrink-0 shadow-2xl">
+<div class="flex flex-col">
+<!-- Dock Tab Switcher -->
+<div class="flex items-center bg-surface-container-lowest p-1">
+<button class="flex-1 py-1.5 px-2 rounded bg-surface-container text-primary font-label-caps text-label-caps uppercase tracking-wider text-center font-bold">
+            Target WK-884
+          </button>
+<button class="flex-1 py-1.5 px-2 rounded text-outline hover:text-on-surface font-label-caps text-label-caps uppercase tracking-wider text-center transition-colors">
+            Stope 3B Zone
+          </button>
+<button class="flex-1 py-1.5 px-2 rounded text-outline hover:text-on-surface font-label-caps text-label-caps uppercase tracking-wider text-center transition-colors">
+            Evac Corridors
+          </button>
+</div>
+<!-- Entity Header: Marcus Brody / Rig 4B -->
+<div class="p-4 bg-surface-container flex flex-col gap-3">
+<div class="flex items-start justify-between">
+<div class="flex gap-3">
+<div class="relative">
+<img class="w-12 h-12 rounded object-cover shadow-sm" data-alt="Close up portrait photograph of an underground industrial hard rock miner wearing high visibility overalls, protective goggles, helmet with headlamp in subterranean control room lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBALhH5cMuGJ_MeaWteMdJUfosOQ5HgZoYCdnfiou6aVtVygcTyrU15u5W1mkmfpqbc4MyAc_9JpGdv_V9I6K6fJTEFa2a2G7UR5jcFhWz8XQDW10pzmdVE7COLUI1UN0MfKSemctQd_TpkRX4XBO2FIVA8XozCzbMpvvg3WQlJjaXINKw34QTA1o_HBhuFkhkrY01Zr_ELtgWHmclAYOqubhtmqenENb1ENQ7YgiY"/>
+<span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-error flex items-center justify-center text-[10px] font-bold text-white shadow-xs">!</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">Marcus Brody</span>
+<span class="font-mono-sm text-mono-sm text-primary font-semibold">WK-884</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Sr Heavy Rig Operator · Rig 4B</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-2 py-0.5 rounded bg-error-container text-on-error-container font-mono-sm text-mono-sm font-bold uppercase tracking-wide">
+                CRITICAL
+              </span>
+<span class="font-mono-sm text-[10px] text-error mt-0.5">EXCURSION ZONE</span>
+</div>
+</div>
+<!-- Geofence & Spatial Breach Alert Box -->
+<div class="p-2.5 rounded bg-error-container/20 flex flex-col gap-1">
+<div class="flex items-center gap-1.5 text-error font-mono-sm text-mono-sm font-bold">
+<span class="material-symbols-outlined text-[16px] animate-pulse">crisis_alert</span>
+<span>GEOFENCE BREACH: ZONE GZ-03</span>
+</div>
+<div class="font-mono-sm text-[11px] text-on-surface-variant">
+              Triggered: 14:38:12 UTC (04m 06s in hazard atmosphere)
+            </div>
+</div>
+</div>
+<!-- Spatial Coordinates Matrix -->
+<div class="p-3 bg-surface-container-low flex flex-col gap-2">
+<span class="font-label-caps text-label-caps uppercase text-outline tracking-wider">Spatial Coordinate Readout (UWB Fix)</span>
+<div class="grid grid-cols-3 gap-2">
+<div class="p-2 rounded bg-surface-container flex flex-col">
+<span class="font-label-caps text-[9px] text-outline uppercase">COORD X</span>
+<span class="font-mono-md text-mono-md font-bold text-on-surface">44,912.8</span>
+</div>
+<div class="p-2 rounded bg-surface-container flex flex-col">
+<span class="font-label-caps text-[9px] text-outline uppercase">COORD Y</span>
+<span class="font-mono-md text-mono-md font-bold text-on-surface">18,204.3</span>
+</div>
+<div class="p-2 rounded bg-surface-container flex flex-col bg-error-container/30">
+<span class="font-label-caps text-[9px] text-error uppercase">DEPTH Z</span>
+<span class="font-mono-md text-mono-md font-bold text-error">-882.4m</span>
+</div>
+</div>
+<span class="font-body-sm text-[11px] text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">pin_drop</span>
+            Location: Stope 3B East Heading, Bench Level 3
+          </span>
+</div>
+<!-- Proximity Navigation Metrics -->
+<div class="p-3 bg-surface-container flex flex-col gap-2.5">
+<span class="font-label-caps text-label-caps uppercase text-outline tracking-wider">Proximity Escape Vectors</span>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-[18px]">meeting_room</span>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Nearest Refuge Bay</span>
+<span class="font-mono-sm text-[10px] text-on-surface-variant">Via Crosscut 12</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-mono-md text-mono-md font-bold text-tertiary">185m</span>
+<div class="font-mono-sm text-[10px] text-outline">ETA: ~2.4 min</div>
+</div>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">air</span>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Fresh Air Intake</span>
+<span class="font-mono-sm text-[10px] text-on-surface-variant">Vent Sub-Shaft 2A</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-mono-md text-mono-md font-bold text-primary">42m</span>
+<div class="font-mono-sm text-[10px] text-outline">Upcast Head</div>
+</div>
+</div>
+</div>
+<!-- Real-Time Biometric & Atmospheric Vitals Grid -->
+<div class="p-3 bg-surface-container-low flex flex-col gap-2.5">
+<span class="font-label-caps text-label-caps uppercase text-outline tracking-wider">Live Biometrics &amp; Local Gas</span>
+<div class="grid grid-cols-2 gap-2">
+<!-- Heart Rate -->
+<div class="p-2.5 rounded bg-surface-container flex flex-col gap-1">
+<div class="flex items-center justify-between text-outline">
+<span class="font-label-caps text-label-caps uppercase">Heart Rate</span>
+<span class="material-symbols-outlined text-error text-[16px]">ecg_heart</span>
+</div>
+<div class="flex items-baseline gap-1">
+<span class="font-mono-lg text-mono-lg font-bold text-on-surface">104</span>
+<span class="font-mono-sm text-mono-sm text-outline">bpm</span>
+</div>
+<span class="font-mono-sm text-[10px] text-error font-medium">ELEVATED</span>
+</div>
+<!-- Blood Oxygen -->
+<div class="p-2.5 rounded bg-surface-container flex flex-col gap-1">
+<div class="flex items-center justify-between text-outline">
+<span class="font-label-caps text-label-caps uppercase">SpO2 Blood O2</span>
+<span class="material-symbols-outlined text-primary text-[16px]">bloodtype</span>
+</div>
+<div class="flex items-baseline gap-1">
+<span class="font-mono-lg text-mono-lg font-bold text-on-surface">97%</span>
+<span class="font-mono-sm text-mono-sm text-tertiary">Stable</span>
+</div>
+<span class="font-mono-sm text-[10px] text-tertiary font-medium">SAFE RANGE</span>
+</div>
+<!-- Ambient CH4 -->
+<div class="p-2.5 rounded bg-error-container/30 flex flex-col gap-1 col-span-2">
+<div class="flex items-center justify-between text-error">
+<span class="font-label-caps text-label-caps uppercase font-bold">Ambient Methane (CH4)</span>
+<span class="material-symbols-outlined text-[16px]">warning</span>
+</div>
+<div class="flex items-baseline justify-between">
+<div class="flex items-baseline gap-1">
+<span class="font-mono-lg text-mono-lg font-bold text-error">0.85%</span>
+<span class="font-mono-sm text-mono-sm text-error/80">/ Vol</span>
+</div>
+<span class="font-mono-sm text-mono-sm text-error font-bold">THRESHOLD: 0.50%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-error rounded-full w-[85%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Drone Visual Survey Snapshot -->
+<div class="p-3 bg-surface-container flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps uppercase text-outline tracking-wider">Sub-Stope Drone Recon Feed</span>
+<span class="font-mono-sm text-[10px] text-tertiary flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
+              UAV-04 LINK
+            </span>
+</div>
+<div class="relative w-full h-28 rounded overflow-hidden shadow-inner">
+<img class="w-full h-full object-cover" data-alt="Night vision infrared thermal camera viewpoint looking down a narrow rugged subterranean rock drilling tunnel with heavy machinery silhouette and volumetric atmospheric fog particles illuminated by industrial warning beacons" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgEMPQHJ8BbsqQS25PRN5SP3bZpqVyG93Xx6tZ7scBW-TVGEmHNFC-jT2PUW7CoeORvffbJAtE2j5kos9ur2HmKpFizdUGqV-poeMhLvYW2Xec7Usr-ShVmFoQVdVomAj23HkOqkBoI6SfptsRykxQJVtuu5i3OX2Yxx77a-G2W6-eWrTJQFp7SMe3kG2Yu3n9mksT1sjXO_mRCxu63iPFH2UvL0TerwQ3UZyiS8g"/>
+<div class="absolute top-2 left-2 px-1.5 py-0.5 rounded bg-surface-container-lowest/80 font-mono-sm text-[9px] text-primary">
+              CAM: FLIR-T4 (30 FPS)
+            </div>
+<div class="absolute bottom-2 right-2 px-1.5 py-0.5 rounded bg-surface-container-lowest/80 font-mono-sm text-[9px] text-on-surface">
+              HEADING: 142° SE
+            </div>
+</div>
+</div>
+</div>
+<!-- Tactical Dispatch & Spatial Actions Footer -->
+<div class="p-4 bg-surface-container-lowest flex flex-col gap-2">
+<!-- Primary Emergency CTA -->
+<button class="w-full py-2.5 px-4 rounded bg-error hover:bg-error/90 text-on-error font-headline-sm text-headline-sm font-bold flex items-center justify-center gap-2 shadow-lg transition-transform active:scale-[0.99]">
+<span class="material-symbols-outlined text-[20px]">e911_emergency</span>
+<span>Dispatch ERT Squad to Stope 3B</span>
+</button>
+<!-- Secondary Dispatch Controls -->
+<div class="grid grid-cols-2 gap-2">
+<button class="py-2 px-2 rounded bg-surface-container hover:bg-surface-container-high text-primary font-mono-sm text-mono-sm flex items-center justify-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>Push HUD Vector</span>
+</button>
+<button class="py-2 px-2 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-mono-sm text-mono-sm flex items-center justify-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[16px]">mic</span>
+<span>Direct Comms Ch 3</span>
+</button>
+</div>
+</div>
+</aside>
+</div>
+</div></main>
+</div>
+</body></html>

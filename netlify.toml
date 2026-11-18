@@ -1,0 +1,11 @@
+[build]
+  command = "npm run build && node scripts/prepare-netlify.mjs"
+  publish = "frontend/dist"
+[build.environment]
+  NODE_VERSION = "22"
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "same-origin"
+    X-Frame-Options = "DENY"

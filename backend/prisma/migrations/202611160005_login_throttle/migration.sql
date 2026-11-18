@@ -1,0 +1,1 @@
+CREATE TABLE "LoginThrottle" ("id" TEXT PRIMARY KEY,"hits" INTEGER NOT NULL,"resetAt" TIMESTAMP(3) NOT NULL);

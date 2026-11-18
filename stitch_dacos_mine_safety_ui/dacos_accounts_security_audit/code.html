@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#24364a","on-tertiary-container":"#543300","background":"#011427","error":"#ffb4ab","on-tertiary":"#472a00","inverse-surface":"#d1e4fe","on-error":"#690005","surface-dim":"#011427","on-error-container":"#ffdad6","primary":"#4bdbcb","surface-container":"#0d2134","outline":"#859491","secondary-fixed":"#d3e4fe","surface-container-highest":"#24364a","outline-variant":"#3c4947","secondary-fixed-dim":"#b7c8e1","on-surface-variant":"#bbcac6","tertiary-container":"#e49200","error-container":"#93000a","on-background":"#d1e4fe","on-tertiary-fixed-variant":"#653e00","on-primary-container":"#00423c","primary-container":"#00b8a9","on-primary":"#003732","secondary-container":"#3a4a5f","secondary":"#b7c8e1","primary-fixed-dim":"#4bdbcb","tertiary-fixed":"#ffddb8","on-secondary":"#213145","tertiary":"#ffb95f","surface-container-high":"#192b3f","on-secondary-fixed":"#0b1c30","surface":"#011427","inverse-on-surface":"#203246","surface-container-lowest":"#000f20","on-secondary-fixed-variant":"#38485d","on-secondary-container":"#a9bad3","on-surface":"#d1e4fe","primary-fixed":"#6df8e7","on-primary-fixed-variant":"#005049","inverse-primary":"#006a61","surface-bright":"#293a4f","surface-tint":"#4bdbcb","on-tertiary-fixed":"#2a1700","on-primary-fixed":"#00201d","tertiary-fixed-dim":"#ffb95f","surface-container-low":"#091d30"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"gutter-desktop":"1.5rem","gutter":"1rem","space-md":"1rem","space-lg":"1.5rem","margin":"1rem","margin-desktop":"2rem","space-sm":"0.5rem","space-xs":"0.25rem","space-xl":"2rem"},fontFamily:{"headline-sm":["Inter"],"headline-lg-mobile":["Inter"],"label-sm":["Inter"],"headline-xl-mobile":["Inter"],"telemetry-lg":["Inter"],"label-md":["Inter"],"headline-lg":["Inter"],"body-lg":["Inter"],"headline-md":["Inter"],"code-sm":["Inter"],"telemetry-md":["Inter"],"body-md":["Inter"],"headline-xl":["Inter"]},fontSize:{"headline-sm":["16px",{"lineHeight":"24px","fontWeight":"600"}],"headline-lg-mobile":["20px",{"lineHeight":"28px","fontWeight":"600"}],"label-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.04em","fontWeight":"500"}],"headline-xl-mobile":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"700"}],"telemetry-lg":["28px",{"lineHeight":"32px","letterSpacing":"0.01em","fontWeight":"700"}],"label-md":["13px",{"lineHeight":"18px","letterSpacing":"0.02em","fontWeight":"500"}],"headline-lg":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"headline-md":["20px",{"lineHeight":"28px","fontWeight":"600"}],"code-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.06em","fontWeight":"600"}],"telemetry-md":["20px",{"lineHeight":"24px","letterSpacing":"0.01em","fontWeight":"700"}],"body-md":["14px",{"lineHeight":"22px","fontWeight":"400"}],"headline-xl":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"700"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-60 bg-surface-container-low z-50 flex flex-col border-r border-outline-variant/40"><div class="h-[68px] px-space-md flex items-center gap-space-sm border-b border-outline-variant/40 bg-surface-container-low"><img alt="DACOS Industrial Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrAX2iZPbYx64GpY3yb9I4VZO6I7n-ysR6m3YuaOEdd236wG-R_z0O3sW_fW-xXtdF6N4EghOFzYEnSCFSKjynx3BMqmENGE73fxlsBZPQ2V1HXselFBnsw24FHS6EQNn-CJnKwzk3AXpYIc7R3spmWdV9IzIWxd3BhnklSxvhiSJZqgC2ik_55Rn7Nbwgupu6LAmFfMnsTZbHjUXQO_UtJNlfw0dtLj5oayaT_60-Ol"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm tracking-tight text-primary leading-none">DACOS</span><span class="font-code-sm text-code-sm uppercase text-on-surface-variant tracking-wider">Liberia SCADA</span></div></div><div class="flex-1 overflow-y-auto px-space-xs py-space-sm space-y-space-md"><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Monitoring</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="overview" href="#">Overview</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="control-room" href="#">Control Room</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="live-workers" href="#">Live Workers</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="mine-map" href="#">Mine Map</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="environmental" href="#">Environmental</a></nav></div><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Response</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="incidents" href="#">Incidents</a></nav></div><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Analysis</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="history-and-reports" href="#">History &amp; Reports</a></nav></div><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Management</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="workers" href="#">Workers</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="devices" href="#">Devices</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="rules" href="#">Rules</a></nav></div><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Device Lab</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="wifi-simulator" href="#">Wi-Fi Simulator</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="ble-gateway" href="#">BLE Gateway</a></nav></div><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Administration</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="accounts-and-audit" href="#">Accounts &amp; Audit</a></nav></div><div class="space-y-space-xs border-t border-outline-variant/40 pt-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">System Links</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="my-account" href="#">My Account</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="public-website" href="#">Public Website</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="sign-out" href="#">Sign Out</a></nav></div></div></aside><div class="pl-60 min-h-screen flex flex-col"><header class="fixed top-0 left-60 right-0 h-[68px] bg-surface-container-low border-b border-outline-variant/40 z-40 px-space-md flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md min-w-0"><div class="flex items-center gap-1.5 font-code-sm text-code-sm text-on-surface-variant truncate"><span class="text-primary">DACOS</span><span class="text-outline">/</span><span class="text-on-surface uppercase tracking-wider font-semibold">Operations</span></div><div class="hidden xl:flex items-center px-2.5 py-1 rounded bg-tertiary-container/20 border border-tertiary text-tertiary font-code-sm text-code-sm uppercase tracking-wider whitespace-nowrap"><span class="inline-block w-1.5 h-1.5 rounded-full bg-tertiary mr-2 animate-pulse"></span>DEMO PROTOTYPE — NOT A CERTIFIED MINE SAFETY SYSTEM</div></div><div class="flex items-center gap-space-md shrink-0"><div class="hidden md:flex items-center gap-2 px-2.5 py-1 rounded bg-surface-container-high border border-outline-variant font-code-sm text-code-sm"><span class="w-2 h-2 rounded-full bg-primary animate-ping"></span><span class="text-primary font-semibold">WEBSOCKET CONNECTED (DEMO)</span><span class="text-outline">|</span><span class="text-on-surface-variant">14:32:08 UTC</span></div><div class="flex items-center gap-space-sm pl-space-sm border-l border-outline-variant/40"><div class="flex items-center gap-space-sm"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-primary/40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfpViSx2OZ16qd5PPJVXXDCSIynuKhnplMHvh1RGoC7NK2po1VcOX7RtabkVjEbzUorP2Yn0ULUYkzCTwYOODs1qS7VtaxrWuVjLO6a4z26fFR48Ws04o1jBkehyFIyI2ObB-YneOWIG98OlS5Q_3_h4qN0vSMhkKrYB0gBLs1atHYrklxj0YA1UKs9B2zx9a7nxUJn32l0fVQPwdKYDO7ltMbHkRWHZ17bFgoGl8"/><div class="hidden lg:flex flex-col text-left"><span class="font-label-md text-label-md font-semibold text-on-surface leading-tight">Sarah Jenkins</span><span class="font-code-sm text-code-sm text-primary uppercase leading-tight">Supervisor</span></div></div><div class="flex items-center gap-1"><a class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="my-account" href="#" title="My Account"><span class="material-symbols-outlined text-[20px]">settings</span></a><a class="p-1.5 rounded-lg text-on-surface-variant hover:text-error hover:bg-surface-container-high transition-colors" data-path="sign-out" href="#" title="Sign Out"><span class="material-symbols-outlined text-[20px]">logout</span></a></div></div></div></header><main class="flex-1 pt-[68px] bg-surface w-full px-space-md py-space-md"><div class="flex flex-col w-full space-y-space-md">
+<!-- Supervised Demo & Security Clearance Tier Ribbon -->
+<div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-space-sm bg-surface-container-high/90 px-space-md py-space-sm rounded-lg shadow-sm">
+<div class="flex items-center gap-space-sm">
+<span class="flex h-2.5 w-2.5 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-error opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-error"></span>
+</span>
+<span class="font-code-sm text-code-sm tracking-wider uppercase text-error font-semibold">
+        Administrative Access Only — Role Management &amp; Security Audit Ledger
+      </span>
+<span class="hidden lg:inline-block font-code-sm text-code-sm text-outline-variant">|</span>
+<span class="hidden lg:inline-block font-code-sm text-code-sm text-on-surface-variant uppercase tracking-wider">
+        Node: MONROVIA-HQ-CORE // Clearance Level: Tier-1 Root
+      </span>
+</div>
+<div class="flex items-center gap-space-xs self-end md:self-auto">
+<span class="px-2 py-0.5 rounded bg-tertiary-container/20 text-tertiary font-code-sm text-code-sm uppercase tracking-wider">
+        Enforced Cryptographic Policy: Ed25519
+      </span>
+</div>
+</div>
+<!-- Route Top Bar / Section Tabs -->
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md border-b-0">
+<div class="flex items-center gap-space-xs bg-surface-container-lowest p-1 rounded-xl shadow-inner">
+<button class="flex items-center gap-2 px-space-md py-2 rounded-lg bg-surface-container-high text-primary font-headline-sm text-headline-sm shadow-sm transition-all" id="tab-users-btn" onclick="switchTab('users')">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">manage_accounts</span>
+<span>User Accounts (Staff Directory)</span>
+<span class="ml-1 px-1.5 py-0.5 rounded-full bg-primary/20 text-primary font-code-sm text-code-sm">5 Active Nodes</span>
+</button>
+<button class="flex items-center gap-2 px-space-md py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all font-headline-sm text-headline-sm" id="tab-audit-btn" onclick="switchTab('audit')">
+<span class="material-symbols-outlined text-[20px]">shield_with_heart</span>
+<span>Security &amp; Governance Audit Trail</span>
+<span class="ml-1 px-1.5 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant font-code-sm text-code-sm">1,429 Evidentiary Events</span>
+</button>
+</div>
+<!-- Quick Stats Metric Pills -->
+<div class="hidden xl:flex items-center gap-space-sm font-code-sm text-code-sm">
+<div class="flex items-center gap-2 px-space-sm py-1.5 rounded-lg bg-surface-container text-on-surface-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span>Active MFA Enforcement: <strong class="text-on-surface font-semibold">100%</strong></span>
+</div>
+<div class="flex items-center gap-2 px-space-sm py-1.5 rounded-lg bg-surface-container text-on-surface-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span>Concurrent Sessions: <strong class="text-on-surface font-semibold">7 Nodes</strong></span>
+</div>
+</div>
+</div>
+<!-- TAB 1: USERS CONTAINER -->
+<div class="flex flex-col lg:flex-row gap-space-md items-start w-full" id="section-users">
+<!-- Main Table Viewport -->
+<div class="flex-1 flex flex-col w-full space-y-space-md min-w-0">
+<!-- Action Bar -->
+<div class="bg-surface-container-low p-space-md rounded-xl flex flex-col md:flex-row items-stretch md:items-center justify-between gap-space-md shadow-sm">
+<!-- Search and Filters -->
+<div class="flex flex-wrap items-center gap-space-sm flex-1 min-w-0">
+<div class="relative flex-1 min-w-[220px]">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="w-full bg-surface-container pl-10 pr-space-md py-2 rounded-lg text-on-surface placeholder:text-outline font-body-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary shadow-inner" id="user-search-input" placeholder="Search by name, identifier, or email..." type="text"/>
+</div>
+<!-- Role Filter -->
+<div class="relative">
+<select class="appearance-none bg-surface-container text-on-surface pl-3 pr-8 py-2 rounded-lg font-label-md text-label-md focus:outline-none focus:ring-1 focus:ring-primary cursor-pointer shadow-inner" id="role-filter">
+<option value="ALL">Role: All Tiers</option>
+<option value="ADMIN">Role: Administrator</option>
+<option value="SUPERVISOR">Role: Supervisor</option>
+<option value="OPERATOR">Role: Operator</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-outline pointer-events-none text-[18px]">expand_more</span>
+</div>
+<!-- Status Filter -->
+<div class="relative">
+<select class="appearance-none bg-surface-container text-on-surface pl-3 pr-8 py-2 rounded-lg font-label-md text-label-md focus:outline-none focus:ring-1 focus:ring-primary cursor-pointer shadow-inner" id="status-filter">
+<option value="ALL">Status: All States</option>
+<option value="ACTIVE">Status: Active Only</option>
+<option value="SUSPENDED">Status: Suspended / Locked</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-outline pointer-events-none text-[18px]">expand_more</span>
+</div>
+</div>
+<!-- Provision Button -->
+<button class="shrink-0 flex items-center justify-center gap-2 bg-primary-container hover:bg-primary text-on-primary-container px-space-md py-2.5 rounded-lg font-label-md text-label-md font-semibold transition-colors shadow-md" onclick="toggleDrawer(true)">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+<span>+ Create User Account</span>
+</button>
+</div>
+<!-- Users SCADA Table -->
+<div class="bg-surface-container-low rounded-xl overflow-hidden shadow-md flex flex-col">
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-md text-body-md border-collapse">
+<thead>
+<tr class="bg-surface-container-high/60 text-outline uppercase font-code-sm text-code-sm tracking-wider">
+<th class="py-3.5 px-space-md">Full Name</th>
+<th class="py-3.5 px-space-md">Email / SCADA Identifier</th>
+<th class="py-3.5 px-space-md">Access Role</th>
+<th class="py-3.5 px-space-md">Account Status</th>
+<th class="py-3.5 px-space-md">Last Signed In</th>
+<th class="py-3.5 px-space-md">Session Security</th>
+<th class="py-3.5 px-space-md text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface">
+<!-- Account 1: Sarah Jenkins (Self) -->
+<tr class="bg-surface-container hover:bg-surface-bright/20 transition-colors group">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img class="w-9 h-9 rounded-full object-cover shadow" data-alt="Close up profile portrait of Sarah Jenkins, senior female industrial safety supervisor, deep navy SCADA control room background, cool rim lighting, subtle tactical badge." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2uGyjMrr2VUC__kRmU0VfwFu0ZYtkC5L10aSaK0UBtKfRooq6cHubikcau0l3dHlgldaASa4jndVOhWNdR8ZDDs6qA1erH7ok69jv68L7Xmb6CToi1H9IBnBc5YeqENCe9FsZKiv93_ryqDV88MXlU6thaNaGDkMHUsKndaNzbeY_x5WaTOn8zW2IBHqb1U-H2CRMYqVo_a1TXIYnkuvvhndUdaAxU_LwrqJjclc"/>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-primary ring-2 ring-surface-container"></span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold leading-tight">Sarah Jenkins</span>
+<span class="px-1.5 py-0.2 rounded bg-primary/10 text-primary font-code-sm text-code-sm uppercase">You</span>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Badge ID: LIB-SUP-014</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="font-code-sm text-code-sm text-on-surface font-semibold">s.jenkins@dacos.lr</span>
+<div class="font-code-sm text-code-sm text-outline">GPG: 0x9B41...E82C</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-secondary-container text-on-secondary font-code-sm text-code-sm uppercase tracking-wider font-semibold">
+<span class="material-symbols-outlined text-[16px]">verified_user</span>
+                    Supervisor
+                  </span>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-primary-container/20 text-primary font-code-sm text-code-sm uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                    Active
+                  </span>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="font-code-sm text-code-sm text-on-surface">Now (Active)</div>
+<div class="font-code-sm text-code-sm text-outline">Terminal SEC-01</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 text-primary font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-[15px]">security</span> FIDO2 Hardware Key
+                    </span>
+<span class="font-code-sm text-code-sm text-outline">Tokens: 2 Active // IP: 10.12.0.4</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-2 rounded bg-surface-container-high/40 text-outline cursor-not-allowed opacity-40" disabled="" title="Self-demotion disabled by system security policy">
+<span class="material-symbols-outlined text-[18px]">manage_accounts</span>
+</button>
+<button class="p-2 rounded bg-surface-container-high hover:bg-surface-variant text-on-surface transition-colors" onclick="triggerReset('s.jenkins@dacos.lr')" title="Reset Password (Local Command)">
+<span class="material-symbols-outlined text-[18px]">lock_reset</span>
+</button>
+<button class="p-2 rounded bg-surface-container-high/40 text-outline cursor-not-allowed opacity-40" disabled="" title="Self-demotion disabled by system security policy">
+<span class="material-symbols-outlined text-[18px]">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Account 2: Dr. E. S. Sherman (Admin) -->
+<tr class="bg-surface-container-low hover:bg-surface-bright/20 transition-colors group">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img class="w-9 h-9 rounded-full object-cover shadow" data-alt="Headshot of Dr. E. S. Sherman, elder Liberian industrial systems engineer and chief SCADA system architect, wearing high-visibility collar under tactical vest, cool blue lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfJ4byXy6PJnIUpnUlGVfMun76SNC3aBRu0c0bqCYTpDlzHtWhvv5m2m_4KmXCL0LVdU2CJavXCNBVf72yN8iRwEs9z0zlpO-nlkYybX5Qi4IC2waHoVysxS7ulk1DpcnDehXv0dPX1I44S5sxZ6opcmXAfWnMUjNsJIIeHlckBMWEyh5S6_cb0xpcVesOp9HR6k7quwkWMi88XeI_fHy_yo062kzFTPT3igSNmX8"/>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-tertiary ring-2 ring-surface-container"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold leading-tight">Dr. E. S. Sherman</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Badge ID: LIB-ADM-001</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="font-code-sm text-code-sm text-on-surface font-semibold">e.sherman@dacos.lr</span>
+<div class="font-code-sm text-code-sm text-outline">GPG: 0x1A0F...77D1</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-tertiary-container/30 text-tertiary font-code-sm text-code-sm uppercase tracking-wider font-semibold">
+<span class="material-symbols-outlined text-[16px]">admin_panel_settings</span>
+                    Administrator
+                  </span>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-primary-container/20 text-primary font-code-sm text-code-sm uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                    Active
+                  </span>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="font-code-sm text-code-sm text-on-surface">14:18 UTC</div>
+<div class="font-code-sm text-code-sm text-outline">Core Console Alpha</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 text-primary font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-[15px]">security</span> Duo Push (HW Bio)
+                    </span>
+<span class="font-code-sm text-code-sm text-outline">Tokens: 1 Active // IP: 10.12.0.1</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-2 rounded bg-surface-container-high hover:bg-surface-variant text-on-surface transition-colors" onclick="editUser('Dr. E. S. Sherman', 'e.sherman@dacos.lr', 'ADMIN')" title="Edit Role">
+<span class="material-symbols-outlined text-[18px]">manage_accounts</span>
+</button>
+<button class="p-2 rounded bg-surface-container-high hover:bg-surface-variant text-on-surface transition-colors" onclick="triggerReset('e.sherman@dacos.lr')" title="Reset Password">
+<span class="material-symbols-outlined text-[18px]">lock_reset</span>
+</button>
+<button class="p-2 rounded bg-surface-container-high hover:bg-surface-variant text-on-surface hover:text-error transition-colors" onclick="toggleSuspend('e.sherman@dacos.lr')" title="Suspend Account">
+<span class="material-symbols-outlined text-[18px]">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Account 3: Tamba Fallah (Operator) -->
+<tr class="bg-surface-container hover:bg-surface-bright/20 transition-colors group">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img class="w-9 h-9 rounded-full object-cover shadow" data-alt="Portrait photo of Tamba Fallah, young Liberian mining plant operations monitor, heavy duty radio headset around neck, navy control room setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbo2lAM3_1DsKJlIskDAOZp-Q8dkhinCRsBaaE4IDKm1tKULGakM3wr4a0slhKrAAMhPPY_UgirPBcTEQDo8qnqSRZHwuQWzh064JWNZqx47uHMcl0bzL2RinzqGK-wdNuZK1sKSnDGVVGHe_r1nqnVxb7oid_11pIwBQ9Rm8RhOOI6NubPVxq3V0Gb0o0ZCIE7_wZN5RCXrBZsMVoKtDj1nPck_Cp9hzjJ75LHlM"/>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-primary ring-2 ring-surface-container"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold leading-tight">Tamba Fallah</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Badge ID: LIB-OP-209</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="font-code-sm text-code-sm text-on-surface font-semibold">t.fallah@dacos.lr</span>
+<div class="font-code-sm text-code-sm text-outline">GPG: 0x88BC...3102</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container-highest text-on-surface font-code-sm text-code-sm uppercase tracking-wider font-semibold">
+<span class="material-symbols-outlined text-[16px]">desktop_windows</span>
+                    Operator
+                  </span>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-primary-container/20 text-primary font-code-sm text-code-sm uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                    Active
+                  </span>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="font-code-sm text-code-sm text-on-surface">11:05 UTC</div>
+<div class="font-code-sm text-code-sm text-outline">Mobile Rugged #04</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 text-primary font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-[15px]">security</span> TOTP Authenticator
+                    </span>
+<span class="font-code-sm text-code-sm text-outline">Tokens: 1 Active // IP: 10.12.4.88</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-2 rounded bg-surface-container-high hover:bg-surface-variant text-on-surface transition-colors" onclick="editUser('Tamba Fallah', 't.fallah@dacos.lr', 'OPERATOR')" title="Edit Role">
+<span class="material-symbols-outlined text-[18px]">manage_accounts</span>
+</button>
+<button class="p-2 rounded bg-surface-container-high hover:bg-surface-variant text-on-surface transition-colors" onclick="triggerReset('t.fallah@dacos.lr')" title="Reset Password">
+<span class="material-symbols-outlined text-[18px]">lock_reset</span>
+</button>
+<button class="p-2 rounded bg-surface-container-high hover:bg-surface-variant text-on-surface hover:text-error transition-colors" onclick="toggleSuspend('t.fallah@dacos.lr')" title="Suspend Account">
+<span class="material-symbols-outlined text-[18px]">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Account 4: Korlu Biama (Operator) -->
+<tr class="bg-surface-container-low hover:bg-surface-bright/20 transition-colors group">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img class="w-9 h-9 rounded-full object-cover shadow" data-alt="Portrait photo of Korlu Biama, West African mining environmental engineer and safety console operator, safety eyewear perched on head, industrial SCADA monitors background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfmOLhbOgBb6GPqNdeqJHforiFRBA6FUdH-XzvauKptndP1Q80Map2pLjItPvwPCkWSXjxVlBzjb0A26VCdQkNJQlKqwim43wU21ZIcrTWkKzIaKAJGIMl9mH1IizpJA18kQ4bD4Ep27wDaFXGASoPvRQbEyk9b0EkkIjaeOYyBazFSIioBaFg73OizOT7vTNKn-CayimUQZobnJgnxsUo7ApQaES7VdoWLWX72Mc"/>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-outline ring-2 ring-surface-container"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold leading-tight">Korlu Biama</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Badge ID: LIB-OP-312</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="font-code-sm text-code-sm text-on-surface font-semibold">k.biama@dacos.lr</span>
+<div class="font-code-sm text-code-sm text-outline">GPG: 0x4D12...990E</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container-highest text-on-surface font-code-sm text-code-sm uppercase tracking-wider font-semibold">
+<span class="material-symbols-outlined text-[16px]">desktop_windows</span>
+                    Operator
+                  </span>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-primary-container/20 text-primary font-code-sm text-code-sm uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                    Active
+                  </span>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="font-code-sm text-code-sm text-on-surface">Yesterday 22:40</div>
+<div class="font-code-sm text-code-sm text-outline">Shaft 3 Guard Rail Desk</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 text-primary font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-[15px]">security</span> TOTP Authenticator
+                    </span>
+<span class="font-code-sm text-code-sm text-outline">Tokens: 0 Active (Expired)</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-2 rounded bg-surface-container-high hover:bg-surface-variant text-on-surface transition-colors" onclick="editUser('Korlu Biama', 'k.biama@dacos.lr', 'OPERATOR')" title="Edit Role">
+<span class="material-symbols-outlined text-[18px]">manage_accounts</span>
+</button>
+<button class="p-2 rounded bg-surface-container-high hover:bg-surface-variant text-on-surface transition-colors" onclick="triggerReset('k.biama@dacos.lr')" title="Reset Password">
+<span class="material-symbols-outlined text-[18px]">lock_reset</span>
+</button>
+<button class="p-2 rounded bg-surface-container-high hover:bg-surface-variant text-on-surface hover:text-error transition-colors" onclick="toggleSuspend('k.biama@dacos.lr')" title="Suspend Account">
+<span class="material-symbols-outlined text-[18px]">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Account 5: Marcus Zondo (Suspended) -->
+<tr class="bg-surface-container/60 hover:bg-surface-bright/20 transition-colors group opacity-85">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img class="w-9 h-9 rounded-full object-cover grayscale opacity-70 shadow" data-alt="Portrait photo of Marcus Zondo, former Liberian industrial transport worker, desaturated monotone grade, dark SCADA background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJYDnN5M4keFNrJxaklLOgJ4fooeB9bAGIvBFdaMSZ5YYF9CpsX0eFq3I2T3uYFMpc96mVfyvRFfR7T_0sU6Ur9138pEPKrYJigW1b1K7pYhtwuFZELQR1_glrgBa9Umoa7i6sePhmSH1oWlWqYRFfqD-JaYbkK9DCPvMf3M6EiyKok8Mp5Fils9Wxh6XyXIYaWuzhs4iL3-r4YAiYshUedNWsWfOCRx_6dx2vv7o"/>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-error ring-2 ring-surface-container"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface-variant font-semibold leading-tight line-through">Marcus Zondo</span>
+<span class="font-code-sm text-code-sm text-error">Lockout Reason: Shift Violation</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="font-code-sm text-code-sm text-on-surface-variant">m.zondo@dacos.lr</span>
+<div class="font-code-sm text-code-sm text-outline">GPG: REVOKED</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container-highest text-outline font-code-sm text-code-sm uppercase tracking-wider font-semibold">
+<span class="material-symbols-outlined text-[16px]">desktop_windows</span>
+                    Operator
+                  </span>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-error-container/30 text-error font-code-sm text-code-sm uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                    Suspended
+                  </span>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="font-code-sm text-code-sm text-on-surface-variant">14 Days Ago</div>
+<div class="font-code-sm text-code-sm text-error">Revocation Recorded</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 text-error font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-[15px]">lock</span> Tokens Annulled
+                    </span>
+<span class="font-code-sm text-code-sm text-outline">Certificate Revoked</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-2 rounded bg-surface-container-high hover:bg-surface-variant text-on-surface transition-colors" onclick="editUser('Marcus Zondo', 'm.zondo@dacos.lr', 'OPERATOR')" title="Edit Role">
+<span class="material-symbols-outlined text-[18px]">manage_accounts</span>
+</button>
+<button class="p-2 rounded bg-surface-container-high/40 text-outline cursor-not-allowed opacity-40" disabled="" title="Credentials currently suspended">
+<span class="material-symbols-outlined text-[18px]">lock_reset</span>
+</button>
+<button class="p-2 rounded bg-surface-container-high hover:bg-primary-container text-primary transition-colors" onclick="reactivateUser('m.zondo@dacos.lr')" title="Reactivate Account">
+<span class="material-symbols-outlined text-[18px]">lock_open</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-space-sm bg-surface-container-high/40 flex items-center justify-between font-code-sm text-code-sm text-on-surface-variant px-space-md">
+<span>Showing 5 of 5 registered personnel accounts</span>
+<span class="text-outline">Directory Synced to Local Cryptographic Registry</span>
+</div>
+</div>
+</div>
+<!-- CREATE / EDIT ACCOUNT SLIDE-OVER / DEDICATED SIDE PANEL -->
+<div class="w-full lg:w-[410px] shrink-0 bg-surface-container-low rounded-xl p-space-md shadow-xl flex flex-col space-y-space-md" id="drawer-panel">
+<!-- Drawer Header -->
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[24px]">badge</span>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface" id="drawer-title">Provision User Account</h3>
+<p class="font-code-sm text-code-sm text-on-surface-variant uppercase tracking-wider">Access Clearance Ledger</p>
+</div>
+</div>
+<button class="p-1 rounded text-outline hover:text-on-surface hover:bg-surface-container transition-colors" onclick="resetDrawerForm()" title="Clear/Reset Form">
+<span class="material-symbols-outlined text-[20px]">refresh</span>
+</button>
+</div>
+<!-- Security Notice Card -->
+<div class="bg-surface-container p-space-sm rounded-lg flex items-start gap-space-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-tertiary text-[20px] shrink-0 mt-0.5">verified</span>
+<p class="font-code-sm text-code-sm leading-relaxed text-on-surface-variant">
+<strong class="text-tertiary">STRICT IDENTITY POLICY:</strong> Self-service public registration is permanently disabled. Session credentials are administrator-managed, signed by DACOS Monrovia root key, and bound to physical SCADA terminals.
+        </p>
+</div>
+<!-- User Form -->
+<form class="space-y-space-md flex-1 flex flex-col justify-between" id="account-form" onsubmit="handleAccountSubmit(event)">
+<div class="space-y-space-sm">
+<!-- Full Legal Name -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Full Legal Name</label>
+<input class="w-full bg-surface-container px-3 py-2 rounded-lg text-on-surface placeholder:text-outline font-body-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary shadow-inner" id="form-fullname" placeholder="e.g., Boakai Fahnbulleh" required="" type="text"/>
+</div>
+<!-- Corporate Email -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Corporate Email Address</label>
+<input class="w-full bg-surface-container px-3 py-2 rounded-lg text-on-surface placeholder:text-outline font-body-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary shadow-inner" id="form-email" placeholder="username@dacos.lr" required="" type="email"/>
+</div>
+<!-- Role Clearance Selector -->
+<div>
+<div class="flex items-center justify-between mb-1">
+<label class="font-label-md text-label-md text-on-surface-variant">Role Clearance Selector</label>
+<span class="font-code-sm text-code-sm text-outline">3 Enforced Tiers</span>
+</div>
+<div class="space-y-2">
+<!-- Tier 1: Operator -->
+<label class="flex items-start gap-3 p-2.5 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors cursor-pointer group">
+<input checked="" class="mt-1 accent-primary" name="role-tier" type="radio" value="OPERATOR"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold group-hover:text-primary">Tier 1: Operator</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Monitor mine telemetry &amp; acknowledge active alarm events.</span>
+</div>
+</label>
+<!-- Tier 2: Supervisor -->
+<label class="flex items-start gap-3 p-2.5 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors cursor-pointer group">
+<input class="mt-1 accent-primary" name="role-tier" type="radio" value="SUPERVISOR"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold group-hover:text-primary">Tier 2: Supervisor</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Shift coordination, manual overrides &amp; hardware provisioning.</span>
+</div>
+</label>
+<!-- Tier 3: Administrator -->
+<label class="flex items-start gap-3 p-2.5 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors cursor-pointer group">
+<input class="mt-1 accent-primary" name="role-tier" type="radio" value="ADMIN"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold group-hover:text-primary">Tier 3: Administrator</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Full governance, security audit ledger &amp; identity issuance.</span>
+</div>
+</label>
+</div>
+<p class="mt-1 font-code-sm text-code-sm text-outline">Privileges strictly constrained to these 3 discrete role policies.</p>
+</div>
+<!-- Initial Temporary Passcode -->
+<div>
+<div class="flex items-center justify-between mb-1">
+<label class="font-label-md text-label-md text-on-surface-variant">Initial Temporary Passcode</label>
+<button class="font-code-sm text-code-sm text-primary hover:underline" onclick="generateSecurePasscode()" type="button">Generate (16-char)</button>
+</div>
+<div class="relative">
+<input class="w-full bg-surface-container px-3 py-2 pr-10 rounded-lg text-on-surface font-body-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary shadow-inner tracking-widest" id="form-passcode" minlength="12" placeholder="Minimum 12 characters..." required="" type="password"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface" onclick="togglePasscodeVisibility()" type="button">
+<span class="material-symbols-outlined text-[18px]" id="passcode-eye-icon">visibility</span>
+</button>
+</div>
+<span class="font-code-sm text-code-sm text-outline">Entropy requirement: At least 1 capital, 1 numeric, 1 symbol</span>
+</div>
+<!-- Mandatory Password Change Toggle -->
+<div class="pt-2">
+<label class="flex items-center justify-between cursor-pointer p-2.5 rounded-lg bg-surface-container">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-medium">Require Password Change</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Forces initial setup on next terminal auth</span>
+</div>
+<input checked="" class="w-4 h-4 accent-primary rounded cursor-pointer" id="form-force-reset" type="checkbox"/>
+</label>
+</div>
+</div>
+<!-- Action Submit Buttons -->
+<div class="pt-space-md flex items-center gap-space-sm">
+<button class="flex-1 bg-primary text-on-primary font-headline-sm text-headline-sm py-2.5 rounded-lg font-semibold hover:bg-primary-fixed transition-colors shadow-md flex items-center justify-center gap-2" type="submit">
+<span class="material-symbols-outlined text-[20px]">save</span>
+<span id="btn-submit-label">Commit to Ledger</span>
+</button>
+<button class="px-space-md py-2.5 rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface font-headline-sm text-headline-sm transition-colors" onclick="toggleDrawer(false)" type="button">
+            Cancel
+          </button>
+</div>
+</form>
+</div>
+</div>
+<!-- TAB 2 / BOTTOM EXPANDED PREVIEW: SECURITY & GOVERNANCE AUDIT TRAIL LEDGER -->
+<div class="w-full flex flex-col space-y-space-sm bg-surface-container-low p-space-md rounded-xl shadow-md" id="section-audit">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-xs pb-space-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">policy</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Immutable Cryptographic Audit Trail (Chronological)</h3>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-code-sm text-code-sm uppercase">SHA-256 Chained</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center gap-1 text-primary hover:text-on-surface font-code-sm text-code-sm px-2.5 py-1 rounded bg-surface-container transition-colors" onclick="refreshAuditFeed()">
+<span class="material-symbols-outlined text-[16px]">sync</span> Live Stream Active
+        </button>
+<button class="flex items-center gap-1 text-on-surface-variant hover:text-on-surface font-code-sm text-code-sm px-2.5 py-1 rounded bg-surface-container transition-colors" onclick="exportAuditLedger()">
+<span class="material-symbols-outlined text-[16px]">download</span> Export Ledger (.CSV)
+        </button>
+</div>
+</div>
+<!-- Audit Ledger Compact List -->
+<div class="space-y-2">
+<!-- Item 1: Device Rotation -->
+<div class="flex flex-col md:flex-row md:items-center justify-between p-3 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors gap-2">
+<div class="flex items-start md:items-center gap-3">
+<span class="p-1.5 rounded-lg bg-primary-container/20 text-primary">
+<span class="material-symbols-outlined text-[18px]">key</span>
+</span>
+<div class="flex flex-col">
+<div class="font-body-md text-body-md text-on-surface">
+              User <code class="text-primary font-code-sm text-code-sm px-1 py-0.5 rounded bg-surface-container-lowest">s.jenkins</code> rotated hardware credentials for Device <code class="text-on-surface-variant font-code-sm text-code-sm px-1 py-0.5 rounded bg-surface-container-lowest">DACOS-BAND-042</code>
+</div>
+<span class="font-code-sm text-code-sm text-outline">Subsystem: BLE-PERIMETER // Signature: verified_ed25519</span>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0 self-end md:self-center font-code-sm text-code-sm">
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest text-on-surface-variant">14:31:02 UTC</span>
+<span class="text-primary font-semibold">SUCCESS</span>
+</div>
+</div>
+<!-- Item 2: Role Elevation / Modification -->
+<div class="flex flex-col md:flex-row md:items-center justify-between p-3 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors gap-2">
+<div class="flex items-start md:items-center gap-3">
+<span class="p-1.5 rounded-lg bg-tertiary-container/20 text-tertiary">
+<span class="material-symbols-outlined text-[18px]">security_update</span>
+</span>
+<div class="flex flex-col">
+<div class="font-body-md text-body-md text-on-surface">
+              Admin <code class="text-tertiary font-code-sm text-code-sm px-1 py-0.5 rounded bg-surface-container-lowest">e.sherman</code> updated role access for <code class="text-primary font-code-sm text-code-sm px-1 py-0.5 rounded bg-surface-container-lowest">k.biama</code> to <span class="font-semibold text-on-surface">Operator</span>
+</div>
+<span class="font-code-sm text-code-sm text-outline">Authorization: Master Root Key Override // Policy: SCADA-RL-01</span>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0 self-end md:self-center font-code-sm text-code-sm">
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest text-on-surface-variant">13:58:19 UTC</span>
+<span class="text-primary font-semibold">SUCCESS</span>
+</div>
+</div>
+<!-- Item 3: Failed Auth Event -->
+<div class="flex flex-col md:flex-row md:items-center justify-between p-3 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors gap-2">
+<div class="flex items-start md:items-center gap-3">
+<span class="p-1.5 rounded-lg bg-error-container/30 text-error">
+<span class="material-symbols-outlined text-[18px]">gpp_bad</span>
+</span>
+<div class="flex flex-col">
+<div class="font-body-md text-body-md text-error">
+              Failed authentication attempt on node <code class="text-on-surface font-code-sm text-code-sm px-1 py-0.5 rounded bg-surface-container-lowest">SEC-09</code> (Client IP: <span class="font-semibold font-code-sm text-code-sm">192.168.10.42</span>)
+            </div>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Invalid biometric hash checksum // 3 successive rejections // Port isolated</span>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0 self-end md:self-center font-code-sm text-code-sm">
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest text-on-surface-variant">13:12:44 UTC</span>
+<span class="text-error font-semibold uppercase">ALERT LOGGED</span>
+</div>
+</div>
+<!-- Item 4: Shift Logout Event -->
+<div class="flex flex-col md:flex-row md:items-center justify-between p-3 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors gap-2">
+<div class="flex items-start md:items-center gap-3">
+<span class="p-1.5 rounded-lg bg-surface-container-highest text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">logout</span>
+</span>
+<div class="flex flex-col">
+<div class="font-body-md text-body-md text-on-surface">
+              Session gracefully terminated for <code class="text-on-surface font-code-sm text-code-sm px-1 py-0.5 rounded bg-surface-container-lowest">t.fallah</code> at Station 04
+            </div>
+<span class="font-code-sm text-code-sm text-outline">Clean exit // Ephemeral tokens flushed</span>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0 self-end md:self-center font-code-sm text-code-sm">
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest text-on-surface-variant">11:05:00 UTC</span>
+<span class="text-on-surface-variant font-semibold">INFO</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Tab Switcher Behavior
+  function switchTab(tab) {
+    const usersTabBtn = document.getElementById('tab-users-btn');
+    const auditTabBtn = document.getElementById('tab-audit-btn');
+    const usersSection = document.getElementById('section-users');
+    const auditSection = document.getElementById('section-audit');
+
+    if (tab === 'users') {
+      usersTabBtn.className = 'flex items-center gap-2 px-space-md py-2 rounded-lg bg-surface-container-high text-primary font-headline-sm text-headline-sm shadow-sm transition-all';
+      auditTabBtn.className = 'flex items-center gap-2 px-space-md py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all font-headline-sm text-headline-sm';
+      usersSection.classList.remove('hidden');
+      // When in Users tab, audit ledger remains docked at bottom as summary preview
+      auditSection.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      auditTabBtn.className = 'flex items-center gap-2 px-space-md py-2 rounded-lg bg-surface-container-high text-primary font-headline-sm text-headline-sm shadow-sm transition-all';
+      usersTabBtn.className = 'flex items-center gap-2 px-space-md py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all font-headline-sm text-headline-sm';
+      usersSection.classList.add('hidden');
+      auditSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  // Drawer Controls
+  function toggleDrawer(open) {
+    const drawer = document.getElementById('drawer-panel');
+    if (drawer) {
+      if (open) {
+        drawer.classList.remove('hidden');
+        drawer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else {
+        drawer.classList.add('hidden');
+      }
+    }
+  }
+
+  function resetDrawerForm() {
+    document.getElementById('account-form').reset();
+    document.getElementById('drawer-title').innerText = 'Provision User Account';
+    document.getElementById('btn-submit-label').innerText = 'Commit to Ledger';
+  }
+
+  function editUser(name, email, role) {
+    toggleDrawer(true);
+    document.getElementById('drawer-title').innerText = 'Edit Access Role: ' + name;
+    document.getElementById('btn-submit-label').innerText = 'Update Role Tier';
+    document.getElementById('form-fullname').value = name;
+    document.getElementById('form-email').value = email;
+
+    const radios = document.getElementsByName('role-tier');
+    for (let r of radios) {
+      if (r.value === role) {
+        r.checked = true;
+      }
+    }
+  }
+
+  function generateSecurePasscode() {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=';
+    let code = '';
+    for (let i = 0; i < 16; i++) {
+      code += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    const input = document.getElementById('form-passcode');
+    input.value = code;
+    input.type = 'text';
+    document.getElementById('passcode-eye-icon').innerText = 'visibility_off';
+  }
+
+  function togglePasscodeVisibility() {
+    const input = document.getElementById('form-passcode');
+    const icon = document.getElementById('passcode-eye-icon');
+    if (input.type === 'password') {
+      input.type = 'text';
+      icon.innerText = 'visibility_off';
+    } else {
+      input.type = 'password';
+      icon.innerText = 'visibility';
+    }
+  }
+
+  function handleAccountSubmit(e) {
+    e.preventDefault();
+    const name = document.getElementById('form-fullname').value;
+    alert('Security Notification: Personnel profile [' + name + '] cryptographically queued for DACOS Core verification.');
+    resetDrawerForm();
+  }
+
+  function triggerReset(email) {
+    const confirmed = confirm('Broadcast local SCADA credential reset challenge for ' + email + '?');
+    if (confirmed) {
+      alert('One-time emergency OTP dispatched to terminal console for ' + email);
+    }
+  }
+
+  function toggleSuspend(email) {
+    const reason = prompt('Specify governance justification for account suspension of [' + email + ']:');
+    if (reason) {
+      alert('Account ' + email + ' immediate lock applied. Tokens cleared. Reason logged: ' + reason);
+    }
+  }
+
+  function reactivateUser(email) {
+    const confirmed = confirm('Restore active SCADA authorization status for ' + email + '? Requires secondary physical key acknowledgement.');
+    if (confirmed) {
+      alert('Account ' + email + ' reinstated. Pending initial MFA authentication.');
+    }
+  }
+
+  function refreshAuditFeed() {
+    alert('Ledger synchro: 0 delta blocks found. Local ledger matches Root Hash 0x66B09F.');
+  }
+
+  function exportAuditLedger() {
+    alert('Exporting signed evidentiary audit log to encrypted CSV stream...');
+  }
+</script></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 py-space-sm px-space-md"><div class="flex flex-col sm:flex-row items-center justify-between gap-2 font-code-sm text-code-sm text-on-surface-variant"><div class="flex items-center gap-2"><span class="inline-block w-2 h-2 rounded-full bg-tertiary"></span><span>DACOS Liberia Prototype v0.9.4. Physical hardware integration pending. Never use for actual emergency dispatch.</span></div><div class="text-outline">LIB-EXT-MON-SEC-04 // NON-PROD ENV</div></div></footer></div></body></html>

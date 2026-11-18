@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_dashboard" name="shell-type"/>
+<title>DACOS Ecosystem - Environmental Monitoring &amp; Gas Matrix</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+  @layer base {
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      overscroll-behavior: none;
+    }
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .font-sans {
+      font-family: 'Inter', sans-serif;
+    }
+  }
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0c1321;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #232a39;
+    border-radius: 4px;
+  }
+  .hazard-stripe {
+    background: repeating-linear-gradient(
+      -45deg,
+      rgba(239, 68, 68, 0.18),
+      rgba(239, 68, 68, 0.18) 10px,
+      rgba(15, 23, 42, 0.4) 10px,
+      rgba(15, 23, 42, 0.4) 20px
+    );
+  }
+  .amber-stripe {
+    background: repeating-linear-gradient(
+      -45deg,
+      rgba(245, 158, 11, 0.15),
+      rgba(245, 158, 11, 0.15) 8px,
+      transparent 8px,
+      transparent 16px
+    );
+  }
+</style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "inverse-primary": "#006688",
+          "on-tertiary-fixed-variant": "#005321",
+          "surface-container-high": "#232a39",
+          "background": "#0c1321",
+          "on-secondary": "#002a78",
+          "primary": "#92d9ff",
+          "secondary-fixed-dim": "#b4c5ff",
+          "on-tertiary-fixed": "#002109",
+          "surface-container": "#19202e",
+          "on-tertiary": "#003915",
+          "inverse-on-surface": "#2a3040",
+          "secondary-fixed": "#dbe1ff",
+          "error": "#ffb4ab",
+          "on-secondary-container": "#cdd7ff",
+          "outline": "#86929a",
+          "tertiary-fixed-dim": "#4ae176",
+          "surface": "#0c1321",
+          "error-container": "#93000a",
+          "primary-fixed": "#c2e8ff",
+          "surface-container-lowest": "#070e1c",
+          "outline-variant": "#3d484f",
+          "on-secondary-fixed-variant": "#003ea8",
+          "on-error-container": "#ffdad6",
+          "surface-bright": "#323949",
+          "on-error": "#690005",
+          "inverse-surface": "#dce2f6",
+          "tertiary": "#56eb7e",
+          "on-primary-fixed-variant": "#004d67",
+          "tertiary-container": "#31ce66",
+          "on-background": "#dce2f6",
+          "surface-tint": "#75d1ff",
+          "surface-container-low": "#151b2a",
+          "tertiary-fixed": "#6bff8f",
+          "on-surface": "#dce2f6",
+          "primary-fixed-dim": "#75d1ff",
+          "on-secondary-fixed": "#00174b",
+          "surface-dim": "#0c1321",
+          "on-tertiary-container": "#005221",
+          "on-primary-fixed": "#001e2b",
+          "on-surface-variant": "#bcc8d1",
+          "surface-variant": "#2e3544",
+          "on-primary-container": "#004c66",
+          "on-primary": "#003548",
+          "secondary-container": "#0053db",
+          "surface-container-highest": "#2e3544",
+          "secondary": "#b4c5ff",
+          "primary-container": "#00c2ff"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "gutter-desktop": "1rem",
+          "margin-desktop": "1.5rem",
+          "space-sm": "0.5rem",
+          "space-xl": "1.5rem",
+          "space-lg": "1rem",
+          "space-md": "0.75rem",
+          "gutter": "0.75rem",
+          "space-xs": "0.25rem",
+          "margin": "1rem"
+        },
+        "fontFamily": {
+          "headline-md": ["Inter"],
+          "headline-lg-mobile": ["Inter"],
+          "body-md": ["Inter"],
+          "headline-sm": ["Inter"],
+          "body-sm": ["Inter"],
+          "label-caps": ["Inter"],
+          "headline-lg": ["Inter"],
+          "body-lg": ["Inter"],
+          "mono-lg": ["JetBrains Mono"],
+          "display": ["Inter"],
+          "mono-sm": ["JetBrains Mono"],
+          "mono-md": ["JetBrains Mono"]
+        },
+        "fontSize": {
+          "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+          "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+          "body-md": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+          "headline-sm": ["15px", {"lineHeight": "20px", "fontWeight": "600"}],
+          "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+          "label-caps": ["10px", {"lineHeight": "12px", "letterSpacing": "0.06em", "fontWeight": "700"}],
+          "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+          "body-lg": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+          "mono-lg": ["18px", {"lineHeight": "22px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+          "display": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "mono-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+          "mono-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0", "fontWeight": "500"}]
+        }
+      }
+    }
+  };
+</script>
+</head>
+<body class="bg-background font-body-md text-on-surface antialiased">
+<!-- LEFT NAVIGATION SIDEBAR (~240px / w-60) -->
+<aside class="fixed left-0 top-0 h-screen w-60 bg-surface-container-low border-r border-outline-variant/60 z-50 flex flex-col justify-between select-none">
+<div class="flex flex-col">
+<!-- Brand Header -->
+<div class="p-space-lg border-b border-outline-variant/60 flex items-center gap-space-md">
+<img alt="DACOS Industrial Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrDVJgcZ64j3lLnY0OlIJB7wDSH_YmN5yXxgkdZSvZu0hb-RKZsRlK_2tCs2DchkTJ6pQiX0nZskkvPBmc_OA39cDGRaEnr_Z7TkNurcgcEODKyUWY9Id_po_4lWaC9V8k3U68j7ITEHr1SLYADSO2GC1E84vdGMvjo92qQWCT39OG_AWL4ywqk_Ea6VcOoZMVP3E9UGvClcIWJ4iz3_BJ-kzlJAAB3lbqamJt4RglPf"/>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-primary tracking-wider leading-tight truncate">DACOS ECOSYSTEM</span>
+<span class="font-mono-sm text-outline uppercase tracking-wider truncate">INTEL MINE SAFETY · MOD C</span>
+</div>
+</div>
+<!-- Sector Indicator Badge -->
+<div class="px-space-lg py-space-sm bg-surface-container-lowest/80 border-b border-outline-variant/60 flex items-center justify-between">
+<div class="flex items-center gap-space-sm min-w-0">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary animate-pulse shrink-0"></span>
+<span class="font-mono-sm text-on-surface font-medium truncate">Olympic Dam Sector 4</span>
+</div>
+<span class="font-mono-sm px-space-xs py-0.5 rounded bg-surface-container-highest text-primary font-semibold border border-primary/30 shrink-0">ACTIVE</span>
+</div>
+<!-- Nav Items -->
+<nav class="p-space-sm flex flex-col gap-1 overflow-y-auto max-h-[calc(100vh-190px)]" data-active-classes="bg-surface-container-high text-primary font-semibold border-l-2 border-primary-container shadow-inner">
+<!-- Overview -->
+<a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="overview" href="#">
+<span class="font-body-md tracking-wide">Overview</span>
+<span class="font-mono-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant border border-outline-variant/40">CTRL-01</span>
+</a>
+<!-- Live Workers -->
+<a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="live-workers" href="#">
+<span class="font-body-md">Live Workers</span>
+<span class="font-mono-sm px-2 py-0.5 rounded-full bg-surface-container-lowest text-tertiary border border-tertiary/30 font-semibold">142</span>
+</a>
+<!-- Mine Map -->
+<a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="mine-map" href="#">
+<span class="font-body-md">Mine Map</span>
+<span class="font-mono-sm text-outline">3D GIS</span>
+</a>
+<!-- Health Monitoring -->
+<a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="health-monitoring" href="#">
+<span class="font-body-md">Health Vitals</span>
+<span class="font-mono-sm text-tertiary">Sync OK</span>
+</a>
+<!-- Environmental (ACTIVE) -->
+<a class="flex items-center justify-between px-space-md py-space-sm rounded-lg bg-surface-container-high text-primary font-semibold border-l-2 border-primary-container shadow-inner transition-colors" data-path="environmental-monitoring" href="#">
+<span class="font-body-md">Environmental</span>
+<span class="font-mono-sm px-1.5 py-0.5 rounded bg-surface-container-highest text-primary-container border border-primary-container/40">10-Gas</span>
+</a>
+<!-- Emergency Center -->
+<a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="emergency-center" href="#">
+<span class="font-body-md text-error font-medium">Emergency Center</span>
+<span class="font-mono-sm px-2 py-0.5 rounded-full bg-error-container/60 text-on-error-container font-bold border border-error/40 animate-pulse">2 Alerts</span>
+</a>
+<!-- Evacuation -->
+<a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="evacuation" href="#">
+<span class="font-body-md">Evacuation</span>
+<span class="font-mono-sm text-outline">Musters</span>
+</a>
+<!-- Alerts & Events -->
+<a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="alerts-events" href="#">
+<span class="font-body-md">Alerts &amp; Events</span>
+<span class="font-mono-sm px-2 py-0.5 rounded-full bg-secondary-container/40 text-secondary-fixed border border-secondary/30 font-semibold">5 New</span>
+</a>
+<!-- Reports & Logs -->
+<a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="reports-logs" href="#">
+<span class="font-body-md">Reports &amp; Logs</span>
+<span class="font-mono-sm text-outline">Shift B</span>
+</a>
+<!-- Devices & Nodes -->
+<a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="devices-nodes" href="#">
+<span class="font-body-md">Devices &amp; Nodes</span>
+<span class="font-mono-sm text-tertiary">Mesh OK</span>
+</a>
+<!-- Settings / Thresholds -->
+<a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="thresholds" href="#">
+<span class="font-body-md">Thresholds</span>
+<span class="font-mono-sm text-outline">Config</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Footer -->
+<div class="p-space-md bg-surface-container-lowest border-t border-outline-variant/60 flex flex-col gap-space-sm">
+<div class="flex items-center justify-between font-mono-sm text-outline px-1">
+<span>LAT: <strong class="text-on-surface">14ms</strong> · GW: ONLINE</span>
+<span class="text-tertiary font-semibold">99.98%</span>
+</div>
+<button class="flex items-center justify-center gap-space-sm py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface border border-outline-variant/60 transition-colors w-full font-mono-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">keyboard_double_arrow_left</span>
+<span>Collapse Sidebar</span>
+</button>
+</div>
+</aside>
+<!-- MAIN CONTENT CONTAINER (pl-60 accounts for 240px rail) -->
+<div class="pl-60 min-h-screen flex flex-col">
+<!-- TOP GLOBAL HEADER (Fixed height 64px / h-16) -->
+<header class="fixed top-0 left-60 right-0 h-16 bg-surface-container-lowest/95 backdrop-blur-md border-b border-outline-variant/60 z-40 px-space-xl flex items-center justify-between gap-space-lg">
+<!-- Breadcrumb and Title -->
+<div class="flex items-center gap-space-lg shrink-0">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5 font-mono-sm text-outline">
+<span class="text-primary font-semibold">DACOS</span>
+<span>/</span>
+<span>Control Room</span>
+<span>/</span>
+<span class="text-on-surface font-medium">Sector 4</span>
+</div>
+<span class="font-headline-md text-on-surface tracking-tight leading-tight">Environmental Monitoring (Gas Matrix &amp; Ventilation Telemetry)</span>
+</div>
+<div class="h-6 w-px bg-outline-variant/60 hidden xl:block"></div>
+<div class="hidden xl:flex items-center gap-space-sm px-2.5 py-1 rounded-lg bg-surface-container border border-outline-variant">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary animate-pulse"></span>
+<span class="font-mono-sm text-tertiary font-bold tracking-wide">WS: 10Hz</span>
+</div>
+</div>
+<!-- PERSISTENT HIGH-VISIBILITY SIMULATION BANNER -->
+<div class="flex items-center gap-space-sm px-3 py-1.5 rounded-lg bg-amber-500/15 border border-amber-500/40 text-amber-300 amber-stripe shadow-sm">
+<span class="material-symbols-outlined text-[18px] text-amber-400 animate-pulse">warning</span>
+<div class="flex items-center gap-1.5 font-mono-sm tracking-wide">
+<span class="font-bold text-amber-300">SIMULATION MODE</span>
+<span class="text-amber-400/80 hidden sm:inline">— NOT LIVE SAFETY DATA (TEST FIXTURE v2.4)</span>
+</div>
+</div>
+<!-- Search & Zone Select -->
+<div class="flex-1 max-w-md hidden lg:flex items-center gap-space-sm">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span>
+<input class="w-full pl-8 pr-3 py-1.5 rounded-lg bg-surface-container border border-outline-variant font-mono-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container transition-colors" placeholder="Search sensor ID, shaft, gas channel, scrubber..." type="text"/>
+</div>
+<div class="relative">
+<select class="appearance-none pl-3 pr-8 py-1.5 rounded-lg bg-surface-container border border-outline-variant font-mono-sm text-on-surface cursor-pointer focus:outline-none focus:border-primary-container">
+<option>Sector 04 - Cu/U Stope L3</option>
+<option>Sector 01 - Main Decline</option>
+<option>Sector 02 - North Drift Shaft</option>
+<option>Sector 03 - Crusher Chamber</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-outline pointer-events-none text-[16px]">expand_more</span>
+</div>
+</div>
+<!-- Right Profile & Shift info -->
+<div class="flex items-center gap-space-md shrink-0">
+<div class="hidden md:flex flex-col text-right font-mono-sm">
+<span class="text-on-surface font-bold tracking-tight">14:42:18 UTC</span>
+<span class="text-outline text-[11px]">SHIFT B · OLYMPIC DAM</span>
+</div>
+<button class="relative p-2 rounded-lg bg-surface-container hover:bg-surface-container-high border border-outline-variant text-on-surface transition-colors" title="Notifications" type="button">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute -top-1 -right-1 px-1.5 min-w-[18px] h-4 rounded-full bg-error text-surface-container-lowest font-mono-sm text-[10px] font-bold flex items-center justify-center leading-none">3</span>
+</button>
+<div class="flex items-center gap-space-sm pl-2 border-l border-outline-variant/60">
+<img alt="Profile" class="w-8 h-8 rounded-full object-cover border border-primary-container/50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNZB5LGnS0Pk-nhWWNyfGKRWWbggklr9eUlXZz_Lek_zWzuj8pY0rQCNGEJA15i46GEd3eftwsal_uqIU7lZw5QIRyOtGorku41Wo4j7kkH_FqrZFQvBKV3OyqGxlLWHRQ6UA4tXtUV-cH-6bxNYiONQ-apjYqYl2UF2P-IgD9bP-Od4vn87M_cLWebd28vjewc5w4yxuCWx4hRKwG8nUmVwYkeY-UHncnqnOUpY8"/>
+<div class="hidden xl:flex flex-col text-left">
+<span class="font-body-md text-on-surface font-semibold leading-tight">David Chen</span>
+<span class="font-mono-sm text-outline leading-tight">Sr. Safety Controller</span>
+</div>
+</div>
+</div>
+</header>
+<!-- MAIN SCROLLABLE CONTENT BODY (pt-16 exactly matches header h-16) -->
+<main class="w-full pt-16 bg-background min-h-screen flex flex-col">
+<div class="flex flex-col w-full">
+<!-- TOP ENVIRONMENTAL TELEMETRY RIBBON -->
+<section class="w-full bg-surface-container-low px-gutter-desktop py-space-md shadow-md">
+<div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-space-sm items-stretch">
+<!-- KPI 1: Primary Hazard Alert -->
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error animate-pulse"></div>
+<div class="flex items-center justify-between pl-1">
+<span class="font-label-caps text-outline uppercase tracking-wider">Hazard Vector</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-mono-sm bg-error-container text-on-error-container font-bold animate-pulse">EXCURSION</span>
+</div>
+<div class="pl-1 mt-1">
+<div class="flex items-baseline gap-1">
+<span class="font-mono-lg text-error text-2xl font-bold">0.85%</span>
+<span class="font-mono-sm text-outline">CH₄ Vol</span>
+</div>
+<p class="font-body-sm text-on-surface-variant text-[11px] truncate">Stope 3B (-880m) · Limit 0.50%</p>
+</div>
+</div>
+<!-- KPI 2: Atmospheric Sensor Mesh -->
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col justify-between relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-tertiary"></div>
+<div class="flex items-center justify-between pl-1">
+<span class="font-label-caps text-outline uppercase tracking-wider">Sensor Mesh</span>
+<span class="font-mono-sm text-tertiary font-semibold">98.4% OK</span>
+</div>
+<div class="pl-1 mt-1">
+<div class="flex items-baseline gap-1">
+<span class="font-mono-lg text-on-surface text-2xl font-bold">84</span>
+<span class="font-mono-sm text-outline">/ 86 Online</span>
+</div>
+<p class="font-body-sm text-on-surface-variant text-[11px] truncate">2 Calibrating (S-211, S-402)</p>
+</div>
+</div>
+<!-- KPI 3: Total Airflow Delivery -->
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col justify-between relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary-container"></div>
+<div class="flex items-center justify-between pl-1">
+<span class="font-label-caps text-outline uppercase tracking-wider">Bulk Airflow</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-mono-sm bg-surface-container-high text-primary font-semibold">102% TGT</span>
+</div>
+<div class="pl-1 mt-1">
+<div class="flex items-baseline gap-1">
+<span class="font-mono-lg text-primary text-2xl font-bold">410</span>
+<span class="font-mono-sm text-outline">m³/s</span>
+</div>
+<p class="font-body-sm text-on-surface-variant text-[11px] truncate">+2.4 kPa Positive Static Bal.</p>
+</div>
+</div>
+<!-- KPI 4: SCADA Fan Network -->
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col justify-between relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-amber-400"></div>
+<div class="flex items-center justify-between pl-1">
+<span class="font-label-caps text-outline uppercase tracking-wider">SCADA Fans</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-mono-sm bg-amber-500/20 text-amber-300 font-bold">FAN #4 MAX</span>
+</div>
+<div class="pl-1 mt-1">
+<div class="flex items-baseline gap-1">
+<span class="font-mono-lg text-on-surface text-2xl font-bold">12 / 12</span>
+<span class="font-mono-sm text-outline">Active</span>
+</div>
+<p class="font-body-sm text-on-surface-variant text-[11px] truncate">Axial #4 Purge 100% (6,200 RPM)</p>
+</div>
+</div>
+<!-- KPI 5: Toxic Gas Clearance -->
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col justify-between relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-tertiary"></div>
+<div class="flex items-center justify-between pl-1">
+<span class="font-label-caps text-outline uppercase tracking-wider">Gas Clearance</span>
+<span class="font-mono-sm text-tertiary font-semibold">8/9 Nominal</span>
+</div>
+<div class="pl-1 mt-1">
+<div class="flex items-baseline gap-1">
+<span class="font-mono-lg text-tertiary text-2xl font-bold">98.1%</span>
+<span class="font-mono-sm text-outline">Index</span>
+</div>
+<p class="font-body-sm text-on-surface-variant text-[11px] truncate">CO/NO₂/SO₂ Stable in S1-S3</p>
+</div>
+</div>
+<!-- KPI 6: WBGT Peak / Heat Strain -->
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col justify-between relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-amber-400"></div>
+<div class="flex items-center justify-between pl-1">
+<span class="font-label-caps text-outline uppercase tracking-wider">Peak WBGT</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-mono-sm bg-amber-500/20 text-amber-300 font-semibold">HEAT WARN</span>
+</div>
+<div class="pl-1 mt-1">
+<div class="flex items-baseline gap-1">
+<span class="font-mono-lg text-amber-300 text-2xl font-bold">28.4°C</span>
+<span class="font-mono-sm text-outline">76% RH</span>
+</div>
+<p class="font-body-sm text-on-surface-variant text-[11px] truncate">L4 Deep Bore (-1,120m)</p>
+</div>
+</div>
+</div>
+</section>
+<!-- WORKSPACE BODY (Split Grid 70/30) -->
+<div class="p-gutter-desktop grid grid-cols-1 xl:grid-cols-12 gap-space-lg">
+<!-- LEFT MAIN COLUMN: Gas Array, SCADA Circuit, Trend Graph (Col Span 8) -->
+<div class="xl:col-span-8 flex flex-col gap-space-lg min-w-0">
+<!-- SECTION A: 10-GAS ATMOSPHERIC TELEMETRY MATRIX -->
+<div class="bg-surface-container-low rounded-lg p-space-lg shadow-sm flex flex-col gap-space-md">
+<!-- Header & Zone Selector Tabs -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[20px]">air</span>
+<span class="font-headline-sm text-on-surface tracking-tight uppercase">Multi-Gas Telemetry Array</span>
+<span class="font-mono-sm px-2 py-0.5 rounded bg-surface-container-high text-outline">10-Gas Realtime</span>
+</div>
+<!-- Zone Pills -->
+<div class="flex items-center gap-1 overflow-x-auto pb-1 sm:pb-0" id="zone-selector-bar">
+<button class="px-2.5 py-1 rounded font-mono-sm text-on-surface-variant bg-surface-container hover:bg-surface-container-high transition-colors whitespace-nowrap" type="button">All Zones</button>
+<button class="px-2.5 py-1 rounded font-mono-sm text-on-surface-variant bg-surface-container hover:bg-surface-container-high transition-colors whitespace-nowrap" type="button">L1 Portal (+420m)</button>
+<button class="px-2.5 py-1 rounded font-mono-sm text-on-surface-variant bg-surface-container hover:bg-surface-container-high transition-colors whitespace-nowrap" type="button">L2 West Haulage</button>
+<button class="px-2.5 py-1 rounded font-mono-sm bg-error-container text-on-error-container font-semibold whitespace-nowrap flex items-center gap-1 shadow-sm" type="button">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-ping"></span>
+<span>L3 Stope 3B (-880m) [ALERT]</span>
+</button>
+<button class="px-2.5 py-1 rounded font-mono-sm text-on-surface-variant bg-surface-container hover:bg-surface-container-high transition-colors whitespace-nowrap" type="button">L4 Deep Bore</button>
+<button class="px-2.5 py-1 rounded font-mono-sm text-on-surface-variant bg-surface-container hover:bg-surface-container-high transition-colors whitespace-nowrap" type="button">Refuge Alpha</button>
+</div>
+</div>
+<!-- 10-Gas Grid (5 Cols on 2xl, 3 on md, 2 on sm) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5 gap-space-sm">
+<!-- Card 1: CH4 (CRITICAL) -->
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col justify-between relative overflow-hidden group hover:bg-surface-container-high transition-colors shadow-sm">
+<div class="absolute top-0 left-0 right-0 h-0.5 bg-error"></div>
+<div>
+<div class="flex items-center justify-between text-outline font-mono-sm">
+<span class="font-bold text-on-surface">CH₄ Methane</span>
+<span class="text-[10px]">S-304 · L3</span>
+</div>
+<div class="mt-2 flex items-baseline gap-1">
+<span class="font-mono-lg text-3xl font-bold text-error tracking-tight">0.85</span>
+<span class="font-mono-sm text-error">% Vol</span>
+</div>
+<div class="flex items-center justify-between mt-1">
+<span class="font-mono-sm text-[11px] text-error font-semibold">17.0% LEL</span>
+<span class="font-mono-sm text-[10px] text-error flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]">trending_up</span> +0.32%/15m
+                </span>
+</div>
+</div>
+<div class="mt-2 pt-2 bg-surface-container-lowest/60 -mx-space-sm -mb-space-sm px-space-sm pb-space-sm rounded-b-lg">
+<div class="flex items-center justify-between text-[10px] font-mono-sm text-outline">
+<span>THRESH: 0.50%</span>
+<span class="text-error font-bold">+70% EXCEED</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-1 overflow-hidden">
+<div class="bg-error h-full rounded-full" style="width: 85%"></div>
+</div>
+</div>
+</div>
+<!-- Card 2: Carbon Monoxide (CO) -->
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col justify-between relative overflow-hidden group hover:bg-surface-container-high transition-colors shadow-sm">
+<div class="absolute top-0 left-0 right-0 h-0.5 bg-amber-400"></div>
+<div>
+<div class="flex items-center justify-between text-outline font-mono-sm">
+<span class="font-bold text-on-surface">CO Carbon Monox</span>
+<span class="text-[10px]">S-306 · L3</span>
+</div>
+<div class="mt-2 flex items-baseline gap-1">
+<span class="font-mono-lg text-3xl font-bold text-amber-300 tracking-tight">12.4</span>
+<span class="font-mono-sm text-outline">ppm</span>
+</div>
+<div class="flex items-center justify-between mt-1">
+<span class="font-mono-sm text-[11px] text-amber-400">ELEVATED</span>
+<span class="font-mono-sm text-[10px] text-amber-300 flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]">trending_up</span> +4.1 ppm
+                </span>
+</div>
+</div>
+<div class="mt-2 pt-2 bg-surface-container-lowest/60 -mx-space-sm -mb-space-sm px-space-sm pb-space-sm rounded-b-lg">
+<div class="flex items-center justify-between text-[10px] font-mono-sm text-outline">
+<span>TWA LIMIT: 25.0</span>
+<span class="text-amber-400">49.6% CAP</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-1 overflow-hidden">
+<div class="bg-amber-400 h-full rounded-full" style="width: 49.6%"></div>
+</div>
+</div>
+</div>
+<!-- Card 3: Oxygen (O2) -->
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col justify-between relative overflow-hidden group hover:bg-surface-container-high transition-colors shadow-sm">
+<div class="absolute top-0 left-0 right-0 h-0.5 bg-tertiary"></div>
+<div>
+<div class="flex items-center justify-between text-outline font-mono-sm">
+<span class="font-bold text-on-surface">O₂ Oxygen</span>
+<span class="text-[10px]">S-301 · L3</span>
+</div>
+<div class="mt-2 flex items-baseline gap-1">
+<span class="font-mono-lg text-3xl font-bold text-tertiary tracking-tight">20.9</span>
+<span class="font-mono-sm text-outline">% Vol</span>
+</div>
+<div class="flex items-center justify-between mt-1">
+<span class="font-mono-sm text-[11px] text-tertiary font-semibold">OPTIMAL RANGE</span>
+<span class="font-mono-sm text-[10px] text-outline">Steady</span>
+</div>
+</div>
+<div class="mt-2 pt-2 bg-surface-container-lowest/60 -mx-space-sm -mb-space-sm px-space-sm pb-space-sm rounded-b-lg">
+<div class="flex items-center justify-between text-[10px] font-mono-sm text-outline">
+<span>SAFE: 19.5 - 23.5%</span>
+<span class="text-tertiary">NOMINAL</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-1 overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 88%"></div>
+</div>
+</div>
+</div>
+<!-- Card 4: Hydrogen Sulphide (H2S) -->
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col justify-between relative overflow-hidden group hover:bg-surface-container-high transition-colors shadow-sm">
+<div class="absolute top-0 left-0 right-0 h-0.5 bg-tertiary"></div>
+<div>
+<div class="flex items-center justify-between text-outline font-mono-sm">
+<span class="font-bold text-on-surface">H₂S Sulphide</span>
+<span class="text-[10px]">S-312 · L3</span>
+</div>
+<div class="mt-2 flex items-baseline gap-1">
+<span class="font-mono-lg text-3xl font-bold text-on-surface tracking-tight">0.0</span>
+<span class="font-mono-sm text-outline">ppm</span>
+</div>
+<div class="flex items-center justify-between mt-1">
+<span class="font-mono-sm text-[11px] text-tertiary font-semibold">CLEAR</span>
+<span class="font-mono-sm text-[10px] text-outline">Zero Det.</span>
+</div>
+</div>
+<div class="mt-2 pt-2 bg-surface-container-lowest/60 -mx-space-sm -mb-space-sm px-space-sm pb-space-sm rounded-b-lg">
+<div class="flex items-center justify-between text-[10px] font-mono-sm text-outline">
+<span>CEILING: 5.0 ppm</span>
+<span class="text-tertiary">0%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-1 overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 2%"></div>
+</div>
+</div>
+</div>
+<!-- Card 5: Particulate Dust (PM10) -->
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col justify-between relative overflow-hidden group hover:bg-surface-container-high transition-colors shadow-sm">
+<div class="absolute top-0 left-0 right-0 h-0.5 bg-amber-400"></div>
+<div>
+<div class="flex items-center justify-between text-outline font-mono-sm">
+<span class="font-bold text-on-surface">Dust PM10</span>
+<span class="text-[10px]">S-318 · L3</span>
+</div>
+<div class="mt-2 flex items-baseline gap-1">
+<span class="font-mono-lg text-3xl font-bold text-amber-300 tracking-tight">1.8</span>
+<span class="font-mono-sm text-outline">mg/m³</span>
+</div>
+<div class="flex items-center justify-between mt-1">
+<span class="font-mono-sm text-[11px] text-amber-400 font-semibold">MIST ACTIVE</span>
+<span class="font-mono-sm text-[10px] text-outline">Scrubbing</span>
+</div>
+</div>
+<div class="mt-2 pt-2 bg-surface-container-lowest/60 -mx-space-sm -mb-space-sm px-space-sm pb-space-sm rounded-b-lg">
+<div class="flex items-center justify-between text-[10px] font-mono-sm text-outline">
+<span>ACTION: 1.50</span>
+<span class="text-amber-400">+0.30 EXC</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-1 overflow-hidden">
+<div class="bg-amber-400 h-full rounded-full" style="width: 72%"></div>
+</div>
+</div>
+</div>
+<!-- Card 6: Nitrogen Dioxide (NO2) -->
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col justify-between relative overflow-hidden group hover:bg-surface-container-high transition-colors shadow-sm">
+<div class="absolute top-0 left-0 right-0 h-0.5 bg-tertiary"></div>
+<div>
+<div class="flex items-center justify-between text-outline font-mono-sm">
+<span class="font-bold text-on-surface">NO₂ Nitrous</span>
+<span class="text-[10px]">S-308 · L3</span>
+</div>
+<div class="mt-2 flex items-baseline gap-1">
+<span class="font-mono-lg text-3xl font-bold text-on-surface tracking-tight">0.4</span>
+<span class="font-mono-sm text-outline">ppm</span>
+</div>
+<div class="flex items-center justify-between mt-1">
+<span class="font-mono-sm text-[11px] text-tertiary">NORMAL</span>
+<span class="font-mono-sm text-[10px] text-outline">Diesel Exhaust</span>
+</div>
+</div>
+<div class="mt-2 pt-2 bg-surface-container-lowest/60 -mx-space-sm -mb-space-sm px-space-sm pb-space-sm rounded-b-lg">
+<div class="flex items-center justify-between text-[10px] font-mono-sm text-outline">
+<span>STEL: 1.0 ppm</span>
+<span class="text-tertiary">40% CAP</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-1 overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 40%"></div>
+</div>
+</div>
+</div>
+<!-- Card 7: Sulphur Dioxide (SO2) -->
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col justify-between relative overflow-hidden group hover:bg-surface-container-high transition-colors shadow-sm">
+<div class="absolute top-0 left-0 right-0 h-0.5 bg-tertiary"></div>
+<div>
+<div class="flex items-center justify-between text-outline font-mono-sm">
+<span class="font-bold text-on-surface">SO₂ Sulphur</span>
+<span class="text-[10px]">S-315 · L3</span>
+</div>
+<div class="mt-2 flex items-baseline gap-1">
+<span class="font-mono-lg text-3xl font-bold text-on-surface tracking-tight">0.1</span>
+<span class="font-mono-sm text-outline">ppm</span>
+</div>
+<div class="flex items-center justify-between mt-1">
+<span class="font-mono-sm text-[11px] text-tertiary">SAFE</span>
+<span class="font-mono-sm text-[10px] text-outline">Mineral Stable</span>
+</div>
+</div>
+<div class="mt-2 pt-2 bg-surface-container-lowest/60 -mx-space-sm -mb-space-sm px-space-sm pb-space-sm rounded-b-lg">
+<div class="flex items-center justify-between text-[10px] font-mono-sm text-outline">
+<span>LIMIT: 2.0 ppm</span>
+<span class="text-tertiary">5% CAP</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-1 overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 5%"></div>
+</div>
+</div>
+</div>
+<!-- Card 8: Carbon Dioxide (CO2) -->
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col justify-between relative overflow-hidden group hover:bg-surface-container-high transition-colors shadow-sm">
+<div class="absolute top-0 left-0 right-0 h-0.5 bg-tertiary"></div>
+<div>
+<div class="flex items-center justify-between text-outline font-mono-sm">
+<span class="font-bold text-on-surface">CO₂ Carbon Diox</span>
+<span class="text-[10px]">S-302 · L3</span>
+</div>
+<div class="mt-2 flex items-baseline gap-1">
+<span class="font-mono-lg text-3xl font-bold text-on-surface tracking-tight">0.28</span>
+<span class="font-mono-sm text-outline">% Vol</span>
+</div>
+<div class="flex items-center justify-between mt-1">
+<span class="font-mono-sm text-[11px] text-tertiary">NOMINAL</span>
+<span class="font-mono-sm text-[10px] text-outline">2,800 ppm</span>
+</div>
+</div>
+<div class="mt-2 pt-2 bg-surface-container-lowest/60 -mx-space-sm -mb-space-sm px-space-sm pb-space-sm rounded-b-lg">
+<div class="flex items-center justify-between text-[10px] font-mono-sm text-outline">
+<span>CEILING: 0.50%</span>
+<span class="text-tertiary">56% CAP</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-1 overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 56%"></div>
+</div>
+</div>
+</div>
+<!-- Card 9: Temperature & Relative Humidity -->
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col justify-between relative overflow-hidden group hover:bg-surface-container-high transition-colors shadow-sm">
+<div class="absolute top-0 left-0 right-0 h-0.5 bg-primary-container"></div>
+<div>
+<div class="flex items-center justify-between text-outline font-mono-sm">
+<span class="font-bold text-on-surface">Temp &amp; RH</span>
+<span class="text-[10px]">TH-320 · L3</span>
+</div>
+<div class="mt-2 flex items-baseline gap-1">
+<span class="font-mono-lg text-3xl font-bold text-primary tracking-tight">28.4°</span>
+<span class="font-mono-sm text-outline">C / 76%</span>
+</div>
+<div class="flex items-center justify-between mt-1">
+<span class="font-mono-sm text-[11px] text-outline">Dew Point: 23.8°C</span>
+<span class="font-mono-sm text-[10px] text-primary">Warm</span>
+</div>
+</div>
+<div class="mt-2 pt-2 bg-surface-container-lowest/60 -mx-space-sm -mb-space-sm px-space-sm pb-space-sm rounded-b-lg">
+<div class="flex items-center justify-between text-[10px] font-mono-sm text-outline">
+<span>WORK LIMIT: 30°C</span>
+<span class="text-primary font-semibold">SAFE ROTATION</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-1 overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 78%"></div>
+</div>
+</div>
+</div>
+<!-- Card 10: Barometric Pressure -->
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col justify-between relative overflow-hidden group hover:bg-surface-container-high transition-colors shadow-sm">
+<div class="absolute top-0 left-0 right-0 h-0.5 bg-primary-container"></div>
+<div>
+<div class="flex items-center justify-between text-outline font-mono-sm">
+<span class="font-bold text-on-surface">Baro Pressure</span>
+<span class="text-[10px]">BP-108 · L3</span>
+</div>
+<div class="mt-2 flex items-baseline gap-1">
+<span class="font-mono-lg text-3xl font-bold text-on-surface tracking-tight">104.2</span>
+<span class="font-mono-sm text-outline">kPa</span>
+</div>
+<div class="flex items-center justify-between mt-1">
+<span class="font-mono-sm text-[11px] text-tertiary">STABLE GRADIENT</span>
+<span class="font-mono-sm text-[10px] text-outline">+2.4 kPa vs Top</span>
+</div>
+</div>
+<div class="mt-2 pt-2 bg-surface-container-lowest/60 -mx-space-sm -mb-space-sm px-space-sm pb-space-sm rounded-b-lg">
+<div class="flex items-center justify-between text-[10px] font-mono-sm text-outline">
+<span>NOMINAL: 101-106</span>
+<span class="text-tertiary">INVERSION OK</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-1 overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 64%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- SECTION B: SCADA VENTILATION & AIRFLOW SCHEMATIC -->
+<div class="bg-surface-container-low rounded-lg p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[20px]">mode_fan</span>
+<span class="font-headline-sm text-on-surface uppercase tracking-tight">SCADA Ventilation Circuit: Sector 4 Airflow Path</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+<span class="font-mono-sm text-tertiary font-semibold uppercase">Closed-Loop Aerodynamics Active</span>
+</div>
+</div>
+<!-- Ventilation Schematic Diagram & Airflow Vector Map -->
+<div class="bg-surface-container rounded-lg p-space-md flex flex-col gap-space-md">
+<!-- Circuit Schematic Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-space-sm">
+<!-- Intake Node -->
+<div class="bg-surface-container-high p-space-sm rounded-lg flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-mono-sm text-primary font-bold">SHAFT #1 (INTAKE)</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-mono-sm bg-tertiary-container text-on-tertiary-container font-semibold">100% RPM</span>
+</div>
+<div class="mt-2 flex items-baseline justify-between">
+<span class="font-mono-lg text-xl text-on-surface font-bold">240 m³/s</span>
+<span class="font-mono-sm text-tertiary">Positive Draft</span>
+</div>
+<div class="mt-2 text-[11px] font-mono-sm text-outline flex items-center justify-between">
+<span>VFD Drive: 50.0 Hz</span>
+<span>P: 1.4 kPa</span>
+</div>
+</div>
+<!-- Stope Booster Node (Emergency State) -->
+<div class="bg-surface-container-high p-space-sm rounded-lg flex flex-col justify-between relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-amber-400"></div>
+<div class="flex items-center justify-between pl-1">
+<span class="font-mono-sm text-amber-300 font-bold">AUX FAN #7 (STOPE 3B)</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-mono-sm bg-amber-500/20 text-amber-300 font-bold">BOOSTED</span>
+</div>
+<div class="mt-2 flex items-baseline justify-between pl-1">
+<span class="font-mono-lg text-xl text-amber-300 font-bold">45 m³/s</span>
+<span class="font-mono-sm text-outline">Duct Static 1.8 kPa</span>
+</div>
+<div class="mt-2 pl-1 text-[11px] font-mono-sm text-outline flex items-center justify-between">
+<span>Flexible Vent Duct</span>
+<span class="text-amber-300 font-semibold">Max Dilution</span>
+</div>
+</div>
+<!-- Regulator Door Node -->
+<div class="bg-surface-container-high p-space-sm rounded-lg flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-mono-sm text-on-surface font-bold">REGULATOR R-04</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-mono-sm bg-surface-container-highest text-primary font-semibold">AUTO</span>
+</div>
+<div class="mt-2 flex items-baseline justify-between">
+<span class="font-mono-lg text-xl text-on-surface font-bold">65% OPEN</span>
+<span class="font-mono-sm text-outline">Aperture 4.2m²</span>
+</div>
+<div class="mt-2 text-[11px] font-mono-sm text-outline flex items-center justify-between">
+<span>Modulating Louvre</span>
+<span class="text-tertiary">Flow Regulated</span>
+</div>
+</div>
+<!-- Return Upcast Node (Emergency Purge) -->
+<div class="bg-surface-container-high p-space-sm rounded-lg flex flex-col justify-between relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>
+<div class="flex items-center justify-between pl-1">
+<span class="font-mono-sm text-error font-bold">FAN #4 (RETURN UPCAST)</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-mono-sm bg-error-container text-on-error-container font-bold animate-pulse">EMERG PURGE</span>
+</div>
+<div class="mt-2 flex items-baseline justify-between pl-1">
+<span class="font-mono-lg text-xl text-error font-bold">215 m³/s</span>
+<span class="font-mono-sm text-error font-semibold">100% VANE</span>
+</div>
+<div class="mt-2 pl-1 text-[11px] font-mono-sm text-outline flex items-center justify-between">
+<span>Vane Axial 450 kW</span>
+<span class="text-error font-semibold">6,200 RPM</span>
+</div>
+</div>
+</div>
+<!-- Airflow Velocity Stations Strip -->
+<div class="bg-surface-container-lowest/80 p-space-sm rounded-lg flex flex-col md:flex-row items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-outline text-[18px]">speed</span>
+<span class="font-mono-sm text-on-surface font-medium uppercase">Anemometer Vector Telemetry:</span>
+</div>
+<div class="flex items-center flex-wrap gap-space-lg font-mono-sm">
+<div class="flex items-center gap-1.5">
+<span class="text-outline">Stope 3B Face:</span>
+<span class="text-amber-300 font-bold">2.1 m/s</span>
+<span class="text-tertiary text-[10px]">▲ Turb. Disp.</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="text-outline">West Haulage Drift:</span>
+<span class="text-on-surface font-bold">1.6 m/s</span>
+<span class="text-tertiary text-[10px]">Nominal</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="text-outline">Refuge Alpha Intake:</span>
+<span class="text-primary font-bold">0.8 m/s</span>
+<span class="text-tertiary text-[10px]">Positive Pr.</span>
+</div>
+</div>
+</div>
+<!-- SCADA Quick Override Actions Bar -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-xs">
+<div class="flex items-center gap-1 text-[11px] font-mono-sm text-amber-300">
+<span class="material-symbols-outlined text-[14px]">tune</span>
+<span>SIMULATION ACTUATOR LINK · DIRECT SCADA PROTOCOL ENGAGED</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="px-3 py-1.5 rounded font-mono-sm text-on-surface bg-surface-container-high hover:bg-surface-container-highest transition-colors shadow-sm" type="button">
+                Set Fan #4 to Auto-Balance
+              </button>
+<button class="px-3 py-1.5 rounded font-mono-sm bg-primary-container text-on-primary font-semibold hover:bg-primary transition-colors shadow-sm" type="button">
+                Purge Cycle Sector 3B
+              </button>
+<button class="px-3 py-1.5 rounded font-mono-sm bg-error-container text-on-error-container font-bold hover:bg-error hover:text-on-error transition-colors shadow-sm" type="button">
+                Emergency Damper Drop
+              </button>
+</div>
+</div>
+</div>
+</div>
+<!-- SECTION C: 24-HOUR ENVIRONMENTAL MULTI-GAS TREND (Synchronized SVG Chart) -->
+<div class="bg-surface-container-low rounded-lg p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[20px]">ssid_chart</span>
+<span class="font-headline-sm text-on-surface uppercase tracking-tight">Temporal Telemetry Correlation (Past 4 Hours)</span>
+</div>
+<div class="flex items-center gap-space-md text-[11px] font-mono-sm">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-0.5 bg-error rounded-full"></span>
+<span class="text-error font-medium">CH₄ % Vol</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-0.5 bg-primary-container rounded-full"></span>
+<span class="text-primary font-medium">Air Velocity (m/s)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-0.5 bg-amber-400 rounded-full"></span>
+<span class="text-amber-300 font-medium">Dust PM10 (mg/m³)</span>
+</div>
+</div>
+</div>
+<!-- Responsive Inline SVG Multi-Line Chart -->
+<div class="bg-surface-container rounded-lg p-space-md relative overflow-hidden">
+<div class="w-full h-52 flex items-center justify-center">
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 800 200">
+<defs>
+<lineargradient id="ch4-gradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#EF4444" stop-opacity="0.35"></stop>
+<stop offset="100%" stop-color="#EF4444" stop-opacity="0.0"></stop>
+</lineargradient>
+<lineargradient id="flow-gradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#00C2FF" stop-opacity="0.25"></stop>
+<stop offset="100%" stop-color="#00C2FF" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+<!-- Subtle Horizontal Grid Lines -->
+<line opacity="0.1" stroke="#86929a" stroke-dasharray="4 4" x1="0" x2="800" y1="40" y2="40"></line>
+<line opacity="0.1" stroke="#86929a" stroke-dasharray="4 4" x1="0" x2="800" y1="90" y2="90"></line>
+<line opacity="0.1" stroke="#86929a" stroke-dasharray="4 4" x1="0" x2="800" y1="140" y2="140"></line>
+<!-- Threshold Line (CH4 Limit 0.50% Vol) -->
+<line opacity="0.5" stroke="#EF4444" stroke-dasharray="2 3" stroke-width="1.5" x1="0" x2="800" y1="100" y2="100"></line>
+<text fill="#EF4444" font-family="JetBrains Mono" font-size="10" opacity="0.9" x="10" y="95">CH₄ THRESHOLD LIMIT (0.50% VOL)</text>
+<!-- Event Line: Incident 14:38 UTC -->
+<line opacity="0.6" stroke="#F59E0B" stroke-dasharray="3 3" stroke-width="1.5" x1="560" x2="560" y1="10" y2="190"></line>
+<text fill="#F59E0B" font-family="JetBrains Mono" font-size="10" font-weight="bold" x="568" y="24">14:38 UTC: FAN #4 100% BOOST</text>
+<!-- Dust PM10 Curve (Amber) -->
+<path d="M 0,160 Q 150,155 300,162 T 520,135 T 570,80 T 650,110 T 800,120" fill="none" stroke="#F59E0B" stroke-linecap="round" stroke-width="1.5"></path>
+<!-- Air Velocity Curve (Cyan) -->
+<path d="M 0,140 Q 200,138 400,142 T 560,140 L 580,50 Q 680,48 800,52" fill="none" stroke="#00C2FF" stroke-linecap="round" stroke-width="2"></path>
+<path d="M 0,140 Q 200,138 400,142 T 560,140 L 580,50 Q 680,48 800,52 L 800,200 L 0,200 Z" fill="url(#flow-gradient)"></path>
+<!-- Methane CH4 Curve (Red) with Area Gradient -->
+<path d="M 0,175 Q 180,174 360,172 T 540,168 L 565,35 Q 640,45 800,60" fill="none" stroke="#EF4444" stroke-linecap="round" stroke-width="2.5"></path>
+<path d="M 0,175 Q 180,174 360,172 T 540,168 L 565,35 Q 640,45 800,60 L 800,200 L 0,200 Z" fill="url(#ch4-gradient)"></path>
+<!-- Current Spike Point Marker -->
+<circle cx="565" cy="35" fill="#EF4444" r="4"></circle>
+<circle class="animate-ping" cx="565" cy="35" fill="#EF4444" opacity="0.6" r="8"></circle>
+</svg>
+</div>
+<!-- Time Axis Metadata -->
+<div class="flex items-center justify-between font-mono-sm text-outline text-[11px] pt-space-xs border-t border-surface-container-highest mt-2">
+<span>11:00 UTC (T-4h)</span>
+<span>12:00 UTC</span>
+<span>13:00 UTC</span>
+<span class="text-amber-400 font-bold">14:38 UTC [TRIGGER]</span>
+<span class="text-primary font-bold">14:42 UTC (NOW)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT INSPECTION DOCK (Col Span 4): Plume Dispersion, Sensor Inspector, Safety Actions -->
+<div class="xl:col-span-4 flex flex-col gap-space-lg">
+<!-- WIDGET 1: ACTIVE HAZARD & PLUME DISPERSION MODEL -->
+<div class="bg-surface-container-low rounded-lg p-space-lg shadow-sm flex flex-col gap-space-md relative overflow-hidden">
+<div class="absolute top-0 left-0 right-0 h-1 bg-error"></div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-[20px] animate-pulse">radar</span>
+<span class="font-headline-sm text-on-surface uppercase tracking-tight">Plume Dispersion Vector</span>
+</div>
+<span class="px-2 py-0.5 rounded font-mono-sm text-xs bg-error-container text-on-error-container font-bold">INC-2025-084</span>
+</div>
+<!-- Sector Map Visual / Simulation Frame -->
+<div class="bg-surface-container rounded-lg p-space-md flex flex-col gap-space-sm relative overflow-hidden">
+<div class="flex items-center justify-between font-mono-sm text-xs">
+<span class="text-on-surface font-semibold">Stope 3B North Heading</span>
+<span class="text-error font-bold">DEPTH -880m</span>
+</div>
+<!-- Visual Plume Trajectory Diagram -->
+<div class="relative w-full h-44 bg-surface-container-lowest rounded flex items-center justify-center p-space-sm overflow-hidden">
+<!-- Simulated Drift Shaft Cross Section -->
+<div class="w-full h-16 bg-surface-container-high rounded relative flex items-center px-3">
+<span class="font-mono-sm text-[10px] text-outline absolute left-2 top-1">HAULAGE DRIFT 3B</span>
+<!-- Plume Gradient Pocket -->
+<div class="w-48 h-10 rounded-full bg-gradient-to-r from-error/70 via-amber-500/50 to-transparent blur-[6px] absolute left-14 animate-pulse"></div>
+<!-- Sensor Node Diode -->
+<div class="absolute left-20 flex flex-col items-center">
+<span class="w-3 h-3 rounded-full bg-error ring-4 ring-error/30 animate-pulse"></span>
+<span class="font-mono-sm text-[9px] text-error font-bold mt-1">S-304</span>
+</div>
+<!-- Airflow direction arrows -->
+<div class="absolute right-4 flex items-center gap-1 text-primary-container animate-pulse">
+<span class="font-mono-sm text-[10px] font-bold">EXHAUST DRAFT 2.1 m/s</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</div>
+</div>
+<!-- Personnel Indicator in perimeter -->
+<div class="absolute bottom-2 left-3 flex items-center gap-1.5 px-2 py-1 rounded bg-surface-container-high/90 text-[10px] font-mono-sm">
+<span class="w-2 h-2 rounded-full bg-amber-400"></span>
+<span class="text-on-surface">1 Miner (M. Brody): In Stope Pocket</span>
+</div>
+<div class="absolute bottom-2 right-3 flex items-center gap-1.5 px-2 py-1 rounded bg-surface-container-high/90 text-[10px] font-mono-sm">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="text-tertiary font-bold">RC-1 Chamber: Sealed &amp; OK</span>
+</div>
+</div>
+<!-- Plume Stats Matrix -->
+<div class="grid grid-cols-2 gap-space-sm mt-1">
+<div class="bg-surface-container-high p-space-sm rounded">
+<span class="font-mono-sm text-outline text-[10px] uppercase">Pocket Volume</span>
+<p class="font-mono-lg text-lg text-on-surface font-bold">380 m³ CH₄</p>
+</div>
+<div class="bg-surface-container-high p-space-sm rounded">
+<span class="font-mono-sm text-outline text-[10px] uppercase">Projected Clear</span>
+<p class="font-mono-lg text-lg text-primary font-bold">~14 Minutes</p>
+</div>
+</div>
+</div>
+</div>
+<!-- WIDGET 2: SENSOR NODE TELEMETRY & HARDWARE HEALTH INSPECTOR -->
+<div class="bg-surface-container-low rounded-lg p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[20px]">sensors</span>
+<span class="font-headline-sm text-on-surface uppercase tracking-tight">Active Node Inspector</span>
+</div>
+<span class="px-2 py-0.5 rounded font-mono-sm text-xs bg-surface-container-high text-primary font-bold">NODE S-304</span>
+</div>
+<div class="bg-surface-container rounded-lg p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between pb-space-sm border-b border-surface-container-high">
+<span class="font-body-md text-on-surface font-medium">Optical NDIR Infrared Core</span>
+<span class="font-mono-sm text-tertiary font-bold">99.2% Calibrated</span>
+</div>
+<div class="space-y-2 pt-1 font-mono-sm text-xs">
+<div class="flex items-center justify-between text-outline">
+<span>Sensor Modality:</span>
+<span class="text-on-surface font-semibold">Dual NDIR + Catalytic Bead</span>
+</div>
+<div class="flex items-center justify-between text-outline">
+<span>Wireless Mesh Telemetry:</span>
+<span class="text-on-surface font-semibold">LoRaWAN Sub-GHz (-64 dBm)</span>
+</div>
+<div class="flex items-center justify-between text-outline">
+<span>Packet Loss / Drop:</span>
+<span class="text-tertiary font-semibold">0.00% (Strict Mesh)</span>
+</div>
+<div class="flex items-center justify-between text-outline">
+<span>Power Subsystem:</span>
+<span class="text-on-surface font-semibold">IS-PoE (92% Batt Buffer)</span>
+</div>
+<div class="flex items-center justify-between text-outline">
+<span>Last Bump Test:</span>
+<span class="text-on-surface font-semibold">3 Days Ago (Auto-Rig)</span>
+</div>
+<div class="flex items-center justify-between text-outline">
+<span>Calibration Expiry:</span>
+<span class="text-primary font-semibold">24 Days Remaining</span>
+</div>
+</div>
+</div>
+</div>
+<!-- WIDGET 3: EMERGENCY CONTROLS & TACTICAL DISPATCH -->
+<div class="bg-surface-container-low rounded-lg p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-[20px]">e911_emergency</span>
+<span class="font-headline-sm text-on-surface uppercase tracking-tight">Tactical Safety Controls</span>
+</div>
+<span class="font-mono-sm text-outline text-[11px]">DISPATCH MOD B</span>
+</div>
+<div class="flex flex-col gap-space-sm">
+<!-- Emergency Siren Trigger Button -->
+<button class="w-full py-2.5 px-space-md rounded bg-error hover:bg-error-container text-on-error font-bold font-mono-sm uppercase tracking-wide flex items-center justify-center gap-2 transition-all shadow-md group" type="button">
+<span class="material-symbols-outlined text-[18px] group-hover:scale-110 transition-transform">volume_up</span>
+<span>Trigger Sector 3B Acoustic Gas Siren</span>
+</button>
+<!-- Boost Aux Ventilation -->
+<button class="w-full py-2 px-space-md rounded bg-primary-container hover:bg-primary text-on-primary font-semibold font-mono-sm uppercase tracking-wide flex items-center justify-center gap-2 transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">fast_forward</span>
+<span>Boost Aux Ventilation (+20% CFM)</span>
+</button>
+<!-- Deploy Fixed Mist Scrubbers -->
+<button class="w-full py-2 px-space-md rounded bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-mono-sm flex items-center justify-center gap-2 transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px] text-primary">water_drop</span>
+<span>Deploy Fixed Dust Mist Scrubbers</span>
+</button>
+<!-- Export Sensor Compliance Report -->
+<button class="w-full py-2 px-space-md rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-mono-sm flex items-center justify-center gap-2 transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">picture_as_pdf</span>
+<span>Export Sensor Compliance Report (PDF)</span>
+</button>
+</div>
+<!-- Operator Compliance Affirmation -->
+<div class="bg-surface-container-lowest p-space-sm rounded flex items-center gap-space-sm text-[11px] font-mono-sm text-outline">
+<span class="material-symbols-outlined text-tertiary text-[16px]">verified_user</span>
+<span>Mine Safety Act 1994 Sec 14B · Shift B Controller Auth Signed</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Simple interactive tab toggle for demonstration
+  document.querySelectorAll('#zone-selector-bar button').forEach(button => {
+    button.addEventListener('click', function() {
+      document.querySelectorAll('#zone-selector-bar button').forEach(b => {
+        b.classList.remove('bg-primary-container', 'text-on-primary');
+        if (!b.innerText.includes('ALERT')) {
+          b.classList.add('bg-surface-container', 'text-on-surface-variant');
+        }
+      });
+      if (!this.innerText.includes('ALERT')) {
+        this.classList.remove('bg-surface-container', 'text-on-surface-variant');
+        this.classList.add('bg-primary-container', 'text-on-primary');
+      }
+    });
+  });
+</script>
+</main>
+</div>
+</body></html>

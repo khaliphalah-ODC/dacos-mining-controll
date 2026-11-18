@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#24364a","on-tertiary-container":"#543300","background":"#011427","error":"#ffb4ab","on-tertiary":"#472a00","inverse-surface":"#d1e4fe","on-error":"#690005","surface-dim":"#011427","on-error-container":"#ffdad6","primary":"#4bdbcb","surface-container":"#0d2134","outline":"#859491","secondary-fixed":"#d3e4fe","surface-container-highest":"#24364a","outline-variant":"#3c4947","secondary-fixed-dim":"#b7c8e1","on-surface-variant":"#bbcac6","tertiary-container":"#e49200","error-container":"#93000a","on-background":"#d1e4fe","on-tertiary-fixed-variant":"#653e00","on-primary-container":"#00423c","primary-container":"#00b8a9","on-primary":"#003732","secondary-container":"#3a4a5f","secondary":"#b7c8e1","primary-fixed-dim":"#4bdbcb","tertiary-fixed":"#ffddb8","on-secondary":"#213145","tertiary":"#ffb95f","surface-container-high":"#192b3f","on-secondary-fixed":"#0b1c30","surface":"#011427","inverse-on-surface":"#203246","surface-container-lowest":"#000f20","on-secondary-fixed-variant":"#38485d","on-secondary-container":"#a9bad3","on-surface":"#d1e4fe","primary-fixed":"#6df8e7","on-primary-fixed-variant":"#005049","inverse-primary":"#006a61","surface-bright":"#293a4f","surface-tint":"#4bdbcb","on-tertiary-fixed":"#2a1700","on-primary-fixed":"#00201d","tertiary-fixed-dim":"#ffb95f","surface-container-low":"#091d30"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"gutter-desktop":"1.5rem","gutter":"1rem","space-md":"1rem","space-lg":"1.5rem","margin":"1rem","margin-desktop":"2rem","space-sm":"0.5rem","space-xs":"0.25rem","space-xl":"2rem"},fontFamily:{"headline-sm":["Inter"],"headline-lg-mobile":["Inter"],"label-sm":["Inter"],"headline-xl-mobile":["Inter"],"telemetry-lg":["Inter"],"label-md":["Inter"],"headline-lg":["Inter"],"body-lg":["Inter"],"headline-md":["Inter"],"code-sm":["Inter"],"telemetry-md":["Inter"],"body-md":["Inter"],"headline-xl":["Inter"]},fontSize:{"headline-sm":["16px",{"lineHeight":"24px","fontWeight":"600"}],"headline-lg-mobile":["20px",{"lineHeight":"28px","fontWeight":"600"}],"label-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.04em","fontWeight":"500"}],"headline-xl-mobile":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"700"}],"telemetry-lg":["28px",{"lineHeight":"32px","letterSpacing":"0.01em","fontWeight":"700"}],"label-md":["13px",{"lineHeight":"18px","letterSpacing":"0.02em","fontWeight":"500"}],"headline-lg":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"headline-md":["20px",{"lineHeight":"28px","fontWeight":"600"}],"code-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.06em","fontWeight":"600"}],"telemetry-md":["20px",{"lineHeight":"24px","letterSpacing":"0.01em","fontWeight":"700"}],"body-md":["14px",{"lineHeight":"22px","fontWeight":"400"}],"headline-xl":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"700"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-60 bg-surface-container-low z-50 flex flex-col border-r border-outline-variant/40"><div class="h-[68px] px-space-md flex items-center gap-space-sm border-b border-outline-variant/40 bg-surface-container-low"><img alt="DACOS Industrial Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrAX2iZPbYx64GpY3yb9I4VZO6I7n-ysR6m3YuaOEdd236wG-R_z0O3sW_fW-xXtdF6N4EghOFzYEnSCFSKjynx3BMqmENGE73fxlsBZPQ2V1HXselFBnsw24FHS6EQNn-CJnKwzk3AXpYIc7R3spmWdV9IzIWxd3BhnklSxvhiSJZqgC2ik_55Rn7Nbwgupu6LAmFfMnsTZbHjUXQO_UtJNlfw0dtLj5oayaT_60-Ol"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm tracking-tight text-primary leading-none">DACOS</span><span class="font-code-sm text-code-sm uppercase text-on-surface-variant tracking-wider">Liberia SCADA</span></div></div><div class="flex-1 overflow-y-auto px-space-xs py-space-sm space-y-space-md"><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Monitoring</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="overview" href="#"><span class="material-symbols-outlined text-[18px]">monitoring</span><span>Overview</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="control-room" href="#"><span class="material-symbols-outlined text-[18px]">grid_view</span><span>Control Room</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="live-workers" href="#"><span class="material-symbols-outlined text-[18px]">engineering</span><span>Live Workers</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="mine-map" href="#"><span class="material-symbols-outlined text-[18px]">explore</span><span>Mine Map</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="environmental" href="#"><span class="material-symbols-outlined text-[18px]">air</span><span>Environmental</span></a></nav></div><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Response</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="incidents" href="#"><span class="material-symbols-outlined text-[18px]">warning</span><span>Incidents</span></a></nav></div><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Analysis</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="history-and-reports" href="#"><span class="material-symbols-outlined text-[18px]">assessment</span><span>History &amp; Reports</span></a></nav></div><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Management</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="manage-workers" href="#"><span class="material-symbols-outlined text-[18px]">badge</span><span>Workers</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="manage-devices" href="#"><span class="material-symbols-outlined text-[18px]">devices</span><span>Devices</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="rules" href="#"><span class="material-symbols-outlined text-[18px]">rule</span><span>Rules</span></a></nav></div><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Device Lab</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="wifi-simulator" href="#"><span class="material-symbols-outlined text-[18px]">router</span><span>Wi-Fi Simulator</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="ble-gateway" href="#"><span class="material-symbols-outlined text-[18px]">sensors</span><span>BLE Gateway</span></a></nav></div><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Administration</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="accounts-and-audit" href="#"><span class="material-symbols-outlined text-[18px]">admin_panel_settings</span><span>Accounts &amp; Audit</span></a></nav></div><div class="space-y-space-xs border-t border-outline-variant/40 pt-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">System Links</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="my-account" href="#"><span class="material-symbols-outlined text-[18px]">manage_accounts</span><span>My Account</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="public-website" href="#"><span class="material-symbols-outlined text-[18px]">public</span><span>Public Website</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="login" href="#"><span class="material-symbols-outlined text-[18px]">logout</span><span>Sign Out</span></a></nav></div></div></aside><div class="pl-60 min-h-screen flex flex-col"><header class="fixed top-0 left-60 right-0 h-[68px] bg-surface-container-low border-b border-outline-variant/40 z-40 px-space-md flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md min-w-0"><div class="flex items-center gap-1.5 font-code-sm text-code-sm text-on-surface-variant truncate"><span class="text-primary">DACOS</span><span class="text-outline">/</span><span class="text-on-surface uppercase tracking-wider font-semibold">Operations</span></div><div class="hidden xl:flex items-center px-2.5 py-1 rounded bg-tertiary-container/20 border border-tertiary text-tertiary font-code-sm text-code-sm uppercase tracking-wider whitespace-nowrap"><span class="inline-block w-1.5 h-1.5 rounded-full bg-tertiary mr-2 animate-pulse"></span>DEMO PROTOTYPE — NOT A CERTIFIED MINE SAFETY SYSTEM</div></div><div class="flex items-center gap-space-md shrink-0"><div class="hidden md:flex items-center gap-2 px-2.5 py-1 rounded bg-surface-container-high border border-outline-variant font-code-sm text-code-sm"><span class="w-2 h-2 rounded-full bg-primary animate-ping"></span><span class="text-primary font-semibold">WEBSOCKET CONNECTED (DEMO)</span><span class="text-outline">|</span><span class="text-on-surface-variant">14:32:08 UTC</span></div><div class="flex items-center gap-space-sm pl-space-sm border-l border-outline-variant/40"><div class="flex items-center gap-space-sm"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-primary/40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfpViSx2OZ16qd5PPJVXXDCSIynuKhnplMHvh1RGoC7NK2po1VcOX7RtabkVjEbzUorP2Yn0ULUYkzCTwYOODs1qS7VtaxrWuVjLO6a4z26fFR48Ws04o1jBkehyFIyI2ObB-YneOWIG98OlS5Q_3_h4qN0vSMhkKrYB0gBLs1atHYrklxj0YA1UKs9B2zx9a7nxUJn32l0fVQPwdKYDO7ltMbHkRWHZ17bFgoGl8"/><div class="hidden lg:flex flex-col text-left"><span class="font-label-md text-label-md font-semibold text-on-surface leading-tight">Sarah Jenkins</span><span class="font-code-sm text-code-sm text-primary uppercase leading-tight">Supervisor</span></div></div><div class="flex items-center gap-1"><a class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="my-account" href="#" title="My Account"><span class="material-symbols-outlined text-[20px]">settings</span></a><a class="p-1.5 rounded-lg text-on-surface-variant hover:text-error hover:bg-surface-container-high transition-colors" data-path="login" href="#" title="Sign Out"><span class="material-symbols-outlined text-[20px]">logout</span></a></div></div></div></header><main class="flex-1 pt-[68px] bg-surface w-full px-space-md py-space-md"><div class="flex flex-col w-full gap-space-lg">
+<!-- Top Context & Emergency Disclaimer Banner -->
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-sm px-space-md py-space-xs rounded-lg bg-surface-container-low border border-outline-variant/30 text-on-surface-variant font-code-sm text-code-sm">
+<div class="flex items-center gap-space-sm flex-wrap">
+<a class="inline-flex items-center gap-1 text-primary hover:text-primary-fixed transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+<span>Back to Workers Directory</span>
+</a>
+<span class="text-outline">/</span>
+<span class="text-on-surface-variant">Monitoring</span>
+<span class="text-outline">/</span>
+<span class="text-on-surface-variant">Live Workers</span>
+<span class="text-outline">/</span>
+<span class="text-primary font-semibold">W-088 (Peter Kollie)</span>
+</div>
+<div class="flex items-center gap-2 text-tertiary font-code-sm text-code-sm tracking-wide bg-tertiary-container/10 px-2 py-0.5 rounded">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
+<span>FICTIONAL SIMULATION // HW PENDING VERIFICATION</span>
+</div>
+</div>
+<!-- Worker Master Identity Header Ribbon -->
+<div class="rounded-xl bg-surface-container-low p-space-md shadow-md flex flex-col xl:flex-row xl:items-center justify-between gap-space-lg relative overflow-hidden">
+<!-- Active Tachycardia Background Alert Glow -->
+<div class="absolute -right-24 -top-24 w-80 h-80 rounded-full bg-error-container/10 blur-3xl pointer-events-none"></div>
+<!-- Worker Profile + Primary Identity Info -->
+<div class="flex flex-col sm:flex-row items-start sm:items-center gap-space-md min-w-0 z-10">
+<div class="relative shrink-0">
+<img class="w-20 h-20 rounded-xl object-cover ring-2 ring-error/80 shadow-lg" data-alt="Close-up industrial portrait of an African mine worker wearing high-visibility orange reflective gear, protective yellow safety hard hat with headlamp, and dust goggle marks, deep blue atmospheric background with safety telemetry lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDa1L62tTO3V-LzlRpC9Vo4-AC2_7bvutYA9k9Vf2BkPOVdAkxhjd1Hvj6D1fsh96ovI-PYm8kqM1frzLYLqbN5jyDH2Nsd-af2Lsa67chOtNC4Tdg4-bNpeMN1rLERNC4A1PBBi5FlRRTFb5OtnWteKUEzOHgOemg-btJes7AsFIIOBJU-CAarTbOd4UvV4B_PmxEWYHkibbKv4wznaTcaD5lDfBdXk7x4SQjO8Fs"/>
+<span class="absolute -bottom-1 -right-1 px-1.5 py-0.5 rounded bg-error text-on-error font-code-sm text-code-sm tracking-wider uppercase font-bold">ALRT</span>
+</div>
+<div class="flex flex-col gap-1 min-w-0">
+<div class="flex items-center gap-space-sm flex-wrap">
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight truncate">Peter Kollie</h1>
+<span class="px-2 py-0.5 rounded bg-surface-container-highest text-primary font-code-sm text-code-sm font-semibold tracking-wider">ID: W-088</span>
+<span class="px-2.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wide">Blasting Tech &amp; Charge Operator</span>
+</div>
+<div class="flex items-center gap-x-space-md gap-y-1 flex-wrap font-label-md text-label-md text-on-surface-variant">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline">schedule</span>
+<span>Alpha Shift <span class="text-on-surface font-mono font-medium">(06:00 - 14:00 UTC)</span></span>
+</span>
+<span class="text-outline">•</span>
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline">groups</span>
+<span class="text-on-surface font-medium">Face Crew 01</span>
+</span>
+<span class="text-outline">•</span>
+<span class="flex items-center gap-1.5 text-primary">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+<span class="text-on-surface font-medium">Zone A • Decline North Stope 2 (-100m Level)</span>
+</span>
+</div>
+<div class="flex items-center gap-space-sm flex-wrap pt-1">
+<!-- Hardware Link Badge -->
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container text-primary font-code-sm text-code-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span>NET LINK: UP</span>
+<span class="text-outline">|</span>
+<span class="text-on-surface-variant">4s ago via BLE-GW-04 (Pkt #8921)</span>
+</div>
+<!-- Alert Flag -->
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-error-container/30 text-error font-code-sm text-code-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+<span>ACTIVE ANOMALY: TACHYCARDIA DETECTED (INC-104)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Button Console -->
+<div class="flex flex-wrap items-center gap-space-sm z-10 shrink-0">
+<button class="px-space-md py-2.5 rounded-lg bg-error text-on-error font-label-md text-label-md font-semibold hover:bg-error/90 active:scale-95 transition-all flex items-center gap-1.5 shadow-md">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span>Acknowledge Alert</span>
+</button>
+<button class="px-space-md py-2.5 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-variant active:scale-95 transition-all font-label-md text-label-md flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-tertiary">emergency</span>
+<span>Incident Detail (INC-104)</span>
+</button>
+<button class="px-space-md py-2.5 rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high active:scale-95 transition-all font-label-md text-label-md flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">person_check</span>
+<span>Assign Dispatch</span>
+</button>
+<button class="p-2.5 rounded-lg bg-surface-container text-on-surface-variant hover:text-primary hover:bg-surface-container-high active:scale-95 transition-all" title="Export Worker Telemetry Log">
+<span class="material-symbols-outlined text-[20px]">download</span>
+</button>
+</div>
+</div>
+<!-- Secondary Tab Bar -->
+<div class="flex items-center gap-space-xs overflow-x-auto pb-1 border-b border-outline-variant/30 text-label-md font-label-md">
+<button class="px-space-md py-2 font-semibold text-primary border-b-2 border-primary bg-primary/5 rounded-t whitespace-nowrap flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">ecg_heart</span>
+<span>Summary &amp; Telemetry</span>
+</button>
+<button class="px-space-md py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors rounded-t whitespace-nowrap flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">show_chart</span>
+<span>Health History &amp; Trends</span>
+</button>
+<button class="px-space-md py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors rounded-t whitespace-nowrap flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">air</span>
+<span>Zone Atmospheric Data</span>
+</button>
+<button class="px-space-md py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors rounded-t whitespace-nowrap flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">radar</span>
+<span>Simulated Location</span>
+</button>
+<button class="px-space-md py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors rounded-t whitespace-nowrap flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-error">notification_important</span>
+<span>Incidents &amp; Alerts</span>
+<span class="px-1.5 py-0.2 rounded-full bg-error-container text-on-error-container text-code-sm font-code-sm font-bold">1</span>
+</button>
+<button class="px-space-md py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors rounded-t whitespace-nowrap flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">watch</span>
+<span>Assigned Wearable</span>
+</button>
+</div>
+<!-- Primary 3-Column Mission Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Column 1: Physiological Telemetry (5 cols) -->
+<div class="lg:col-span-5 flex flex-col gap-space-md">
+<!-- Vitals Main Card -->
+<div class="rounded-xl bg-surface-container p-space-md flex flex-col gap-space-md shadow-md">
+<!-- Card Header -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">vital_signs</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Physiological Vitals</h2>
+</div>
+<div class="flex items-center gap-2 font-code-sm text-code-sm text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+<span>4s FRESH // BLE MESH 04</span>
+</div>
+</div>
+<!-- Heart Rate Critical Callout -->
+<div class="rounded-lg bg-surface-container-low p-space-md flex flex-col gap-space-sm relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm uppercase tracking-wider text-error font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] animate-pulse text-error">favorite</span>
+              TACHYCARDIA CRITICAL (&gt;110 BPM)
+            </span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">SUSTAINED: 3m 42s</span>
+</div>
+<div class="flex items-baseline justify-between">
+<div class="flex items-baseline gap-2">
+<span class="font-telemetry-lg text-telemetry-lg text-error font-bold tracking-tight">128</span>
+<span class="font-code-sm text-code-sm uppercase tracking-wider text-on-surface-variant">BPM</span>
+</div>
+<div class="flex items-center gap-1 text-error font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span>+40 BPM vs Baseline (88)</span>
+</div>
+</div>
+<!-- HR 15-Minute Inline Sparkline SVG Chart -->
+<div class="h-20 w-full pt-2">
+<svg class="w-full h-full text-error" fill="none" preserveaspectratio="none" viewbox="0 0 320 60">
+<!-- Gradient under graph -->
+<defs>
+<lineargradient id="hrGrad" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="currentColor" stop-opacity="0.35"></stop>
+<stop offset="100%" stop-color="currentColor" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,45 Q15,44 30,46 T60,43 T90,45 T120,42 T150,38 T180,32 T210,24 T240,16 T270,12 T300,6 L320,5 L320,60 L0,60 Z" fill="url(#hrGrad)"></path>
+<path d="M0,45 Q15,44 30,46 T60,43 T90,45 T120,42 T150,38 T180,32 T210,24 T240,16 T270,12 T300,6 L320,5" stroke="currentColor" stroke-linecap="round" stroke-width="2.5"></path>
+<!-- Threshold marker line at 110 BPM (approx y=22) -->
+<line stroke="#f59e0b" stroke-dasharray="4 4" stroke-opacity="0.6" stroke-width="1" x1="0" x2="320" y1="20" y2="20"></line>
+<!-- High point pulse marker -->
+<circle class="animate-ping" cx="320" cy="5" fill="currentColor" r="4"></circle>
+<circle cx="320" cy="5" fill="currentColor" r="3"></circle>
+</svg>
+</div>
+<div class="flex justify-between font-code-sm text-code-sm text-outline pt-1">
+<span>-15 MIN (88 BPM)</span>
+<span class="text-tertiary">THRESHOLD 110 BPM</span>
+<span class="text-error font-semibold">NOW (128 BPM)</span>
+</div>
+</div>
+<!-- Secondary Metrics Grid (SpO2 & Skin Temp) -->
+<div class="grid grid-cols-2 gap-space-sm">
+<!-- Blood Oxygen -->
+<div class="rounded-lg bg-surface-container-low p-space-sm flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm uppercase text-on-surface-variant">SpO2 (Pulse Ox)</span>
+<span class="material-symbols-outlined text-[16px] text-tertiary">water_drop</span>
+</div>
+<div class="flex items-baseline gap-1.5">
+<span class="font-telemetry-md text-telemetry-md text-on-surface font-bold">94</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">%</span>
+</div>
+<!-- Mini SpO2 Trend -->
+<div class="h-6 w-full pt-1">
+<svg class="w-full h-full text-tertiary" fill="none" preserveaspectratio="none" viewbox="0 0 100 20">
+<path d="M0,4 L20,5 L40,4 L60,8 L80,12 L100,14" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+</div>
+<span class="font-code-sm text-code-sm text-tertiary">Borderline Nominal</span>
+</div>
+<!-- Skin Temp -->
+<div class="rounded-lg bg-surface-container-low p-space-sm flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm uppercase text-on-surface-variant">Skin Surface</span>
+<span class="material-symbols-outlined text-[16px] text-tertiary">device_thermostat</span>
+</div>
+<div class="flex items-baseline gap-1.5">
+<span class="font-telemetry-md text-telemetry-md text-on-surface font-bold">37.4</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">°C</span>
+</div>
+<!-- Mini Temp Trend -->
+<div class="h-6 w-full pt-1">
+<svg class="w-full h-full text-tertiary" fill="none" preserveaspectratio="none" viewbox="0 0 100 20">
+<path d="M0,15 L20,14 L40,12 L60,8 L80,6 L100,5" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+</div>
+<span class="font-code-sm text-code-sm text-tertiary">Zone 2 Heat Index</span>
+</div>
+</div>
+<!-- Strict Non-invented Sensor Hardware Stance -->
+<div class="rounded-lg bg-surface-container-lowest p-space-sm flex flex-col gap-space-xs font-code-sm text-code-sm">
+<div class="flex items-center justify-between text-outline">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">block</span>
+              Respiration Rate:
+            </span>
+<span class="text-on-surface-variant uppercase font-semibold">UNAVAILABLE (Pending Hardware)</span>
+</div>
+<div class="flex items-center justify-between text-outline">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">block</span>
+              Core Body Temperature:
+            </span>
+<span class="text-on-surface-variant uppercase font-semibold">SENSOR NOT ENROLLED</span>
+</div>
+</div>
+<!-- Provenance Footer -->
+<div class="flex items-center justify-between pt-space-xs text-on-surface-variant font-code-sm text-code-sm border-t border-outline-variant/30">
+<span>STREAM: Synthetic Gateway v0.9</span>
+<span class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[14px]">battery_5_bar</span>
+<span>BAND BATTERY: 84%</span>
+</span>
+</div>
+</div>
+<!-- Worker Historical Shift Vitals Reference -->
+<div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Shift Baseline Context</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Worker was resting comfortably at shift inception. Tachycardia correlates with recent entry into Decline North Stope 2 blasting zone.</p>
+<div class="flex items-center justify-between pt-1 font-code-sm text-code-sm">
+<span class="text-on-surface-variant">Resting HR: <strong class="text-on-surface">68 BPM</strong></span>
+<span class="text-on-surface-variant">Avg Shift HR: <strong class="text-on-surface">84 BPM</strong></span>
+<span class="text-on-surface-variant">Max HR: <strong class="text-error">128 BPM (Current)</strong></span>
+</div>
+</div>
+</div>
+<!-- Column 2: Atmospheric & Environmental Telemetry (4 cols) -->
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<div class="rounded-xl bg-surface-container p-space-md flex flex-col gap-space-md shadow-md">
+<!-- Atmosphere Header -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">air</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Zone Atmosphere</h2>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-primary font-code-sm text-code-sm">SN-09A // 10s AGO</span>
+</div>
+<!-- Location Breadcrumb for Sensor -->
+<div class="p-2 rounded bg-surface-container-low font-code-sm text-code-sm text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[16px]">sensors</span>
+<span>Fixed Multi-Gas Beacon: Decline Stope 2 Pillar B</span>
+</div>
+<!-- Gas Metrics Stack -->
+<div class="flex flex-col gap-space-sm">
+<!-- Oxygen O2 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-1.5">
+<div class="flex justify-between items-center">
+<span class="font-code-sm text-code-sm uppercase tracking-wider text-on-surface-variant">Oxygen (O2)</span>
+<span class="font-code-sm text-code-sm text-primary font-medium">OPTIMAL RANGE (19.5 - 23.5%)</span>
+</div>
+<div class="flex items-baseline justify-between">
+<span class="font-telemetry-md text-telemetry-md text-on-surface font-bold">20.9%</span>
+<span class="font-code-sm text-code-sm text-outline">STABLE (0.0% / 1hr)</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 88%;"></div>
+</div>
+</div>
+<!-- Carbon Monoxide CO -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-1.5">
+<div class="flex justify-between items-center">
+<span class="font-code-sm text-code-sm uppercase tracking-wider text-on-surface-variant">Carbon Monoxide (CO)</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">THRESHOLD &lt;25 PPM</span>
+</div>
+<div class="flex items-baseline justify-between">
+<span class="font-telemetry-md text-telemetry-md text-on-surface font-bold">4.0 <span class="font-code-sm text-code-sm text-on-surface-variant font-normal">PPM</span></span>
+<span class="font-code-sm text-code-sm text-primary">CLEAR</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 16%;"></div>
+</div>
+</div>
+<!-- Methane CH4 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-1.5">
+<div class="flex justify-between items-center">
+<span class="font-code-sm text-code-sm uppercase tracking-wider text-on-surface-variant">Methane (CH4)</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">LEL TRIP: 1.00% VOL</span>
+</div>
+<div class="flex items-baseline justify-between">
+<span class="font-telemetry-md text-telemetry-md text-on-surface font-bold">0.02% <span class="font-code-sm text-code-sm text-on-surface-variant font-normal">VOL</span></span>
+<span class="font-code-sm text-code-sm text-primary">NOMINAL</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 4%;"></div>
+</div>
+</div>
+</div>
+<!-- Ambient Climate & Ventilation -->
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs border-t border-outline-variant/30">
+<div class="p-2 rounded bg-surface-container-low flex flex-col">
+<span class="font-code-sm text-code-sm text-on-surface-variant uppercase">Air Velocity</span>
+<span class="font-telemetry-md text-telemetry-md text-on-surface font-bold">1.8 <span class="font-code-sm text-code-sm font-normal text-on-surface-variant">m/s</span></span>
+<span class="font-code-sm text-code-sm text-primary">Fan #1 @ 100%</span>
+</div>
+<div class="p-2 rounded bg-surface-container-low flex flex-col">
+<span class="font-code-sm text-code-sm text-on-surface-variant uppercase">Sub Ambient Temp</span>
+<span class="font-telemetry-md text-telemetry-md text-on-surface font-bold">26.4 <span class="font-code-sm text-code-sm font-normal text-on-surface-variant">°C</span></span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">RH 78%</span>
+</div>
+</div>
+<div class="p-space-xs rounded bg-surface-container-high/60 text-outline font-code-sm text-code-sm">
+          Atmospheric profile confirms adequate ventilation. Physical air quality is not the primary cause of tachycardia event.
+        </div>
+</div>
+</div>
+<!-- Column 3: Simulated Location & Shaft Schematic (3 cols) -->
+<div class="lg:col-span-3 flex flex-col gap-space-md">
+<div class="rounded-xl bg-surface-container p-space-md flex flex-col gap-space-md shadow-md">
+<!-- Location Header -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">explore</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Subterranean Fix</h2>
+</div>
+<span class="px-2 py-0.5 rounded bg-tertiary-container/20 text-tertiary font-code-sm text-code-sm">SIMULATED</span>
+</div>
+<!-- Disclaimer Banner Required -->
+<div class="p-2 rounded bg-surface-container-low border border-outline-variant/30 text-tertiary font-code-sm text-code-sm leading-tight">
+          FICTIONAL MINE SCHEMATIC — SIMULATED BEACON POSITIONING // NOT VERIFIED GPS
+        </div>
+<!-- Subterranean Map Schematic SVG -->
+<div class="relative w-full h-56 rounded-lg bg-surface-container-lowest overflow-hidden flex items-center justify-center p-2">
+<!-- Background Grid Lines -->
+<div class="absolute inset-0 bg-[radial-gradient(#1e466e_1px,transparent_1px)] [background-size:16px_16px] opacity-30"></div>
+<!-- Schematic Drawing -->
+<svg class="w-full h-full" fill="none" viewbox="0 0 240 200">
+<!-- Decline Shaft Tunnels -->
+<path d="M20,30 L80,30 L130,80 L210,80" stroke="#3a4a5f" stroke-linecap="round" stroke-linejoin="round" stroke-width="14"></path>
+<path d="M130,80 L130,160 L180,160" stroke="#3a4a5f" stroke-linecap="round" stroke-linejoin="round" stroke-width="14"></path>
+<!-- Tunnel Centerlines -->
+<path d="M20,30 L80,30 L130,80 L210,80" stroke="#011427" stroke-dasharray="3 3" stroke-width="1"></path>
+<path d="M130,80 L130,160 L180,160" stroke="#011427" stroke-dasharray="3 3" stroke-width="1"></path>
+<!-- Chamber / Refuge Bay -->
+<rect fill="#0d2134" height="24" rx="2" stroke="#4bdbcb" stroke-width="1.5" width="28" x="195" y="68"></rect>
+<text fill="#4bdbcb" font-family="Inter" font-size="7" font-weight="600" x="199" y="83">REFUGE</text>
+<text fill="#bbcac6" font-family="Inter" font-size="6" x="201" y="90">+45m</text>
+<!-- Repeater Nodes -->
+<circle cx="80" cy="30" fill="#b7c8e1" r="3"></circle>
+<circle cx="130" cy="80" fill="#b7c8e1" r="3"></circle>
+<!-- Worker Location Indicator at Point A-24 (x=130, y=140) -->
+<circle class="animate-ping" cx="130" cy="135" fill="#ffb4ab" fill-opacity="0.2" r="14"></circle>
+<circle cx="130" cy="135" fill="#93000a" r="7"></circle>
+<circle cx="130" cy="135" fill="#ffb4ab" r="4"></circle>
+<text fill="#d1e4fe" font-family="Inter" font-size="8" font-weight="700" x="142" y="132">W-088</text>
+<text fill="#ffb4ab" font-family="Inter" font-size="7" x="142" y="141">POINT A-24</text>
+<text fill="#bbcac6" font-family="Inter" font-size="6" x="142" y="150">-100m Level</text>
+</svg>
+<!-- Interactive Expand Button -->
+<button class="absolute bottom-2 right-2 p-1.5 rounded bg-surface-container-high text-on-surface hover:text-primary transition-colors text-code-sm">
+<span class="material-symbols-outlined text-[16px]">fullscreen</span>
+</button>
+</div>
+<!-- Location Metadata Details -->
+<div class="flex flex-col gap-1.5 font-code-sm text-code-sm">
+<div class="flex justify-between text-on-surface-variant">
+<span>Geofence Boundary:</span>
+<span class="text-on-surface font-semibold">Approved Zone A</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Last Transition:</span>
+<span class="text-on-surface">14:12:05 UTC (Gate A-02)</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Distance to Refuge:</span>
+<span class="text-primary font-semibold">45m East (Clear path)</span>
+</div>
+</div>
+<!-- Proximity Peers in Zone -->
+<div class="pt-space-xs border-t border-outline-variant/30 flex flex-col gap-1">
+<span class="font-code-sm text-code-sm uppercase text-outline">Crewmates in Same Drift (&lt;50m):</span>
+<div class="flex items-center gap-2 pt-1">
+<span class="px-2 py-1 rounded bg-surface-container-low text-on-surface font-code-sm text-code-sm">W-092 (T. Varmah)</span>
+<span class="px-2 py-1 rounded bg-surface-container-low text-on-surface font-code-sm text-code-sm">W-104 (D. Cooper)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Section: Active Incidents Console & Append-Only Timeline -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Active Incident Action Banner & Detail (5 cols) -->
+<div class="lg:col-span-5 flex flex-col gap-space-md">
+<div class="rounded-xl bg-surface-container p-space-md flex flex-col gap-space-md shadow-md border-l-4 border-error">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex flex-col gap-0.5">
+<span class="px-2 py-0.5 rounded bg-error-container text-on-error-container font-code-sm text-code-sm font-bold w-fit uppercase">
+              SEVERITY: HIGH // TRIAGE REQUIRED
+            </span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface pt-1">INC-104: Elevated Heart Rate &amp; Prolonged Exertion</h3>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Triggered at: 14:28:12 UTC • Status: OPEN • Unassigned</span>
+</div>
+<span class="material-symbols-outlined text-error text-[28px] shrink-0">emergency</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Worker W-088 pulse sustained at &gt;125 BPM for &gt;180 continuous seconds within Subterranean Zone A North Stope. Thermal stress or physiological distress suspected.
+        </p>
+<!-- Dispatch Response Checkboxes -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-2 font-label-md text-label-md">
+<label class="flex items-center gap-2 text-on-surface cursor-pointer">
+<input checked="" class="rounded bg-surface-container text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+<span>Automated Supervisory Audio Ping (Dispatched 14:28:15)</span>
+</label>
+<label class="flex items-center gap-2 text-on-surface cursor-pointer">
+<input class="rounded bg-surface-container text-primary focus:ring-primary w-4 h-4" id="check-radio" type="checkbox"/>
+<span>Radio Contact Established with Face Crew 01 Lead</span>
+</label>
+<label class="flex items-center gap-2 text-on-surface cursor-pointer">
+<input class="rounded bg-surface-container text-primary focus:ring-primary w-4 h-4" id="check-standdown" type="checkbox"/>
+<span>Issue Rest &amp; Cool-down Stand-down Order</span>
+</label>
+</div>
+<div class="flex items-center justify-between pt-1">
+<button class="px-space-md py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-primary-fixed active:scale-95 transition-all">
+            Escalate to Zone Medic
+          </button>
+<button class="px-space-md py-2 rounded-lg bg-surface-container-high text-on-surface font-label-md text-label-md hover:bg-surface-variant transition-all">
+            Transfer Incident
+          </button>
+</div>
+</div>
+</div>
+<!-- Append-only Shift Timeline Log & Note Input (7 cols) -->
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<div class="rounded-xl bg-surface-container p-space-md flex flex-col gap-space-md shadow-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">history</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Append-Only Shift Activity Log</h3>
+</div>
+<span class="font-code-sm text-code-sm text-outline uppercase tracking-wider">IMMUTABLE LOG RECORD</span>
+</div>
+<!-- Activity Timeline -->
+<div class="flex flex-col gap-space-sm pl-2 border-l-2 border-outline-variant/40" id="activity-log-container">
+<!-- Timeline Entry 1 -->
+<div class="flex items-start gap-space-sm relative">
+<span class="w-2.5 h-2.5 rounded-full bg-error absolute -left-[17px] top-1.5 ring-4 ring-surface-container"></span>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 font-code-sm text-code-sm">
+<span class="text-error font-bold">14:28:12 UTC</span>
+<span class="text-outline">•</span>
+<span class="text-on-surface uppercase font-semibold">AUTOMATED SYSTEM ALERT</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Tachycardia rule triggered (128 BPM sustained &gt;180s). INC-104 initiated automatically.</p>
+</div>
+</div>
+<!-- Timeline Entry 2 -->
+<div class="flex items-start gap-space-sm relative">
+<span class="w-2.5 h-2.5 rounded-full bg-primary absolute -left-[17px] top-1.5 ring-4 ring-surface-container"></span>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 font-code-sm text-code-sm">
+<span class="text-on-surface font-semibold">14:15:00 UTC</span>
+<span class="text-outline">•</span>
+<span class="text-on-surface-variant uppercase">BEACON PASSING</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Checkpoint Beacon A-24 logged worker entry into Stope 2 charge chamber.</p>
+</div>
+</div>
+<!-- Timeline Entry 3 -->
+<div class="flex items-start gap-space-sm relative">
+<span class="w-2.5 h-2.5 rounded-full bg-outline absolute -left-[17px] top-1.5 ring-4 ring-surface-container"></span>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 font-code-sm text-code-sm">
+<span class="text-on-surface-variant">13:45:00 UTC</span>
+<span class="text-outline">•</span>
+<span class="text-on-surface-variant uppercase">PERIODIC SYNC</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Nominal vitals verified via Ble-GW-02. Pulse: 84 BPM, SpO2: 98%, Temp: 36.8°C.</p>
+</div>
+</div>
+<!-- Timeline Entry 4 -->
+<div class="flex items-start gap-space-sm relative">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container absolute -left-[17px] top-1.5 ring-4 ring-surface-container"></span>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 font-code-sm text-code-sm">
+<span class="text-on-surface-variant">06:00:00 UTC</span>
+<span class="text-outline">•</span>
+<span class="text-primary font-semibold uppercase">SHIFT CHECK-IN</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Shift start logged. Wearable DACOS-BAND-088 paired by Supervisor Sarah Jenkins.</p>
+</div>
+</div>
+</div>
+<!-- Quick Operator Note Input -->
+<form class="pt-space-xs border-t border-outline-variant/30 flex flex-col sm:flex-row gap-space-sm" id="note-form" onsubmit="event.preventDefault(); appendOperatorNote();">
+<input class="flex-1 px-space-md py-2.5 rounded-lg bg-surface-container-low text-on-surface placeholder:text-outline border border-outline-variant/40 focus:border-primary focus:outline-none font-body-md text-body-md" id="note-input" placeholder="Add operational SCADA note to worker log (e.g. In radio contact)..." required="" type="text"/>
+<button class="px-space-md py-2.5 rounded-lg bg-primary-container text-on-primary-container hover:bg-primary transition-colors font-label-md text-label-md font-semibold shrink-0" type="submit">
+            Submit Note (Demo)
+          </button>
+</form>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function appendOperatorNote() {
+    const input = document.getElementById('note-input');
+    const noteText = input.value.trim();
+    if (!noteText) return;
+
+    const now = new Date();
+    const timeStr = now.toISOString().substring(11, 19) + ' UTC';
+
+    const container = document.getElementById('activity-log-container');
+    const newEntry = document.createElement('div');
+    newEntry.className = 'flex items-start gap-space-sm relative animate-fadeIn';
+    newEntry.innerHTML = `
+      <span class="w-2.5 h-2.5 rounded-full bg-primary absolute -left-[17px] top-1.5 ring-4 ring-surface-container"></span>
+      <div class="flex flex-col">
+        <div class="flex items-center gap-2 font-code-sm text-code-sm">
+          <span class="text-primary font-bold">${timeStr}</span>
+          <span class="text-outline">•</span>
+          <span class="text-on-surface uppercase font-semibold">SUPERVISOR NOTE (Sarah Jenkins)</span>
+        </div>
+        <p class="font-body-md text-body-md text-on-surface">${escapeHtml(noteText)}</p>
+      </div>
+    `;
+
+    container.insertBefore(newEntry, container.firstChild);
+    input.value = '';
+  }
+
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.innerText = text;
+    return div.innerHTML;
+  }
+</script></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 py-space-sm px-space-md"><div class="flex flex-col sm:flex-row items-center justify-between gap-2 font-code-sm text-code-sm text-on-surface-variant"><div class="flex items-center gap-2"><span class="inline-block w-2 h-2 rounded-full bg-tertiary"></span><span>DACOS Liberia Prototype v0.9.4. Physical hardware integration pending. Never use for actual emergency dispatch.</span></div><div class="text-outline">LIB-EXT-MON-SEC-04 // NON-PROD ENV</div></div></footer></div></body></html>

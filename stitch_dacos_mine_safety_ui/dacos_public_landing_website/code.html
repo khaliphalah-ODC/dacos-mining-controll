@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#24364a","on-tertiary-container":"#543300","background":"#011427","error":"#ffb4ab","on-tertiary":"#472a00","inverse-surface":"#d1e4fe","on-error":"#690005","surface-dim":"#011427","on-error-container":"#ffdad6","primary":"#4bdbcb","surface-container":"#0d2134","outline":"#859491","secondary-fixed":"#d3e4fe","surface-container-highest":"#24364a","outline-variant":"#3c4947","secondary-fixed-dim":"#b7c8e1","on-surface-variant":"#bbcac6","tertiary-container":"#e49200","error-container":"#93000a","on-background":"#d1e4fe","on-tertiary-fixed-variant":"#653e00","on-primary-container":"#00423c","primary-container":"#00b8a9","on-primary":"#003732","secondary-container":"#3a4a5f","secondary":"#b7c8e1","primary-fixed-dim":"#4bdbcb","tertiary-fixed":"#ffddb8","on-secondary":"#213145","tertiary":"#ffb95f","surface-container-high":"#192b3f","on-secondary-fixed":"#0b1c30","surface":"#011427","inverse-on-surface":"#203246","surface-container-lowest":"#000f20","on-secondary-fixed-variant":"#38485d","on-secondary-container":"#a9bad3","on-surface":"#d1e4fe","primary-fixed":"#6df8e7","on-primary-fixed-variant":"#005049","inverse-primary":"#006a61","surface-bright":"#293a4f","surface-tint":"#4bdbcb","on-tertiary-fixed":"#2a1700","on-primary-fixed":"#00201d","tertiary-fixed-dim":"#ffb95f","surface-container-low":"#091d30"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"gutter-desktop":"1.5rem","gutter":"1rem","space-md":"1rem","space-lg":"1.5rem","margin":"1rem","margin-desktop":"2rem","space-sm":"0.5rem","space-xs":"0.25rem","space-xl":"2rem"},fontFamily:{"headline-sm":["Inter"],"headline-lg-mobile":["Inter"],"label-sm":["Inter"],"headline-xl-mobile":["Inter"],"telemetry-lg":["Inter"],"label-md":["Inter"],"headline-lg":["Inter"],"body-lg":["Inter"],"headline-md":["Inter"],"code-sm":["Inter"],"telemetry-md":["Inter"],"body-md":["Inter"],"headline-xl":["Inter"]},fontSize:{"headline-sm":["16px",{"lineHeight":"24px","fontWeight":"600"}],"headline-lg-mobile":["20px",{"lineHeight":"28px","fontWeight":"600"}],"label-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.04em","fontWeight":"500"}],"headline-xl-mobile":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"700"}],"telemetry-lg":["28px",{"lineHeight":"32px","letterSpacing":"0.01em","fontWeight":"700"}],"label-md":["13px",{"lineHeight":"18px","letterSpacing":"0.02em","fontWeight":"500"}],"headline-lg":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"headline-md":["20px",{"lineHeight":"28px","fontWeight":"600"}],"code-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.06em","fontWeight":"600"}],"telemetry-md":["20px",{"lineHeight":"24px","letterSpacing":"0.01em","fontWeight":"700"}],"body-md":["14px",{"lineHeight":"22px","fontWeight":"400"}],"headline-xl":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"700"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 h-[68px] bg-surface-container-low border-b border-outline-variant/40 z-50"><div class="h-[68px] w-full px-space-md flex items-center justify-between"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><img alt="DACOS Industrial Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrAX2iZPbYx64GpY3yb9I4VZO6I7n-ysR6m3YuaOEdd236wG-R_z0O3sW_fW-xXtdF6N4EghOFzYEnSCFSKjynx3BMqmENGE73fxlsBZPQ2V1HXselFBnsw24FHS6EQNn-CJnKwzk3AXpYIc7R3spmWdV9IzIWxd3BhnklSxvhiSJZqgC2ik_55Rn7Nbwgupu6LAmFfMnsTZbHjUXQO_UtJNlfw0dtLj5oayaT_60-Ol"/><span class="font-headline-sm text-headline-sm font-bold text-primary tracking-tight">DACOS</span></div><nav class="hidden md:flex items-center gap-space-md" data-active-classes="text-primary font-semibold"><a aria-current="page" class="transition-colors text-primary font-semibold" data-path="public-website" href="#">Overview</a><a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md" data-path="overview" href="#">Operations Console</a><a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md" data-path="history-and-reports" href="#">Telemetry Archival</a></nav></div><div class="flex items-center gap-space-md"><div class="hidden sm:flex items-center px-2 py-0.5 rounded bg-tertiary-container/20 border border-tertiary text-tertiary font-code-sm text-code-sm uppercase">DEMO PROTOTYPE</div><div class="flex items-center gap-space-sm"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-primary/40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfpViSx2OZ16qd5PPJVXXDCSIynuKhnplMHvh1RGoC7NK2po1VcOX7RtabkVjEbzUorP2Yn0ULUYkzCTwYOODs1qS7VtaxrWuVjLO6a4z26fFR48Ws04o1jBkehyFIyI2ObB-YneOWIG98OlS5Q_3_h4qN0vSMhkKrYB0gBLs1atHYrklxj0YA1UKs9B2zx9a7nxUJn32l0fVQPwdKYDO7ltMbHkRWHZ17bFgoGl8"/><a class="px-space-md py-1.5 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-primary/90 transition-colors" data-path="overview" href="#">Enter SCADA</a></div></div></div></header><main class="w-full pt-[68px] bg-surface"><div class="flex flex-col w-full text-on-surface">
+<!-- SYSTEM DISCLAIMER / TOP PROTOTYPE STRIP -->
+<div class="w-full bg-surface-container-low px-margin-desktop py-space-sm flex items-center justify-between gap-space-md shadow-sm">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-tertiary-container/20 text-tertiary font-code-sm text-code-sm font-semibold uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
+        Supervised Demonstration Prototype
+      </span>
+<span class="font-body-md text-body-md text-on-surface-variant">
+        Physical hardware integration pending. Developed for resource extraction corridors in Liberia.
+      </span>
+</div>
+<div class="hidden lg:flex items-center gap-space-sm font-code-sm text-code-sm text-outline">
+<span>REF: LBR-DACOS-2025</span>
+<span class="text-outline-variant">|</span>
+<span>FIELD-ID: NIMBA-SIM-04</span>
+</div>
+</div>
+<!-- SECONDARY LOCAL STICKY NAVIGATION BAR (IN-PAGE ANCHORS) -->
+<header class="sticky top-[68px] z-40 w-full bg-surface-container/95 backdrop-blur-md px-margin-desktop py-space-sm flex items-center justify-between shadow-md">
+<div class="flex items-center gap-space-md">
+<img alt="DACOS Industrial Logo" class="h-9 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrAX2iZPbYx64GpY3yb9I4VZO6I7n-ysR6m3YuaOEdd236wG-R_z0O3sW_fW-xXtdF6N4EghOFzYEnSCFSKjynx3BMqmENGE73fxlsBZPQ2V1HXselFBnsw24FHS6EQNn-CJnKwzk3AXpYIc7R3spmWdV9IzIWxd3BhnklSxvhiSJZqgC2ik_55Rn7Nbwgupu6LAmFfMnsTZbHjUXQO_UtJNlfw0dtLj5oayaT_60-Ol"/>
+<div class="hidden sm:flex flex-col pl-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold">DACOS Corridors</span>
+<span class="font-code-sm text-code-sm text-outline">Mining Telemetry Prototype</span>
+</div>
+</div>
+<nav class="hidden lg:flex items-center gap-space-lg">
+<a class="font-label-md text-label-md text-on-surface hover:text-primary transition-colors" href="#overview">Home</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#capabilities">Capabilities</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#about">About & Mission</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#services">Telemetry Matrix</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#team">Advisory</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#contact">Inquiry</a>
+</nav>
+<div class="flex items-center gap-space-sm">
+<a class="px-space-md py-2 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-colors font-label-md text-label-md flex items-center gap-2" data-path="overview" href="#">
+<span class="material-symbols-outlined text-base text-primary">terminal</span>
+<span>Control Room Login</span>
+</a>
+</div>
+</header>
+<!-- HERO SECTION -->
+<section class="relative w-full overflow-hidden px-margin-desktop pt-space-xl pb-24 bg-surface-container-lowest" id="overview">
+<!-- Ambient subtle telemetry radar graphic background -->
+<div class="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-primary/5 filter blur-3xl pointer-events-none"></div>
+<div class="absolute left-1/3 bottom-0 w-80 h-80 rounded-full bg-secondary-container/10 filter blur-3xl pointer-events-none"></div>
+<div class="max-w-7xl mx-auto flex flex-col gap-16 relative z-10">
+<!-- Top Operational Metadata Header -->
+<div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+<div class="flex items-center gap-space-sm">
+<span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-code-sm text-code-sm uppercase tracking-wider font-semibold">
+<span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+            SCADA System Architecture // Phase II
+          </span>
+<span class="hidden md:inline-block font-code-sm text-code-sm text-outline">LOC: GUINEA-LIBERIA CORRIDOR</span>
+</div>
+<div class="flex items-center gap-6 font-code-sm text-code-sm text-on-surface-variant">
+<div><span class="text-outline">SYSTEM STATUS:</span> <span class="text-primary font-bold">OPERATIONAL SIM</span></div>
+<div><span class="text-outline">NETWORK:</span> <span class="text-on-surface font-bold">LBR-MESH-V2</span></div>
+<div><span class="text-outline">LATENCY:</span> <span class="text-on-surface font-bold">42ms</span></div>
+</div>
+</div>
+<!-- Main Asymmetric Hero Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<div class="lg:col-span-7 flex flex-col gap-6">
+<div class="space-y-3">
+<p class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold">
+              Subterranean Safety & Corridor Intelligence
+            </p>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight leading-tight lg:text-4xl lg:leading-tight font-bold">
+              Smarter Mining.<br/><span class="text-primary">Safer Workers.</span>
+</h1>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
+            An advanced operational telemetry and safety awareness interface engineered for industrial subterranean and surface mine monitoring in West Africa. Built to withstand environmental harshness and eliminate operational blindspots.
+          </p>
+<div class="flex flex-wrap items-center gap-4 pt-2">
+<a class="px-6 py-3 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-bold hover:bg-primary/90 transition-all flex items-center gap-2 shadow-lg shadow-primary/20" href="#services">
+<span>Explore DACOS Platform</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+<a class="px-6 py-3 rounded-lg bg-surface-container-high text-on-surface font-label-md text-label-md font-semibold hover:bg-surface-container-highest transition-all flex items-center gap-2" data-path="overview" href="#">
+<span class="material-symbols-outlined text-sm text-primary">lan</span>
+<span>Control Room Login</span>
+</a>
+</div>
+<!-- Micro specs badges -->
+<div class="pt-6 flex flex-wrap gap-y-3 gap-x-8 text-on-surface-variant font-code-sm text-code-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base">check_circle</span>
+<span>Sub-surface mesh relay sync</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base">check_circle</span>
+<span>Multi-gas toxic drift modeling</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base">check_circle</span>
+<span>Zero-latency operator alerts</span>
+</div>
+</div>
+</div>
+<!-- Telemetry HUD Preview Visual Container -->
+<div class="lg:col-span-5 relative">
+<div class="w-full bg-surface-container rounded-xl p-space-md shadow-2xl relative overflow-hidden flex flex-col gap-4">
+<!-- Header bar of mock telemetry device -->
+<div class="flex items-center justify-between pb-3 bg-surface-container-low -mx-4 -mt-4 px-4 py-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">deployed_code</span>
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">HUB-NIMBA-01</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-primary/10 text-primary font-code-sm text-code-sm font-bold uppercase tracking-wider">
+                LIVE TELEMETRY
+              </span>
+</div>
+<!-- Simulated worker & zone card -->
+<div class="grid grid-cols-2 gap-3">
+<div class="p-3 bg-surface-container-high rounded-lg flex flex-col justify-between">
+<span class="font-code-sm text-code-sm text-outline">ZONE AIR VELOCITY</span>
+<div class="flex items-baseline gap-1 mt-2">
+<span class="font-telemetry-lg text-telemetry-lg text-on-surface">2.4</span>
+<span class="font-label-sm text-label-sm text-outline">M/S</span>
+</div>
+<span class="font-code-sm text-code-sm text-primary mt-1">NOMINAL FLOW</span>
+</div>
+<div class="p-3 bg-surface-container-high rounded-lg flex flex-col justify-between">
+<span class="font-code-sm text-code-sm text-outline">METHANE (CH4)</span>
+<div class="flex items-baseline gap-1 mt-2">
+<span class="font-telemetry-lg text-telemetry-lg text-on-surface">0.04</span>
+<span class="font-label-sm text-label-sm text-outline">% VOL</span>
+</div>
+<span class="font-code-sm text-code-sm text-primary mt-1">STABLE THRESHOLD</span>
+</div>
+</div>
+<!-- Inline SVG Realtime Sparkline & Waveform -->
+<div class="p-4 bg-surface-container-lowest rounded-lg flex flex-col gap-2">
+<div class="flex items-center justify-between text-on-surface-variant font-code-sm text-code-sm">
+<span>SECTOR 4B DISPATCH TELEMETRY STREAM</span>
+<span class="text-tertiary">38 ACTIVE WORKERS</span>
+</div>
+<div class="w-full h-20 relative flex items-end">
+<svg class="w-full h-full text-primary" fill="none" preserveaspectratio="none" viewbox="0 0 300 80">
+<path d="M0,60 L20,58 L40,64 L60,40 L70,15 L78,65 L90,55 L120,58 L140,50 L160,52 L175,20 L185,70 L200,54 L220,56 L240,48 L260,53 L280,30 L300,52" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M0,60 L20,58 L40,64 L60,40 L70,15 L78,65 L90,55 L120,58 L140,50 L160,52 L175,20 L185,70 L200,54 L220,56 L240,48 L260,53 L280,30 L300,52 L300,80 L0,80 Z" fill="currentColor" fill-opacity="0.08"></path>
+</svg>
+</div>
+<div class="flex items-center justify-between text-outline font-code-sm text-code-sm pt-1">
+<span>T-60s</span>
+<span>SYNC: 1.2s SATELLITE</span>
+<span>REALTIME FEED</span>
+</div>
+</div>
+<!-- Representative Field Photo Thumbnail -->
+<div class="relative w-full h-36 rounded-lg overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="Rugged industrial mine control telemetry interface being monitored in low-light mining office, deep navy teal and amber glows reflecting on screens, tactical mining hardware, high-end technical styling, cinematic realism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuANCzLARD7zMZrSrFlKURbAX2_T3eyB09RrELaFkCNTM2dzD5_CiRPb9z_LFMuiClyr_zhjJTJwQXU27ktOhYQaMEO_Zx1x6q59NsCq5cIecpN8BYBsMHLytzdLf586LleJDn72_SZH4k9-NFbMkLnmfia8OTRC2Y0oI8TvgF6X048QvZcHeOyqvrIFqk9qQG64bjOv6tBYDfrljIyPLzhUs-yULOxaQOMDlGvmqHQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
+<div class="absolute bottom-2 left-3 flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest/80 text-on-surface font-code-sm text-code-sm">
+                  Corridor Alpha Deployment Mockup
+                </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- THREE CAPABILITY HIGHLIGHT CARDS (Bento Highlight) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6" id="capabilities">
+<!-- Highlight Card 1 -->
+<div class="p-space-lg rounded-xl bg-surface-container flex flex-col justify-between shadow-md hover:bg-surface-container-high transition-colors">
+<div class="space-y-4">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">watch</span>
+</div>
+<div class="space-y-2">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Connected Wearables</h3>
+<span class="px-2 py-0.5 rounded bg-primary/10 text-primary font-code-sm text-code-sm font-semibold">SIMULATED</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                Simulated multi-sensor physiological telemetry, real-time pulse rate indicators, skin temperature variance, and subterranean BLE & Wi-Fi hub synchronization.
+              </p>
+</div>
+</div>
+<div class="pt-6 font-code-sm text-code-sm text-outline flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-primary">hub</span>
+<span>2.4 GHz Low-Energy Mesh Sync</span>
+</div>
+</div>
+<!-- Highlight Card 2 -->
+<div class="p-space-lg rounded-xl bg-surface-container flex flex-col justify-between shadow-md hover:bg-surface-container-high transition-colors">
+<div class="space-y-4">
+<div class="w-12 h-12 rounded-lg bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-2xl">co2</span>
+</div>
+<div class="space-y-2">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Environmental Intel</h3>
+<span class="px-2 py-0.5 rounded bg-tertiary-container/20 text-tertiary font-code-sm text-code-sm font-semibold">ATMOSPHERIC</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                Continuous ambient zone gas monitoring (Carbon Monoxide, Methane, Oxygen depletion), tunnel airflow velocity, and wet-bulb heat index threshold tracking.
+              </p>
+</div>
+</div>
+<div class="pt-6 font-code-sm text-code-sm text-outline flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-tertiary">air</span>
+<span>Real-time atmospheric modeling</span>
+</div>
+</div>
+<!-- Highlight Card 3 -->
+<div class="p-space-lg rounded-xl bg-surface-container flex flex-col justify-between shadow-md hover:bg-surface-container-high transition-colors">
+<div class="space-y-4">
+<div class="w-12 h-12 rounded-lg bg-error/10 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-2xl">e911_emergency</span>
+</div>
+<div class="space-y-2">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Emergency Awareness</h3>
+<span class="px-2 py-0.5 rounded bg-error-container/40 text-error font-code-sm text-code-sm font-semibold">NON-DISPATCH</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                Rapid incident flagging, simulated visual & acoustic control-room alert states, triage response notation, and escalation awareness dashboards.
+              </p>
+</div>
+</div>
+<div class="pt-6 font-code-sm text-code-sm text-outline flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-error">notification_important</span>
+<span>Prototype visual strobe flags</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ABOUT SECTION -->
+<section class="w-full px-margin-desktop py-24 bg-surface" id="about">
+<div class="max-w-7xl mx-auto flex flex-col gap-16">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7 space-y-6">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-secondary-container/40 text-on-surface-variant font-code-sm text-code-sm">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+            MISSION STATEMENT & CONTEXT
+          </div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface font-bold tracking-tight">
+            Advancing worker health & telemetry across West Africa’s extraction corridors.
+          </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+            Industrial mining environments in Liberia—from deep pit iron-ore corridors to underground shaft operations—confront intense humidity, complex geology, and infrastructure friction. DACOS was conceived to deliver high-fidelity digital telemetry and situational awareness where standard consumer networks cannot penetrate.
+          </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            By integrating simulated mesh communication arrays, low-power edge processing nodes, and an uncompromising operator SCADA interface, DACOS bridges subterranean worker crews directly with surface control rooms to detect critical hazard exposures early.
+          </p>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-6 pt-4">
+<div class="p-4 rounded-lg bg-surface-container">
+<div class="font-telemetry-lg text-telemetry-lg text-primary font-bold">100%</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-1">Liberia Research & Codebase</div>
+</div>
+<div class="p-4 rounded-lg bg-surface-container">
+<div class="font-telemetry-lg text-telemetry-lg text-on-surface font-bold">< 150ms</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-1">Sub-Shaft Relay Latency</div>
+</div>
+<div class="p-4 rounded-lg bg-surface-container">
+<div class="font-telemetry-lg text-telemetry-lg text-tertiary font-bold">6 Zones</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-1">Concurrent Corridor Feeds</div>
+</div>
+</div>
+</div>
+<!-- Context visual photo -->
+<div class="lg:col-span-5 relative">
+<div class="w-full h-96 rounded-xl overflow-hidden shadow-xl bg-surface-container relative">
+<img class="w-full h-full object-cover" data-alt="Heavy iron ore mining facility in Liberia, industrial machinery and deep geological extraction pit under overcast tropical skies, rugged and operational setting with dust and heavy transport." src="https://lh3.googleusercontent.com/aida-public/AB6AXuACS42GfSLx6mU9xgz9VY-6qMSaEQ1siLOd0P_gIYDGSXhoeImI8n90UdaBaU1RdMK-3pgjfRD2RX0hP4dUmHJvAcSjK3b0hdCzcytPxT1C347E4a7UUTXIQxRF0OmuUB18Sxt8sSb0iE5Uro6RU-NZHk4Iwvlq1A0rOqEenIyFl8b_OTEu9UFB1FPOof9k4mj_rqhrZThUD1YPTuMg2Zg8RUb0id1nHoFsdiGOsts"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent"></div>
+<div class="absolute bottom-6 left-6 right-6 p-4 rounded-lg bg-surface-container-high/90 backdrop-blur-sm">
+<div class="font-headline-sm text-headline-sm text-on-surface font-semibold">Liberian Mining Infrastructure</div>
+<div class="font-body-md text-body-md text-on-surface-variant mt-1">
+                Engineering resilient digital infrastructure for isolated extraction basins and transport lines.
+              </div>
+</div>
+</div>
+</div>
+</div>
+<!-- The Three Strategic Pillars -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="p-space-lg rounded-xl bg-surface-container flex flex-col gap-4 shadow-sm">
+<div class="w-10 h-10 rounded bg-primary/10 flex items-center justify-center text-primary font-bold">01</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Our Mission</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Empower underground mine supervisors with actionable real-time worker physiological data and microclimate diagnostics, cutting cognitive delay during critical environmental shifts.
+          </p>
+</div>
+<div class="p-space-lg rounded-xl bg-surface-container flex flex-col gap-4 shadow-sm">
+<div class="w-10 h-10 rounded bg-primary/10 flex items-center justify-center text-primary font-bold">02</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Our Vision</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Eliminate operational blind spots in deep subterranean extraction corridors by building indigenous telemetry systems designed specifically for West African industrial realities.
+          </p>
+</div>
+<div class="p-space-lg rounded-xl bg-surface-container flex flex-col gap-4 shadow-sm">
+<div class="w-10 h-10 rounded bg-primary/10 flex items-center justify-center text-primary font-bold">03</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Our Innovation</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            A resilient edge mesh gateway bridging underground wireless relays directly to surface control rooms via redundant packet hops that function even during main trunk dropouts.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- SERVICES & TELEMETRY MATRIX SECTION (6 CARDS WITH STATUS BADGES) -->
+<section class="w-full px-margin-desktop py-24 bg-surface-container-lowest" id="services">
+<div class="max-w-7xl mx-auto flex flex-col gap-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="space-y-3">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold">Functional Architecture</span>
+<h2 class="font-headline-xl text-headline-xl text-on-surface font-bold tracking-tight">
+            Integrated Telemetry Modules
+          </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+            Each subsystem is designed around low-bandwidth industrial protocols, built to function reliably under high thermal and electromagnetic interference.
+          </p>
+</div>
+<div class="flex items-center gap-3">
+<span class="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-surface-container text-on-surface-variant font-code-sm text-code-sm">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+            ACTIVE DEMO CANVASES: 6
+          </span>
+</div>
+</div>
+<!-- 6 Service Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Service 1 -->
+<div class="p-space-lg rounded-xl bg-surface-container hover:bg-surface-container-high transition-colors flex flex-col justify-between shadow-md">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-3xl text-primary">ecg_heart</span>
+<span class="px-2.5 py-1 rounded bg-primary/10 text-primary font-code-sm text-code-sm font-bold uppercase tracking-wider">
+                DEMO // ACTIVE
+              </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">1. Worker Health Monitoring</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Simulated streaming telemetry including heart rate bpm, blood oxygen saturation (SpO2), estimated core skin temperature, and motion exertion indices.
+            </p>
+</div>
+<div class="pt-6 font-code-sm text-code-sm text-outline flex items-center justify-between">
+<span>METRIC: HR, SpO2, Temp</span>
+<span class="text-primary font-semibold">98.2% SIM MATCH</span>
+</div>
+</div>
+<!-- Service 2 -->
+<div class="p-space-lg rounded-xl bg-surface-container hover:bg-surface-container-high transition-colors flex flex-col justify-between shadow-md">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-3xl text-tertiary">cloud_sync</span>
+<span class="px-2.5 py-1 rounded bg-tertiary-container/20 text-tertiary font-code-sm text-code-sm font-bold uppercase tracking-wider">
+                PROTOTYPE // LAB
+              </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">2. Environmental Monitoring</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Atmospheric gas sensor clusters detecting Carbon Monoxide (CO), Methane (CH4), Oxygen deficiency (O2), relative humidity, and ambient heat stress thresholds.
+            </p>
+</div>
+<div class="pt-6 font-code-sm text-code-sm text-outline flex items-center justify-between">
+<span>SENSORS: 4-GAS ARRAY</span>
+<span class="text-tertiary font-semibold">MULTI-CHAMBER</span>
+</div>
+</div>
+<!-- Service 3 -->
+<div class="p-space-lg rounded-xl bg-surface-container hover:bg-surface-container-high transition-colors flex flex-col justify-between shadow-md">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-3xl text-error">sos</span>
+<span class="px-2.5 py-1 rounded bg-error-container/40 text-error font-code-sm text-code-sm font-bold uppercase tracking-wider">
+                PROTOTYPE // SIM
+              </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">3. Emergency SOS Vector</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Manual crew-activated distress flags and automated fall-detection trip triggers. Provides supervisor notification queues and non-dispatch event escalation workflows.
+            </p>
+</div>
+<div class="pt-6 font-code-sm text-code-sm text-outline flex items-center justify-between">
+<span>ESCALATION: TIER 1 TO 3</span>
+<span class="text-error font-semibold">NON-DISPATCH</span>
+</div>
+</div>
+<!-- Service 4 -->
+<div class="p-space-lg rounded-xl bg-surface-container hover:bg-surface-container-high transition-colors flex flex-col justify-between shadow-md">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-3xl text-primary">router</span>
+<span class="px-2.5 py-1 rounded bg-primary/10 text-primary font-code-sm text-code-sm font-bold uppercase tracking-wider">
+                DEMO // ACTIVE
+              </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">4. Smart Device Connectivity</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Low-power BLE wear nodes communicating through subterranean Wi-Fi and industrial Ethernet backbone gateways installed along extraction haulage shafts.
+            </p>
+</div>
+<div class="pt-6 font-code-sm text-code-sm text-outline flex items-center justify-between">
+<span>PROTOCOL: BLE 5.3 + MQTT</span>
+<span class="text-primary font-semibold">120M NODE RANGE</span>
+</div>
+</div>
+<!-- Service 5 -->
+<div class="p-space-lg rounded-xl bg-surface-container hover:bg-surface-container-high transition-colors flex flex-col justify-between shadow-md">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-3xl text-primary">desktop_windows</span>
+<span class="px-2.5 py-1 rounded bg-primary/10 text-primary font-code-sm text-code-sm font-bold uppercase tracking-wider">
+                DEMO // ACTIVE
+              </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">5. Intelligent Control Room</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Multi-zone shift-level monitoring console engineered for industrial monitors, displaying simultaneous corridor maps, critical telemetry trends, and supervisor shift notes.
+            </p>
+</div>
+<div class="pt-6 font-code-sm text-code-sm text-outline flex items-center justify-between">
+<span>LAYOUT: 12-COL SCADA</span>
+<span class="text-primary font-semibold">DUAL-CANVAS</span>
+</div>
+</div>
+<!-- Service 6 -->
+<div class="p-space-lg rounded-xl bg-surface-container hover:bg-surface-container-high transition-colors flex flex-col justify-between shadow-md">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-3xl text-secondary">explore</span>
+<span class="px-2.5 py-1 rounded bg-secondary-container/40 text-secondary font-code-sm text-code-sm font-bold uppercase tracking-wider">
+                PLANNED // HW SYNC
+              </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">6. Worker Location Awareness</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Simulated subterranean tunnel grid beaconing and zonal geofencing. Delineates safe haulage routes from active blast zones (Not certified for real-world GPS navigation).
+            </p>
+</div>
+<div class="pt-6 font-code-sm text-code-sm text-outline flex items-center justify-between">
+<span>ACCURACY: +/- 15M BEACON</span>
+<span class="text-secondary font-semibold">ZONAL ONLY</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- TEAM & ADVISORY SECTION (4 EDITABLE CARDS) -->
+<section class="w-full px-margin-desktop py-24 bg-surface" id="team">
+<div class="max-w-7xl mx-auto flex flex-col gap-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div class="space-y-3">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold">Research & Systems Team</span>
+<h2 class="font-headline-xl text-headline-xl text-on-surface font-bold tracking-tight">
+            Technical Leadership & Advisory
+          </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+            A collaborative initiative bringing together systems architecture, mining health protocols, and industrial firmware design.
+          </p>
+</div>
+<div class="px-3 py-1 rounded bg-tertiary-container/20 text-tertiary font-code-sm text-code-sm">
+          Project Leadership & Advisory Placeholders
+        </div>
+</div>
+<!-- 4 Team Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Member 1 -->
+<div class="p-space-md rounded-xl bg-surface-container flex flex-col gap-4 shadow-sm hover:bg-surface-container-high transition-colors">
+<div class="w-full aspect-square rounded-lg bg-surface-container-high overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="Professional portrait of an African systems architect in technical attire, industrial electronics lab in soft background, thoughtful expressions, high contrast studio lighting with teal and deep navy rim lights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCs3KKu6wC81hD6xSlZ9LR3APiOob61KesRr8YwR1JV11BdlOJDX7jYgzYS2MTyjda85yFBh_rv9eNjRX3tLJl4Pib7sYJoSrKLx4rs78Y_umnw5Q7VkZWm97WYmVkvjv77OjSiK6Bhl2WAAJxDF-rQOLI8-xohdtJ8-A37urysFJx27yzfZsZhL9wGHTILNzxkWWAMG3VuW0a3Rt-nSlDFCloAtAjPckVmADvu5sQ"/>
+</div>
+<div class="space-y-1">
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold">T. J. Kollie</h4>
+<p class="font-label-md text-label-md text-primary font-medium">Lead Systems Architect</p>
+<p class="font-code-sm text-code-sm text-outline pt-2">
+              Distributed SCADA architecture, mesh networks & corridor telemetry synthesis.
+            </p>
+</div>
+</div>
+<!-- Member 2 -->
+<div class="p-space-md rounded-xl bg-surface-container flex flex-col gap-4 shadow-sm hover:bg-surface-container-high transition-colors">
+<div class="w-full aspect-square rounded-lg bg-surface-container-high overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="Professional portrait of an African mining safety advisor wearing high-visibility collar, modern industrial safety research lab background, warm and disciplined tone, clear studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwtltJYYBj_lyO0DQ9b6puJlymjYZ6dglC37PHoBnQWGHFnbwr2HFi48pHC_WLXaY0Dtfc-amahCMP9ApqUePqGPCe2hKdelYbFztR2NIM-Tepzlsdoi1l6aH2HadkNMe0uz6G3MxLmDQeosQLh_asBZg3N8YIseBjGr7uRokop-uRB5rrr4SkMEhnD9g28WWjabF_18vxxnrq7tmDIVa2dYL-5yKmYN7_GTh4ARo"/>
+</div>
+<div class="space-y-1">
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Dr. E. S. Sherman</h4>
+<p class="font-label-md text-label-md text-primary font-medium">Industrial Safety Advisor</p>
+<p class="font-code-sm text-code-sm text-outline pt-2">
+              Occupational health in subterranean extractive basins, toxic atmospheric limits.
+            </p>
+</div>
+</div>
+<!-- Member 3 -->
+<div class="p-space-md rounded-xl bg-surface-container flex flex-col gap-4 shadow-sm hover:bg-surface-container-high transition-colors">
+<div class="w-full aspect-square rounded-lg bg-surface-container-high overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="Portrait of a female electronic firmware engineer testing embedded radio hardware and circuit boards, subtle industrial dark background, focused expression, cinematic teal illumination." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVPSHURlG-fxdE1Gs5Rn9ech1wqLHv0fIYszftJQUmzKwBAbUH2_XoYTvRWYLU3oxVNHKBnYM052dS0q1LUxN1-SGuc-bt-JRrcwxTat4qEIhCm2NQwVWeHCFnUFFD4ozyBerNNPsfqH881hrlef6hzRF-38_XZZFVGUXSerfD5vwsssZ8kRBAfn-iKFQPuE4yI345cuYHRYrkb63rcnWM4_TpCvbibZAfRX5V4jo"/>
+</div>
+<div class="space-y-1">
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold">K. A. Mensah</h4>
+<p class="font-label-md text-label-md text-primary font-medium">Firmware & Edge Engineer</p>
+<p class="font-code-sm text-code-sm text-outline pt-2">
+              Ultra-low-power BLE microcontrollers, sensor sampling, and harsh RF propagation.
+            </p>
+</div>
+</div>
+<!-- Member 4 -->
+<div class="p-space-md rounded-xl bg-surface-container flex flex-col gap-4 shadow-sm hover:bg-surface-container-high transition-colors">
+<div class="w-full aspect-square rounded-lg bg-surface-container-high overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="Portrait of an experienced mining operations specialist in tactical polo shirt standing near mine transport consoles, realistic industrial ambient light, deep navy tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgo_xEhJn1tKWM4UQgVkf-xecKqrgPxkY_mdIdAtMuaiTNuJSzVSLcVJRRwBP2QHXDl3GyZngKgPM-rjVCS5NFAD1UnO6nVAZQrNQJSzV9vgnhV0pXozM7XdAooO698rzl-AkW9RM3OYxMYhPehxJOcSfc1W5_zG5TPmlGLDEwvdwhaG_mEViwwZ-5tP70rly7KZtw3fnmrZko86YkCPT5sOuBTOHB6WA-9haVkpw"/>
+</div>
+<div class="space-y-1">
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold">M. D. Flomo</h4>
+<p class="font-label-md text-label-md text-primary font-medium">Operations Specialist</p>
+<p class="font-code-sm text-code-sm text-outline pt-2">
+              Field tablet usability, operator cognitive load reduction, Liberian corridor logistics.
+            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CONTACT & PARTNERSHIP INQUIRY SECTION -->
+<section class="w-full px-margin-desktop py-24 bg-surface-container-lowest" id="contact">
+<div class="max-w-7xl mx-auto flex flex-col gap-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Left Column: Contact context and explicit disclaimers -->
+<div class="lg:col-span-5 flex flex-col justify-between space-y-8">
+<div class="space-y-4">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold">Collaborate & Validate</span>
+<h2 class="font-headline-xl text-headline-xl text-on-surface font-bold tracking-tight">
+              Partnership Inquiry & Field Trials
+            </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              We welcome academic collaboration, mining concession safety managers, and industrial IoT hardware developers interested in validating sub-surface sensor relays in West African extraction zones.
+            </p>
+</div>
+<div class="space-y-4 p-space-md bg-surface-container rounded-lg">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">location_on</span>
+<div>
+<div class="font-label-sm text-label-sm text-outline uppercase font-semibold">Project Base</div>
+<div class="font-body-md text-body-md text-on-surface font-medium">Monrovia, Republic of Liberia</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">mail</span>
+<div>
+<div class="font-label-sm text-label-sm text-outline uppercase font-semibold">Inquiry Dispatch</div>
+<div class="font-body-md text-body-md text-on-surface font-medium">contact@dacos-project.org (Demo)</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">dataset</span>
+<div>
+<div class="font-label-sm text-label-sm text-outline uppercase font-semibold">Field Validation Hub</div>
+<div class="font-body-md text-body-md text-on-surface font-medium">Nimba Extraction Corridor Testing Facility</div>
+</div>
+</div>
+</div>
+<div class="p-space-md rounded-lg bg-tertiary-container/10 text-tertiary font-code-sm text-code-sm leading-relaxed">
+<span class="font-bold">DEMO NOTICE:</span> This contact interface serves as a prototype user engagement demonstration. Submissions are processed locally in simulated memory and are not currently transmitted to production servers.
+          </div>
+</div>
+<!-- Right Column: Interactive Prototype Form -->
+<div class="lg:col-span-7">
+<div class="p-space-lg rounded-xl bg-surface-container shadow-xl">
+<form class="flex flex-col gap-6" onsubmit="event.preventDefault(); document.getElementById('form-feedback').classList.remove('hidden');">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface font-medium">Full Name</label>
+<input class="w-full h-11 px-4 rounded bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-primary/40 placeholder:text-outline" placeholder="e.g. Dr. Samuel Weah" required="" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface font-medium">Corporate / Academic Email</label>
+<input class="w-full h-11 px-4 rounded bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-primary/40 placeholder:text-outline" placeholder="name@miningcorp.org" required="" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface font-medium">Organization / Mining Concession</label>
+<input class="w-full h-11 px-4 rounded bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-primary/40 placeholder:text-outline" placeholder="e.g. Nimba Iron Operations or University of Liberia" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface font-medium">Message & Collaboration Scope</label>
+<textarea class="w-full p-4 rounded bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-primary/40 placeholder:text-outline" placeholder="Outline your technical inquiry, hardware validation scenario, or research trial..." required="" rows="4"></textarea>
+</div>
+<!-- Form Disclosure note -->
+<p class="font-code-sm text-code-sm text-outline">
+                Notice: This contact form is a prototype demonstration interface. Messages are not currently transmitted or stored on external servers.
+              </p>
+<div class="flex items-center justify-between pt-2">
+<button class="px-8 py-3 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-bold hover:bg-primary/90 transition-all flex items-center gap-2" type="submit">
+<span>Send Demo Inquiry</span>
+<span class="material-symbols-outlined text-sm">send</span>
+</button>
+<span class="font-code-sm text-code-sm text-outline">RESPONSE TIME: ~24H (SIMULATED)</span>
+</div>
+<div class="hidden p-4 rounded bg-primary/10 text-primary font-body-md text-body-md flex items-center gap-3" id="form-feedback">
+<span class="material-symbols-outlined">check_circle</span>
+<span>Inquiry successfully cached to local prototype state. Demonstration workflow verified.</span>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- BOTTOM EXPANDED FOOTER / LEGAL DISCLOSURE -->
+<footer class="w-full bg-surface-container-lowest px-margin-desktop py-16">
+<div class="max-w-7xl mx-auto flex flex-col gap-12">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+<div class="md:col-span-5 space-y-4">
+<div class="flex items-center gap-3">
+<img alt="DACOS Industrial Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrAX2iZPbYx64GpY3yb9I4VZO6I7n-ysR6m3YuaOEdd236wG-R_z0O3sW_fW-xXtdF6N4EghOFzYEnSCFSKjynx3BMqmENGE73fxlsBZPQ2V1HXselFBnsw24FHS6EQNn-CJnKwzk3AXpYIc7R3spmWdV9IzIWxd3BhnklSxvhiSJZqgC2ik_55Rn7Nbwgupu6LAmFfMnsTZbHjUXQO_UtJNlfw0dtLj5oayaT_60-Ol"/>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">DACOS SCADA</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-sm leading-relaxed">
+            Digital Advanced Connected Operations & Safety — An indigenous Liberian research system for resilient industrial IoT and subterranean health telemetry.
+          </p>
+</div>
+<div class="md:col-span-3 space-y-3">
+<div class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-bold">Corridor Navigation</div>
+<ul class="space-y-2 font-body-md text-body-md text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#overview">Overview</a></li>
+<li><a class="hover:text-primary transition-colors" href="#about">Mission & Context</a></li>
+<li><a class="hover:text-primary transition-colors" href="#services">Telemetry Matrix</a></li>
+<li><a class="hover:text-primary transition-colors" href="#team">Leadership Placeholders</a></li>
+<li><a class="text-primary hover:underline" data-path="overview" href="#">Control Room SCADA</a></li>
+</ul>
+</div>
+<div class="md:col-span-4 space-y-3">
+<div class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-bold">Research Governance</div>
+<div class="font-code-sm text-code-sm text-on-surface-variant space-y-2">
+<div>VERSION: 0.9.4-PROTOTYPE</div>
+<div>COMPILATION: RELEASE-NIMBA-RC1</div>
+<div>STATUS: UNLICENSED DEMO SYSTEM</div>
+<div>LOCATION: MONROVIA, LIBERIA</div>
+</div>
+</div>
+</div>
+<!-- Mandatory Full Industrial Legal Disclaimer -->
+<div class="pt-8 bg-surface-container-low/40 p-6 rounded-lg space-y-3">
+<div class="flex items-center gap-2 text-tertiary font-code-sm text-code-sm font-bold uppercase">
+<span class="material-symbols-outlined text-base">warning</span>
+<span>Regulatory & Life-Safety Disclaimer</span>
+</div>
+<p class="font-code-sm text-code-sm text-outline leading-relaxed">
+          DACOS is a supervised research and demonstration prototype developed in Liberia. Not certified under MSHA/ISO/CE mining equipment standards. Never use as sole life-safety or emergency rescue system. Field telemetry values, heart rate calculations, and environmental drift rates represented on this site and console are synthetic demonstration data and have not been validated against certified field instrumentation.
+        </p>
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-2 font-code-sm text-code-sm text-on-surface-variant">
+<span>© 2025 DACOS Project Liberia. All rights reserved.</span>
+<span>Built for resilient industrial engineering in West Africa.</span>
+</div>
+</div>
+</div>
+</footer>
+</div></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 py-space-lg px-space-md"><div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-space-md text-center md:text-left"><div class="space-y-1"><div class="flex items-center justify-center md:justify-start gap-2"><img alt="DACOS Industrial Logo" class="h-5 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrAX2iZPbYx64GpY3yb9I4VZO6I7n-ysR6m3YuaOEdd236wG-R_z0O3sW_fW-xXtdF6N4EghOFzYEnSCFSKjynx3BMqmENGE73fxlsBZPQ2V1HXselFBnsw24FHS6EQNn-CJnKwzk3AXpYIc7R3spmWdV9IzIWxd3BhnklSxvhiSJZqgC2ik_55Rn7Nbwgupu6LAmFfMnsTZbHjUXQO_UtJNlfw0dtLj5oayaT_60-Ol"/><span class="font-headline-sm text-headline-sm text-on-surface font-semibold">DACOS Liberia SCADA Prototype</span></div><p class="font-body-md text-body-md text-on-surface-variant">Digital Advanced Connected Operations & Safety — Corridors Telemetry Suite</p></div><div class="font-code-sm text-code-sm text-outline">DACOS Liberia Prototype v0.9.4. Physical hardware integration pending. Never use for actual emergency dispatch.</div></div></footer></body></html>

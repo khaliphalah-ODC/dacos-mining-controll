@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#24364a","on-tertiary-container":"#543300","background":"#011427","error":"#ffb4ab","on-tertiary":"#472a00","inverse-surface":"#d1e4fe","on-error":"#690005","surface-dim":"#011427","on-error-container":"#ffdad6","primary":"#4bdbcb","surface-container":"#0d2134","outline":"#859491","secondary-fixed":"#d3e4fe","surface-container-highest":"#24364a","outline-variant":"#3c4947","secondary-fixed-dim":"#b7c8e1","on-surface-variant":"#bbcac6","tertiary-container":"#e49200","error-container":"#93000a","on-background":"#d1e4fe","on-tertiary-fixed-variant":"#653e00","on-primary-container":"#00423c","primary-container":"#00b8a9","on-primary":"#003732","secondary-container":"#3a4a5f","secondary":"#b7c8e1","primary-fixed-dim":"#4bdbcb","tertiary-fixed":"#ffddb8","on-secondary":"#213145","tertiary":"#ffb95f","surface-container-high":"#192b3f","on-secondary-fixed":"#0b1c30","surface":"#011427","inverse-on-surface":"#203246","surface-container-lowest":"#000f20","on-secondary-fixed-variant":"#38485d","on-secondary-container":"#a9bad3","on-surface":"#d1e4fe","primary-fixed":"#6df8e7","on-primary-fixed-variant":"#005049","inverse-primary":"#006a61","surface-bright":"#293a4f","surface-tint":"#4bdbcb","on-tertiary-fixed":"#2a1700","on-primary-fixed":"#00201d","tertiary-fixed-dim":"#ffb95f","surface-container-low":"#091d30"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"gutter-desktop":"1.5rem","gutter":"1rem","space-md":"1rem","space-lg":"1.5rem","margin":"1rem","margin-desktop":"2rem","space-sm":"0.5rem","space-xs":"0.25rem","space-xl":"2rem"},fontFamily:{"headline-sm":["Inter"],"headline-lg-mobile":["Inter"],"label-sm":["Inter"],"headline-xl-mobile":["Inter"],"telemetry-lg":["Inter"],"label-md":["Inter"],"headline-lg":["Inter"],"body-lg":["Inter"],"headline-md":["Inter"],"code-sm":["Inter"],"telemetry-md":["Inter"],"body-md":["Inter"],"headline-xl":["Inter"]},fontSize:{"headline-sm":["16px",{"lineHeight":"24px","fontWeight":"600"}],"headline-lg-mobile":["20px",{"lineHeight":"28px","fontWeight":"600"}],"label-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.04em","fontWeight":"500"}],"headline-xl-mobile":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"700"}],"telemetry-lg":["28px",{"lineHeight":"32px","letterSpacing":"0.01em","fontWeight":"700"}],"label-md":["13px",{"lineHeight":"18px","letterSpacing":"0.02em","fontWeight":"500"}],"headline-lg":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"headline-md":["20px",{"lineHeight":"28px","fontWeight":"600"}],"code-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.06em","fontWeight":"600"}],"telemetry-md":["20px",{"lineHeight":"24px","letterSpacing":"0.01em","fontWeight":"700"}],"body-md":["14px",{"lineHeight":"22px","fontWeight":"400"}],"headline-xl":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"700"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-60 bg-surface-container-low z-50 flex flex-col border-r border-outline-variant/40"><div class="h-[68px] px-space-md flex items-center gap-space-sm border-b border-outline-variant/40 bg-surface-container-low"><img alt="DACOS Industrial Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrAX2iZPbYx64GpY3yb9I4VZO6I7n-ysR6m3YuaOEdd236wG-R_z0O3sW_fW-xXtdF6N4EghOFzYEnSCFSKjynx3BMqmENGE73fxlsBZPQ2V1HXselFBnsw24FHS6EQNn-CJnKwzk3AXpYIc7R3spmWdV9IzIWxd3BhnklSxvhiSJZqgC2ik_55Rn7Nbwgupu6LAmFfMnsTZbHjUXQO_UtJNlfw0dtLj5oayaT_60-Ol"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm tracking-tight text-primary leading-none">DACOS</span><span class="font-code-sm text-code-sm uppercase text-on-surface-variant tracking-wider">Liberia SCADA</span></div></div><div class="flex-1 overflow-y-auto px-space-xs py-space-sm space-y-space-md"><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Monitoring</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="overview" href="#">Overview</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="control-room" href="#">Control Room</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="live-workers" href="#">Live Workers</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="mine-map" href="#">Mine Map</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="environmental" href="#">Environmental</a></nav></div><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Response</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="incidents" href="#">Incidents</a></nav></div><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Analysis</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="history-and-reports" href="#">History &amp; Reports</a></nav></div><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Management</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="workers" href="#">Workers</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="devices" href="#">Devices</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="rules" href="#">Rules</a></nav></div><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Device Lab</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="wifi-simulator" href="#">Wi-Fi Simulator</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="ble-gateway" href="#">BLE Gateway</a></nav></div><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Administration</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="accounts-and-audit" href="#">Accounts &amp; Audit</a></nav></div><div class="space-y-space-xs border-t border-outline-variant/40 pt-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">System Links</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="my-account" href="#">My Account</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="public-website" href="#">Public Website</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="sign-out" href="#">Sign Out</a></nav></div></div></aside><div class="pl-60 min-h-screen flex flex-col"><header class="fixed top-0 left-60 right-0 h-[68px] bg-surface-container-low border-b border-outline-variant/40 z-40 px-space-md flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md min-w-0"><div class="flex items-center gap-1.5 font-code-sm text-code-sm text-on-surface-variant truncate"><span class="text-primary">DACOS</span><span class="text-outline">/</span><span class="text-on-surface uppercase tracking-wider font-semibold">Operations</span></div><div class="hidden xl:flex items-center px-2.5 py-1 rounded bg-tertiary-container/20 border border-tertiary text-tertiary font-code-sm text-code-sm uppercase tracking-wider whitespace-nowrap"><span class="inline-block w-1.5 h-1.5 rounded-full bg-tertiary mr-2 animate-pulse"></span>DEMO PROTOTYPE — NOT A CERTIFIED MINE SAFETY SYSTEM</div></div><div class="flex items-center gap-space-md shrink-0"><div class="hidden md:flex items-center gap-2 px-2.5 py-1 rounded bg-surface-container-high border border-outline-variant font-code-sm text-code-sm"><span class="w-2 h-2 rounded-full bg-primary animate-ping"></span><span class="text-primary font-semibold">WEBSOCKET CONNECTED (DEMO)</span><span class="text-outline">|</span><span class="text-on-surface-variant">14:32:08 UTC</span></div><div class="flex items-center gap-space-sm pl-space-sm border-l border-outline-variant/40"><div class="flex items-center gap-space-sm"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-primary/40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfpViSx2OZ16qd5PPJVXXDCSIynuKhnplMHvh1RGoC7NK2po1VcOX7RtabkVjEbzUorP2Yn0ULUYkzCTwYOODs1qS7VtaxrWuVjLO6a4z26fFR48Ws04o1jBkehyFIyI2ObB-YneOWIG98OlS5Q_3_h4qN0vSMhkKrYB0gBLs1atHYrklxj0YA1UKs9B2zx9a7nxUJn32l0fVQPwdKYDO7ltMbHkRWHZ17bFgoGl8"/><div class="hidden lg:flex flex-col text-left"><span class="font-label-md text-label-md font-semibold text-on-surface leading-tight">Sarah Jenkins</span><span class="font-code-sm text-code-sm text-primary uppercase leading-tight">Supervisor</span></div></div><div class="flex items-center gap-1"><a class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="my-account" href="#" title="My Account"><span class="material-symbols-outlined text-[20px]">settings</span></a><a class="p-1.5 rounded-lg text-on-surface-variant hover:text-error hover:bg-surface-container-high transition-colors" data-path="sign-out" href="#" title="Sign Out"><span class="material-symbols-outlined text-[20px]">logout</span></a></div></div></div></header><main class="flex-1 pt-[68px] bg-surface w-full px-space-md py-space-md"><div class="flex flex-col w-full">
+<!-- Experimental Notice Banner -->
+<div class="w-full bg-surface-container-high rounded-xl p-space-md mb-space-md shadow-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="p-2 rounded-lg bg-tertiary-container/30 text-tertiary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">science</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-code-sm text-code-sm text-tertiary tracking-wider uppercase font-semibold">WEB BLUETOOTH DEMONSTRATION GATEWAY</span>
+<span class="px-2 py-0.5 rounded bg-surface-variant text-on-surface-variant font-code-sm text-code-sm">EXPERIMENTAL LAB // HARDWARE PROBING</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant truncate">
+          BROWSER-ASSISTED HARDWARE PROBING — DEMO CHARACTERISTICS STAY LABELLED SIMULATED • NEVER USE AS CERTIFIED DISPATCH
+        </p>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<span class="inline-block w-2 h-2 rounded-full bg-primary animate-ping"></span>
+<span class="font-code-sm text-code-sm text-primary uppercase font-semibold">LAB INSTANCE #BLE-LIB-04</span>
+</div>
+</div>
+<!-- Browser Web Bluetooth Compatibility Band -->
+<div class="w-full bg-surface-container rounded-xl p-space-md mb-space-lg shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<div class="flex items-start sm:items-center gap-space-md min-w-0">
+<div class="p-3 rounded-xl bg-primary/10 text-primary shrink-0">
+<span class="material-symbols-outlined text-[24px]">bluetooth_searching</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="font-headline-sm text-headline-sm text-on-surface">Web Bluetooth API Status</span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary/15 text-primary font-code-sm text-code-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+            SUPPORTED (CHROME / EDGE ENGINE v124+)
+          </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+          Bridge active: Browser Web Bluetooth establishes direct physical link with nearby low-energy sensors, serializing GATT characteristics into JSON payloads relayed to the DACOS ingestion pipeline via local WebSocket.
+        </p>
+</div>
+</div>
+<div class="flex items-center gap-2 self-start lg:self-center shrink-0">
+<div class="px-3 py-1.5 rounded-lg bg-surface-container-high font-code-sm text-code-sm text-on-surface-variant">
+        WS BRIDGE: <span class="text-primary font-semibold">ws://127.0.0.1:8765/ble</span>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-variant text-on-surface hover:bg-surface-bright transition-colors font-label-md text-label-md flex items-center gap-1.5" onclick="checkBleStatus()">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+        Check Driver
+      </button>
+</div>
+</div>
+<!-- Primary Workstation Grid: Guided 3-Step Pairing Pipeline -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg mb-space-lg">
+<!-- Left Column: Step 1 Context + Step 2 Discovery (7 Cols) -->
+<div class="xl:col-span-7 flex flex-col gap-space-lg">
+<!-- Step 1: Worker & Security Credential Binding -->
+<section class="bg-surface-container rounded-xl p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="flex items-center justify-center w-6 h-6 rounded-full bg-primary text-on-primary font-code-sm text-code-sm font-bold">1</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Target Worker &amp; Ingestion Context</h2>
+</div>
+<span class="font-code-sm text-code-sm text-primary uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+            Security Profile Valid
+          </span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-md bg-surface-container-low rounded-lg p-space-md">
+<div class="flex flex-col">
+<span class="font-code-sm text-code-sm text-outline uppercase tracking-wider mb-1">Target Personnel</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Peter Kollie</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant font-mono">BADGE #W-088 // DEEP-PIT B</span>
+</div>
+<div class="flex flex-col">
+<span class="font-code-sm text-code-sm text-outline uppercase tracking-wider mb-1">Target Wearable ID</span>
+<span class="font-label-md text-label-md font-semibold text-primary">DACOS-BAND-042</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant font-mono">MAC: 4A:2F:88:91:02:11</span>
+</div>
+<div class="flex flex-col">
+<span class="font-code-sm text-code-sm text-outline uppercase tracking-wider mb-1">Ingestion Security Token</span>
+<div class="flex items-center gap-1.5 text-primary">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+<span class="font-label-md text-label-md font-semibold">HMAC-SHA256 Token</span>
+</div>
+<span class="font-code-sm text-code-sm text-outline font-mono truncate">EXP: 2025-05-18T18:00Z</span>
+</div>
+</div>
+</section>
+<!-- Step 2: Peripheral Scanner & GATT Service Explorer -->
+<section class="bg-surface-container rounded-xl p-space-md shadow-sm flex flex-col flex-1">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm mb-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="flex items-center justify-center w-6 h-6 rounded-full bg-primary text-on-primary font-code-sm text-code-sm font-bold">2</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Peripheral Scanner &amp; GATT Explorer</h2>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-space-md py-2 rounded-lg bg-primary-container text-on-primary-container hover:bg-primary font-label-md text-label-md font-semibold transition-all flex items-center gap-2 shadow-sm" id="scanBtn" onclick="toggleBleScan()">
+<span class="material-symbols-outlined text-[18px]" id="scanIcon">bluetooth_searching</span>
+<span id="scanText">Scan for Nearby BLE Peripherals</span>
+</button>
+</div>
+</div>
+<!-- Radar Pulse Scan Simulator Banner -->
+<div class="relative w-full h-12 bg-surface-container-lowest rounded-lg overflow-hidden mb-space-md flex items-center px-space-md justify-between" id="radarScanner">
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent -translate-x-full animate-[shimmer_2.5s_infinite]"></div>
+<div class="flex items-center gap-space-sm z-10">
+<span class="relative flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant font-mono uppercase tracking-wider">
+              Radio Band: 2.402 GHz – 2.480 GHz • Channel Hopping 37/38/39
+            </span>
+</div>
+<span class="font-code-sm text-code-sm text-primary z-10 font-mono">PASSIVE PROBE ACTIVE</span>
+</div>
+<!-- Discovered Peripheral List -->
+<div class="flex flex-col gap-space-xs mb-space-md">
+<div class="font-code-sm text-code-sm uppercase tracking-wider text-outline px-1 mb-1">
+            Discovered Radio Adv Packets (3 Found)
+          </div>
+<!-- Item 1 (Selected & Connected) -->
+<div class="p-space-sm bg-surface-container-high rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="p-2 rounded bg-primary/20 text-primary">
+<span class="material-symbols-outlined text-[20px]">watch</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md font-semibold text-on-surface">DACOS-TAG-PROTOTYPE (BAND-042)</span>
+<span class="px-2 py-0.5 rounded bg-primary-container/30 text-primary font-code-sm text-code-sm">CURRENT TARGET</span>
+</div>
+<div class="flex items-center gap-3 font-code-sm text-code-sm text-on-surface-variant font-mono">
+<span>RSSI: -64 dBm</span>
+<span>•</span>
+<span>Connectable: YES</span>
+<span>•</span>
+<span>TX Power: +4 dBm</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 self-end sm:self-center">
+<span class="font-code-sm text-code-sm text-primary flex items-center gap-1 font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> LINKED
+              </span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="p-space-sm bg-surface-container-low hover:bg-surface-container-high/60 transition-colors rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm opacity-80">
+<div class="flex items-center gap-space-sm">
+<div class="p-2 rounded bg-surface-variant text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">monitor_heart</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Polar H10 Bio ECG</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-variant text-outline font-code-sm text-code-sm">STD BLE</span>
+</div>
+<div class="flex items-center gap-3 font-code-sm text-code-sm text-on-surface-variant font-mono">
+<span>RSSI: -82 dBm</span>
+<span>•</span>
+<span>Connectable: YES</span>
+<span>•</span>
+<span>ID: D4:38:44:A1:09</span>
+</div>
+</div>
+</div>
+<button class="px-2.5 py-1 rounded bg-surface-variant hover:bg-surface-bright text-on-surface font-code-sm text-code-sm">
+              Connect Secondary
+            </button>
+</div>
+<!-- Item 3 -->
+<div class="p-space-sm bg-surface-container-low hover:bg-surface-container-high/60 transition-colors rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm opacity-60">
+<div class="flex items-center gap-space-sm">
+<div class="p-2 rounded bg-surface-variant text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">sensors</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Unknown Generic BLE Peripheral</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-variant text-outline font-code-sm text-code-sm">UNRESOLVED</span>
+</div>
+<div class="flex items-center gap-3 font-code-sm text-code-sm text-on-surface-variant font-mono">
+<span>RSSI: -91 dBm</span>
+<span>•</span>
+<span>Connectable: NO</span>
+<span>•</span>
+<span>BEACON PACKET</span>
+</div>
+</div>
+</div>
+<span class="font-code-sm text-code-sm text-outline">IGNORED</span>
+</div>
+</div>
+<!-- Discovered GATT Service Hierarchy Explorer -->
+<div class="mt-auto bg-surface-container-lowest rounded-lg p-space-md">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-code-sm text-code-sm uppercase tracking-wider text-outline">GATT Services &amp; UUID Registry (DACOS-TAG-PROTOTYPE)</span>
+<span class="font-code-sm text-code-sm text-primary font-mono">PRIMARY SERVICES RESOLVED: 3</span>
+</div>
+<div class="space-y-2">
+<!-- Service 1: Heart Rate -->
+<div class="bg-surface-container-high/40 rounded p-space-sm">
+<div class="flex items-center justify-between font-mono font-code-sm text-code-sm">
+<div class="flex items-center gap-2">
+<span class="text-tertiary">UUID: 0x180D</span>
+<span class="text-on-surface font-semibold">• Heart Rate Service (SIG Standard)</span>
+</div>
+<span class="text-primary uppercase">NOTIFY ENABLED</span>
+</div>
+<div class="ml-4 mt-1 pl-2 text-on-surface-variant font-mono font-code-sm text-code-sm flex items-center justify-between">
+<span>” Char: 0x2A37 [Heart Rate Measurement] (Read, Notify)</span>
+<span class="text-outline">Handle 0x0014</span>
+</div>
+</div>
+<!-- Service 2: Battery -->
+<div class="bg-surface-container-high/40 rounded p-space-sm">
+<div class="flex items-center justify-between font-mono font-code-sm text-code-sm">
+<div class="flex items-center gap-2">
+<span class="text-tertiary">UUID: 0x180F</span>
+<span class="text-on-surface font-semibold">• Battery Service (SIG Standard)</span>
+</div>
+<span class="text-primary uppercase">POLLING (30s)</span>
+</div>
+<div class="ml-4 mt-1 pl-2 text-on-surface-variant font-mono font-code-sm text-code-sm flex items-center justify-between">
+<span>” Char: 0x2A19 [Battery Level %] (Read, Notify)</span>
+<span class="text-outline">Handle 0x0018</span>
+</div>
+</div>
+<!-- Service 3: Proprietary DACOS Vendor -->
+<div class="bg-surface-container-high/40 rounded p-space-sm">
+<div class="flex items-center justify-between font-mono font-code-sm text-code-sm">
+<div class="flex items-center gap-2">
+<span class="text-primary">UUID: 0xFFE0-DACOS-SEC</span>
+<span class="text-on-surface font-semibold">• DACOS Multi-Sensor Gas Telemetry (Vendor)</span>
+</div>
+<span class="text-primary uppercase">STREAMING</span>
+</div>
+<div class="ml-4 mt-1 pl-2 text-on-surface-variant font-mono font-code-sm text-code-sm flex items-center justify-between">
+<span>” Char: 0xFFE1 [Synthetic CH4/CO PPM Payload] (Notify, Indicate)</span>
+<span class="text-outline">Handle 0x002A</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Step 3 Physical vs Cloud SCADA Bridge State (5 Cols) -->
+<div class="xl:col-span-5 flex flex-col gap-space-lg">
+<!-- Step 3: Dual State Link Matrix -->
+<section class="bg-surface-container rounded-xl p-space-md shadow-sm flex flex-col flex-1">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="flex items-center justify-center w-6 h-6 rounded-full bg-primary text-on-primary font-code-sm text-code-sm font-bold">3</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Dual Link Ingestion Matrix</h2>
+</div>
+<span class="px-2 py-0.5 rounded bg-primary-container/20 text-primary font-code-sm text-code-sm font-semibold">SYNCHRONIZED</span>
+</div>
+<!-- Strict SCADA Safety Guardrail Notice -->
+<div class="p-space-sm bg-error-container/20 rounded-lg mb-space-md">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[18px] text-error shrink-0 mt-0.5">warning</span>
+<p class="font-code-sm text-code-sm text-error leading-relaxed">
+              OPERATIONAL PROTOCOL: A physical Bluetooth radio link does NOT establish verified worker medical safety. Packets remain labeled <strong>SIMULATED</strong> until validated by redundant optical beacons in Level-3 Adits.
+            </p>
+</div>
+</div>
+<div class="space-y-space-md">
+<!-- Physical BLE Link State Card -->
+<div class="bg-surface-container-high rounded-xl p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<span class="font-code-sm text-code-sm uppercase tracking-wider text-outline flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">settings_input_antenna</span>
+                Physical BLE Link Layer
+              </span>
+<span class="px-2 py-0.5 rounded bg-primary/20 text-primary font-code-sm text-code-sm font-semibold">RADIO LINK: UP</span>
+</div>
+<div class="grid grid-cols-3 gap-2 text-center py-2 bg-surface-container rounded-lg">
+<div class="flex flex-col">
+<span class="font-code-sm text-code-sm text-outline">Negotiated MTU</span>
+<span class="font-telemetry-md text-telemetry-md text-on-surface font-mono" id="mtuDisplay">247 B</span>
+</div>
+<div class="flex flex-col">
+<span class="font-code-sm text-code-sm text-outline">PHY Bandwidth</span>
+<span class="font-telemetry-md text-telemetry-md text-primary font-mono">2M LE</span>
+</div>
+<div class="flex flex-col">
+<span class="font-code-sm text-code-sm text-outline">Link RSSI</span>
+<span class="font-telemetry-md text-telemetry-md text-tertiary font-mono" id="rssiDisplay">-64 dBm</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-code-sm text-code-sm mt-3 pt-2">
+<span>Connection Interval: 15.00 ms</span>
+<span>Slave Latency: 0</span>
+<span>Supervision: 2000 ms</span>
+</div>
+</div>
+<!-- Backend SCADA Ingestion State Card -->
+<div class="bg-surface-container-high rounded-xl p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<span class="font-code-sm text-code-sm uppercase tracking-wider text-outline flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">cloud_sync</span>
+                Backend SCADA Ingestion Stream
+              </span>
+<span class="px-2 py-0.5 rounded bg-primary-container/20 text-primary font-code-sm text-code-sm font-semibold">PIPELINE NOMINAL</span>
+</div>
+<div class="grid grid-cols-3 gap-2 text-center py-2 bg-surface-container rounded-lg">
+<div class="flex flex-col">
+<span class="font-code-sm text-code-sm text-outline">Stream Freshness</span>
+<span class="font-telemetry-md text-telemetry-md text-primary font-mono" id="freshnessDisplay">1.1s</span>
+</div>
+<div class="flex flex-col">
+<span class="font-code-sm text-code-sm text-outline">Ingest Frequency</span>
+<span class="font-telemetry-md text-telemetry-md text-on-surface font-mono">1.0 Hz</span>
+</div>
+<div class="flex flex-col">
+<span class="font-code-sm text-code-sm text-outline">Dropped Frames</span>
+<span class="font-telemetry-md text-telemetry-md text-primary font-mono">0 / 842</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-code-sm text-code-sm mt-3 pt-2">
+<span>Ingest Target: KAFKA-MON-LIB-02</span>
+<span>Queue Buffer: 0.04%</span>
+</div>
+</div>
+<!-- Ingestion Sparkline SVG -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md">
+<div class="flex items-center justify-between mb-2">
+<span class="font-code-sm text-code-sm text-outline uppercase">Stream Latency (Last 60s)</span>
+<span class="font-code-sm text-code-sm text-primary font-mono">AVG: 42ms</span>
+</div>
+<div class="h-16 w-full flex items-end">
+<svg class="w-full h-full text-primary" preserveaspectratio="none" viewbox="0 0 100 30">
+<path d="M0,25 Q 10,20 20,24 T 40,18 T 60,22 T 80,14 T 100,19" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+<path d="M0,25 Q 10,20 20,24 T 40,18 T 60,22 T 80,14 T 100,19 L 100,30 L 0,30 Z" fill="currentColor" fill-opacity="0.15"></path>
+</svg>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Bottom Workspace: Raw Hex Dump & Decoded Value Live Monitor -->
+<section class="bg-surface-container rounded-xl p-space-md shadow-lg flex flex-col">
+<!-- Header with Operational Controls -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md pb-space-md mb-space-md">
+<div>
+<div class="flex items-center gap-space-sm flex-wrap">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Raw GATT Characteristic Stream &amp; Decoded Packets</h2>
+<span class="px-2 py-0.5 rounded bg-surface-variant text-on-surface-variant font-code-sm text-code-sm font-mono">SAMPLE INTERVAL: 1000ms</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Live dissection of incoming binary payloads transmitted over Web Bluetooth GATT notification sockets.
+        </p>
+</div>
+<div class="flex items-center gap-2 flex-wrap">
+<button class="px-3 py-2 rounded-lg bg-surface-variant hover:bg-surface-bright text-on-surface transition-colors font-label-md text-label-md flex items-center gap-1.5" onclick="renegotiateMtu()">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+          Re-negotiate MTU
+        </button>
+<button class="px-3 py-2 rounded-lg bg-surface-variant hover:bg-surface-bright text-on-surface transition-colors font-label-md text-label-md flex items-center gap-1.5" onclick="exportGattLog()">
+<span class="material-symbols-outlined text-[16px]">download</span>
+          Export GATT Log
+        </button>
+<button class="px-3 py-2 rounded-lg bg-error-container text-on-error-container hover:bg-error/80 transition-colors font-label-md text-label-md font-semibold flex items-center gap-1.5" onclick="disconnectDevice()">
+<span class="material-symbols-outlined text-[16px]">link_off</span>
+          Disconnect Peripheral
+        </button>
+</div>
+</div>
+<!-- Decoded Metric Cards Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md mb-space-md">
+<!-- Metric 1: Heart Rate -->
+<div class="bg-surface-container-high rounded-xl p-space-md relative overflow-hidden">
+<div class="flex items-center justify-between text-outline mb-1">
+<span class="font-code-sm text-code-sm uppercase">Biometric Heart Rate</span>
+<span class="material-symbols-outlined text-[18px] text-error">favorite</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-telemetry-lg text-telemetry-lg text-on-surface font-mono" id="valHeartRate">78</span>
+<span class="font-label-sm text-label-sm text-outline">BPM</span>
+</div>
+<div class="flex items-center justify-between mt-2 pt-2 text-on-surface-variant font-code-sm text-code-sm">
+<span>Sensor Contact: DETECTED</span>
+<span class="text-primary font-mono font-semibold">SIG 0x2A37</span>
+</div>
+</div>
+<!-- Metric 2: RR-Interval -->
+<div class="bg-surface-container-high rounded-xl p-space-md relative overflow-hidden">
+<div class="flex items-center justify-between text-outline mb-1">
+<span class="font-code-sm text-code-sm uppercase">RR-Interval Variability</span>
+<span class="material-symbols-outlined text-[18px] text-primary">ecg_heart</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-telemetry-lg text-telemetry-lg text-on-surface font-mono" id="valRRInterval">812</span>
+<span class="font-label-sm text-label-sm text-outline">MS</span>
+</div>
+<div class="flex items-center justify-between mt-2 pt-2 text-on-surface-variant font-code-sm text-code-sm">
+<span>Est. RMSSD: 34.2 ms</span>
+<span class="text-primary font-mono font-semibold">RAW SAMPLE</span>
+</div>
+</div>
+<!-- Metric 3: Battery Level -->
+<div class="bg-surface-container-high rounded-xl p-space-md relative overflow-hidden">
+<div class="flex items-center justify-between text-outline mb-1">
+<span class="font-code-sm text-code-sm uppercase">Wearable Battery State</span>
+<span class="material-symbols-outlined text-[18px] text-primary">battery_charging_80</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-telemetry-lg text-telemetry-lg text-on-surface font-mono" id="valBattery">84</span>
+<span class="font-label-sm text-label-sm text-outline">%</span>
+</div>
+<div class="flex items-center justify-between mt-2 pt-2 text-on-surface-variant font-code-sm text-code-sm">
+<span>Cell Voltage: 3.82V</span>
+<span class="text-primary font-mono font-semibold">SIG 0x2A19</span>
+</div>
+</div>
+<!-- Metric 4: Synthetic Multi-Gas -->
+<div class="bg-surface-container-high rounded-xl p-space-md relative overflow-hidden">
+<div class="flex items-center justify-between text-outline mb-1">
+<span class="font-code-sm text-code-sm uppercase">Synthetic Ambient Gas</span>
+<span class="material-symbols-outlined text-[18px] text-tertiary">co2</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-telemetry-lg text-telemetry-lg text-tertiary font-mono" id="valGas">0.18</span>
+<span class="font-label-sm text-label-sm text-outline">% CH4</span>
+</div>
+<div class="flex items-center justify-between mt-2 pt-2 text-on-surface-variant font-code-sm text-code-sm">
+<span>CO: 12 PPM (SAFE)</span>
+<span class="text-tertiary font-mono font-semibold">VENDOR FFE1</span>
+</div>
+</div>
+</div>
+<!-- Live Hex Dump & Terminal Log Table -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden">
+<div class="p-space-sm bg-surface-container-high/60 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>
+<span class="font-code-sm text-code-sm text-on-surface uppercase tracking-wider font-semibold">Real-Time GATT Notification Frames (Raw Hex Dissector)</span>
+</div>
+<span class="font-code-sm text-code-sm text-outline font-mono">BUFFER: 4 FRAMES / SEC</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-mono font-code-sm text-code-sm">
+<thead class="bg-surface-container-high text-outline uppercase">
+<tr>
+<th class="py-2.5 px-space-md">Time (UTC)</th>
+<th class="py-2.5 px-space-md">Service UUID</th>
+<th class="py-2.5 px-space-md">Handle</th>
+<th class="py-2.5 px-space-md">Raw Hex Octets</th>
+<th class="py-2.5 px-space-md">Parsed Value Interpretation</th>
+<th class="py-2.5 px-space-md text-right">Verification</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface-variant" id="rawGattStream">
+<tr class="bg-surface-container-high/20 hover:bg-surface-container-high/40 transition-colors">
+<td class="py-2.5 px-space-md text-outline">14:32:08.120</td>
+<td class="py-2.5 px-space-md text-primary font-semibold">0x180D (HR)</td>
+<td class="py-2.5 px-space-md text-outline">0x0014</td>
+<td class="py-2.5 px-space-md text-on-surface">16 4E 2C 03</td>
+<td class="py-2.5 px-space-md text-on-surface">HeartRate: 78 BPM, RR-Interval: 812ms</td>
+<td class="py-2.5 px-space-md text-right"><span class="px-2 py-0.5 rounded bg-primary/10 text-primary">CRC PASS</span></td>
+</tr>
+<tr class="bg-surface-container-high/10 hover:bg-surface-container-high/40 transition-colors">
+<td class="py-2.5 px-space-md text-outline">14:32:07.915</td>
+<td class="py-2.5 px-space-md text-tertiary font-semibold">0xFFE0 (GAS)</td>
+<td class="py-2.5 px-space-md text-outline">0x002A</td>
+<td class="py-2.5 px-space-md text-on-surface">DA C0 00 12 00 0C 7A</td>
+<td class="py-2.5 px-space-md text-tertiary">CH4: 0.18%, CO: 12 PPM (Simulated Payload)</td>
+<td class="py-2.5 px-space-md text-right"><span class="px-2 py-0.5 rounded bg-primary/10 text-primary">CRC PASS</span></td>
+</tr>
+<tr class="bg-surface-container-high/20 hover:bg-surface-container-high/40 transition-colors">
+<td class="py-2.5 px-space-md text-outline">14:32:07.119</td>
+<td class="py-2.5 px-space-md text-primary font-semibold">0x180D (HR)</td>
+<td class="py-2.5 px-space-md text-outline">0x0014</td>
+<td class="py-2.5 px-space-md text-on-surface">16 4D 2E 03</td>
+<td class="py-2.5 px-space-md text-on-surface">HeartRate: 77 BPM, RR-Interval: 814ms</td>
+<td class="py-2.5 px-space-md text-right"><span class="px-2 py-0.5 rounded bg-primary/10 text-primary">CRC PASS</span></td>
+</tr>
+<tr class="bg-surface-container-high/10 hover:bg-surface-container-high/40 transition-colors">
+<td class="py-2.5 px-space-md text-outline">14:32:06.002</td>
+<td class="py-2.5 px-space-md text-secondary font-semibold">0x180F (BAT)</td>
+<td class="py-2.5 px-space-md text-outline">0x0018</td>
+<td class="py-2.5 px-space-md text-on-surface">54</td>
+<td class="py-2.5 px-space-md text-on-surface">Battery Level: 84% [Single Octet 0x54]</td>
+<td class="py-2.5 px-space-md text-right"><span class="px-2 py-0.5 rounded bg-primary/10 text-primary">CRC PASS</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- Notification Toast Container for UI Feedback -->
+<div class="fixed bottom-6 right-6 px-space-md py-space-sm bg-surface-container-highest text-on-surface rounded-xl shadow-2xl transition-all duration-300 opacity-0 pointer-events-none flex items-center gap-2 z-50" id="toastMessage">
+<span class="material-symbols-outlined text-[20px] text-primary" id="toastIcon">info</span>
+<span class="font-label-md text-label-md" id="toastText">Action processed</span>
+</div>
+<script>
+    let isScanning = false;
+    let liveTimer = null;
+
+    function showToast(msg, icon = 'info') {
+      const toast = document.getElementById('toastMessage');
+      const text = document.getElementById('toastText');
+      const iconEl = document.getElementById('toastIcon');
+      if (!toast || !text) return;
+      text.innerText = msg;
+      iconEl.innerText = icon;
+      toast.classList.remove('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'pointer-events-none');
+      }, 3500);
+    }
+
+    function toggleBleScan() {
+      isScanning = !isScanning;
+      const scanBtn = document.getElementById('scanBtn');
+      const scanText = document.getElementById('scanText');
+      const scanIcon = document.getElementById('scanIcon');
+      const radar = document.getElementById('radarScanner');
+
+      if (isScanning) {
+        scanText.innerText = "Stop Active BLE Scan";
+        scanIcon.innerText = "stop_circle";
+        scanBtn.classList.remove('bg-primary-container', 'text-on-primary-container');
+        scanBtn.classList.add('bg-tertiary-container', 'text-on-tertiary-container');
+        radar.classList.add('ring-1', 'ring-primary');
+        showToast("Web Bluetooth RequestDevice prompt simulated: Scanning 2.4GHz channels...", "bluetooth_searching");
+      } else {
+        scanText.innerText = "Scan for Nearby BLE Peripherals";
+        scanIcon.innerText = "bluetooth_searching";
+        scanBtn.classList.remove('bg-tertiary-container', 'text-on-tertiary-container');
+        scanBtn.classList.add('bg-primary-container', 'text-on-primary-container');
+        radar.classList.remove('ring-1', 'ring-primary');
+        showToast("BLE Scan stopped. Peripheral registry paused.", "pause");
+      }
+    }
+
+    function checkBleStatus() {
+      showToast("Navigator.bluetooth adapter checked: OK. WinRT/BlueZ hardware backend detected.", "check_circle");
+    }
+
+    function renegotiateMtu() {
+      const mtuDisplay = document.getElementById('mtuDisplay');
+      if (mtuDisplay) mtuDisplay.innerText = "512 B";
+      showToast("GATT Exchange MTU Request issued. Negotiated ATT_MTU = 512 Bytes.", "tune");
+    }
+
+    function exportGattLog() {
+      showToast("GATT Trace exported: DACOS_BLE_LOG_W088.pcapng downloaded.", "download");
+    }
+
+    function disconnectDevice() {
+      showToast("Peripheral disconnected. GATT server connection terminated.", "link_off");
+      const rssi = document.getElementById('rssiDisplay');
+      if (rssi) rssi.innerText = "-- dBm";
+      const hr = document.getElementById('valHeartRate');
+      if (hr) hr.innerText = "--";
+    }
+
+    // Telemetry jitter simulator for live interactive realism
+    function startJitterSimulation() {
+      liveTimer = setInterval(() => {
+        const hrEl = document.getElementById('valHeartRate');
+        const rrEl = document.getElementById('valRRInterval');
+        const gasEl = document.getElementById('valGas');
+        const freshnessEl = document.getElementById('freshnessDisplay');
+        const rssiEl = document.getElementById('rssiDisplay');
+
+        if (hrEl && hrEl.innerText !== "--") {
+          const baseHr = 76 + Math.floor(Math.random() * 5);
+          hrEl.innerText = baseHr;
+          if (rrEl) rrEl.innerText = Math.round(60000 / baseHr + (Math.random() * 20 - 10));
+          if (gasEl) gasEl.innerText = (0.17 + (Math.random() * 0.03)).toFixed(2);
+          if (freshnessEl) freshnessEl.innerText = (0.8 + Math.random() * 0.5).toFixed(1) + "s";
+          if (rssiEl && rssiEl.innerText !== "-- dBm") rssiEl.innerText = (-63 - Math.floor(Math.random() * 4)) + " dBm";
+        }
+      }, 2000);
+    }
+
+    startJitterSimulation();
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 py-space-sm px-space-md"><div class="flex flex-col sm:flex-row items-center justify-between gap-2 font-code-sm text-code-sm text-on-surface-variant"><div class="flex items-center gap-2"><span class="inline-block w-2 h-2 rounded-full bg-tertiary"></span><span>DACOS Liberia Prototype v0.9.4. Physical hardware integration pending. Never use for actual emergency dispatch.</span></div><div class="text-outline">LIB-EXT-MON-SEC-04 // NON-PROD ENV</div></div></footer></div></body></html>

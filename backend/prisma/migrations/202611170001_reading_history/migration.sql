@@ -1,0 +1,5 @@
+CREATE TABLE "ReadingHistory" ("id" TEXT PRIMARY KEY,"workerId" TEXT,"deviceId" TEXT NOT NULL,"zoneId" TEXT NOT NULL,"kind" TEXT NOT NULL,"metric" TEXT NOT NULL,"value" JSONB NOT NULL,"unit" TEXT NOT NULL,"timestamp" TIMESTAMP(3) NOT NULL,"receivedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,"source" TEXT NOT NULL,"simulation" BOOLEAN NOT NULL,"quality" TEXT NOT NULL,"sequence" INTEGER NOT NULL);
+CREATE INDEX "ReadingHistory_timestamp_id_idx" ON "ReadingHistory"("timestamp","id");
+CREATE INDEX "ReadingHistory_workerId_timestamp_idx" ON "ReadingHistory"("workerId","timestamp");
+CREATE INDEX "ReadingHistory_zoneId_metric_timestamp_idx" ON "ReadingHistory"("zoneId","metric","timestamp");
+INSERT INTO "ReadingHistory" ("id","workerId","deviceId","zoneId","kind","metric","value","unit","timestamp","source","simulation","quality","sequence") SELECT 'legacy:' || "id","workerId","deviceId","zoneId","kind","metric","value","unit","timestamp","source","simulation","quality","sequence" FROM "Reading";

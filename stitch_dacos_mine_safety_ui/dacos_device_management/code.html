@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#24364a","on-tertiary-container":"#543300","background":"#011427","error":"#ffb4ab","on-tertiary":"#472a00","inverse-surface":"#d1e4fe","on-error":"#690005","surface-dim":"#011427","on-error-container":"#ffdad6","primary":"#4bdbcb","surface-container":"#0d2134","outline":"#859491","secondary-fixed":"#d3e4fe","surface-container-highest":"#24364a","outline-variant":"#3c4947","secondary-fixed-dim":"#b7c8e1","on-surface-variant":"#bbcac6","tertiary-container":"#e49200","error-container":"#93000a","on-background":"#d1e4fe","on-tertiary-fixed-variant":"#653e00","on-primary-container":"#00423c","primary-container":"#00b8a9","on-primary":"#003732","secondary-container":"#3a4a5f","secondary":"#b7c8e1","primary-fixed-dim":"#4bdbcb","tertiary-fixed":"#ffddb8","on-secondary":"#213145","tertiary":"#ffb95f","surface-container-high":"#192b3f","on-secondary-fixed":"#0b1c30","surface":"#011427","inverse-on-surface":"#203246","surface-container-lowest":"#000f20","on-secondary-fixed-variant":"#38485d","on-secondary-container":"#a9bad3","on-surface":"#d1e4fe","primary-fixed":"#6df8e7","on-primary-fixed-variant":"#005049","inverse-primary":"#006a61","surface-bright":"#293a4f","surface-tint":"#4bdbcb","on-tertiary-fixed":"#2a1700","on-primary-fixed":"#00201d","tertiary-fixed-dim":"#ffb95f","surface-container-low":"#091d30"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"gutter-desktop":"1.5rem","gutter":"1rem","space-md":"1rem","space-lg":"1.5rem","margin":"1rem","margin-desktop":"2rem","space-sm":"0.5rem","space-xs":"0.25rem","space-xl":"2rem"},fontFamily:{"headline-sm":["Inter"],"headline-lg-mobile":["Inter"],"label-sm":["Inter"],"headline-xl-mobile":["Inter"],"telemetry-lg":["Inter"],"label-md":["Inter"],"headline-lg":["Inter"],"body-lg":["Inter"],"headline-md":["Inter"],"code-sm":["Inter"],"telemetry-md":["Inter"],"body-md":["Inter"],"headline-xl":["Inter"]},fontSize:{"headline-sm":["16px",{"lineHeight":"24px","fontWeight":"600"}],"headline-lg-mobile":["20px",{"lineHeight":"28px","fontWeight":"600"}],"label-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.04em","fontWeight":"500"}],"headline-xl-mobile":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"700"}],"telemetry-lg":["28px",{"lineHeight":"32px","letterSpacing":"0.01em","fontWeight":"700"}],"label-md":["13px",{"lineHeight":"18px","letterSpacing":"0.02em","fontWeight":"500"}],"headline-lg":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"headline-md":["20px",{"lineHeight":"28px","fontWeight":"600"}],"code-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.06em","fontWeight":"600"}],"telemetry-md":["20px",{"lineHeight":"24px","letterSpacing":"0.01em","fontWeight":"700"}],"body-md":["14px",{"lineHeight":"22px","fontWeight":"400"}],"headline-xl":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"700"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-60 bg-surface-container-low z-50 flex flex-col border-r border-outline-variant/40"><div class="h-[68px] px-space-md flex items-center gap-space-sm border-b border-outline-variant/40 bg-surface-container-low"><img alt="DACOS Industrial Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrAX2iZPbYx64GpY3yb9I4VZO6I7n-ysR6m3YuaOEdd236wG-R_z0O3sW_fW-xXtdF6N4EghOFzYEnSCFSKjynx3BMqmENGE73fxlsBZPQ2V1HXselFBnsw24FHS6EQNn-CJnKwzk3AXpYIc7R3spmWdV9IzIWxd3BhnklSxvhiSJZqgC2ik_55Rn7Nbwgupu6LAmFfMnsTZbHjUXQO_UtJNlfw0dtLj5oayaT_60-Ol"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm tracking-tight text-primary leading-none">DACOS</span><span class="font-code-sm text-code-sm uppercase text-on-surface-variant tracking-wider">Liberia SCADA</span></div></div><div class="flex-1 overflow-y-auto px-space-xs py-space-sm space-y-space-md"><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Monitoring</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="overview" href="#">Overview</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="control-room" href="#">Control Room</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="live-workers" href="#">Live Workers</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="mine-map" href="#">Mine Map</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="environmental" href="#">Environmental</a></nav></div><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Response</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="incidents" href="#">Incidents</a></nav></div><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Analysis</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="history-and-reports" href="#">History &amp; Reports</a></nav></div><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Management</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="workers" href="#">Workers</a><a aria-current="page" class="block px-space-sm py-2 transition-colors bg-primary-container text-on-primary-container font-semibold rounded-lg" data-path="devices" href="#">Devices</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="rules" href="#">Rules</a></nav></div><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Device Lab</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="wifi-simulator" href="#">Wi-Fi Simulator</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="ble-gateway" href="#">BLE Gateway</a></nav></div><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Administration</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="accounts-and-audit" href="#">Accounts &amp; Audit</a></nav></div><div class="space-y-space-xs border-t border-outline-variant/40 pt-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">System Links</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="my-account" href="#">My Account</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="public-website" href="#">Public Website</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="sign-out" href="#">Sign Out</a></nav></div></div></aside><div class="pl-60 min-h-screen flex flex-col"><header class="fixed top-0 left-60 right-0 h-[68px] bg-surface-container-low border-b border-outline-variant/40 z-40 px-space-md flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md min-w-0"><div class="flex items-center gap-1.5 font-code-sm text-code-sm text-on-surface-variant truncate"><span class="text-primary">DACOS</span><span class="text-outline">/</span><span class="text-on-surface uppercase tracking-wider font-semibold">Operations</span></div><div class="hidden xl:flex items-center px-2.5 py-1 rounded bg-tertiary-container/20 border border-tertiary text-tertiary font-code-sm text-code-sm uppercase tracking-wider whitespace-nowrap"><span class="inline-block w-1.5 h-1.5 rounded-full bg-tertiary mr-2 animate-pulse"></span>DEMO PROTOTYPE — NOT A CERTIFIED MINE SAFETY SYSTEM</div></div><div class="flex items-center gap-space-md shrink-0"><div class="hidden md:flex items-center gap-2 px-2.5 py-1 rounded bg-surface-container-high border border-outline-variant font-code-sm text-code-sm"><span class="w-2 h-2 rounded-full bg-primary animate-ping"></span><span class="text-primary font-semibold">WEBSOCKET CONNECTED (DEMO)</span><span class="text-outline">|</span><span class="text-on-surface-variant">14:32:08 UTC</span></div><div class="flex items-center gap-space-sm pl-space-sm border-l border-outline-variant/40"><div class="flex items-center gap-space-sm"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-primary/40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfpViSx2OZ16qd5PPJVXXDCSIynuKhnplMHvh1RGoC7NK2po1VcOX7RtabkVjEbzUorP2Yn0ULUYkzCTwYOODs1qS7VtaxrWuVjLO6a4z26fFR48Ws04o1jBkehyFIyI2ObB-YneOWIG98OlS5Q_3_h4qN0vSMhkKrYB0gBLs1atHYrklxj0YA1UKs9B2zx9a7nxUJn32l0fVQPwdKYDO7ltMbHkRWHZ17bFgoGl8"/><div class="hidden lg:flex flex-col text-left"><span class="font-label-md text-label-md font-semibold text-on-surface leading-tight">Sarah Jenkins</span><span class="font-code-sm text-code-sm text-primary uppercase leading-tight">Supervisor</span></div></div><div class="flex items-center gap-1"><a class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="my-account" href="#" title="My Account"><span class="material-symbols-outlined text-[20px]">settings</span></a><a class="p-1.5 rounded-lg text-on-surface-variant hover:text-error hover:bg-surface-container-high transition-colors" data-path="sign-out" href="#" title="Sign Out"><span class="material-symbols-outlined text-[20px]">logout</span></a></div></div></div></header><main class="flex-1 pt-[68px] bg-surface w-full px-space-md py-space-md"><div class="flex flex-col w-full space-y-space-lg">
+<!-- TOP CONTEXT / BREADCRUMB & TITLES -->
+<div class="flex flex-col xl:flex-row xl:items-start justify-between gap-space-md">
+<div class="space-y-space-xs max-w-4xl">
+<div class="flex items-center gap-2 font-code-sm text-code-sm text-outline uppercase tracking-wider">
+<span class="text-primary hover:underline cursor-pointer">Management</span>
+<span>/</span>
+<span class="text-on-surface-variant">Device Management</span>
+<span>/</span>
+<span class="text-on-surface font-semibold">Hardware Inventory</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">
+        IoT Wearables &amp; Gateway Infrastructure Inventory
+      </h1>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+        Provision, assign, and audit subterranean telemetry hardware. Device inventory registration proves tracking assignment, not physical connectivity or hardware certification.
+      </p>
+</div>
+<!-- PRIMARY ACTION CLUSTER -->
+<div class="flex flex-wrap items-center gap-space-xs xl:justify-end shrink-0 pt-1">
+<button class="inline-flex items-center gap-2 px-space-md py-2.5 rounded-lg bg-primary-container text-on-primary-container font-label-md text-label-md font-semibold hover:bg-primary transition-all shadow-md shadow-primary-container/20 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-surface">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>+ Register New Device</span>
+</button>
+<a class="inline-flex items-center gap-2 px-space-md py-2.5 rounded-lg bg-surface-container-high text-on-surface font-label-md text-label-md font-medium hover:bg-surface-bright hover:text-primary transition-all shadow-sm" data-path="ble-gateway" href="#">
+<span class="material-symbols-outlined text-[18px] text-primary">sensors</span>
+<span>Device Lab Pairing</span>
+</a>
+<button class="inline-flex items-center gap-2 px-space-sm py-2.5 rounded-lg bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high hover:text-on-surface transition-all">
+<span class="material-symbols-outlined text-[18px]">vpn_key</span>
+<span>Rotate Shift Keys</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-space-sm py-2.5 rounded-lg bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high hover:text-on-surface transition-all" title="Export Ledger CSV">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Export</span>
+</button>
+</div>
+</div>
+<!-- KEY METRICS TELEMETRY STRIP -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-space-sm">
+<!-- Total Enrolled -->
+<div class="relative overflow-hidden bg-surface-container p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-outline">
+<span class="font-code-sm text-code-sm uppercase tracking-wider text-on-surface-variant">Enrolled Units</span>
+<span class="material-symbols-outlined text-[20px] text-primary">developer_board</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-2">
+<span class="font-telemetry-lg text-telemetry-lg text-on-surface">64</span>
+<span class="font-code-sm text-code-sm text-outline uppercase">Active Fleet</span>
+</div>
+<div class="mt-2 w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-full"></div>
+</div>
+</div>
+<!-- Active Connected -->
+<div class="relative overflow-hidden bg-surface-container p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-outline">
+<span class="font-code-sm text-code-sm uppercase tracking-wider text-on-surface-variant">Connected Link</span>
+<span class="inline-flex items-center justify-center w-2 h-2 rounded-full bg-primary animate-ping"></span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-2">
+<span class="font-telemetry-lg text-telemetry-lg text-primary">28</span>
+<span class="font-code-sm text-code-sm text-primary uppercase">Mesh / Wi-Fi</span>
+</div>
+<div class="mt-2 w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[43.7%]"></div>
+</div>
+</div>
+<!-- Stale / Lagging -->
+<div class="relative overflow-hidden bg-surface-container p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-outline">
+<span class="font-code-sm text-code-sm uppercase tracking-wider text-tertiary">Stale &gt;120s</span>
+<span class="material-symbols-outlined text-[20px] text-tertiary">history_toggle_off</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-2">
+<span class="font-telemetry-lg text-telemetry-lg text-tertiary">04</span>
+<span class="font-code-sm text-code-sm text-outline uppercase">Lagging Link</span>
+</div>
+<div class="mt-2 w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-tertiary h-full w-[6.25%]"></div>
+</div>
+</div>
+<!-- Unassigned / Depot -->
+<div class="relative overflow-hidden bg-surface-container p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-outline">
+<span class="font-code-sm text-code-sm uppercase tracking-wider text-on-surface-variant">Unassigned / Depot</span>
+<span class="material-symbols-outlined text-[20px] text-secondary">inventory_2</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-2">
+<span class="font-telemetry-lg text-telemetry-lg text-secondary">18</span>
+<span class="font-code-sm text-code-sm text-outline uppercase">Ready Pool</span>
+</div>
+<div class="mt-2 w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-[28.1%]"></div>
+</div>
+</div>
+<!-- Revoked / Decommissioned -->
+<div class="relative overflow-hidden bg-surface-container p-space-md rounded-xl shadow-sm col-span-2 md:col-span-1 flex flex-col justify-between">
+<div class="flex items-center justify-between text-outline">
+<span class="font-code-sm text-code-sm uppercase tracking-wider text-error">Revoked / Retired</span>
+<span class="material-symbols-outlined text-[20px] text-error">gpp_bad</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-2">
+<span class="font-telemetry-lg text-telemetry-lg text-error">14</span>
+<span class="font-code-sm text-code-sm text-outline uppercase">Zero Auth</span>
+</div>
+<div class="mt-2 w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-error h-full w-[21.8%]"></div>
+</div>
+</div>
+</div>
+<!-- DUAL WORKSPACE: INVENTORY TABLE + SIDE DRAWER / INSPECTOR -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md items-start">
+<!-- MAIN INVENTORY DATA VIEW (8 of 12 cols desktop, full on smaller) -->
+<div class="lg:col-span-7 xl:col-span-8 flex flex-col space-y-space-md min-w-0">
+<!-- FILTER & TELEMETRY SEARCH STRIP -->
+<div class="bg-surface-container p-space-md rounded-xl shadow-sm space-y-space-sm">
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-space-sm">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[18px] text-outline">search</span>
+<input class="w-full bg-surface-container-low text-on-surface font-body-md text-body-md pl-10 pr-4 py-2 rounded-lg outline-none focus:ring-1 focus:ring-primary placeholder:text-outline/70" placeholder="Search by Device ID (e.g. DACOS-BAND-042), Model, UID, or Worker..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-code-sm text-code-sm text-outline uppercase px-1">VIEW:</span>
+<button class="px-2.5 py-1.5 rounded-lg bg-surface-container-high text-primary font-label-md text-label-md">Active (50)</button>
+<button class="px-2.5 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high font-label-md text-label-md">All (64)</button>
+</div>
+</div>
+<!-- MULTI-AXIS SELECTOR PILLS -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-2 pt-1 font-label-sm text-label-sm">
+<div>
+<label class="block font-code-sm text-code-sm uppercase tracking-wider text-outline mb-1">Hardware Type</label>
+<select class="w-full bg-surface-container-low text-on-surface px-2.5 py-1.5 rounded-lg outline-none focus:ring-1 focus:ring-primary text-label-sm">
+<option>All Types (3 Models)</option>
+<option>Wearable Band v4 (Rev 3.4)</option>
+<option>Environmental Gas SN-09</option>
+<option>Sub-Mesh BLE Gateway</option>
+</select>
+</div>
+<div>
+<label class="block font-code-sm text-code-sm uppercase tracking-wider text-outline mb-1">Transport</label>
+<select class="w-full bg-surface-container-low text-on-surface px-2.5 py-1.5 rounded-lg outline-none focus:ring-1 focus:ring-primary text-label-sm">
+<option>All Transports</option>
+<option>BLE 5.3 Mesh (Synthetic)</option>
+<option>Sub-Mesh Wi-Fi (Emulated)</option>
+<option>Modbus RTU / RS-485</option>
+</select>
+</div>
+<div>
+<label class="block font-code-sm text-code-sm uppercase tracking-wider text-outline mb-1">Link Status</label>
+<select class="w-full bg-surface-container-low text-on-surface px-2.5 py-1.5 rounded-lg outline-none focus:ring-1 focus:ring-primary text-label-sm">
+<option>All Statuses</option>
+<option>Connected (28)</option>
+<option>Stale &gt;120s (4)</option>
+<option>Unpaired / Depot (18)</option>
+<option>Revoked (14)</option>
+</select>
+</div>
+<div>
+<label class="block font-code-sm text-code-sm uppercase tracking-wider text-outline mb-1">Battery Threshold</label>
+<select class="w-full bg-surface-container-low text-on-surface px-2.5 py-1.5 rounded-lg outline-none focus:ring-1 focus:ring-primary text-label-sm">
+<option>All Power Levels</option>
+<option>Nominal (&gt;50%)</option>
+<option>Caution (20% - 50%)</option>
+<option>Critical Low (&lt;20%)</option>
+</select>
+</div>
+</div>
+</div>
+<!-- INVENTORY DATA TABLE -->
+<div class="bg-surface-container rounded-xl shadow-md overflow-hidden flex flex-col">
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-md text-body-md border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-outline font-code-sm text-code-sm uppercase tracking-wider">
+<th class="py-3 px-space-md">Device / Model</th>
+<th class="py-3 px-space-md">Hardware UID &amp; Serial</th>
+<th class="py-3 px-space-md">Transport Link</th>
+<th class="py-3 px-space-md">Assignment / Zone</th>
+<th class="py-3 px-space-md text-center">Battery</th>
+<th class="py-3 px-space-md">State</th>
+<th class="py-3 px-space-md text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface font-body-md">
+<!-- ROW 1: Selected Device DACOS-BAND-042 -->
+<tr class="bg-surface-container-high/90 hover:bg-surface-bright/70 transition-colors cursor-pointer group" onclick="selectDevice('DACOS-BAND-042')">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-6 rounded-full bg-primary"></span>
+<div>
+<div class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold group-hover:underline">DACOS-BAND-042</div>
+<div class="font-code-sm text-code-sm text-on-surface-variant">Wearable Band Rev 3.4</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md font-code-sm text-code-sm">
+<div class="text-on-surface">F8:30:02:AA:77:E1</div>
+<div class="text-outline">D-WR-2024-0042</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">BLE 5.3 Mesh</span>
+<span class="font-code-sm text-code-sm text-outline">Simulated Stream</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center font-code-sm text-code-sm font-bold">PK</div>
+<div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">Peter Kollie</div>
+<div class="font-code-sm text-code-sm text-outline">W-088 // Blasting Tech</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md text-center">
+<div class="inline-flex flex-col items-center">
+<span class="font-code-sm text-code-sm font-bold text-primary">88%</span>
+<div class="w-12 bg-surface-container-low h-1.5 rounded-full overflow-hidden mt-0.5">
+<div class="bg-primary h-full w-[88%]"></div>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-primary/10 text-primary font-code-sm text-code-sm uppercase tracking-wider font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                    CONNECTED
+                  </span>
+</td>
+<td class="py-3 px-space-md text-right">
+<div class="inline-flex items-center gap-1 text-on-surface-variant">
+<button class="p-1.5 hover:text-primary hover:bg-surface-container-low rounded-lg transition-colors" title="Inspect Telemetry">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</button>
+<button class="p-1.5 hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" title="Quick Menu">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 2: Stationary Gas Beacon SN-09A -->
+<tr class="bg-surface-container hover:bg-surface-container-high transition-colors cursor-pointer group" onclick="selectDevice('SN-09A')">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-6 rounded-full bg-transparent"></span>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-bold group-hover:text-primary">SN-09A</div>
+<div class="font-code-sm text-code-sm text-on-surface-variant">Multi-Gas Fixed Beacon</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md font-code-sm text-code-sm">
+<div class="text-on-surface">00:1B:44:11:3C:D9</div>
+<div class="text-outline">D-GB-2023-0109</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Modbus RTU / RS-485</span>
+<span class="font-code-sm text-code-sm text-tertiary">Industrial Gateway</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[18px]">location_on</span>
+<div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">Zone C Crusher</div>
+<div class="font-code-sm text-code-sm text-outline">STATIONARY // L4 CH4</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md text-center">
+<div class="inline-flex flex-col items-center">
+<span class="font-code-sm text-code-sm font-bold text-outline">MAIN AC</span>
+<div class="w-12 bg-primary/20 h-1.5 rounded-full overflow-hidden mt-0.5">
+<div class="bg-primary h-full w-full"></div>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-primary/10 text-primary font-code-sm text-code-sm uppercase tracking-wider font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                    CONNECTED
+                  </span>
+</td>
+<td class="py-3 px-space-md text-right">
+<div class="inline-flex items-center gap-1 text-on-surface-variant">
+<button class="p-1.5 hover:text-primary hover:bg-surface-container-low rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</button>
+<button class="p-1.5 hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 3: Sub-Mesh Node BLE-GW-04 (Stale) -->
+<tr class="bg-surface-container-low/40 hover:bg-surface-container-high transition-colors cursor-pointer group" onclick="selectDevice('BLE-GW-04')">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-6 rounded-full bg-tertiary"></span>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-bold group-hover:text-primary">BLE-GW-04</div>
+<div class="font-code-sm text-code-sm text-on-surface-variant">Subterranean Mesh Node</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md font-code-sm text-code-sm">
+<div class="text-on-surface">3C:71:BF:88:90:12</div>
+<div class="text-outline">D-GW-2023-0004</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Sub-Mesh Wi-Fi</span>
+<span class="font-code-sm text-code-sm text-tertiary">SYNC DELAYED &gt;120s</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-[18px]">router</span>
+<div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">Drift Portal 3</div>
+<div class="font-code-sm text-code-sm text-outline">INFRASTRUCTURE REPEATER</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md text-center">
+<div class="inline-flex flex-col items-center">
+<span class="font-code-sm text-code-sm font-bold text-tertiary">18%</span>
+<div class="w-12 bg-surface-container-low h-1.5 rounded-full overflow-hidden mt-0.5">
+<div class="bg-tertiary h-full w-[18%]"></div>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-tertiary/10 text-tertiary font-code-sm text-code-sm uppercase tracking-wider font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                    STALE (14m)
+                  </span>
+</td>
+<td class="py-3 px-space-md text-right">
+<div class="inline-flex items-center gap-1 text-on-surface-variant">
+<button class="p-1.5 hover:text-primary hover:bg-surface-container-low rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</button>
+<button class="p-1.5 hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 4: Wearable Band 019 (Unpaired / In Depot) -->
+<tr class="bg-surface-container hover:bg-surface-container-high transition-colors cursor-pointer group" onclick="selectDevice('DACOS-BAND-019')">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-6 rounded-full bg-transparent"></span>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-bold group-hover:text-primary">DACOS-BAND-019</div>
+<div class="font-code-sm text-code-sm text-on-surface-variant">Wearable Band Rev 3.4</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md font-code-sm text-code-sm">
+<div class="text-on-surface">F8:30:02:AA:42:19</div>
+<div class="text-outline">D-WR-2024-0019</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-outline">Transport Idle</span>
+<span class="font-code-sm text-code-sm text-outline">Depot Standby</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[18px]">inventory_2</span>
+<div>
+<div class="font-label-md text-label-md font-semibold text-secondary">Depot Shelf B</div>
+<div class="font-code-sm text-code-sm text-outline">UNASSIGNED // READY</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md text-center">
+<div class="inline-flex flex-col items-center">
+<span class="font-code-sm text-code-sm font-bold text-on-surface">64%</span>
+<div class="w-12 bg-surface-container-low h-1.5 rounded-full overflow-hidden mt-0.5">
+<div class="bg-primary h-full w-[64%]"></div>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-secondary-container/30 text-secondary font-code-sm text-code-sm uppercase tracking-wider font-semibold">
+                    UNPAIRED
+                  </span>
+</td>
+<td class="py-3 px-space-md text-right">
+<div class="inline-flex items-center gap-1 text-on-surface-variant">
+<button class="p-1.5 hover:text-primary hover:bg-surface-container-low rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+</button>
+<button class="p-1.5 hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 5: Decommissioned Device 103 (Revoked) -->
+<tr class="bg-surface-container-low/60 hover:bg-surface-container-high transition-colors cursor-pointer group opacity-85" onclick="selectDevice('DACOS-BAND-103')">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-6 rounded-full bg-error"></span>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-bold group-hover:text-error line-through">DACOS-BAND-103</div>
+<div class="font-code-sm text-code-sm text-error">Pending HW Inspection</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md font-code-sm text-code-sm">
+<div class="text-outline">F8:30:02:DF:99:41</div>
+<div class="text-outline">D-WR-2023-0103</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-error">Access Revoked</span>
+<span class="font-code-sm text-code-sm text-error">Key Invalidation ACK</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-[18px]">block</span>
+<div>
+<div class="font-label-md text-label-md font-semibold text-error">Quarantine Locker</div>
+<div class="font-code-sm text-code-sm text-outline">SEC FAILURE LOGGED</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md text-center">
+<div class="inline-flex flex-col items-center">
+<span class="font-code-sm text-code-sm font-bold text-outline">--%</span>
+<div class="w-12 bg-surface-container-low h-1.5 rounded-full overflow-hidden mt-0.5">
+<div class="bg-outline/30 h-full w-0"></div>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-error/10 text-error font-code-sm text-code-sm uppercase tracking-wider font-semibold">
+                    REVOKED
+                  </span>
+</td>
+<td class="py-3 px-space-md text-right">
+<div class="inline-flex items-center gap-1 text-on-surface-variant">
+<button class="p-1.5 hover:text-primary hover:bg-surface-container-low rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+<button class="p-1.5 hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- TABLE FOOTER / AUDIT PAGINATION STRIP -->
+<div class="bg-surface-container-low px-space-md py-space-sm flex flex-col sm:flex-row items-center justify-between gap-space-sm text-outline font-code-sm text-code-sm">
+<div class="flex items-center gap-2">
+<span>SHOWING 5 OF 64 REGISTERED TELEMETRY ASSETS</span>
+<span class="text-outline/50">•</span>
+<span class="text-primary font-semibold">SYNC DRIFT: 2.1s</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-1 rounded bg-surface-container hover:bg-surface-bright text-on-surface disabled:opacity-40" disabled="">
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+</button>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface">PAGE 1 / 13</span>
+<button class="p-1 rounded bg-surface-container hover:bg-surface-bright text-on-surface">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- PROTOTYPE PHYSICAL SENSOR CONTEXT STRIP -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[24px]">hub</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Gateway Sync Mesh: Corridors Alpha &amp; Bravo</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Real-time worker telemetry hops through 6 subterranean nodes with automated rollover.</p>
+</div>
+</div>
+<div class="shrink-0 flex items-center gap-2">
+<span class="px-2.5 py-1 rounded bg-primary/10 text-primary font-code-sm text-code-sm font-semibold uppercase">BLE Transport ≠ Verified Provenance</span>
+</div>
+</div>
+</div>
+<!-- RIGHT INSPECTOR PANEL / SLIDE-OUT DRAWER -->
+<!-- Represents the Selected Device: DACOS-BAND-042 -->
+<div class="lg:col-span-5 xl:col-span-4 flex flex-col space-y-space-md">
+<!-- DEVICE DETAIL & SECURITY CARD -->
+<div class="bg-surface-container rounded-xl shadow-xl overflow-hidden flex flex-col">
+<!-- HEADER -->
+<div class="bg-surface-container-high px-space-md py-space-md flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">devices</span>
+<div>
+<span class="font-code-sm text-code-sm uppercase tracking-wider text-outline block">Selected Hardware</span>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold leading-tight" id="inspector-device-id">DACOS-BAND-042</h3>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-primary/20 text-primary font-code-sm text-code-sm uppercase tracking-wider font-bold">
+            CONNECTED
+          </span>
+</div>
+<div class="p-space-md space-y-space-md">
+<!-- DEVICE HARDWARE METADATA -->
+<div class="bg-surface-container-low p-space-sm rounded-lg space-y-2">
+<div class="grid grid-cols-2 gap-2 font-code-sm text-code-sm">
+<div>
+<span class="text-outline uppercase block">Firmware</span>
+<span class="text-on-surface font-semibold">v3.4.1-rc2 (Secure)</span>
+</div>
+<div>
+<span class="text-outline uppercase block">Core Model</span>
+<span class="text-on-surface font-semibold">Biometric Core v2</span>
+</div>
+<div>
+<span class="text-outline uppercase block">Hardware UID</span>
+<span class="text-on-surface">F8:30:02:AA:77:E1</span>
+</div>
+<div>
+<span class="text-outline uppercase block">Shift Provisioner</span>
+<span class="text-primary">S. Jenkins (Admin)</span>
+</div>
+</div>
+<div class="pt-2 text-outline font-code-sm text-code-sm">
+              Enrolled: <span class="text-on-surface">2024-09-15 04:12 UTC</span>
+</div>
+</div>
+<!-- ASSIGNED WORKER CARD & CONFLICT VALIDATION -->
+<div class="space-y-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm uppercase tracking-wider text-outline">Current Active Worker Assignment</span>
+<span class="font-code-sm text-code-sm text-primary">Shift 06:00 UTC</span>
+</div>
+<div class="p-space-md rounded-lg bg-surface-container-high flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/20 text-primary flex items-center justify-center font-headline-sm text-headline-sm font-bold">
+                  PK
+                </div>
+<div>
+<h4 class="font-label-md text-label-md font-bold text-on-surface">Peter Kollie</h4>
+<p class="font-code-sm text-code-sm text-on-surface-variant">Badge: W-088 • Role: Blasting Tech</p>
+</div>
+</div>
+<button class="px-2.5 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-lowest text-on-surface font-label-md text-label-md transition-colors">
+                Reassign
+              </button>
+</div>
+<!-- Conflict Detection Valid Banner -->
+<div class="p-space-sm rounded-lg bg-primary-container/20 text-on-surface flex items-center gap-2 font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-[18px] text-primary">verified</span>
+<span>Assignment Valid: No duplicate worker binding detected in active shift.</span>
+</div>
+</div>
+<!-- CRYPTOGRAPHIC SECURITY PANEL -->
+<div class="p-space-md rounded-lg bg-surface-container-low space-y-space-sm shadow-inner">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-tertiary text-[18px]">key</span>
+<span class="font-code-sm text-code-sm uppercase tracking-wider text-tertiary font-bold">Device Ingestion Token</span>
+</div>
+<span class="font-code-sm text-code-sm text-outline">HMAC-SHA256</span>
+</div>
+<!-- Hidden / Revealable Token Field -->
+<div class="space-y-1.5">
+<div class="flex items-center gap-2 bg-surface-container-lowest px-3 py-2 rounded-lg font-code-sm text-code-sm">
+<input class="bg-transparent text-primary tracking-widest flex-1 outline-none font-mono selection:bg-primary selection:text-surface" id="secret-token-input" readonly="" type="password" value="dacos_sec_7f99b084e3110aefc91c3495d432"/>
+<button class="p-1 hover:text-primary text-outline transition-colors" id="token-toggle-btn" onclick="toggleTokenVisibility()" title="Toggle Reveal">
+<span class="material-symbols-outlined text-[18px]" id="token-eye-icon">visibility</span>
+</button>
+<button class="p-1 hover:text-primary text-outline transition-colors" onclick="copySecretToken()" title="Copy Token to Clipboard">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+</div>
+<p class="font-code-sm text-code-sm text-outline leading-tight">
+                Ingestion tokens are displayed once upon issuance. Never transmit over unencrypted radio or include in general logging.
+              </p>
+</div>
+<!-- KEY MANAGEMENT BUTTONS -->
+<div class="grid grid-cols-2 gap-2 pt-1 font-label-md text-label-md">
+<button class="px-2 py-2 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-semibold transition-colors flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-tertiary">autorenew</span>
+<span>Rotate Token</span>
+</button>
+<button class="px-2 py-2 rounded-lg bg-error-container/40 hover:bg-error-container text-error font-semibold transition-colors flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">key_off</span>
+<span>Revoke Credential</span>
+</button>
+</div>
+<button class="w-full py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-primary font-code-sm text-code-sm uppercase tracking-wider font-semibold transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px]">science</span>
+<span>Re-Provision via Device Lab</span>
+</button>
+</div>
+<!-- ASSIGNMENT & SEC AUDIT TIMELINE -->
+<div class="space-y-2">
+<span class="font-code-sm text-code-sm uppercase tracking-wider text-outline block">Assignment &amp; Security Ledger</span>
+<div class="space-y-2 font-code-sm text-code-sm">
+<div class="p-2.5 rounded-lg bg-surface-container-low flex items-start gap-2.5">
+<span class="w-2 h-2 rounded-full bg-primary mt-1.5 shrink-0"></span>
+<div class="space-y-0.5">
+<div class="text-on-surface font-semibold">2024-11-20 06:00 UTC</div>
+<div class="text-on-surface-variant">Bound to Peter Kollie (W-088) by Sarah Jenkins</div>
+<div class="text-outline">Station: Turnstile Gate North</div>
+</div>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-low flex items-start gap-2.5">
+<span class="w-2 h-2 rounded-full bg-outline mt-1.5 shrink-0"></span>
+<div class="space-y-0.5">
+<div class="text-on-surface">2024-11-19 14:00 UTC</div>
+<div class="text-on-surface-variant">Unbound from Tamba Fallah (W-019) at shift turnover</div>
+<div class="text-outline">Docked to Cradle B-04</div>
+</div>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-low flex items-start gap-2.5">
+<span class="w-2 h-2 rounded-full bg-tertiary mt-1.5 shrink-0"></span>
+<div class="space-y-0.5">
+<div class="text-on-surface">2024-11-15 08:30 UTC</div>
+<div class="text-on-surface-variant">Firmware updated to v3.4.1-rc2 (SHA: 4a2f89)</div>
+<div class="text-outline">Supervisor Lab Host ID: DACOS-DESK-01</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- DRAWER ACTIONS BOTTOM STRIP -->
+<div class="bg-surface-container-low px-space-md py-space-sm flex items-center justify-between text-outline">
+<button class="font-label-md text-label-md text-error hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">delete_forever</span>
+<span>Decommission Asset</span>
+</button>
+<span class="font-code-sm text-code-sm">DEVICE AUDIT ID: 884-PK-91</span>
+</div>
+</div>
+<!-- CRITICAL INVENTORY WARNING CARD -->
+<div class="bg-surface-container p-space-md rounded-xl space-y-space-xs">
+<div class="flex items-center gap-2 text-tertiary">
+<span class="material-symbols-outlined text-[20px]">warning</span>
+<h4 class="font-headline-sm text-headline-sm font-semibold">Subterranean Attenuation Warning</h4>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Hardware bands rely on mesh gateway nodes. Loss of line-of-sight in drift stopes may freeze heartbeats. Dispatched search-and-rescue teams must rely on physical acoustic locators, not pure SCADA display coordinates.
+        </p>
+</div>
+</div>
+</div>
+<!-- PERSISTENT SUPERVISED DEMO DISCLAIMER FOOTNOTE -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col md:flex-row items-center justify-between gap-space-sm text-center md:text-left">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary text-[24px]">shield</span>
+<div class="text-on-surface-variant font-code-sm text-code-sm">
+<strong class="text-tertiary uppercase tracking-wider">DACOS SCADA Liberia Demonstration Platform:</strong>
+        All wearable biometric tags, BLE gateway beacons, and gas levels rendered in this console are synthetic test telemetry. Physical miner life safety equipment must be calibrated and certified per Liberia Ministry of Mines &amp; Energy regulations prior to subterranean extraction operations.
+      </div>
+</div>
+<div class="shrink-0 font-code-sm text-code-sm text-outline">
+      REF: LIB-HARDWARE-REG-094
+    </div>
+</div>
+</div>
+<!-- INTERACTIVE SCRIPT FOR TOKEN TOGGLE, COPY & ROW HIGHLIGHTING -->
+<script>
+  function toggleTokenVisibility() {
+    const input = document.getElementById('secret-token-input');
+    const icon = document.getElementById('token-eye-icon');
+    if (!input || !icon) return;
+    
+    if (input.type === 'password') {
+      input.type = 'text';
+      icon.innerText = 'visibility_off';
+    } else {
+      input.type = 'password';
+      icon.innerText = 'visibility';
+    }
+  }
+
+  function copySecretToken() {
+    const input = document.getElementById('secret-token-input');
+    if (!input) return;
+    navigator.clipboard.writeText(input.value).then(() => {
+      const btn = event.currentTarget;
+      const originalHtml = btn.innerHTML;
+      btn.innerHTML = '<span class="material-symbols-outlined text-[18px] text-primary">done</span>';
+      setTimeout(() => {
+        btn.innerHTML = originalHtml;
+      }, 1500);
+    });
+  }
+
+  function selectDevice(deviceId) {
+    const heading = document.getElementById('inspector-device-id');
+    if (heading) {
+      heading.innerText = deviceId;
+    }
+  }
+</script></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 py-space-sm px-space-md"><div class="flex flex-col sm:flex-row items-center justify-between gap-2 font-code-sm text-code-sm text-on-surface-variant"><div class="flex items-center gap-2"><span class="inline-block w-2 h-2 rounded-full bg-tertiary"></span><span>DACOS Liberia Prototype v0.9.4. Physical hardware integration pending. Never use for actual emergency dispatch.</span></div><div class="text-outline">LIB-EXT-MON-SEC-04 // NON-PROD ENV</div></div></footer></div></body></html>

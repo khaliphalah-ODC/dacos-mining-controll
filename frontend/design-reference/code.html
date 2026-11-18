@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_dashboard" name="shell-type"/>
+<title>DACOS Ecosystem - Live Mine Safety Control Room</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Inter', sans-serif;
+      }
+      body {
+        overscroll-behavior: none;
+      }
+      .font-mono {
+        font-family: 'JetBrains Mono', monospace;
+      }
+      .font-sans {
+        font-family: 'Inter', sans-serif;
+      }
+    }
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0c1321;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #232a39;
+      border-radius: 4px;
+    }
+    .hazard-stripe {
+      background: repeating-linear-gradient(
+        -45deg,
+        rgba(239, 68, 68, 0.18),
+        rgba(239, 68, 68, 0.18) 10px,
+        rgba(15, 23, 42, 0.4) 10px,
+        rgba(15, 23, 42, 0.4) 20px
+      );
+    }
+    .amber-stripe {
+      background: repeating-linear-gradient(
+        -45deg,
+        rgba(245, 158, 11, 0.15),
+        rgba(245, 158, 11, 0.15) 8px,
+        transparent 8px,
+        transparent 16px
+      );
+    }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-container": "#131f33",
+            "surface-container-low": "#101928",
+            "surface-container-high": "#1b2a45",
+            "surface-container-highest": "#243552",
+            "surface-container-lowest": "#080e18",
+            "background": "#0a101d",
+            "surface": "#0c1321",
+            "primary": "#38bdf8",
+            "primary-container": "#0284c7",
+            "on-primary": "#002b40",
+            "secondary": "#a5b4fc",
+            "secondary-container": "#1e3a8a",
+            "tertiary": "#4ade80",
+            "tertiary-container": "#15803d",
+            "error": "#f87171",
+            "error-container": "#7f1d1d",
+            "outline": "#64748b",
+            "outline-variant": "#2a3c5a",
+            "on-surface": "#f1f5f9",
+            "on-surface-variant": "#94a3b8"
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-background font-sans text-on-surface antialiased text-[14px]">
+<!-- LEFT NAVIGATION SIDEBAR (~240px) -->
+<aside class="fixed left-0 top-0 h-screen w-60 bg-surface-container-low border-r border-slate-700/60 z-50 flex flex-col justify-between select-none">
+<div class="flex flex-col">
+<!-- Brand Header -->
+<div class="p-4 border-b border-slate-700/60 flex items-center gap-3">
+<img alt="DACOS Industrial Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrDVJgcZ64j3lLnY0OlIJB7wDSH_YmN5yXxgkdZSvZu0hb-RKZsRlK_2tCs2DchkTJ6pQiX0nZskkvPBmc_OA39cDGRaEnr_Z7TkNurcgcEODKyUWY9Id_po_4lWaC9V8k3U68j7ITEHr1SLYADSO2GC1E84vdGMvjo92qQWCT39OG_AWL4ywqk_Ea6VcOoZMVP3E9UGvClcIWJ4iz3_BJ-kzlJAAB3lbqamJt4RglPf"/>
+<div class="flex flex-col min-w-0">
+<span class="font-sans font-bold text-[15px] text-cyan-400 tracking-wider leading-tight truncate">DACOS ECOSYSTEM</span>
+<span class="font-mono text-[11px] text-slate-400 uppercase tracking-wider truncate">INTEL MINE SAFETY · MOD C</span>
+</div>
+</div>
+<!-- Sector Indicator Badge -->
+<div class="px-4 py-2 bg-surface-container-lowest/80 border-b border-slate-700/60 flex items-center justify-between">
+<div class="flex items-center gap-2 min-w-0">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+<span class="font-mono text-[12px] text-slate-300 font-medium truncate">Olympic Dam Sector 4</span>
+</div>
+<span class="font-mono text-[11px] px-2 py-0.5 rounded bg-surface-container-highest text-cyan-300 font-semibold border border-cyan-500/30 shrink-0">ACTIVE</span>
+</div>
+<!-- Nav Items -->
+<nav class="p-2.5 flex flex-col gap-1 overflow-y-auto max-h-[calc(100vh-190px)]">
+<!-- Overview (Active) -->
+<a aria-current="page" class="flex items-center justify-between px-3.5 py-2.5 rounded-md transition-colors bg-cyan-500/10 text-cyan-300 border-l-4 border-cyan-400 font-medium shadow-[inset_0_0_12px_rgba(6,182,212,0.15)]" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-cyan-400">dashboard</span>
+<span class="text-[13px] tracking-wide">Overview</span>
+</div>
+<span class="font-mono text-[11px] px-1.5 py-0.5 rounded bg-cyan-950/80 text-cyan-300 border border-cyan-800/60">CTRL-01</span>
+</a>
+<!-- Live Workers -->
+<a class="flex items-center justify-between px-3.5 py-2.5 rounded-md text-slate-300 hover:bg-surface-container-high hover:text-white transition-colors" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-slate-400">engineering</span>
+<span class="text-[13px]">Live Workers</span>
+</div>
+<span class="font-mono text-[11px] px-2 py-0.5 rounded-full bg-emerald-950/80 text-emerald-400 border border-emerald-800/50 font-semibold">142</span>
+</a>
+<!-- Mine Map -->
+<a class="flex items-center justify-between px-3.5 py-2.5 rounded-md text-slate-300 hover:bg-surface-container-high hover:text-white transition-colors" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-slate-400">layers</span>
+<span class="text-[13px]">Mine Map</span>
+</div>
+<span class="font-mono text-[11px] text-slate-400">3D GIS</span>
+</a>
+<!-- Health Monitoring -->
+<a class="flex items-center justify-between px-3.5 py-2.5 rounded-md text-slate-300 hover:bg-surface-container-high hover:text-white transition-colors" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-slate-400">vital_signs</span>
+<span class="text-[13px]">Health Vitals</span>
+</div>
+<span class="font-mono text-[11px] text-emerald-400">Sync OK</span>
+</a>
+<!-- Environmental -->
+<a class="flex items-center justify-between px-3.5 py-2.5 rounded-md text-slate-300 hover:bg-surface-container-high hover:text-white transition-colors" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-slate-400">air</span>
+<span class="text-[13px]">Environmental</span>
+</div>
+<span class="font-mono text-[11px] px-1.5 py-0.5 rounded bg-surface-container text-cyan-300 border border-slate-700">10-Gas</span>
+</a>
+<!-- Emergency Center -->
+<a class="flex items-center justify-between px-3.5 py-2.5 rounded-md text-slate-300 hover:bg-surface-container-high hover:text-white transition-colors" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-rose-400">fmd_bad</span>
+<span class="text-[13px] text-rose-300 font-medium">Emergency Center</span>
+</div>
+<span class="font-mono text-[11px] px-2 py-0.5 rounded-full bg-rose-950 text-rose-400 font-bold border border-rose-700/60 animate-pulse">2 Alerts</span>
+</a>
+<!-- Evacuation -->
+<a class="flex items-center justify-between px-3.5 py-2.5 rounded-md text-slate-300 hover:bg-surface-container-high hover:text-white transition-colors" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-slate-400">departure_board</span>
+<span class="text-[13px]">Evacuation</span>
+</div>
+<span class="font-mono text-[11px] text-slate-400">Musters</span>
+</a>
+<!-- Alerts & Events -->
+<a class="flex items-center justify-between px-3.5 py-2.5 rounded-md text-slate-300 hover:bg-surface-container-high hover:text-white transition-colors" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-slate-400">notifications_active</span>
+<span class="text-[13px]">Alerts &amp; Events</span>
+</div>
+<span class="font-mono text-[11px] px-2 py-0.5 rounded-full bg-indigo-950 text-indigo-300 border border-indigo-700/50 font-semibold">5 New</span>
+</a>
+<!-- Reports & Analytics -->
+<a class="flex items-center justify-between px-3.5 py-2.5 rounded-md text-slate-300 hover:bg-surface-container-high hover:text-white transition-colors" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-slate-400">assignment</span>
+<span class="text-[13px]">Reports &amp; Logs</span>
+</div>
+<span class="font-mono text-[11px] text-slate-400">Shift B</span>
+</a>
+<!-- Devices & Nodes -->
+<a class="flex items-center justify-between px-3.5 py-2.5 rounded-md text-slate-300 hover:bg-surface-container-high hover:text-white transition-colors" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-slate-400">sensors</span>
+<span class="text-[13px]">Devices &amp; Nodes</span>
+</div>
+<span class="font-mono text-[11px] text-emerald-400">Mesh OK</span>
+</a>
+<!-- Settings -->
+<a class="flex items-center justify-between px-3.5 py-2.5 rounded-md text-slate-300 hover:bg-surface-container-high hover:text-white transition-colors" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-slate-400">tune</span>
+<span class="text-[13px]">Thresholds</span>
+</div>
+<span class="material-symbols-outlined text-[16px] text-slate-400">chevron_right</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Footer -->
+<div class="p-3 bg-surface-container-lowest border-t border-slate-700/60 flex flex-col gap-2">
+<div class="flex items-center justify-between font-mono text-[11px] text-slate-400 px-1">
+<span>LAT: <strong class="text-slate-200">14ms</strong> · GW: ONLINE</span>
+<span class="text-emerald-400 font-semibold">99.98%</span>
+</div>
+<button class="flex items-center justify-center gap-2 py-1.5 rounded bg-surface-container hover:bg-surface-container-high text-slate-300 hover:text-white border border-slate-700/60 transition-colors w-full font-mono text-[12px]" type="button">
+<span class="material-symbols-outlined text-[16px]">keyboard_double_arrow_left</span>
+<span>Collapse Sidebar</span>
+</button>
+</div>
+</aside>
+<!-- MAIN CONTENT CONTAINER (Margin Left 240px / 60 Tailwind units) -->
+<div class="pl-60 min-h-screen flex flex-col">
+<!-- TOP GLOBAL HEADER (Fixed height 64px) -->
+<header class="fixed top-0 left-60 right-0 h-16 bg-surface-container-lowest/95 backdrop-blur-md border-b border-slate-700/60 z-40 px-6 flex items-center justify-between gap-4">
+<!-- Breadcrumb and Title -->
+<div class="flex items-center gap-4 shrink-0">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5 font-mono text-[12px] text-slate-400">
+<span class="text-cyan-400 font-semibold">DACOS</span>
+<span>/</span>
+<span>Control Room</span>
+<span>/</span>
+<span class="text-slate-200 font-medium">Sector 4</span>
+</div>
+<span class="font-sans font-bold text-[18px] text-white tracking-tight leading-tight">Live Mine Telemetry</span>
+</div>
+<div class="h-6 w-px bg-slate-700/60 hidden xl:block"></div>
+<div class="hidden xl:flex items-center gap-2 px-2.5 py-1 rounded bg-surface-container border border-slate-700">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+<span class="font-mono text-[12px] text-emerald-400 font-bold tracking-wide">WS: 10Hz</span>
+</div>
+</div>
+<!-- PERSISTENT HIGH-VISIBILITY SIMULATION BANNER -->
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-md bg-amber-500/15 border border-amber-500/40 text-amber-300 amber-stripe shadow-sm">
+<span class="material-symbols-outlined text-[18px] text-amber-400 animate-pulse">warning</span>
+<div class="flex items-center gap-1.5 font-mono text-[12px] tracking-wide">
+<span class="font-bold text-amber-300">SIMULATION MODE</span>
+<span class="text-amber-400/80 hidden sm:inline">— NOT LIVE SAFETY DATA (TEST FIXTURE v2.4)</span>
+</div>
+</div>
+<!-- Search & Zone Select -->
+<div class="flex-1 max-w-md hidden lg:flex items-center gap-2">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400 text-[18px]">search</span>
+<input class="w-full pl-8 pr-3 py-1.5 rounded bg-surface-container border border-slate-700 font-mono text-[12px] text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-cyan-400 transition-colors" placeholder="Search worker ID, beacon, zone, gas sensor..." type="text"/>
+</div>
+<div class="relative">
+<select class="appearance-none pl-3 pr-8 py-1.5 rounded bg-surface-container border border-slate-700 font-mono text-[12px] text-slate-200 cursor-pointer focus:outline-none focus:border-cyan-400">
+<option>Sector 04 - Cu/U Stope L3</option>
+<option>Sector 01 - Main Decline</option>
+<option>Sector 02 - North Drift Shaft</option>
+<option>Sector 03 - Crusher Chamber</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-[16px]">expand_more</span>
+</div>
+</div>
+<!-- Right Profile & Shift info -->
+<div class="flex items-center gap-3 shrink-0">
+<div class="hidden md:flex flex-col text-right font-mono text-[12px]">
+<span class="text-white font-bold tracking-tight">14:42:18 UTC</span>
+<span class="text-slate-400 text-[11px]">SHIFT B · OLYMPIC DAM</span>
+</div>
+<button class="relative p-2 rounded bg-surface-container hover:bg-surface-container-high border border-slate-700 text-slate-200 transition-colors" title="Notifications" type="button">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute -top-1 -right-1 px-1.5 min-w-[18px] h-4 rounded-full bg-rose-500 text-white font-mono text-[10px] font-bold flex items-center justify-center leading-none">3</span>
+</button>
+<div class="flex items-center gap-2 pl-2 border-l border-slate-700/60">
+<img alt="Profile" class="w-8 h-8 rounded-full object-cover border border-cyan-500/50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNZB5LGnS0Pk-nhWWNyfGKRWWbggklr9eUlXZz_Lek_zWzuj8pY0rQCNGEJA15i46GEd3eftwsal_uqIU7lZw5QIRyOtGorku41Wo4j7kkH_FqrZFQvBKV3OyqGxlLWHRQ6UA4tXtUV-cH-6bxNYiONQ-apjYqYl2UF2P-IgD9bP-Od4vn87M_cLWebd28vjewc5w4yxuCWx4hRKwG8nUmVwYkeY-UHncnqnOUpY8"/>
+<div class="hidden xl:flex flex-col text-left">
+<span class="text-[13px] text-white font-semibold leading-tight">David Chen</span>
+<span class="font-mono text-[11px] text-slate-400 leading-tight">Sr. Safety Controller</span>
+</div>
+</div>
+</div>
+</header>
+<!-- MAIN SCROLLABLE CONTENT BODY -->
+<main class="w-full pt-16 bg-background min-h-screen flex flex-col">
+<!-- Live Telemetry Ticker Ribbon -->
+<div class="w-full bg-surface-container-lowest px-6 py-2 border-b border-slate-700/60 flex flex-wrap items-center justify-between gap-4 text-slate-300 font-mono text-[12px]">
+<div class="flex items-center gap-4 overflow-x-auto py-0.5">
+<div class="flex items-center gap-2 shrink-0">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+<span class="text-white font-semibold">MESH NET: SEC-4 NODE 12</span>
+</div>
+<span class="text-slate-600">/</span>
+<div class="flex items-center gap-1.5 shrink-0">
+<span class="text-slate-400">PACKET LOSS:</span>
+<span class="text-emerald-400 font-bold">0.002%</span>
+</div>
+<span class="text-slate-600">/</span>
+<div class="flex items-center gap-1.5 shrink-0">
+<span class="text-slate-400">UW-LBS ANCHORS:</span>
+<span class="text-cyan-400 font-bold">48/48 LOCKED</span>
+</div>
+<span class="text-slate-600">/</span>
+<div class="flex items-center gap-1.5 shrink-0">
+<span class="text-slate-400">PRIMARY AIR INTAKE:</span>
+<span class="text-emerald-400 font-bold">410 m³/s (NORMAL)</span>
+</div>
+</div>
+<div class="flex items-center gap-2.5 shrink-0">
+<span class="px-2.5 py-1 rounded bg-surface-container text-cyan-300 font-mono text-[11px] font-bold tracking-wider border border-cyan-900/50">DEFCON 4 · PATROL STAGE</span>
+<span class="px-2.5 py-1 rounded bg-surface-container-high text-slate-200 font-mono text-[11px] font-medium border border-slate-700">ERT SQUAD 2 ON STANDBY</span>
+</div>
+</div>
+<!-- MAIN PAGE CONTENT (Padding 24px) -->
+<div class="p-6 flex flex-col gap-6 w-full">
+<!-- 1. OPERATIONAL KPI CARDS RIBBON (8 Uniform Cards) -->
+<section class="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-8 gap-3 w-full">
+<!-- KPI 1: Registered -->
+<div class="bg-surface-container-low border border-slate-700/60 p-4 rounded-lg flex flex-col justify-between hover:border-cyan-500/40 transition-colors shadow-sm min-h-[110px]">
+<div class="flex items-start justify-between">
+<span class="text-[12px] font-medium text-slate-400 uppercase tracking-wider">Registered</span>
+<span class="material-symbols-outlined text-[18px] text-slate-400">badge</span>
+</div>
+<div class="my-2">
+<div class="font-mono text-[26px] font-bold text-white tracking-tight leading-none">348</div>
+<div class="flex items-center gap-1 font-mono text-[12px] text-emerald-400 mt-1">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+<span>+12 this mo</span>
+</div>
+</div>
+<div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-cyan-400 h-full w-[88%]"></div>
+</div>
+</div>
+<!-- KPI 2: Active Shift -->
+<div class="bg-surface-container-low border border-slate-700/60 p-4 rounded-lg flex flex-col justify-between hover:border-cyan-500/40 transition-colors shadow-sm min-h-[110px]">
+<div class="flex items-start justify-between">
+<span class="text-[12px] font-medium text-slate-400 uppercase tracking-wider">Active Shift</span>
+<span class="material-symbols-outlined text-[18px] text-cyan-400">engineering</span>
+</div>
+<div class="my-2">
+<div class="font-mono text-[26px] font-bold text-cyan-400 tracking-tight leading-none">142</div>
+<div class="font-mono text-[12px] text-slate-300 truncate mt-1">Shift B · 98.6% In</div>
+</div>
+<div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-cyan-500 h-full w-[98.6%]"></div>
+</div>
+</div>
+<!-- KPI 3: Safe Condition -->
+<div class="bg-surface-container-low border border-slate-700/60 p-4 rounded-lg flex flex-col justify-between hover:border-cyan-500/40 transition-colors shadow-sm min-h-[110px]">
+<div class="flex items-start justify-between">
+<span class="text-[12px] font-medium text-slate-400 uppercase tracking-wider">Condition Safe</span>
+<span class="material-symbols-outlined text-[18px] text-emerald-400">health_and_safety</span>
+</div>
+<div class="my-2">
+<div class="font-mono text-[26px] font-bold text-emerald-400 tracking-tight leading-none">138</div>
+<div class="font-mono text-[12px] text-emerald-400 flex items-center gap-1.5 mt-1">
+<span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+<span>97.1% nominal</span>
+</div>
+</div>
+<div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-emerald-400 h-full w-[97%]"></div>
+</div>
+</div>
+<!-- KPI 4: Attention -->
+<div class="bg-surface-container-low border border-slate-700/60 p-4 rounded-lg flex flex-col justify-between hover:border-amber-500/40 transition-colors shadow-sm min-h-[110px]">
+<div class="flex items-start justify-between">
+<span class="text-[12px] font-medium text-slate-400 uppercase tracking-wider">Attention</span>
+<span class="material-symbols-outlined text-[18px] text-amber-400">warning_amber</span>
+</div>
+<div class="my-2">
+<div class="font-mono text-[26px] font-bold text-amber-300 tracking-tight leading-none">4</div>
+<div class="font-mono text-[12px] text-amber-400/90 truncate mt-1">2 HR · 1 Bat · 1 Gas</div>
+</div>
+<div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-amber-400 h-full w-[35%]"></div>
+</div>
+</div>
+<!-- KPI 5: Emergencies -->
+<div class="bg-rose-950/40 border border-rose-500/60 p-4 rounded-lg flex flex-col justify-between relative overflow-hidden shadow-sm min-h-[110px]">
+<div class="flex items-start justify-between">
+<span class="text-[12px] font-bold text-rose-300 uppercase tracking-wider">Emergencies</span>
+<span class="material-symbols-outlined text-[18px] text-rose-400 animate-ping">emergency_home</span>
+</div>
+<div class="my-2">
+<div class="font-mono text-[26px] font-bold text-rose-400 tracking-tight leading-none flex items-center gap-2">
+<span>1</span>
+<span class="font-mono text-[11px] px-2 py-0.5 bg-rose-500 text-white rounded font-bold">LEVEL 2</span>
+</div>
+<div class="font-mono text-[12px] text-rose-300 truncate mt-1">Sub-L3 CH4 Gas Rise</div>
+</div>
+<div class="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden">
+<div class="bg-rose-500 h-full w-full animate-pulse"></div>
+</div>
+</div>
+<!-- KPI 6: Wearables -->
+<div class="bg-surface-container-low border border-slate-700/60 p-4 rounded-lg flex flex-col justify-between hover:border-cyan-500/40 transition-colors shadow-sm min-h-[110px]">
+<div class="flex items-start justify-between">
+<span class="text-[12px] font-medium text-slate-400 uppercase tracking-wider">Wearables</span>
+<span class="material-symbols-outlined text-[18px] text-cyan-400">watch</span>
+</div>
+<div class="my-2">
+<div class="font-mono text-[24px] font-bold text-white tracking-tight leading-none">142<span class="text-[16px] text-slate-400 font-normal">/142</span></div>
+<div class="font-mono text-[12px] text-emerald-400 font-semibold mt-1">100% Lock · 14ms</div>
+</div>
+<div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-emerald-500 h-full w-full"></div>
+</div>
+</div>
+<!-- KPI 7: Gas Sensors -->
+<div class="bg-surface-container-low border border-slate-700/60 p-4 rounded-lg flex flex-col justify-between hover:border-cyan-500/40 transition-colors shadow-sm min-h-[110px]">
+<div class="flex items-start justify-between">
+<span class="text-[12px] font-medium text-slate-400 uppercase tracking-wider">Gas Sensors</span>
+<span class="material-symbols-outlined text-[18px] text-cyan-400">sensors</span>
+</div>
+<div class="my-2">
+<div class="font-mono text-[24px] font-bold text-white tracking-tight leading-none">84<span class="text-slate-400 font-normal text-[16px]">/86</span></div>
+<div class="font-mono text-[12px] text-slate-300 mt-1">2 Calibrating</div>
+</div>
+<div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-cyan-500 h-full w-[97%]"></div>
+</div>
+</div>
+<!-- KPI 8: Subterranean -->
+<div class="bg-surface-container-low border border-slate-700/60 p-4 rounded-lg flex flex-col justify-between hover:border-cyan-500/40 transition-colors shadow-sm min-h-[110px]">
+<div class="flex items-start justify-between">
+<span class="text-[12px] font-medium text-slate-400 uppercase tracking-wider">Subterranean</span>
+<span class="material-symbols-outlined text-[18px] text-cyan-400">south</span>
+</div>
+<div class="my-2">
+<div class="font-mono text-[26px] font-bold text-cyan-300 tracking-tight leading-none">118</div>
+<div class="font-mono text-[12px] text-slate-300 mt-1">24 Surface Depot</div>
+</div>
+<div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-indigo-500 h-full w-[83%]"></div>
+</div>
+</div>
+</section>
+<!-- 2. MAIN SPLIT LAYOUT (8 COLS / 4 COLS) -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start w-full">
+<!-- LEFT COLUMN: MINE OPERATIONS MAP & ENVIRONMENTAL CONDITIONS (8 cols) -->
+<div class="xl:col-span-8 flex flex-col gap-6 w-full">
+<!-- UNDERGROUND TOPOLOGY MAP MODULE -->
+<div class="bg-surface-container-low border border-slate-700/60 rounded-xl shadow-md p-5 flex flex-col gap-4">
+<!-- Top Map Header with Strata Selector and Control Toolbar -->
+<div class="flex flex-wrap items-center justify-between gap-3 pb-2 border-b border-slate-700/50">
+<div class="flex items-center gap-2 overflow-x-auto">
+<span class="font-mono text-[13px] text-cyan-400 font-bold uppercase tracking-wider mr-1 hidden sm:inline">STRATA:</span>
+<button class="px-3 py-1.5 rounded-md bg-cyan-500 text-slate-950 font-mono text-[12px] font-bold shadow-sm" type="button">All Sectors</button>
+<button class="px-3 py-1.5 rounded-md bg-surface-container-high hover:bg-surface-container-highest text-slate-300 font-mono text-[12px] transition-colors" type="button">L1 Portal (+420m)</button>
+<button class="px-3 py-1.5 rounded-md bg-surface-container-high hover:bg-surface-container-highest text-slate-300 font-mono text-[12px] transition-colors" type="button">L2 Haulage (-640m)</button>
+<button class="px-3 py-1.5 rounded-md bg-surface-container-high hover:bg-surface-container-highest text-rose-300 border border-rose-500/40 font-mono text-[12px] transition-colors flex items-center gap-1.5 font-semibold" type="button">
+<span>L3 Stope (-880m)</span>
+<span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
+</button>
+<button class="px-3 py-1.5 rounded-md bg-surface-container-high hover:bg-surface-container-highest text-slate-300 font-mono text-[12px] transition-colors" type="button">L4 Deep (-1120m)</button>
+</div>
+<!-- Layer Toggles & Interactive Map Controls -->
+<div class="flex items-center gap-2">
+<div class="hidden sm:flex items-center gap-1 bg-surface-container-lowest p-1 rounded-md border border-slate-700/60">
+<button class="px-2.5 py-1 rounded bg-surface-container-high text-emerald-400 font-mono text-[11px] font-bold flex items-center gap-1.5 border border-emerald-500/30" title="Toggle Workers" type="button">
+<span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+<span>WORKERS</span>
+</button>
+<button class="px-2.5 py-1 rounded bg-surface-container-high text-cyan-400 font-mono text-[11px] font-bold flex items-center gap-1.5 border border-cyan-500/30" title="Toggle Gas Sensors" type="button">
+<span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+<span>GAS NODES</span>
+</button>
+<button class="px-2.5 py-1 rounded bg-surface-container-high text-emerald-300 font-mono text-[11px] font-bold flex items-center gap-1.5" title="Toggle Evac Paths" type="button">
+<span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+<span>EVAC</span>
+</button>
+<button class="px-2.5 py-1 rounded bg-surface-container-high text-indigo-300 font-mono text-[11px] font-bold flex items-center gap-1.5" title="Toggle Refuge Chambers" type="button">
+<span class="w-2 h-2 rounded-full bg-indigo-400"></span>
+<span>REFUGE</span>
+</button>
+</div>
+<!-- Map Action Controls: Zoom & Fullscreen -->
+<div class="flex items-center gap-1 bg-surface-container-lowest p-1 rounded-md border border-slate-700/60">
+<button class="w-7 h-7 flex items-center justify-center rounded bg-surface-container hover:bg-surface-container-high text-slate-200 transition-colors" title="Zoom In" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+<button class="w-7 h-7 flex items-center justify-center rounded bg-surface-container hover:bg-surface-container-high text-slate-200 transition-colors" title="Zoom Out" type="button">
+<span class="material-symbols-outlined text-[16px]">remove</span>
+</button>
+<button class="w-7 h-7 flex items-center justify-center rounded bg-surface-container hover:bg-surface-container-high text-slate-200 transition-colors" title="Reset View" type="button">
+<span class="material-symbols-outlined text-[16px]">filter_center_focus</span>
+</button>
+<button class="w-7 h-7 flex items-center justify-center rounded bg-surface-container hover:bg-surface-container-high text-slate-200 transition-colors" title="Toggle Fullscreen" type="button">
+<span class="material-symbols-outlined text-[16px]">fullscreen</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Vector SVG Isometric Topology Canvas -->
+<div class="relative w-full h-[450px] bg-surface-container-lowest rounded-lg border border-slate-800 overflow-hidden select-none">
+<!-- Precision Coordinate Grid Background -->
+<div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(#00C2FF 1.2px, transparent 1.2px); background-size: 28px 28px;"></div>
+<!-- HUD / Depth Strata Indicator & Real-Time Sync Status -->
+<div class="absolute top-3 left-3 z-10 flex flex-col gap-1 bg-surface-container/90 backdrop-blur-md px-3 py-2 rounded-md border border-slate-700 shadow-md">
+<span class="font-mono text-[11px] text-slate-400">DEPTH STRATA: -640m TO -1,120m</span>
+<div class="flex items-center gap-2 font-mono text-[12px]">
+<span class="text-cyan-400 font-bold">GRID EPSG:9921</span>
+<span class="text-slate-600">|</span>
+<span class="text-emerald-400 font-medium">UW-LBS Acc: ±0.4m</span>
+<span class="text-slate-600">|</span>
+<span class="text-slate-300">Synced: 2s ago</span>
+</div>
+</div>
+<!-- Live Vector SVG Map -->
+<svg class="w-full h-full" fill="none" viewbox="0 0 880 440" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern height="12" id="hazardPatternNew" patterntransform="rotate(45 0 0)" patternunits="userSpaceOnUse" width="12">
+<line opacity="0.45" stroke="#F87171" stroke-width="4" x1="0" x2="0" y1="0" y2="12"></line>
+<line opacity="0.6" stroke="#0F172A" stroke-width="4" x1="6" x2="6" y1="0" y2="12"></line>
+</pattern>
+<filter height="160%" id="redAlertGlowNew" width="160%" x="-30%" y="-30%">
+<fegaussianblur result="blur" stddeviation="4"></fegaussianblur>
+<fecomposite in="SourceGraphic" in2="blur" operator="over"></fecomposite>
+</filter>
+<filter height="140%" id="cyanGlowNew" width="140%" x="-20%" y="-20%">
+<fegaussianblur result="blur" stddeviation="3"></fegaussianblur>
+<fecomposite in="SourceGraphic" in2="blur" operator="over"></fecomposite>
+</filter>
+</defs>
+<!-- Shafts & Tunnel Crosscuts -->
+<!-- Surface Decline Tunnel -->
+<path d="M 60 45 L 220 105 L 420 105" stroke="#1b2a45" stroke-linecap="round" stroke-linejoin="round" stroke-width="30"></path>
+<path d="M 60 45 L 220 105 L 420 105" stroke="#334155" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+<!-- Main Hoist Shaft #1 Alpha (Vertical) -->
+<line stroke="#243552" stroke-width="20" x1="220" x2="220" y1="50" y2="400"></line>
+<line stroke="#64748b" stroke-dasharray="5 5" stroke-width="2" x1="220" x2="220" y1="50" y2="400"></line>
+<!-- Sub-Level 2 West Haulage Drift -->
+<path d="M 220 185 L 110 205 L 70 295 L 190 325" stroke="#1b2a45" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></path>
+<path d="M 220 185 L 110 205 L 70 295 L 190 325" stroke="#334155" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<!-- Sub-Level 2 East Crosscut -->
+<path d="M 220 185 L 460 175 L 580 215 L 640 195" stroke="#1b2a45" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></path>
+<path d="M 220 185 L 460 175 L 580 215 L 640 195" stroke="#334155" stroke-linecap="round" stroke-width="2"></path>
+<!-- Level 3 Stope Drift & Incident Gallery (CH4 Hazard Area) -->
+<path d="M 220 285 L 360 285 L 520 315 L 760 305 L 830 365" stroke="#1b2a45" stroke-linecap="round" stroke-linejoin="round" stroke-width="26"></path>
+<path d="M 220 285 L 360 285 L 520 315 L 760 305 L 830 365" stroke="#334155" stroke-width="2"></path>
+<!-- Level 4 Deep Borehole Exploration -->
+<path d="M 220 375 L 420 375 L 560 400" stroke="#162238" stroke-linecap="round" stroke-width="20"></path>
+<path d="M 220 375 L 420 375 L 560 400" stroke="#475569" stroke-dasharray="6 4" stroke-width="1.5"></path>
+<!-- Ventilation Shaft East -->
+<line stroke="#1b2a45" stroke-width="14" x1="760" x2="760" y1="80" y2="305"></line>
+<line stroke="#64748b" stroke-dasharray="4 4" stroke-width="1.5" x1="760" x2="760" y1="80" y2="305"></line>
+<!-- ACTIVE EVACUATION GREEN DASHED ROUTES -->
+<path class="animate-pulse" d="M 510 315 L 360 285 L 290 285" stroke="#4ade80" stroke-dasharray="7 5" stroke-width="3"></path>
+<path d="M 120 210 L 220 185" stroke="#4ade80" stroke-dasharray="7 5" stroke-width="3"></path>
+<path d="M 220 105 L 60 45" stroke="#4ade80" stroke-dasharray="7 5" stroke-width="3"></path>
+<!-- CH4 HAZARD EXCURSION ZONE (Stope 3B Drilling Area) -->
+<polygon fill="url(#hazardPatternNew)" points="650,265 800,265 845,350 690,355"></polygon>
+<polygon class="animate-pulse" points="650,265 800,265 845,350 690,355" stroke="#f87171" stroke-dasharray="6 4" stroke-width="2"></polygon>
+<!-- Hazard Warning Callout Badge -->
+<g filter="url(#redAlertGlowNew)" transform="translate(740, 275)">
+<circle cx="0" cy="0" fill="#991b1b" r="12"></circle>
+<circle cx="0" cy="0" fill="none" opacity="0.8" r="18" stroke="#f87171" stroke-width="2">
+<animate attributename="r" dur="2s" repeatcount="indefinite" values="10;24;10"></animate>
+<animate attributename="opacity" dur="2s" repeatcount="indefinite" values="0.9;0.1;0.9"></animate>
+</circle>
+<text fill="#fee2e2" font-family="JetBrains Mono" font-size="12" font-weight="bold" text-anchor="middle" x="0" y="4.5">!</text>
+</g>
+<!-- REFUGE CHAMBERS -->
+<!-- Refuge Alpha (Level 2) -->
+<g transform="translate(480, 160)">
+<rect fill="#1e3a8a" height="24" rx="4" stroke="#93c5fd" stroke-width="1.5" width="34" x="-17" y="-12"></rect>
+<text fill="#ffffff" font-family="JetBrains Mono" font-size="10" font-weight="bold" text-anchor="middle" x="0" y="4">RC-1</text>
+<rect fill="#0f172a" height="18" rx="3" stroke="#334155" stroke-width="0.5" width="120" x="-60" y="-34"></rect>
+<text fill="#bfdbfe" font-family="Inter" font-size="10" font-weight="600" text-anchor="middle" x="0" y="-21">Refuge Alpha (Cap: 20)</text>
+</g>
+<!-- Refuge Bravo (Level 3 - Near Incident) -->
+<g transform="translate(280, 270)">
+<rect fill="#1e3a8a" height="24" rx="4" stroke="#4ade80" stroke-width="2" width="34" x="-17" y="-12"></rect>
+<text fill="#ffffff" font-family="JetBrains Mono" font-size="10" font-weight="bold" text-anchor="middle" x="0" y="4">RC-2</text>
+<rect fill="#0f172a" height="18" rx="3" stroke="#4ade80" stroke-width="0.5" width="130" x="-65" y="-34"></rect>
+<text fill="#4ade80" font-family="Inter" font-size="10" font-weight="600" text-anchor="middle" x="0" y="-21">Refuge Bravo (16 Avail)</text>
+</g>
+<!-- Environmental Sensor Nodes -->
+<!-- Node S-101 (L1 Portal) -->
+<g transform="translate(290, 100)">
+<circle cx="0" cy="0" fill="#38bdf8" r="5"></circle>
+<rect fill="#0f172a" height="18" rx="3" stroke="#334155" stroke-width="1" width="88" x="8" y="-9"></rect>
+<text fill="#e2e8f0" font-family="JetBrains Mono" font-size="9" font-weight="500" x="14" y="4">S-101 O2:20.9%</text>
+</g>
+<!-- Node S-208 (Sub-L2 West) -->
+<g transform="translate(130, 265)">
+<circle cx="0" cy="0" fill="#38bdf8" r="5"></circle>
+<rect fill="#0f172a" height="18" rx="3" stroke="#334155" stroke-width="1" width="84" x="8" y="-9"></rect>
+<text fill="#e2e8f0" font-family="JetBrains Mono" font-size="9" font-weight="500" x="14" y="4">S-208 CO:2ppm</text>
+</g>
+<!-- Node S-304 (Stope 3B North - ALERT SENSOR) -->
+<g transform="translate(710, 320)">
+<circle class="animate-pulse" cx="0" cy="0" fill="#f87171" r="6"></circle>
+<rect fill="#7f1d1d" height="28" rx="4" stroke="#f87171" stroke-width="1.5" width="94" x="-98" y="-20"></rect>
+<text fill="#fee2e2" font-family="JetBrains Mono" font-size="9" font-weight="bold" text-anchor="middle" x="-51" y="-7">S-304 ALARM</text>
+<text fill="#fca5a5" font-family="JetBrains Mono" font-size="9" font-weight="600" text-anchor="middle" x="-51" y="3">CH4: 0.85% LEL</text>
+</g>
+<!-- Worker Clusters & Targeted Trackers -->
+<!-- Crew 2A at L2 Haulage (Safe Green Cluster) -->
+<g transform="translate(370, 175)">
+<circle cx="-7" cy="0" fill="#4ade80" r="4.5"></circle>
+<circle cx="2" cy="-5" fill="#4ade80" r="4.5"></circle>
+<circle cx="5" cy="5" fill="#4ade80" r="4.5"></circle>
+<circle cx="-3" cy="8" fill="#4ade80" r="4.5"></circle>
+<rect fill="#131f33" height="18" rx="3" stroke="#334155" stroke-width="1" width="74" x="14" y="-8"></rect>
+<text fill="#4ade80" font-family="JetBrains Mono" font-size="9" font-weight="bold" x="18" y="4">Crew 2A (12)</text>
+</g>
+<!-- Worker #084 J. Vance (Caution HR) -->
+<g transform="translate(160, 220)">
+<circle cx="0" cy="0" fill="#fbbf24" r="5"></circle>
+<circle cx="0" cy="0" fill="none" r="10" stroke="#fbbf24" stroke-dasharray="3 2" stroke-width="1.5"></circle>
+<rect fill="#131f33" height="20" rx="3" stroke="#fbbf24" stroke-width="1" width="100" x="10" y="-10"></rect>
+<text fill="#fde68a" font-family="JetBrains Mono" font-size="9" font-weight="bold" x="14" y="3">#084 Vance · 112bpm</text>
+</g>
+<!-- Affected Worker: Marcus Brody [WK-884] inside Gas Warning Area -->
+<g filter="url(#redAlertGlowNew)" transform="translate(680, 310)">
+<circle cx="0" cy="0" fill="#ef4444" r="7"></circle>
+<circle cx="0" cy="0" fill="none" r="14" stroke="#f87171" stroke-width="2">
+<animate attributename="r" dur="1.5s" repeatcount="indefinite" values="7;20;7"></animate>
+<animate attributename="opacity" dur="1.5s" repeatcount="indefinite" values="1;0.2;1"></animate>
+</circle>
+<rect fill="#0f172a" height="34" rx="4" stroke="#f87171" stroke-width="1.5" width="130" x="-135" y="-38"></rect>
+<text fill="#fee2e2" font-family="Inter" font-size="10" font-weight="bold" text-anchor="middle" x="-70" y="-23">M. BRODY [WK-884]</text>
+<text fill="#fca5a5" font-family="JetBrains Mono" font-size="9" font-weight="600" text-anchor="middle" x="-70" y="-10">STOPE 3B · AT RISK</text>
+<line stroke="#f87171" stroke-width="1.5" x1="-5" x2="0" y1="-21" y2="0"></line>
+</g>
+<!-- Strata Depth Labels in Tunnel Vector space -->
+<text fill="#94a3b8" font-family="JetBrains Mono" font-size="11" font-weight="bold" x="70" y="35">PORTAL NORTH 01 (+420m)</text>
+<text fill="#94a3b8" font-family="JetBrains Mono" font-size="11" font-weight="bold" x="235" y="80">SHAFT #1 HOIST</text>
+<text fill="#94a3b8" font-family="JetBrains Mono" font-size="10" x="32" y="195">SUB-L2 WEST HAULAGE</text>
+<text fill="#94a3b8" font-family="JetBrains Mono" font-size="10" x="590" y="165">VENTILATION DRIFT EAST</text>
+<text fill="#94a3b8" font-family="JetBrains Mono" font-size="10" font-weight="bold" x="370" y="275">STOPE 3B DRIFT (-880m)</text>
+<text fill="#94a3b8" font-family="JetBrains Mono" font-size="10" x="430" y="365">L4 DEEP EXPLORATION (-1120m)</text>
+</svg>
+<!-- Map Legend Overlay (Bottom Right Float) -->
+<div class="absolute bottom-3 right-3 z-10 bg-surface-container-low/95 backdrop-blur-md px-3.5 py-2 rounded-md border border-slate-700/80 flex items-center gap-4 text-[11px] font-mono shadow-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+<span class="text-slate-200">Personnel (Safe)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></span>
+<span class="text-rose-400 font-semibold">Excursion Zone</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded bg-blue-600"></span>
+<span class="text-blue-300">Refuge Bay</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-4 h-1 bg-emerald-400"></span>
+<span class="text-slate-300">Evac Route</span>
+</div>
+</div>
+</div>
+</div>
+<!-- LIVE ENVIRONMENTAL CONDITIONS MATRIX (10-GAS ARRAY & SENSORS) -->
+<div class="bg-surface-container-low border border-slate-700/60 rounded-xl shadow-md p-5 flex flex-col gap-4">
+<div class="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-slate-700/50">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[22px] text-cyan-400">air</span>
+<span class="font-sans font-semibold text-[17px] text-white">10-Gas Atmospheric Array</span>
+<span class="px-2.5 py-0.5 rounded-full bg-emerald-950/80 text-emerald-400 border border-emerald-800/60 font-mono text-[11px] font-semibold">Continuous Polling (1Hz)</span>
+</div>
+<div class="font-mono text-[12px] text-slate-300">
+<span>Station: </span>
+<span class="text-cyan-400 font-bold">Stope 3B North Sensor Array [S-304]</span>
+</div>
+</div>
+<!-- 10 Sensor Cards Grid (2 rows x 5 cards) -->
+<div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+<!-- 1. Methane (CH4) -->
+<div class="bg-surface-container border border-slate-700/70 p-3.5 rounded-lg flex flex-col justify-between hover:border-slate-600 transition-colors">
+<div class="flex items-center justify-between text-[11px] font-mono text-slate-400 font-semibold">
+<span>METHANE (CH4)</span>
+<span class="text-emerald-400 px-1.5 py-0.2 rounded bg-emerald-950/80 border border-emerald-800/50">NORMAL</span>
+</div>
+<div class="my-2">
+<div class="font-mono text-[20px] font-bold text-white tracking-tight">0.18 <span class="text-[13px] font-medium text-slate-400">% LEL</span></div>
+<div class="font-mono text-[11px] text-slate-400">Limit &lt;1.00%</div>
+</div>
+<div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-emerald-400 h-full w-[18%]"></div>
+</div>
+</div>
+<!-- 2. Carbon Monoxide (CO) -->
+<div class="bg-surface-container border border-slate-700/70 p-3.5 rounded-lg flex flex-col justify-between hover:border-slate-600 transition-colors">
+<div class="flex items-center justify-between text-[11px] font-mono text-slate-400 font-semibold">
+<span>CARBON MONOX</span>
+<span class="text-emerald-400 px-1.5 py-0.2 rounded bg-emerald-950/80 border border-emerald-800/50">SAFE</span>
+</div>
+<div class="my-2">
+<div class="font-mono text-[20px] font-bold text-white tracking-tight">8.0 <span class="text-[13px] font-medium text-slate-400">ppm</span></div>
+<div class="font-mono text-[11px] text-slate-400">Limit 25 ppm</div>
+</div>
+<div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-emerald-400 h-full w-[32%]"></div>
+</div>
+</div>
+<!-- 3. Hydrogen Sulphide (H2S) -->
+<div class="bg-surface-container border border-slate-700/70 p-3.5 rounded-lg flex flex-col justify-between hover:border-slate-600 transition-colors">
+<div class="flex items-center justify-between text-[11px] font-mono text-slate-400 font-semibold">
+<span>HYDR SULPH (H2S)</span>
+<span class="text-emerald-400 px-1.5 py-0.2 rounded bg-emerald-950/80 border border-emerald-800/50">ZERO</span>
+</div>
+<div class="my-2">
+<div class="font-mono text-[20px] font-bold text-emerald-400 tracking-tight">0.0 <span class="text-[13px] font-medium text-slate-400">ppm</span></div>
+<div class="font-mono text-[11px] text-slate-400">Limit 5.0 ppm</div>
+</div>
+<div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-emerald-400 h-full w-[2%]"></div>
+</div>
+</div>
+<!-- 4. Oxygen (O2) -->
+<div class="bg-surface-container border border-slate-700/70 p-3.5 rounded-lg flex flex-col justify-between hover:border-slate-600 transition-colors">
+<div class="flex items-center justify-between text-[11px] font-mono text-slate-400 font-semibold">
+<span>OXYGEN (O2)</span>
+<span class="text-emerald-400 px-1.5 py-0.2 rounded bg-emerald-950/80 border border-emerald-800/50">OPTIMAL</span>
+</div>
+<div class="my-2">
+<div class="font-mono text-[20px] font-bold text-white tracking-tight">20.9 <span class="text-[13px] font-medium text-slate-400">% Vol</span></div>
+<div class="font-mono text-[11px] text-slate-400">Nominal 20.9%</div>
+</div>
+<div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-cyan-400 h-full w-[95%]"></div>
+</div>
+</div>
+<!-- 5. Dust PM10 (Alert Amber) -->
+<div class="bg-surface-container border border-amber-500/50 p-3.5 rounded-lg flex flex-col justify-between hover:border-amber-400 transition-colors">
+<div class="flex items-center justify-between text-[11px] font-mono text-amber-300 font-bold">
+<span>DUST (PM10)</span>
+<span class="text-amber-400 px-1.5 py-0.2 rounded bg-amber-950/80 border border-amber-800/60">ALERT</span>
+</div>
+<div class="my-2">
+<div class="font-mono text-[20px] font-bold text-amber-300 tracking-tight">1.4 <span class="text-[13px] font-medium text-slate-400">mg/m³</span></div>
+<div class="font-mono text-[11px] text-amber-400 font-medium">Mist scrubbers ON</div>
+</div>
+<div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-amber-400 h-full w-[70%]"></div>
+</div>
+</div>
+<!-- 6. Air Temperature -->
+<div class="bg-surface-container border border-slate-700/70 p-3.5 rounded-lg flex flex-col justify-between hover:border-slate-600 transition-colors">
+<div class="flex items-center justify-between text-[11px] font-mono text-slate-400 font-semibold">
+<span>AIR TEMP</span>
+<span class="text-slate-400">DEEP</span>
+</div>
+<div class="my-2">
+<div class="font-mono text-[20px] font-bold text-white tracking-tight">28.4 <span class="text-[13px] font-medium text-slate-400">°C</span></div>
+<div class="font-mono text-[11px] text-slate-400">Wet bulb: 24.1°C</div>
+</div>
+<div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-cyan-400 h-full w-[60%]"></div>
+</div>
+</div>
+<!-- 7. Relative Humidity -->
+<div class="bg-surface-container border border-slate-700/70 p-3.5 rounded-lg flex flex-col justify-between hover:border-slate-600 transition-colors">
+<div class="flex items-center justify-between text-[11px] font-mono text-slate-400 font-semibold">
+<span>HUMIDITY</span>
+<span class="text-slate-400">MODERATE</span>
+</div>
+<div class="my-2">
+<div class="font-mono text-[20px] font-bold text-white tracking-tight">76 <span class="text-[13px] font-medium text-slate-400">% RH</span></div>
+<div class="font-mono text-[11px] text-slate-400">Dew pt: 23.8°C</div>
+</div>
+<div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-cyan-400 h-full w-[76%]"></div>
+</div>
+</div>
+<!-- 8. Seismic PPV -->
+<div class="bg-surface-container border border-slate-700/70 p-3.5 rounded-lg flex flex-col justify-between hover:border-slate-600 transition-colors">
+<div class="flex items-center justify-between text-[11px] font-mono text-slate-400 font-semibold">
+<span>SEISMIC PPV</span>
+<span class="text-emerald-400 px-1.5 py-0.2 rounded bg-emerald-950/80 border border-emerald-800/50">STABLE</span>
+</div>
+<div class="my-2">
+<div class="font-mono text-[20px] font-bold text-emerald-400 tracking-tight">0.04 <span class="text-[13px] font-medium text-slate-400">g</span></div>
+<div class="font-mono text-[11px] text-slate-400">Trigger: 0.15g</div>
+</div>
+<div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-emerald-400 h-full w-[26%]"></div>
+</div>
+</div>
+<!-- 9. Air Velocity -->
+<div class="bg-surface-container border border-slate-700/70 p-3.5 rounded-lg flex flex-col justify-between hover:border-slate-600 transition-colors">
+<div class="flex items-center justify-between text-[11px] font-mono text-slate-400 font-semibold">
+<span>AIR VELOCITY</span>
+<span class="text-cyan-300 px-1.5 py-0.2 rounded bg-cyan-950/80 border border-cyan-800/50">FORCED</span>
+</div>
+<div class="my-2">
+<div class="font-mono text-[20px] font-bold text-white tracking-tight">2.1 <span class="text-[13px] font-medium text-slate-400">m/s</span></div>
+<div class="font-mono text-[11px] text-slate-400">Fan #4: 100% RPM</div>
+</div>
+<div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-cyan-500 h-full w-[70%]"></div>
+</div>
+</div>
+<!-- 10. Barometric Pressure -->
+<div class="bg-surface-container border border-slate-700/70 p-3.5 rounded-lg flex flex-col justify-between hover:border-slate-600 transition-colors">
+<div class="flex items-center justify-between text-[11px] font-mono text-slate-400 font-semibold">
+<span>BAROMETRIC</span>
+<span class="text-slate-400">STEADY</span>
+</div>
+<div class="my-2">
+<div class="font-mono text-[20px] font-bold text-white tracking-tight">104.2 <span class="text-[13px] font-medium text-slate-400">kPa</span></div>
+<div class="font-mono text-[11px] text-slate-400">+2.4 kPa vs Sfc</div>
+</div>
+<div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-cyan-400 h-full w-[80%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: EMERGENCY INCIDENT COMMAND PANEL & VITALS (4 cols) -->
+<div class="xl:col-span-4 flex flex-col gap-6 w-full">
+<!-- CRITICAL INCIDENT COMMAND PANEL -->
+<div class="bg-surface-container-low border-2 border-rose-500/80 rounded-xl shadow-2xl overflow-hidden">
+<!-- Emergency Header Strip -->
+<div class="bg-rose-950/90 border-b border-rose-600/70 p-4 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[24px] text-rose-400 animate-pulse">crisis_alert</span>
+<div>
+<span class="font-mono text-[14px] font-bold tracking-tight text-white block">INCIDENT: INC-2025-084</span>
+<span class="text-[12px] text-rose-300 font-medium">SEVERITY LEVEL 2 CH4 ALERT</span>
+</div>
+</div>
+<span class="px-3 py-1 rounded bg-rose-600 text-white font-mono text-[11px] font-bold tracking-wider animate-pulse shadow-md">ACTION REQUIRED</span>
+</div>
+<div class="p-5 flex flex-col gap-4 bg-surface-container-low">
+<!-- Location & Summary -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<span class="text-[12px] font-bold text-rose-400 uppercase tracking-wide">Sub-Level 3 Drift B / Drill Rig 4B</span>
+<span class="font-mono text-[12px] text-slate-400">T-minus 03m 48s</span>
+</div>
+<p class="text-[13px] text-slate-200 leading-relaxed font-normal">
+                    Localized rapid CH4 surge detected near drilling face. Primary ventilation fan boosted to 100%. One worker confirmed in excursion perimeter.
+                  </p>
+</div>
+<!-- Affected Personnel Biometrics Card -->
+<div class="bg-surface-container border border-slate-700 p-4 rounded-lg flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-md bg-rose-950/80 border border-rose-700/60 flex items-center justify-center font-mono text-[15px] text-rose-300 font-bold">
+                        MB
+                      </div>
+<div class="flex flex-col">
+<span class="font-sans text-[14px] text-white font-bold leading-tight">Marcus Brody</span>
+<span class="font-mono text-[12px] text-slate-300 leading-tight">ID: WK-884 · Driller L3</span>
+</div>
+</div>
+<span class="font-mono text-[11px] px-2 py-0.5 rounded bg-rose-950/80 text-rose-300 border border-rose-800/60 font-semibold">T-Lock: 2s ago</span>
+</div>
+<!-- Biometrics Readout Grid -->
+<div class="grid grid-cols-3 gap-2 pt-1 font-mono">
+<div class="bg-surface-container-lowest p-2 rounded-md border border-slate-800 flex flex-col items-center">
+<span class="text-[10px] text-slate-400 uppercase font-semibold">Heart Rate</span>
+<span class="text-rose-400 font-bold text-[16px] mt-0.5">104 <span class="text-[11px] font-normal text-slate-400">bpm</span></span>
+</div>
+<div class="bg-surface-container-lowest p-2 rounded-md border border-slate-800 flex flex-col items-center">
+<span class="text-[10px] text-slate-400 uppercase font-semibold">SpO2</span>
+<span class="text-slate-200 font-bold text-[16px] mt-0.5">97%</span>
+</div>
+<div class="bg-surface-container-lowest p-2 rounded-md border border-rose-900/60 flex flex-col items-center">
+<span class="text-[10px] text-rose-300 uppercase font-semibold">Ambient CH4</span>
+<span class="text-rose-400 font-bold text-[16px] mt-0.5">0.85%</span>
+</div>
+</div>
+</div>
+<!-- Incident Chrono Log -->
+<div class="flex flex-col gap-2">
+<span class="text-[12px] font-semibold text-slate-300 uppercase tracking-wide">Automated Incident Log</span>
+<div class="flex flex-col gap-1.5 font-mono text-[12px] bg-surface-container-lowest/80 p-3 rounded-lg border border-slate-800">
+<div class="flex items-start gap-2.5">
+<span class="text-slate-400 shrink-0">14:38:12</span>
+<span class="text-slate-200">Sensor S-304 crossed 0.50% LEL baseline</span>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="text-slate-400 shrink-0">14:38:40</span>
+<span class="text-emerald-400">SCADA Fan #4 intake increased to 100% capacity</span>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="text-slate-400 shrink-0">14:40:02</span>
+<span class="text-rose-400 font-medium">Controller Manual Action Protocol Triggered</span>
+</div>
+</div>
+</div>
+<!-- ERT Squad Status Indicator -->
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-container border border-slate-700/80 font-mono text-[12px]">
+<div class="flex items-center gap-2.5">
+<span class="w-2.5 h-2.5 rounded-full bg-indigo-400 animate-ping"></span>
+<span class="text-white font-bold">ERT Squad 2</span>
+</div>
+<span class="text-indigo-300 font-medium">En route via Portal West (ETA 3m)</span>
+</div>
+<!-- Tactical Action Buttons (min-h 42px) -->
+<div class="flex flex-col gap-2.5 pt-1">
+<!-- Secondary Actions -->
+<div class="grid grid-cols-2 gap-2.5">
+<button class="min-h-[42px] py-2 px-3 rounded-md bg-surface-container-high hover:bg-surface-container-highest text-slate-200 font-mono text-[12px] font-semibold flex items-center justify-center gap-2 border border-slate-700 transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px] text-cyan-400">check_circle</span>
+<span>Acknowledge</span>
+</button>
+<button class="min-h-[42px] py-2 px-3 rounded-md bg-surface-container-high hover:bg-surface-container-highest text-slate-200 font-mono text-[12px] font-semibold flex items-center justify-center gap-2 border border-slate-700 transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px] text-emerald-400">headset_mic</span>
+<span>Comms: Ch 3</span>
+</button>
+</div>
+<!-- Primary Emergency Order Button -->
+<button class="min-h-[44px] py-3 px-4 rounded-md bg-rose-600 hover:bg-rose-500 text-white font-mono text-[13px] font-bold tracking-wide flex items-center justify-center gap-2.5 shadow-lg border border-rose-400/50 transition-all active:scale-[0.99]" type="button">
+<span class="material-symbols-outlined text-[20px]">eject</span>
+<span>ORDER LOCAL WITHDRAWAL (SECTOR 3B)</span>
+</button>
+<div class="text-center font-mono text-[11px] text-slate-400">
+                    Triggers automated audible evacuation horn and tag strobe
+                  </div>
+</div>
+</div>
+</div>
+<!-- WORKER HEALTH TELEMETRY AGGREGATE CARD -->
+<div class="bg-surface-container-low border border-slate-700/60 rounded-xl shadow-md p-5 flex flex-col gap-4">
+<div class="flex items-center justify-between pb-2 border-b border-slate-700/50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[22px] text-emerald-400">vital_signs</span>
+<span class="font-sans font-semibold text-[17px] text-white">Shift B Vitals Aggregate</span>
+</div>
+<span class="font-mono text-[12px] text-slate-400">142 Streamed</span>
+</div>
+<!-- Vitals Matrix Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+<div class="bg-surface-container border border-slate-700/70 p-3 rounded-lg flex flex-col">
+<span class="font-mono text-[11px] text-slate-400 uppercase font-semibold">AVG HEART RATE</span>
+<div class="font-mono text-[22px] font-bold text-white mt-1 leading-tight">78 <span class="font-normal text-[13px] text-slate-400">bpm</span></div>
+<span class="font-mono text-[11px] text-emerald-400 mt-1">Range: 58-112</span>
+</div>
+<div class="bg-surface-container border border-slate-700/70 p-3 rounded-lg flex flex-col">
+<span class="font-mono text-[11px] text-slate-400 uppercase font-semibold">AVG SPO2</span>
+<div class="font-mono text-[22px] font-bold text-emerald-400 mt-1 leading-tight">98.2 <span class="font-normal text-[13px] text-slate-400">%</span></div>
+<span class="font-mono text-[11px] text-emerald-400 mt-1">All &gt;95%</span>
+</div>
+<div class="bg-surface-container border border-slate-700/70 p-3 rounded-lg flex flex-col">
+<span class="font-mono text-[11px] text-slate-400 uppercase font-semibold">BODY TEMP</span>
+<div class="font-mono text-[22px] font-bold text-white mt-1 leading-tight">37.1 <span class="font-normal text-[13px] text-slate-400">°C</span></div>
+<span class="font-mono text-[11px] text-slate-400 mt-1">Thermal index OK</span>
+</div>
+<div class="bg-surface-container border border-slate-700/70 p-3 rounded-lg flex flex-col">
+<span class="font-mono text-[11px] text-slate-400 uppercase font-semibold">RESPIRATION</span>
+<div class="font-mono text-[22px] font-bold text-white mt-1 leading-tight">16 <span class="font-normal text-[13px] text-slate-400">br/m</span></div>
+<span class="font-mono text-[11px] text-emerald-400 mt-1">Normal cadence</span>
+</div>
+<div class="bg-surface-container border border-slate-700/70 p-3 rounded-lg flex flex-col col-span-2 sm:col-span-2">
+<span class="font-mono text-[11px] text-slate-400 uppercase font-semibold">FATIGUE INDEX</span>
+<div class="flex items-center justify-between mt-1">
+<div class="font-mono text-[22px] font-bold text-emerald-400 leading-tight">22<span class="text-[14px] font-normal text-slate-400">/100</span></div>
+<span class="font-mono text-[12px] text-emerald-400 font-semibold">Low Fatigue</span>
+</div>
+<div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden mt-1.5">
+<div class="bg-emerald-400 h-full w-[22%]"></div>
+</div>
+</div>
+</div>
+<!-- Fall Detection & Battery Diagnostics -->
+<div class="flex flex-col gap-3 bg-surface-container border border-slate-700/70 p-3.5 rounded-lg">
+<div class="flex items-center justify-between font-mono text-[12px]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-emerald-400">accessibility_new</span>
+<span class="text-white font-bold">Fall Detection:</span>
+</div>
+<span class="text-emerald-400 font-bold">0 Fall Events (24h)</span>
+</div>
+<div class="font-mono text-[11px] text-slate-300">
+                  Active 3-axis accelerometer and barometric polling on all 142 tags.
+                </div>
+<!-- Wearable Battery Breakdown -->
+<div class="pt-2.5 border-t border-slate-700/60 flex flex-col gap-2 font-mono text-[12px]">
+<span class="text-slate-400 text-[11px] uppercase font-semibold">Wearable Battery Levels</span>
+<div class="flex items-center justify-between text-[12px]">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+<span class="text-slate-200">High (&gt;60%): <strong class="text-emerald-400">139</strong></span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+<span class="text-slate-200">Med (15-60%): <strong class="text-amber-400">2</strong></span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+<span class="text-slate-200">Low (&lt;15%): <strong class="text-rose-400">1</strong></span>
+</div>
+</div>
+<div class="text-[11px] text-slate-400">
+                    Low device: <span class="text-slate-200 font-medium">Worker #102 K. Ramos (Level 2 Haulage - 11% batt)</span>
+</div>
+</div>
+</div>
+<!-- Quick Action Broadcast -->
+<button class="w-full py-2.5 px-3 rounded-md bg-surface-container-high hover:bg-surface-container-highest text-cyan-300 border border-slate-700 font-mono text-[12px] font-semibold flex items-center justify-center gap-2 transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">sensors</span>
+<span>Broadcast Vitals Check to Shift B</span>
+</button>
+</div>
+<!-- TETRA UHF VOICE COMMS STRIP -->
+<div class="bg-surface-container-low border border-slate-700/60 rounded-xl shadow-md p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></div>
+<div class="flex flex-col">
+<span class="font-mono text-[13px] text-white font-bold">TETRA UHF Channel 01 (Mine General)</span>
+<span class="font-mono text-[11px] text-slate-400">Repeater R-4: 99.4% Signal RSSI</span>
+</div>
+</div>
+<button class="px-4 py-2 rounded-md bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-mono text-[13px] font-bold flex items-center gap-1.5 shadow-md transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">mic</span>
+<span>PTT</span>
+</button>
+</div>
+</div>
+</div>
+<!-- 3. SIMULATION DISCLAIMER FOOTER BAR -->
+<footer class="w-full bg-surface-container-lowest border border-slate-700/60 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-slate-400 font-mono text-[12px]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-cyan-400">terminal</span>
+<span>DACOS Industrial Intelligence Runtime · Module C (Olympic Dam Telemetry Engine)</span>
+</div>
+<div class="text-center sm:text-right text-[11px] text-slate-400 max-w-xl">
+            NOTICE: Running in DACOS Simulation Environment v2.4. Telemetry streams, vitals algorithms, and GIS coordinates are synthetic test fixtures designed for control-room validation and ERT drills.
+          </div>
+</footer>
+</div>
+</main>
+</div>
+</body></html>

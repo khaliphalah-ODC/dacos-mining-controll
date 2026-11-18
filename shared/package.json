@@ -1,0 +1,10 @@
+{
+  "name": "@dacos/contracts",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": "./contracts.js",
+  "dependencies": {
+    "zod": "^4.6.7"
+  }
+}

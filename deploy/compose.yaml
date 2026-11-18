@@ -1,0 +1,45 @@
+services:
+  db:
+    image: postgres:18-bookworm
+    environment:
+      POSTGRES_USER: dacos
+      POSTGRES_DB: dacos
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set a unique database password}
+    volumes:
+      - database:/var/lib/postgresql
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U dacos -d dacos]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+    restart: unless-stopped
+  migrate:
+    build: ..
+    user: node
+    environment:
+      DATABASE_URL: ${DATABASE_URL:?Set the internal PostgreSQL URL with URL-encoded credentials}
+    command: [node, backend/scripts/prisma.mjs, migrate, deploy]
+    depends_on:
+      db:
+        condition: service_healthy
+  app:
+    build: ..
+    environment:
+      DATABASE_URL: ${DATABASE_URL:?Set DATABASE_URL}
+      DACOS_JWT_SECRET: ${DACOS_JWT_SECRET:?Set at least 48 random bytes}
+      DACOS_MODE: operational
+    ports:
+      - "127.0.0.1:3001:3001"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    healthcheck:
+      test: [CMD, node, -e, "fetch('http://127.0.0.1:3001/api/health').then(r=>{if(!r.ok)process.exit(1);return r.json()}).then(b=>{if(b.status!=='ok')process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+volumes:
+  database:

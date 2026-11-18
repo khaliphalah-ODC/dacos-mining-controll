@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#24364a","on-tertiary-container":"#543300","background":"#011427","error":"#ffb4ab","on-tertiary":"#472a00","inverse-surface":"#d1e4fe","on-error":"#690005","surface-dim":"#011427","on-error-container":"#ffdad6","primary":"#4bdbcb","surface-container":"#0d2134","outline":"#859491","secondary-fixed":"#d3e4fe","surface-container-highest":"#24364a","outline-variant":"#3c4947","secondary-fixed-dim":"#b7c8e1","on-surface-variant":"#bbcac6","tertiary-container":"#e49200","error-container":"#93000a","on-background":"#d1e4fe","on-tertiary-fixed-variant":"#653e00","on-primary-container":"#00423c","primary-container":"#00b8a9","on-primary":"#003732","secondary-container":"#3a4a5f","secondary":"#b7c8e1","primary-fixed-dim":"#4bdbcb","tertiary-fixed":"#ffddb8","on-secondary":"#213145","tertiary":"#ffb95f","surface-container-high":"#192b3f","on-secondary-fixed":"#0b1c30","surface":"#011427","inverse-on-surface":"#203246","surface-container-lowest":"#000f20","on-secondary-fixed-variant":"#38485d","on-secondary-container":"#a9bad3","on-surface":"#d1e4fe","primary-fixed":"#6df8e7","on-primary-fixed-variant":"#005049","inverse-primary":"#006a61","surface-bright":"#293a4f","surface-tint":"#4bdbcb","on-tertiary-fixed":"#2a1700","on-primary-fixed":"#00201d","tertiary-fixed-dim":"#ffb95f","surface-container-low":"#091d30"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"gutter-desktop":"1.5rem","gutter":"1rem","space-md":"1rem","space-lg":"1.5rem","margin":"1rem","margin-desktop":"2rem","space-sm":"0.5rem","space-xs":"0.25rem","space-xl":"2rem"},fontFamily:{"headline-sm":["Inter"],"headline-lg-mobile":["Inter"],"label-sm":["Inter"],"headline-xl-mobile":["Inter"],"telemetry-lg":["Inter"],"label-md":["Inter"],"headline-lg":["Inter"],"body-lg":["Inter"],"headline-md":["Inter"],"code-sm":["Inter"],"telemetry-md":["Inter"],"body-md":["Inter"],"headline-xl":["Inter"]},fontSize:{"headline-sm":["16px",{"lineHeight":"24px","fontWeight":"600"}],"headline-lg-mobile":["20px",{"lineHeight":"28px","fontWeight":"600"}],"label-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.04em","fontWeight":"500"}],"headline-xl-mobile":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"700"}],"telemetry-lg":["28px",{"lineHeight":"32px","letterSpacing":"0.01em","fontWeight":"700"}],"label-md":["13px",{"lineHeight":"18px","letterSpacing":"0.02em","fontWeight":"500"}],"headline-lg":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"headline-md":["20px",{"lineHeight":"28px","fontWeight":"600"}],"code-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.06em","fontWeight":"600"}],"telemetry-md":["20px",{"lineHeight":"24px","letterSpacing":"0.01em","fontWeight":"700"}],"body-md":["14px",{"lineHeight":"22px","fontWeight":"400"}],"headline-xl":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"700"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-60 bg-surface-container-low z-50 flex flex-col border-r border-outline-variant/40"><div class="h-[68px] px-space-md flex items-center gap-space-sm border-b border-outline-variant/40 bg-surface-container-low"><img alt="DACOS Industrial Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrAX2iZPbYx64GpY3yb9I4VZO6I7n-ysR6m3YuaOEdd236wG-R_z0O3sW_fW-xXtdF6N4EghOFzYEnSCFSKjynx3BMqmENGE73fxlsBZPQ2V1HXselFBnsw24FHS6EQNn-CJnKwzk3AXpYIc7R3spmWdV9IzIWxd3BhnklSxvhiSJZqgC2ik_55Rn7Nbwgupu6LAmFfMnsTZbHjUXQO_UtJNlfw0dtLj5oayaT_60-Ol"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm tracking-tight text-primary leading-none">DACOS</span><span class="font-code-sm text-code-sm uppercase text-on-surface-variant tracking-wider">Liberia SCADA</span></div></div><div class="flex-1 overflow-y-auto px-space-xs py-space-sm space-y-space-md"><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Monitoring</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="overview" href="#">Overview</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="control-room" href="#">Control Room</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="live-workers" href="#">Live Workers</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="mine-map" href="#">Mine Map</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="environmental" href="#">Environmental</a></nav></div><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Response</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="incidents" href="#">Incidents</a></nav></div><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Analysis</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="history-and-reports" href="#">History &amp; Reports</a></nav></div><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Management</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="workers" href="#">Workers</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="devices" href="#">Devices</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="rules" href="#">Rules</a></nav></div><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Device Lab</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="wifi-simulator" href="#">Wi-Fi Simulator</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="ble-gateway" href="#">BLE Gateway</a></nav></div><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Administration</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="accounts-and-audit" href="#">Accounts &amp; Audit</a></nav></div><div class="space-y-space-xs border-t border-outline-variant/40 pt-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">System Links</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="my-account" href="#">My Account</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="public-website" href="#">Public Website</a><a class="block px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="sign-out" href="#">Sign Out</a></nav></div></div></aside><div class="pl-60 min-h-screen flex flex-col"><header class="fixed top-0 left-60 right-0 h-[68px] bg-surface-container-low border-b border-outline-variant/40 z-40 px-space-md flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md min-w-0"><div class="flex items-center gap-1.5 font-code-sm text-code-sm text-on-surface-variant truncate"><span class="text-primary">DACOS</span><span class="text-outline">/</span><span class="text-on-surface uppercase tracking-wider font-semibold">Operations</span></div><div class="hidden xl:flex items-center px-2.5 py-1 rounded bg-tertiary-container/20 border border-tertiary text-tertiary font-code-sm text-code-sm uppercase tracking-wider whitespace-nowrap"><span class="inline-block w-1.5 h-1.5 rounded-full bg-tertiary mr-2 animate-pulse"></span>DEMO PROTOTYPE — NOT A CERTIFIED MINE SAFETY SYSTEM</div></div><div class="flex items-center gap-space-md shrink-0"><div class="hidden md:flex items-center gap-2 px-2.5 py-1 rounded bg-surface-container-high border border-outline-variant font-code-sm text-code-sm"><span class="w-2 h-2 rounded-full bg-primary animate-ping"></span><span class="text-primary font-semibold">WEBSOCKET CONNECTED (DEMO)</span><span class="text-outline">|</span><span class="text-on-surface-variant">14:32:08 UTC</span></div><div class="flex items-center gap-space-sm pl-space-sm border-l border-outline-variant/40"><div class="flex items-center gap-space-sm"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-primary/40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfpViSx2OZ16qd5PPJVXXDCSIynuKhnplMHvh1RGoC7NK2po1VcOX7RtabkVjEbzUorP2Yn0ULUYkzCTwYOODs1qS7VtaxrWuVjLO6a4z26fFR48Ws04o1jBkehyFIyI2ObB-YneOWIG98OlS5Q_3_h4qN0vSMhkKrYB0gBLs1atHYrklxj0YA1UKs9B2zx9a7nxUJn32l0fVQPwdKYDO7ltMbHkRWHZ17bFgoGl8"/><div class="hidden lg:flex flex-col text-left"><span class="font-label-md text-label-md font-semibold text-on-surface leading-tight">Sarah Jenkins</span><span class="font-code-sm text-code-sm text-primary uppercase leading-tight">Supervisor</span></div></div><div class="flex items-center gap-1"><a class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="my-account" href="#" title="My Account"><span class="material-symbols-outlined text-[20px]">settings</span></a><a class="p-1.5 rounded-lg text-on-surface-variant hover:text-error hover:bg-surface-container-high transition-colors" data-path="sign-out" href="#" title="Sign Out"><span class="material-symbols-outlined text-[20px]">logout</span></a></div></div></div></header><main class="flex-1 pt-[68px] bg-surface w-full px-space-md py-space-md"><div class="flex flex-col w-full">
+<!-- Persistent High-Visibility Lab Disclaimer Banner -->
+<section class="mb-space-md w-full rounded-lg bg-tertiary-container/15 p-space-md text-tertiary shadow-md">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-[24px] text-tertiary shrink-0 mt-0.5">warning</span>
+<div>
+<span class="font-code-sm text-code-sm tracking-wider uppercase font-semibold block text-tertiary-fixed">
+            SIMULATED TELEMETRY LAB — EXPERIMENTAL TESTBENCH // NOT CONNECTED TO CERTIFIED HARDWARE // NEVER USED FOR ACTUAL EMERGENCY DISPATCH
+          </span>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">
+            Synthetic uplink session initialized. Packets routed strictly to internal sandbox brokers. All vital sign anomalies and man-down flags trigger isolated virtual dispatch routines.
+          </p>
+</div>
+</div>
+<div class="flex items-center gap-space-xs self-start md:self-auto shrink-0 bg-surface-container-lowest px-space-sm py-1 rounded">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+<span class="font-code-sm text-code-sm text-tertiary uppercase tracking-widest">ISOLATED SANDBOX</span>
+</div>
+</div>
+</section>
+<!-- Top Hero & Context Strip -->
+<section class="mb-space-lg flex flex-col lg:flex-row lg:items-end justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-code-sm text-code-sm uppercase tracking-widest text-primary font-semibold">DEVICE LAB // NODE VIRTUALIZER</span>
+<span class="text-outline">/</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant uppercase">LIB-EXT-SUBMESH-SIM-09</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">
+        Wi-Fi Device Simulator
+      </h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mt-1">
+        Configure emulated wearable telemetry packs, inject physiological anomalies, and stress-test SCADA ingestion pipelines across simulated Liberian mining tunnels.
+      </p>
+</div>
+<!-- Right Quick Telemetry Stat Pill Box -->
+<div class="flex items-center gap-space-sm flex-wrap">
+<div class="bg-surface-container-high rounded-lg p-space-sm shadow-sm flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">router</span>
+</div>
+<div>
+<span class="block font-code-sm text-code-sm uppercase text-outline">Active Virtual Nodes</span>
+<span class="font-telemetry-md text-telemetry-md text-on-surface">01 <span class="font-code-sm text-code-sm text-primary font-normal">/ 16 MAX</span></span>
+</div>
+</div>
+<div class="bg-surface-container-high rounded-lg p-space-sm shadow-sm flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[20px]">timer</span>
+</div>
+<div>
+<span class="block font-code-sm text-code-sm uppercase text-outline">Session Elapsed</span>
+<span class="font-telemetry-md text-telemetry-md text-on-surface" id="sessionTimer">00:42:19</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Split Architecture: Workflow Stepper (Left 7 Cols) + Live Packet Pipeline Console (Right 5 Cols) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- LEFT PANEL: Guided 4-Step Testbench Controls -->
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<!-- STEP 1: Control Room Pairing Code Generation -->
+<section class="bg-surface-container rounded-xl p-space-lg shadow-md">
+<div class="flex items-center justify-between pb-space-sm mb-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="flex items-center justify-center w-7 h-7 rounded bg-primary-container text-on-primary-container font-headline-sm text-headline-sm">1</span>
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Control Room Pairing Handshake</h2>
+<span class="font-code-sm text-code-sm text-outline">SESSION SYNC PROTOCOL // GEOFENCE CORRIDOR B</span>
+</div>
+</div>
+<span class="font-code-sm text-code-sm uppercase px-2 py-0.5 rounded bg-primary/10 text-primary">AUTH READY</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md items-center">
+<div class="md:col-span-7 space-y-space-sm">
+<label class="block font-label-md text-label-md text-on-surface-variant">Simulated Personnel Binding Target</label>
+<div class="relative">
+<select class="w-full bg-surface-container-low text-on-surface rounded-lg px-space-md py-2.5 font-body-md text-body-md appearance-none focus:outline-none focus:ring-2 focus:ring-primary shadow-sm cursor-pointer" id="workerSelect">
+<option selected="" value="W-088">Peter Kollie [W-088] — Sub-Level 3 Drift Drill</option>
+<option value="W-092">Emmanuel Tarpeh [W-092] — Shaft 4 Haulage</option>
+<option value="W-104">Josephine Gbato [W-104] — Ventilation Sector E</option>
+<option value="W-015">Abraham Weah [W-015] — Crusher Pit Conveyor</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 text-[18px] text-outline pointer-events-none">expand_more</span>
+</div>
+<p class="font-code-sm text-code-sm text-outline">Synthetic bio-telemetry packets will inject under Peter Kollie's operational SCADA ledger.</p>
+</div>
+<div class="md:col-span-5 bg-surface-container-lowest rounded-lg p-space-md shadow-inner flex flex-col items-center justify-center text-center">
+<span class="font-code-sm text-code-sm uppercase tracking-widest text-outline mb-1">PAIRING PIN (SIMULATED)</span>
+<div class="font-telemetry-lg text-telemetry-lg text-primary tracking-widest font-bold my-1">
+              749-218
+            </div>
+<div class="flex items-center gap-1.5 font-code-sm text-code-sm text-tertiary">
+<span class="material-symbols-outlined text-[14px]">hourglass_top</span>
+<span>EXPIRES IN: <span class="font-semibold" id="pairingCountdown">04:18</span></span>
+</div>
+</div>
+</div>
+</section>
+<!-- STEP 2: Virtual Sensor Transmitter Configuration -->
+<section class="bg-surface-container rounded-xl p-space-lg shadow-md">
+<div class="flex items-center justify-between pb-space-sm mb-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="flex items-center justify-center w-7 h-7 rounded bg-surface-container-highest text-primary font-headline-sm text-headline-sm">2</span>
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Virtual Sensor Transmitter Config</h2>
+<span class="font-code-sm text-code-sm text-outline">SUB-GHZ &amp; MESH UPLINK EMULATION</span>
+</div>
+</div>
+<span class="font-code-sm text-code-sm uppercase text-secondary">IEEE 802.11ah</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Protocol Mode -->
+<div class="space-y-space-xs">
+<label class="block font-label-md text-label-md text-on-surface-variant">Protocol Mode</label>
+<div class="bg-surface-container-low rounded-lg p-space-sm space-y-1">
+<label class="flex items-center gap-2 cursor-pointer p-1 rounded hover:bg-surface-container-high transition-colors">
+<input checked="" class="accent-primary" name="protocol" type="radio" value="mesh"/>
+<span class="font-body-md text-body-md text-on-surface">Sub-Mesh Wi-Fi (HaLow)</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer p-1 rounded hover:bg-surface-container-high transition-colors">
+<input class="accent-primary" name="protocol" type="radio" value="ble"/>
+<span class="font-body-md text-body-md text-on-surface-variant">BLE Gateway Hop</span>
+</label>
+</div>
+</div>
+<!-- Cadence Selector -->
+<div class="space-y-space-xs">
+<label class="block font-label-md text-label-md text-on-surface-variant">Cadence Frequency</label>
+<div class="grid grid-cols-4 gap-1 bg-surface-container-low p-1 rounded-lg">
+<button class="cadence-btn bg-primary-container text-on-primary-container py-2 rounded font-code-sm text-code-sm font-semibold transition-all" data-cadence="1000" type="button">1s</button>
+<button class="cadence-btn text-on-surface-variant hover:text-on-surface py-2 rounded font-code-sm text-code-sm transition-all" data-cadence="5000" type="button">5s</button>
+<button class="cadence-btn text-on-surface-variant hover:text-on-surface py-2 rounded font-code-sm text-code-sm transition-all" data-cadence="10000" type="button">10s</button>
+<button class="cadence-btn text-on-surface-variant hover:text-on-surface py-2 rounded font-code-sm text-code-sm transition-all" data-cadence="30000" type="button">30s</button>
+</div>
+<p class="font-code-sm text-code-sm text-outline mt-1">Uplink beacon interval.</p>
+</div>
+<!-- Packet Loss Simulation -->
+<div class="space-y-space-xs">
+<label class="block font-label-md text-label-md text-on-surface-variant">Packet Loss Injection</label>
+<div class="grid grid-cols-3 gap-1 bg-surface-container-low p-1 rounded-lg">
+<button class="loss-btn bg-surface-container-high text-primary py-2 rounded font-code-sm text-code-sm font-semibold transition-all" data-loss="0" type="button">0% Nominal</button>
+<button class="loss-btn text-on-surface-variant hover:text-on-surface py-2 rounded font-code-sm text-code-sm transition-all" data-loss="2" type="button">2% Mild</button>
+<button class="loss-btn text-on-surface-variant hover:text-on-surface py-2 rounded font-code-sm text-code-sm transition-all" data-loss="5" type="button">5% Tunnel Drift</button>
+</div>
+<p class="font-code-sm text-code-sm text-outline mt-1">Simulates iron-ore attenuation.</p>
+</div>
+</div>
+</section>
+<!-- STEP 3: Interactive Telemetry Sliders & Ingestion Simulator -->
+<section class="bg-surface-container rounded-xl p-space-lg shadow-md">
+<div class="flex items-center justify-between pb-space-sm mb-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="flex items-center justify-center w-7 h-7 rounded bg-surface-container-highest text-primary font-headline-sm text-headline-sm">3</span>
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Interactive Telemetry Sliders &amp; Ingestion Simulator</h2>
+<span class="font-code-sm text-code-sm text-outline">SYNTHETIC BIOMETRICS &amp; IMU KINEMATICS</span>
+</div>
+</div>
+<button class="flex items-center gap-1 text-outline hover:text-primary transition-colors font-code-sm text-code-sm" id="resetSlidersBtn">
+<span class="material-symbols-outlined text-[16px]">restart_alt</span>
+<span>DEFAULT VALUES</span>
+</button>
+</div>
+<div class="space-y-space-md">
+<!-- Slider 1: Heart Rate -->
+<div class="bg-surface-container-low rounded-lg p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-space-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-error">favorite</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Heart Rate</span>
+<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-error-container text-error font-semibold uppercase" id="tachycardiaBadge">TACHYCARDIA TRIP &gt;120</span>
+</div>
+<div class="text-right">
+<span class="font-telemetry-lg text-telemetry-lg text-on-surface font-bold" id="hrDisplay">128</span>
+<span class="font-code-sm text-code-sm text-outline uppercase ml-1">BPM</span>
+</div>
+</div>
+<input class="w-full h-2 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-primary focus:outline-none" id="hrSlider" max="200" min="40" type="range" value="128"/>
+<div class="flex justify-between font-code-sm text-code-sm text-outline mt-1.5">
+<span>40 BPM (Bradycardia)</span>
+<span>100 BPM (Rest)</span>
+<span>200 BPM (Critical Maximum)</span>
+</div>
+</div>
+<!-- Slider 2: Skin Temperature -->
+<div class="bg-surface-container-low rounded-lg p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-space-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-tertiary">thermostat</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Skin Temperature</span>
+<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-tertiary-container/30 text-tertiary font-semibold uppercase" id="tempBadge">ELEVATED EXERTION</span>
+</div>
+<div class="text-right">
+<span class="font-telemetry-lg text-telemetry-lg text-on-surface font-bold" id="tempDisplay">37.4</span>
+<span class="font-code-sm text-code-sm text-outline uppercase ml-1">°C</span>
+</div>
+</div>
+<input class="w-full h-2 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-primary focus:outline-none" id="tempSlider" max="41.0" min="34.0" step="0.1" type="range" value="37.4"/>
+<div class="flex justify-between font-code-sm text-code-sm text-outline mt-1.5">
+<span>34.0°C (Hypothermic)</span>
+<span>37.0°C (Nominal)</span>
+<span>41.0°C (Heatstroke Threshold)</span>
+</div>
+</div>
+<!-- Row: SpO2 + Battery Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- SpO2 -->
+<div class="bg-surface-container-low rounded-lg p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-space-xs">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary">blood_pressure</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">SpO2 Blood Oxygen</span>
+</div>
+<div class="text-right">
+<span class="font-telemetry-md text-telemetry-md text-on-surface font-bold" id="spo2Display">94</span>
+<span class="font-code-sm text-code-sm text-outline ml-0.5">%</span>
+</div>
+</div>
+<input class="w-full h-2 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-primary focus:outline-none" id="spo2Slider" max="100" min="80" type="range" value="94"/>
+<div class="flex justify-between font-code-sm text-code-sm text-outline mt-1">
+<span>80% Hypoxia</span>
+<span class="text-tertiary font-semibold" id="spo2Status">Mild Drop</span>
+<span>100% Sat</span>
+</div>
+</div>
+<!-- Battery -->
+<div class="bg-surface-container-low rounded-lg p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-space-xs">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary">battery_charging_80</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Simulated Battery</span>
+</div>
+<div class="text-right">
+<span class="font-telemetry-md text-telemetry-md text-on-surface font-bold" id="batteryDisplay">84</span>
+<span class="font-code-sm text-code-sm text-outline ml-0.5">%</span>
+</div>
+</div>
+<input class="w-full h-2 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-primary focus:outline-none" id="batterySlider" max="100" min="0" type="range" value="84"/>
+<div class="flex justify-between font-code-sm text-code-sm text-outline mt-1">
+<span>0% Depleted</span>
+<span class="text-primary font-semibold">Healthy Charge</span>
+<span>100% Full</span>
+</div>
+</div>
+</div>
+<!-- Motion / IMU Fall State Toggle -->
+<div class="bg-surface-container-low rounded-lg p-space-md shadow-sm space-y-space-xs">
+<div class="flex items-center justify-between">
+<label class="font-headline-sm text-headline-sm text-on-surface">Simulated Kinematics / Man-Down Vector</label>
+<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-semibold" id="fallIndicatorPill">NOMINAL GAIT</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1">
+<button class="motion-btn flex items-center justify-center gap-2 p-2.5 rounded-lg bg-primary-container text-on-primary-container font-headline-sm text-headline-sm transition-all shadow-sm" data-motion="NORMAL" type="button">
+<span class="material-symbols-outlined text-[18px]">directions_walk</span>
+<span>Normal Gait</span>
+</button>
+<button class="motion-btn flex items-center justify-center gap-2 p-2.5 rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface font-headline-sm text-headline-sm transition-all shadow-sm" data-motion="INCLINE" type="button">
+<span class="material-symbols-outlined text-[18px]">hiking</span>
+<span>Incline Descent</span>
+</button>
+<button class="motion-btn flex items-center justify-center gap-2 p-2.5 rounded-lg bg-surface-container text-on-surface-variant hover:text-error font-headline-sm text-headline-sm transition-all shadow-sm" data-motion="FALL" type="button">
+<span class="material-symbols-outlined text-[18px]">personal_injury</span>
+<span>Fall / Inactivity</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- STEP 4: Simulated SOS Emergency Trigger -->
+<section class="bg-surface-container rounded-xl p-space-lg shadow-md">
+<div class="flex items-center justify-between pb-space-sm mb-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="flex items-center justify-center w-7 h-7 rounded bg-error-container text-on-error-container font-headline-sm text-headline-sm">4</span>
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Simulated SOS Trigger</h2>
+<span class="font-code-sm text-code-sm text-outline">HARDWARE BEACON DURESS SIMULATION</span>
+</div>
+</div>
+<span class="font-code-sm text-code-sm uppercase px-2 py-0.5 rounded bg-error/10 text-error">SYNTHETIC INGESTION</span>
+</div>
+<!-- Warning Callout -->
+<div class="bg-error-container/20 rounded-lg p-space-md text-on-error-container mb-space-md">
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-[20px] text-error shrink-0 mt-0.5">notification_important</span>
+<p class="font-code-sm text-code-sm uppercase font-semibold text-error tracking-wide">
+              NOTICE: SIMULATED SOS — TRIGGERS SYNTHETIC DISPATCH ALERT IN CONTROL ROOM ONLY. NO EXTERNAL MINE RESCUE OR EMERGENCY SERVICES ARE CONTACTED.
+            </p>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row items-center gap-space-md">
+<button class="w-full sm:w-auto flex-1 flex items-center justify-center gap-3 bg-error text-on-error font-headline-md text-headline-md px-space-lg py-3.5 rounded-lg shadow-lg hover:bg-error-container transition-all active:scale-[0.98]" id="triggerSosBtn" type="button">
+<span class="material-symbols-outlined text-[24px]">crisis_alert</span>
+<span>SEND SIMULATED SOS DURESS PULSE</span>
+</button>
+<button class="w-full sm:w-auto px-space-md py-3.5 rounded-lg bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors" id="clearSosBtn" type="button">
+            Cancel Simulation State
+          </button>
+</div>
+</section>
+</div>
+<!-- RIGHT PANEL: Real-time Telemetry Ingestion Output Console -->
+<div class="lg:col-span-5 flex flex-col gap-space-md sticky top-[80px]">
+<!-- Ingestion Pipeline Console Card -->
+<section class="bg-surface-container rounded-xl p-space-md shadow-md flex flex-col h-[740px]">
+<!-- Console Header -->
+<div class="flex items-center justify-between pb-space-sm mb-space-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">terminal</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Uplink Packet Stream</h2>
+</div>
+<div class="flex items-center gap-2">
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded bg-primary/10 text-primary font-code-sm text-code-sm font-semibold" id="connectionPill">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>
+<span>CONNECTED // 1000ms</span>
+</div>
+</div>
+</div>
+<!-- Transmission Control Toolbar -->
+<div class="flex items-center gap-2 py-2 mb-2 bg-surface-container-low px-space-sm rounded-lg flex-wrap">
+<button class="flex items-center gap-1.5 px-space-sm py-1.5 rounded bg-primary-container text-on-primary-container font-code-sm text-code-sm font-semibold transition-all" id="toggleStreamBtn" type="button">
+<span class="material-symbols-outlined text-[16px]" id="streamIcon">pause</span>
+<span id="streamLabel">PAUSE STREAM</span>
+</button>
+<button class="flex items-center gap-1.5 px-space-sm py-1.5 rounded bg-surface-container-high text-on-surface hover:bg-surface-variant font-code-sm text-code-sm transition-all" id="noiseBtn" type="button">
+<span class="material-symbols-outlined text-[16px] text-tertiary">grain</span>
+<span>INJECT RANDOM NOISE</span>
+</button>
+<button class="ml-auto text-outline hover:text-on-surface p-1 rounded" id="clearConsoleBtn" title="Clear Console" type="button">
+<span class="material-symbols-outlined text-[18px]">delete_sweep</span>
+</button>
+</div>
+<!-- Telemetry Statistics Strip -->
+<div class="grid grid-cols-4 gap-1 text-center py-2 bg-surface-container-lowest rounded-lg mb-space-sm font-code-sm text-code-sm">
+<div>
+<span class="text-outline block">TX PKTS</span>
+<span class="text-on-surface font-semibold" id="txCount">1,489</span>
+</div>
+<div>
+<span class="text-outline block">LOSS RATE</span>
+<span class="text-primary font-semibold" id="lossIndicator">0.00%</span>
+</div>
+<div>
+<span class="text-outline block">CHECKSUM</span>
+<span class="text-primary font-semibold">CRC32 OK</span>
+</div>
+<div>
+<span class="text-outline block">LATENCY</span>
+<span class="text-on-surface font-semibold">38ms</span>
+</div>
+</div>
+<!-- Live JSON Ingestion Terminal Window -->
+<div class="relative flex-1 bg-surface-container-lowest rounded-lg p-space-sm overflow-hidden flex flex-col font-code-sm text-code-sm text-on-surface-variant">
+<div class="flex items-center justify-between text-outline text-[10px] pb-1 border-b border-outline-variant/30 mb-2 uppercase">
+<span>JSON PAYLOAD INGESTION STREAM (DACOS-V1-SCHEMA)</span>
+<span class="text-primary">AUTO-SCROLL: ON</span>
+</div>
+<div class="flex-1 overflow-y-auto space-y-2 font-mono text-[12px] leading-relaxed pr-1" id="jsonConsole">
+<!-- Simulated Logs Injected by Script -->
+</div>
+<div class="pt-2 text-right">
+<span class="text-outline text-[10px]">INGESTION BROKER: mqtts://broker.lib-mine.internal:8883</span>
+</div>
+</div>
+<!-- In-App Field Worker Hardware Simulation Preview Card -->
+<div class="mt-space-sm p-space-sm bg-surface-container-low rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">watch</span>
+</div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface">DACOS Wearable Halo-3 (Simulated)</div>
+<div class="font-code-sm text-code-sm text-outline">FIRMWARE: v2.8.1-SIM // ID: SIM-9941</div>
+</div>
+</div>
+<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-primary/15 text-primary font-semibold">UPLINK ACTIVE</span>
+</div>
+</section>
+<!-- Supervisory Audit Note Box -->
+<div class="bg-surface-container-low rounded-lg p-space-md shadow-sm">
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-[20px] text-outline mt-0.5">policy</span>
+<div>
+<span class="font-headline-sm text-headline-sm text-on-surface block">Lab Audit Record Active</span>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mt-0.5">
+              All virtual stress tests are marked with metadata tag <code class="text-primary">SIMULATION_RECORD=TRUE</code> in the central audit logs to prevent contamination of official OSHA reporting statistics.
+            </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function initDeviceSimulator() {
+    let packetCount = 1489;
+    let isStreaming = true;
+    let cadenceMs = 1000;
+    let packetLossRate = 0;
+    let streamInterval = null;
+    let sequenceNumber = 14920;
+    let countdownSeconds = 258; // 4m 18s
+    let currentMotion = 'NORMAL';
+    let sosActive = false;
+
+    // Elements
+    const hrSlider = document.getElementById('hrSlider');
+    const hrDisplay = document.getElementById('hrDisplay');
+    const tempSlider = document.getElementById('tempSlider');
+    const tempDisplay = document.getElementById('tempDisplay');
+    const spo2Slider = document.getElementById('spo2Slider');
+    const spo2Display = document.getElementById('spo2Display');
+    const spo2Status = document.getElementById('spo2Status');
+    const batterySlider = document.getElementById('batterySlider');
+    const batteryDisplay = document.getElementById('batteryDisplay');
+    const tachycardiaBadge = document.getElementById('tachycardiaBadge');
+    const tempBadge = document.getElementById('tempBadge');
+    const fallIndicatorPill = document.getElementById('fallIndicatorPill');
+    const jsonConsole = document.getElementById('jsonConsole');
+    const txCount = document.getElementById('txCount');
+    const lossIndicator = document.getElementById('lossIndicator');
+    const connectionPill = document.getElementById('connectionPill');
+    const toggleStreamBtn = document.getElementById('toggleStreamBtn');
+    const streamIcon = document.getElementById('streamIcon');
+    const streamLabel = document.getElementById('streamLabel');
+    const noiseBtn = document.getElementById('noiseBtn');
+    const clearConsoleBtn = document.getElementById('clearConsoleBtn');
+    const resetSlidersBtn = document.getElementById('resetSlidersBtn');
+    const triggerSosBtn = document.getElementById('triggerSosBtn');
+    const clearSosBtn = document.getElementById('clearSosBtn');
+    const workerSelect = document.getElementById('workerSelect');
+    const pairingCountdown = document.getElementById('pairingCountdown');
+
+    // Update Slider Labels & Threshold Alerts
+    function updateHrUI() {
+      const val = parseInt(hrSlider.value);
+      hrDisplay.textContent = val;
+      if (val > 120) {
+        tachycardiaBadge.classList.remove('hidden');
+        tachycardiaBadge.textContent = 'TACHYCARDIA TRIP >120';
+        tachycardiaBadge.className = 'font-code-sm text-code-sm px-2 py-0.5 rounded bg-error-container text-error font-semibold uppercase';
+      } else if (val < 55) {
+        tachycardiaBadge.classList.remove('hidden');
+        tachycardiaBadge.textContent = 'BRADYCARDIA TRIP <55';
+        tachycardiaBadge.className = 'font-code-sm text-code-sm px-2 py-0.5 rounded bg-tertiary-container/30 text-tertiary font-semibold uppercase';
+      } else {
+        tachycardiaBadge.classList.add('hidden');
+      }
+    }
+
+    function updateTempUI() {
+      const val = parseFloat(tempSlider.value).toFixed(1);
+      tempDisplay.textContent = val;
+      if (val >= 38.0) {
+        tempBadge.textContent = 'CRITICAL HYPERTHERMIA';
+        tempBadge.className = 'font-code-sm text-code-sm px-2 py-0.5 rounded bg-error-container text-error font-semibold uppercase';
+      } else if (val >= 37.3) {
+        tempBadge.textContent = 'ELEVATED EXERTION';
+        tempBadge.className = 'font-code-sm text-code-sm px-2 py-0.5 rounded bg-tertiary-container/30 text-tertiary font-semibold uppercase';
+      } else {
+        tempBadge.textContent = 'NOMINAL RANGE';
+        tempBadge.className = 'font-code-sm text-code-sm px-2 py-0.5 rounded bg-primary/10 text-primary font-semibold uppercase';
+      }
+    }
+
+    function updateSpo2UI() {
+      const val = parseInt(spo2Slider.value);
+      spo2Display.textContent = val;
+      if (val < 90) {
+        spo2Status.textContent = 'Hypoxic Trip';
+        spo2Status.className = 'text-error font-semibold';
+      } else if (val < 95) {
+        spo2Status.textContent = 'Mild Drop';
+        spo2Status.className = 'text-tertiary font-semibold';
+      } else {
+        spo2Status.textContent = 'Nominal Sat';
+        spo2Status.className = 'text-primary font-semibold';
+      }
+    }
+
+    function updateBatteryUI() {
+      batteryDisplay.textContent = batterySlider.value;
+    }
+
+    hrSlider.addEventListener('input', updateHrUI);
+    tempSlider.addEventListener('input', updateTempUI);
+    spo2Slider.addEventListener('input', updateSpo2UI);
+    batterySlider.addEventListener('input', updateBatteryUI);
+
+    // Cadence Selectors
+    document.querySelectorAll('.cadence-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.cadence-btn').forEach(b => {
+          b.className = 'cadence-btn text-on-surface-variant hover:text-on-surface py-2 rounded font-code-sm text-code-sm transition-all';
+        });
+        btn.className = 'cadence-btn bg-primary-container text-on-primary-container py-2 rounded font-code-sm text-code-sm font-semibold transition-all';
+        cadenceMs = parseInt(btn.dataset.cadence);
+        connectionPill.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span><span>CONNECTED // ${cadenceMs}ms</span>`;
+        restartStream();
+      });
+    });
+
+    // Loss Selectors
+    document.querySelectorAll('.loss-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.loss-btn').forEach(b => {
+          b.className = 'loss-btn text-on-surface-variant hover:text-on-surface py-2 rounded font-code-sm text-code-sm transition-all';
+        });
+        btn.className = 'loss-btn bg-surface-container-high text-primary py-2 rounded font-code-sm text-code-sm font-semibold transition-all';
+        packetLossRate = parseInt(btn.dataset.loss);
+        lossIndicator.textContent = packetLossRate + '.00%';
+        lossIndicator.className = packetLossRate > 0 ? 'text-tertiary font-semibold' : 'text-primary font-semibold';
+      });
+    });
+
+    // Motion Selector
+    document.querySelectorAll('.motion-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.motion-btn').forEach(b => {
+          b.className = 'motion-btn flex items-center justify-center gap-2 p-2.5 rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface font-headline-sm text-headline-sm transition-all shadow-sm';
+        });
+        const m = btn.dataset.motion;
+        currentMotion = m;
+        if (m === 'FALL') {
+          btn.className = 'motion-btn flex items-center justify-center gap-2 p-2.5 rounded-lg bg-error text-on-error font-headline-sm text-headline-sm transition-all shadow-sm';
+          fallIndicatorPill.textContent = 'MAN-DOWN / IMMOBILE';
+          fallIndicatorPill.className = 'font-code-sm text-code-sm px-2 py-0.5 rounded bg-error-container text-error font-semibold uppercase animate-pulse';
+        } else if (m === 'INCLINE') {
+          btn.className = 'motion-btn flex items-center justify-center gap-2 p-2.5 rounded-lg bg-tertiary-container text-on-tertiary-container font-headline-sm text-headline-sm transition-all shadow-sm';
+          fallIndicatorPill.textContent = 'INCLINE TRAVERSAL';
+          fallIndicatorPill.className = 'font-code-sm text-code-sm px-2 py-0.5 rounded bg-tertiary/20 text-tertiary font-semibold uppercase';
+        } else {
+          btn.className = 'motion-btn flex items-center justify-center gap-2 p-2.5 rounded-lg bg-primary-container text-on-primary-container font-headline-sm text-headline-sm transition-all shadow-sm';
+          fallIndicatorPill.textContent = 'NOMINAL GAIT';
+          fallIndicatorPill.className = 'font-code-sm text-code-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-semibold uppercase';
+        }
+      });
+    });
+
+    // SOS Emergency Trigger
+    triggerSosBtn.addEventListener('click', () => {
+      sosActive = true;
+      triggerSosBtn.innerHTML = '<span class="material-symbols-outlined text-[24px] animate-spin">refresh</span><span>ACTIVE SOS BEACON TRANSMITTING...</span>';
+      triggerSosBtn.classList.add('bg-error-container');
+      injectPacket(true);
+    });
+
+    clearSosBtn.addEventListener('click', () => {
+      sosActive = false;
+      triggerSosBtn.innerHTML = '<span class="material-symbols-outlined text-[24px]">crisis_alert</span><span>SEND SIMULATED SOS DURESS PULSE</span>';
+      triggerSosBtn.classList.remove('bg-error-container');
+    });
+
+    // Noise Generator
+    noiseBtn.addEventListener('click', () => {
+      hrSlider.value = Math.min(200, Math.max(40, parseInt(hrSlider.value) + (Math.floor(Math.random() * 25) - 12)));
+      tempSlider.value = Math.min(41.0, Math.max(34.0, parseFloat(tempSlider.value) + (Math.random() * 0.8 - 0.4))).toFixed(1);
+      spo2Slider.value = Math.min(100, Math.max(80, parseInt(spo2Slider.value) + (Math.floor(Math.random() * 5) - 2)));
+      batterySlider.value = Math.max(0, parseInt(batterySlider.value) - 1);
+      updateHrUI();
+      updateTempUI();
+      updateSpo2UI();
+      updateBatteryUI();
+    });
+
+    // Reset Sliders
+    resetSlidersBtn.addEventListener('click', () => {
+      hrSlider.value = 128;
+      tempSlider.value = 37.4;
+      spo2Slider.value = 94;
+      batterySlider.value = 84;
+      updateHrUI();
+      updateTempUI();
+      updateSpo2UI();
+      updateBatteryUI();
+    });
+
+    // Stream Toggle
+    toggleStreamBtn.addEventListener('click', () => {
+      isStreaming = !isStreaming;
+      if (isStreaming) {
+        streamIcon.textContent = 'pause';
+        streamLabel.textContent = 'PAUSE STREAM';
+        toggleStreamBtn.className = 'flex items-center gap-1.5 px-space-sm py-1.5 rounded bg-primary-container text-on-primary-container font-code-sm text-code-sm font-semibold transition-all';
+        connectionPill.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span><span>CONNECTED // ${cadenceMs}ms</span>`;
+        restartStream();
+      } else {
+        streamIcon.textContent = 'play_arrow';
+        streamLabel.textContent = 'RESUME';
+        toggleStreamBtn.className = 'flex items-center gap-1.5 px-space-sm py-1.5 rounded bg-surface-container-high text-on-surface font-code-sm text-code-sm font-semibold transition-all';
+        connectionPill.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-outline"></span><span class="text-outline">STREAM PAUSED</span>`;
+        clearInterval(streamInterval);
+      }
+    });
+
+    clearConsoleBtn.addEventListener('click', () => {
+      jsonConsole.innerHTML = '';
+    });
+
+    // Ingest Packet Generator
+    function injectPacket(forceSos = false) {
+      sequenceNumber++;
+      packetCount++;
+      txCount.textContent = packetCount.toLocaleString();
+
+      // Check simulated drop
+      if (packetLossRate > 0 && Math.random() * 100 < packetLossRate) {
+        const dropEntry = document.createElement('div');
+        dropEntry.className = 'p-1.5 rounded bg-tertiary-container/20 border-l-2 border-tertiary text-tertiary';
+        dropEntry.textContent = `[SYNTH-DROP] SEQ #${sequenceNumber} // Sub-Mesh RSSI drop: -98dBm (Packet discarded)`;
+        jsonConsole.appendChild(dropEntry);
+        jsonConsole.scrollTop = jsonConsole.scrollHeight;
+        return;
+      }
+
+      const timestamp = new Date().toISOString();
+      const workerVal = workerSelect.value;
+      const workerName = workerSelect.options[workerSelect.selectedIndex].text.split('—')[0].trim();
+      const isDuress = forceSos || sosActive;
+
+      const payload = {
+        sim_protocol: "DACOS-MESH-v1.4",
+        seq: sequenceNumber,
+        timestamp: timestamp,
+        worker_id: workerVal,
+        personnel: workerName,
+        biometrics: {
+          heart_rate_bpm: parseInt(hrSlider.value),
+          skin_temp_c: parseFloat(tempSlider.value),
+          spo2_pct: parseInt(spo2Slider.value),
+          tachycardia_flag: parseInt(hrSlider.value) > 120
+        },
+        telemetry: {
+          battery_pct: parseInt(batterySlider.value),
+          imu_state: currentMotion,
+          fall_detected: currentMotion === 'FALL',
+          sos_duress_active: isDuress
+        },
+        checksum: "0x" + Math.floor(Math.random() * 0xFFFFFFFF).toString(16).padStart(8, '0').toUpperCase()
+      };
+
+      const jsonString = JSON.stringify(payload, null, 2);
+
+      const logBlock = document.createElement('div');
+      logBlock.className = `p-2 rounded bg-surface-container ${isDuress ? 'border-l-4 border-error text-on-surface' : (payload.biometrics.tachycardia_flag || payload.telemetry.fall_detected ? 'border-l-2 border-tertiary' : 'border-l-2 border-primary/40')} transition-all`;
+
+      let headerBadge = isDuress 
+        ? `<span class="px-1.5 py-0.5 rounded bg-error text-on-error font-bold font-code-sm">EMERGENCY SOS TRIP</span>`
+        : (payload.telemetry.fall_detected ? `<span class="px-1.5 py-0.5 rounded bg-tertiary text-on-tertiary font-bold font-code-sm">FALL DETECTED</span>` : `<span class="text-primary font-code-sm">OK</span>`);
+
+      logBlock.innerHTML = `
+        <div class="flex items-center justify-between text-[11px] mb-1">
+          <span class="text-outline">SEQ #${sequenceNumber} &bull; ${timestamp.split('T')[1].replace('Z','')}</span>
+          ${headerBadge}
+        </div>
+        <pre class="overflow-x-auto text-[11px] text-on-surface-variant font-mono whitespace-pre">${syntaxHighlight(jsonString)}</pre>
+      `;
+
+      jsonConsole.appendChild(logBlock);
+      jsonConsole.scrollTop = jsonConsole.scrollHeight;
+
+      // Keep buffer manageable
+      if (jsonConsole.children.length > 30) {
+        jsonConsole.removeChild(jsonConsole.children[0]);
+      }
+    }
+
+    function syntaxHighlight(json) {
+      return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+        let cls = 'text-primary';
+        if (/^"/.test(match)) {
+          if (/:$/.test(match)) {
+            cls = 'text-on-surface';
+          } else {
+            cls = 'text-on-secondary-container';
+          }
+        } else if (/true|false/.test(match)) {
+          cls = match === 'true' ? 'text-tertiary font-bold' : 'text-outline';
+        } else {
+          cls = 'text-primary-fixed';
+        }
+        return '<span class="' + cls + '">' + match + '</span>';
+      });
+    }
+
+    function restartStream() {
+      clearInterval(streamInterval);
+      if (isStreaming) {
+        streamInterval = setInterval(() => injectPacket(false), cadenceMs);
+      }
+    }
+
+    // Countdown Timer for Pairing Code
+    setInterval(() => {
+      if (countdownSeconds > 0) {
+        countdownSeconds--;
+        const mins = String(Math.floor(countdownSeconds / 60)).padStart(2, '0');
+        const secs = String(countdownSeconds % 60).padStart(2, '0');
+        pairingCountdown.textContent = `${mins}:${secs}`;
+      } else {
+        countdownSeconds = 300;
+      }
+    }, 1000);
+
+    // Initial seed
+    injectPacket();
+    injectPacket();
+    restartStream();
+  })();
+</script></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 py-space-sm px-space-md"><div class="flex flex-col sm:flex-row items-center justify-between gap-2 font-code-sm text-code-sm text-on-surface-variant"><div class="flex items-center gap-2"><span class="inline-block w-2 h-2 rounded-full bg-tertiary"></span><span>DACOS Liberia Prototype v0.9.4. Physical hardware integration pending. Never use for actual emergency dispatch.</span></div><div class="text-outline">LIB-EXT-MON-SEC-04 // NON-PROD ENV</div></div></footer></div></body></html>

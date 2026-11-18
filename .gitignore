@@ -1,0 +1,29 @@
+node_modules/
+frontend/dist/
+.tools/
+
+.data/
+.env
+.env.*
+!.env.example
+coverage/
+
+!.env.static-preview
+.preview-site/
+
+.certs/
+
+# Local agent settings, credentials, and production environment files
+.agents/
+.aws/
+.codex/
+deploy/.env
+*.credential
+*.dump
+*.pem
+*.key
+*.crt
+
+# Local UI extraction tool and generated comparison pages
+/scripts/extract-stitch-ui.mjs
+/frontend/public/extracted-ui/

@@ -1,0 +1,53 @@
+{
+  "name": "dacos-mine-control",
+  "version": "0.1.0",
+  "private": true,
+  "description": "DACOS mine control dashboard built with Vue, Tailwind CSS, and JavaScript",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "npm run build --workspace @dacos/frontend",
+    "preview": "npm run preview --workspace @dacos/frontend",
+    "dev:frontend": "npm run dev --workspace @dacos/frontend",
+    "dev:api": "npm run dev --workspace @dacos/backend",
+    "db:generate": "npm run db:generate --workspace @dacos/backend",
+    "db:migrate": "npm run db:migrate --workspace @dacos/backend",
+    "test": "vitest run --config vitest.config.js",
+    "test:frontend": "npm run test --workspace @dacos/frontend",
+    "test:backend": "npm run test --workspace @dacos/backend",
+    "test:watch": "vitest --config vitest.config.js",
+    "postinstall": "npm run db:generate",
+    "check:browser": "npm run check:browser --workspace @dacos/frontend",
+    "build:preview": "npm run build:preview --workspace @dacos/frontend",
+    "create:admin": "node backend/scripts/create-admin.mjs",
+    "gateway": "node backend/scripts/gateway.mjs",
+    "backup": "node scripts/operations/backup.mjs backup",
+    "verify:restore": "node scripts/operations/backup.mjs verify-restore",
+    "check:pilot": "node frontend/scripts/check-pilot.mjs",
+    "check:deployment": "node scripts/deployment-check.mjs",
+    "smoke": "node scripts/smoke.mjs",
+    "reset:password": "node backend/scripts/reset-password.mjs",
+    "check:phase10": "node frontend/scripts/check-phase10.mjs",
+    "check:reference-ui": "node frontend/scripts/check-reference-ui.mjs",
+    "db:check:production": "node scripts/production-database.mjs check",
+    "db:migrate:production": "node scripts/production-database.mjs migrate",
+    "check:deployment:production": "node --env-file=deploy/.env scripts/deployment-check.mjs",
+    "start:production": "node --env-file=deploy/.env backend/src/server.js"
+  },
+  "devDependencies": {
+    "vitest": "^5.1.0"
+  },
+  "type": "module",
+  "dependencies": {},
+  "engines": {
+    "node": ">=22.16.0"
+  },
+  "overrides": {
+    "deepmerge-ts": "^8.0.0",
+    "effect": "^3.20.0"
+  },
+  "workspaces": [
+    "frontend",
+    "backend",
+    "shared"
+  ]
+}

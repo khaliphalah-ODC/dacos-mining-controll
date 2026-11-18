@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#24364a","on-tertiary-container":"#543300","background":"#011427","error":"#ffb4ab","on-tertiary":"#472a00","inverse-surface":"#d1e4fe","on-error":"#690005","surface-dim":"#011427","on-error-container":"#ffdad6","primary":"#4bdbcb","surface-container":"#0d2134","outline":"#859491","secondary-fixed":"#d3e4fe","surface-container-highest":"#24364a","outline-variant":"#3c4947","secondary-fixed-dim":"#b7c8e1","on-surface-variant":"#bbcac6","tertiary-container":"#e49200","error-container":"#93000a","on-background":"#d1e4fe","on-tertiary-fixed-variant":"#653e00","on-primary-container":"#00423c","primary-container":"#00b8a9","on-primary":"#003732","secondary-container":"#3a4a5f","secondary":"#b7c8e1","primary-fixed-dim":"#4bdbcb","tertiary-fixed":"#ffddb8","on-secondary":"#213145","tertiary":"#ffb95f","surface-container-high":"#192b3f","on-secondary-fixed":"#0b1c30","surface":"#011427","inverse-on-surface":"#203246","surface-container-lowest":"#000f20","on-secondary-fixed-variant":"#38485d","on-secondary-container":"#a9bad3","on-surface":"#d1e4fe","primary-fixed":"#6df8e7","on-primary-fixed-variant":"#005049","inverse-primary":"#006a61","surface-bright":"#293a4f","surface-tint":"#4bdbcb","on-tertiary-fixed":"#2a1700","on-primary-fixed":"#00201d","tertiary-fixed-dim":"#ffb95f","surface-container-low":"#091d30"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"gutter-desktop":"1.5rem","gutter":"1rem","space-md":"1rem","space-lg":"1.5rem","margin":"1rem","margin-desktop":"2rem","space-sm":"0.5rem","space-xs":"0.25rem","space-xl":"2rem"},fontFamily:{"headline-sm":["Inter"],"headline-lg-mobile":["Inter"],"label-sm":["Inter"],"headline-xl-mobile":["Inter"],"telemetry-lg":["Inter"],"label-md":["Inter"],"headline-lg":["Inter"],"body-lg":["Inter"],"headline-md":["Inter"],"code-sm":["Inter"],"telemetry-md":["Inter"],"body-md":["Inter"],"headline-xl":["Inter"]},fontSize:{"headline-sm":["16px",{"lineHeight":"24px","fontWeight":"600"}],"headline-lg-mobile":["20px",{"lineHeight":"28px","fontWeight":"600"}],"label-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.04em","fontWeight":"500"}],"headline-xl-mobile":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"700"}],"telemetry-lg":["28px",{"lineHeight":"32px","letterSpacing":"0.01em","fontWeight":"700"}],"label-md":["13px",{"lineHeight":"18px","letterSpacing":"0.02em","fontWeight":"500"}],"headline-lg":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"headline-md":["20px",{"lineHeight":"28px","fontWeight":"600"}],"code-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.06em","fontWeight":"600"}],"telemetry-md":["20px",{"lineHeight":"24px","letterSpacing":"0.01em","fontWeight":"700"}],"body-md":["14px",{"lineHeight":"22px","fontWeight":"400"}],"headline-xl":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"700"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-60 bg-surface-container-low z-50 flex flex-col border-r border-outline-variant/40"><div class="h-[68px] px-space-md flex items-center gap-space-sm border-b border-outline-variant/40 bg-surface-container-low"><img alt="DACOS Industrial Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrAX2iZPbYx64GpY3yb9I4VZO6I7n-ysR6m3YuaOEdd236wG-R_z0O3sW_fW-xXtdF6N4EghOFzYEnSCFSKjynx3BMqmENGE73fxlsBZPQ2V1HXselFBnsw24FHS6EQNn-CJnKwzk3AXpYIc7R3spmWdV9IzIWxd3BhnklSxvhiSJZqgC2ik_55Rn7Nbwgupu6LAmFfMnsTZbHjUXQO_UtJNlfw0dtLj5oayaT_60-Ol"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm tracking-tight text-primary leading-none">DACOS</span><span class="font-code-sm text-code-sm uppercase text-on-surface-variant tracking-wider">Liberia SCADA</span></div></div><div class="flex-1 overflow-y-auto px-space-xs py-space-sm space-y-space-md"><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Monitoring</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="overview" href="#"><span class="material-symbols-outlined text-[18px]">monitoring</span><span>Overview</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="control-room" href="#"><span class="material-symbols-outlined text-[18px]">grid_view</span><span>Control Room</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="live-workers" href="#"><span class="material-symbols-outlined text-[18px]">engineering</span><span>Live Workers</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="mine-map" href="#"><span class="material-symbols-outlined text-[18px]">explore</span><span>Mine Map</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="environmental" href="#"><span class="material-symbols-outlined text-[18px]">air</span><span>Environmental</span></a></nav></div><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Response</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="incidents" href="#"><span class="material-symbols-outlined text-[18px]">warning</span><span>Incidents</span></a></nav></div><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Analysis</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="history-and-reports" href="#"><span class="material-symbols-outlined text-[18px]">assessment</span><span>History &amp; Reports</span></a></nav></div><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Management</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="manage-workers" href="#"><span class="material-symbols-outlined text-[18px]">badge</span><span>Workers</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="manage-devices" href="#"><span class="material-symbols-outlined text-[18px]">devices</span><span>Devices</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="rules" href="#"><span class="material-symbols-outlined text-[18px]">rule</span><span>Rules</span></a></nav></div><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Device Lab</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="wifi-simulator" href="#"><span class="material-symbols-outlined text-[18px]">router</span><span>Wi-Fi Simulator</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="ble-gateway" href="#"><span class="material-symbols-outlined text-[18px]">sensors</span><span>BLE Gateway</span></a></nav></div><div class="space-y-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">Administration</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="accounts-and-audit" href="#"><span class="material-symbols-outlined text-[18px]">admin_panel_settings</span><span>Accounts &amp; Audit</span></a></nav></div><div class="space-y-space-xs border-t border-outline-variant/40 pt-space-xs"><div class="px-space-sm py-1 font-code-sm text-code-sm uppercase tracking-wider text-outline">System Links</div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="my-account" href="#"><span class="material-symbols-outlined text-[18px]">manage_accounts</span><span>My Account</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="public-website" href="#"><span class="material-symbols-outlined text-[18px]">public</span><span>Public Website</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="login" href="#"><span class="material-symbols-outlined text-[18px]">logout</span><span>Sign Out</span></a></nav></div></div></aside><div class="pl-60 min-h-screen flex flex-col"><header class="fixed top-0 left-60 right-0 h-[68px] bg-surface-container-low border-b border-outline-variant/40 z-40 px-space-md flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md min-w-0"><div class="flex items-center gap-1.5 font-code-sm text-code-sm text-on-surface-variant truncate"><span class="text-primary">DACOS</span><span class="text-outline">/</span><span class="text-on-surface uppercase tracking-wider font-semibold">Operations</span></div><div class="hidden xl:flex items-center px-2.5 py-1 rounded bg-tertiary-container/20 border border-tertiary text-tertiary font-code-sm text-code-sm uppercase tracking-wider whitespace-nowrap"><span class="inline-block w-1.5 h-1.5 rounded-full bg-tertiary mr-2 animate-pulse"></span>DEMO PROTOTYPE — NOT A CERTIFIED MINE SAFETY SYSTEM</div></div><div class="flex items-center gap-space-md shrink-0"><div class="hidden md:flex items-center gap-2 px-2.5 py-1 rounded bg-surface-container-high border border-outline-variant font-code-sm text-code-sm"><span class="w-2 h-2 rounded-full bg-primary animate-ping"></span><span class="text-primary font-semibold">WEBSOCKET CONNECTED (DEMO)</span><span class="text-outline">|</span><span class="text-on-surface-variant">14:32:08 UTC</span></div><div class="flex items-center gap-space-sm pl-space-sm border-l border-outline-variant/40"><div class="flex items-center gap-space-sm"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-primary/40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfpViSx2OZ16qd5PPJVXXDCSIynuKhnplMHvh1RGoC7NK2po1VcOX7RtabkVjEbzUorP2Yn0ULUYkzCTwYOODs1qS7VtaxrWuVjLO6a4z26fFR48Ws04o1jBkehyFIyI2ObB-YneOWIG98OlS5Q_3_h4qN0vSMhkKrYB0gBLs1atHYrklxj0YA1UKs9B2zx9a7nxUJn32l0fVQPwdKYDO7ltMbHkRWHZ17bFgoGl8"/><div class="hidden lg:flex flex-col text-left"><span class="font-label-md text-label-md font-semibold text-on-surface leading-tight">Sarah Jenkins</span><span class="font-code-sm text-code-sm text-primary uppercase leading-tight">Supervisor</span></div></div><div class="flex items-center gap-1"><a class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="my-account" href="#" title="My Account"><span class="material-symbols-outlined text-[20px]">settings</span></a><a class="p-1.5 rounded-lg text-on-surface-variant hover:text-error hover:bg-surface-container-high transition-colors" data-path="login" href="#" title="Sign Out"><span class="material-symbols-outlined text-[20px]">logout</span></a></div></div></div></header><main class="flex-1 pt-[68px] bg-surface w-full px-space-md py-space-md"><div class="flex flex-col w-full">
+<!-- Dynamic Active Navigation Synchronization -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const activePath = 'history-and-reports';
+      const navLinks = document.querySelectorAll('aside nav a');
+      navLinks.forEach(link => {
+        if (link.getAttribute('data-path') === activePath) {
+          link.className = 'flex items-center gap-space-sm px-space-sm py-2 rounded-lg bg-primary-container text-on-primary-container font-semibold transition-colors font-label-md text-label-md';
+        } else {
+          link.className = 'flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md';
+        }
+      });
+    });
+  </script>
+<!-- Industrial Notification Toast (Initial Closed/Hidden State) -->
+<div class="fixed bottom-6 right-8 bg-surface-container-highest text-on-surface px-space-md py-space-sm rounded-lg shadow-2xl flex items-center gap-space-sm translate-y-20 opacity-0 transition-all duration-300 z-50" id="queryToast">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span class="font-code-sm text-code-sm" id="toastMessage">HISTORICAL TELEMETRY QUERY EXECUTED (1,420 FRAMES)</span>
+</div>
+<!-- Header Context & Action Ribbon -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md pb-space-md">
+<div class="flex flex-col space-y-1">
+<div class="flex items-center gap-1.5 font-code-sm text-code-sm text-on-surface-variant tracking-wider uppercase">
+<span>Analysis</span>
+<span class="text-outline">/</span>
+<span class="text-primary font-semibold">History &amp; Reports</span>
+<span class="text-outline">/</span>
+<span class="text-on-surface">Telemetry Logs &amp; Sample Archival</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight font-bold">Telemetry Archival &amp; Trend Analysis</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-4xl">
+        Query historical physiological vitals and environmental sensor records. Gaps indicate unrecorded shadow intervals; synthetic simulation packets are explicitly labelled with provenance flags.
+      </p>
+</div>
+<!-- Actions Panel -->
+<div class="flex items-center gap-space-sm self-start lg:self-center shrink-0">
+<button class="flex items-center gap-2 px-space-md py-2.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface transition-all duration-150 font-label-md text-label-md active:scale-95 shadow-sm" onclick="triggerExport('CSV')">
+<span class="material-symbols-outlined text-primary text-[18px]">download</span>
+<span>Export CSV (Filtered Query)</span>
+</button>
+<button class="flex items-center gap-2 px-space-md py-2.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface transition-all duration-150 font-label-md text-label-md active:scale-95 shadow-sm" onclick="triggerExport('PRESET')">
+<span class="material-symbols-outlined text-secondary text-[18px]">bookmark_add</span>
+<span>Save Preset</span>
+</button>
+<button class="flex items-center gap-2 px-space-md py-2.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-semibold transition-all duration-150 font-label-md text-label-md active:scale-95 shadow-md" onclick="triggerExport('PDF')">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">picture_as_pdf</span>
+<span>Export Report PDF (Planned Scope)</span>
+</button>
+</div>
+</div>
+<!-- Operational Disclaimer Banner -->
+<div class="mb-space-md bg-tertiary-container/10 p-space-sm rounded-lg flex items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-tertiary text-[20px] shrink-0">info</span>
+<div class="font-code-sm text-code-sm text-tertiary">
+<strong class="uppercase font-bold tracking-wider">RETENTION PROTOCOL:</strong> Raw sub-second biometric streams downsampled to 1-second persistent registers. Subterranean dead-zones preserve zero-fill; mathematical linear interpolation strictly prohibited by Mine Safety Standard LIB-SCADA-09.
+      </div>
+</div>
+<div class="hidden md:flex items-center gap-2 font-code-sm text-code-sm text-on-surface-variant shrink-0">
+<span class="inline-block w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span>STORAGE NODE: SEC-04 ARCHIVE (ONLINE)</span>
+</div>
+</div>
+<!-- Comprehensive Multi-Facet Filter Console -->
+<section class="bg-surface-container-low p-space-md rounded-xl shadow-lg mb-space-lg">
+<div class="flex items-center justify-between mb-space-sm pb-space-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">tune</span>
+<span class="font-headline-sm text-headline-sm uppercase tracking-wider text-on-surface">Archival Query Parameters</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-code-sm text-code-sm text-on-surface-variant uppercase tracking-widest">Buffer Sync: 99.8%</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-highest text-secondary font-code-sm text-code-sm">SQLITE3 / LIB-SCADA-PARQUET</span>
+</div>
+</div>
+<form class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-6 gap-space-md" id="filterForm" onsubmit="event.preventDefault(); executeQuery();">
+<!-- 1. Category Selector -->
+<div class="flex flex-col space-y-1.5">
+<label class="font-code-sm text-code-sm uppercase tracking-wider text-outline">Dataset Domain</label>
+<div class="relative">
+<select class="w-full h-10 px-3 py-1.5 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-primary" id="filterCategory">
+<option selected="" value="physio">Physiological Vitals</option>
+<option value="enviro">Environmental Multi-Gas</option>
+<option value="gateway">System Gateway Connectivity</option>
+<option value="combined">Combined Correlated Audit</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-2.5 pointer-events-none text-on-surface-variant text-[18px]">expand_more</span>
+</div>
+</div>
+<!-- 2. Metric Filter -->
+<div class="flex flex-col space-y-1.5">
+<label class="font-code-sm text-code-sm uppercase tracking-wider text-outline">Target Metric Channel</label>
+<div class="relative">
+<select class="w-full h-10 px-3 py-1.5 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-primary" id="filterMetric">
+<option selected="" value="hr">Heart Rate (BPM)</option>
+<option value="spo2">Oxygen Saturation SpO2 (%)</option>
+<option value="temp">Skin Temperature (°C)</option>
+<option value="co">Carbon Monoxide (CO ppm)</option>
+<option value="vel">Airflow Velocity (m/s)</option>
+<option value="ch4">Methane (CH4 % LEL)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-2.5 pointer-events-none text-on-surface-variant text-[18px]">expand_more</span>
+</div>
+</div>
+<!-- 3. Entity Filter -->
+<div class="flex flex-col space-y-1.5">
+<label class="font-code-sm text-code-sm uppercase tracking-wider text-outline">Entity / Personnel Identifier</label>
+<div class="relative">
+<select class="w-full h-10 px-3 py-1.5 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-primary" id="filterEntity">
+<option selected="" value="W-088">Peter Kollie [W-088] (Operator)</option>
+<option value="W-019">Tamba Fallah [W-019] (Drill Rig)</option>
+<option value="W-104">Kollie Sumo [W-104] (Stope Master)</option>
+<option value="W-033">Moses Zinnah [W-033] (Haulage Sup)</option>
+<option value="ALL">All Monitored Personnel (18)</option>
+<option value="STAT-C">Zone C Telemetry Station [FIXED-03]</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-2.5 pointer-events-none text-on-surface-variant text-[18px]">person</span>
+</div>
+</div>
+<!-- 4. Subterranean Zone Filter -->
+<div class="flex flex-col space-y-1.5">
+<label class="font-code-sm text-code-sm uppercase tracking-wider text-outline">Subterranean Sector</label>
+<div class="relative">
+<select class="w-full h-10 px-3 py-1.5 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-primary" id="filterZone">
+<option value="ALL">All Subterranean Zones</option>
+<option value="ZA">Zone A — Stope 01 / Deep Ore</option>
+<option value="ZB">Zone B — Haulage Corridor</option>
+<option selected="" value="ZC">Zone C — Primary Crusher Level</option>
+<option value="ZD">Zone D — Underground Workshop</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-2.5 pointer-events-none text-on-surface-variant text-[18px]">layers</span>
+</div>
+</div>
+<!-- 5. Provenance Filter -->
+<div class="flex flex-col space-y-1.5">
+<label class="font-code-sm text-code-sm uppercase tracking-wider text-outline">Transport Provenance</label>
+<div class="relative">
+<select class="w-full h-10 px-3 py-1.5 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-primary" id="filterProvenance">
+<option value="ALL">All Transport Protocols</option>
+<option value="SYNTH">Synthetic Demo Gateway (Sim)</option>
+<option selected="" value="BLE">BLE Mesh Beacon Array</option>
+<option value="WIFI">Wi-Fi Leaky Feeder AP-04</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-2.5 pointer-events-none text-on-surface-variant text-[18px]">hub</span>
+</div>
+</div>
+<!-- 6. Temporal Time Selector -->
+<div class="flex flex-col space-y-1.5">
+<label class="font-code-sm text-code-sm uppercase tracking-wider text-outline">Timeframe Scope</label>
+<div class="relative">
+<select class="w-full h-10 px-3 py-1.5 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-primary" id="filterTimeframe">
+<option value="1H">Last 1 Hour (Rolling)</option>
+<option selected="" value="ALPHA">Alpha Shift (Today 06:00 - 14:00 UTC)</option>
+<option value="BRAVO">Bravo Shift (Prev 14:00 - 22:00 UTC)</option>
+<option value="24H">Last 24 Hours</option>
+<option value="CUSTOM">Custom Chrono Span...</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-2.5 pointer-events-none text-on-surface-variant text-[18px]">schedule</span>
+</div>
+</div>
+<!-- Control Button Actions Span -->
+<div class="md:col-span-2 xl:col-span-6 flex flex-wrap items-center justify-between gap-space-sm pt-space-xs">
+<div class="flex items-center gap-space-md text-on-surface-variant font-code-sm text-code-sm">
+<span class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary"></span> Query Execution Engine: In-Memory DuckDB
+          </span>
+<span class="hidden sm:inline text-outline">•</span>
+<span class="hidden sm:inline">Partition: 2024-11-20_ALPHA</span>
+<span class="hidden lg:inline text-outline">•</span>
+<span class="hidden lg:inline">Strict Loss Detection: ACTIVE</span>
+</div>
+<div class="flex items-center gap-space-sm ml-auto">
+<button class="px-space-md py-2 rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface-variant font-label-md text-label-md transition-colors" onclick="resetForm()" type="button">
+            Reset Filters
+          </button>
+<button class="flex items-center gap-2 px-space-lg py-2 rounded-lg bg-primary-container text-on-primary-container font-semibold hover:bg-primary font-label-md text-label-md transition-all shadow-md active:scale-95" type="submit">
+<span class="material-symbols-outlined text-[18px]">manage_search</span>
+<span>Execute Query</span>
+</button>
+</div>
+</div>
+</form>
+</section>
+<!-- Metric Context Bar / Triage Strip -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md mb-space-md">
+<!-- Stat 1 -->
+<div class="bg-surface-container p-space-md rounded-xl flex flex-col justify-between relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="flex items-center justify-between text-on-surface-variant font-code-sm text-code-sm uppercase tracking-wider mb-2">
+<span>Active Subject</span>
+<span class="text-primary font-bold">W-088</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-telemetry-lg text-telemetry-lg text-on-surface font-bold">Peter Kollie</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-code-sm text-code-sm mt-3 pt-2">
+<span>Tag ID: 0x4B92E8</span>
+<span class="text-primary">Wearable FW 3.4.1</span>
+</div>
+</div>
+<!-- Stat 2 -->
+<div class="bg-surface-container p-space-md rounded-xl flex flex-col justify-between relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>
+<div class="flex items-center justify-between text-on-surface-variant font-code-sm text-code-sm uppercase tracking-wider mb-2">
+<span>Peak HR Telemetry</span>
+<span class="px-1.5 py-0.5 rounded bg-error-container text-error text-[10px] font-bold">EXCEEDANCE</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-telemetry-lg text-telemetry-lg text-error font-bold">128</span>
+<span class="font-label-md text-label-md text-on-surface-variant">BPM (14:20 UTC)</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-code-sm text-code-sm mt-3 pt-2">
+<span>Baseline: 74 BPM</span>
+<span class="text-error font-semibold">+72.9% Surge</span>
+</div>
+</div>
+<!-- Stat 3 -->
+<div class="bg-surface-container p-space-md rounded-xl flex flex-col justify-between relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-tertiary"></div>
+<div class="flex items-center justify-between text-on-surface-variant font-code-sm text-code-sm uppercase tracking-wider mb-2">
+<span>Radio Silence Detected</span>
+<span class="text-tertiary font-bold">SHADOW CORRIDOR</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-telemetry-lg text-telemetry-lg text-tertiary font-bold">42</span>
+<span class="font-label-md text-label-md text-on-surface-variant">MINUTES (UNRECORDED)</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-code-sm text-code-sm mt-3 pt-2">
+<span>Span: 10:15 - 10:42 UTC</span>
+<span class="text-tertiary">Non-Interpolated</span>
+</div>
+</div>
+<!-- Stat 4 -->
+<div class="bg-surface-container p-space-md rounded-xl flex flex-col justify-between relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary-fixed"></div>
+<div class="flex items-center justify-between text-on-surface-variant font-code-sm text-code-sm uppercase tracking-wider mb-2">
+<span>Correlated Ambient CO</span>
+<span class="text-secondary font-bold">ZONE C CRUSHER</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-telemetry-lg text-telemetry-lg text-on-surface font-bold">42</span>
+<span class="font-label-md text-label-md text-on-surface-variant">PPM (CRITICAL ALARM)</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-code-sm text-code-sm mt-3 pt-2">
+<span>TWA Limit: 25 PPM</span>
+<span class="text-error">Trip Triggered</span>
+</div>
+</div>
+</div>
+<!-- Main Visual Analysis: Dual Multi-Metric Historical Time-Series Graph -->
+<section class="bg-surface-container-low rounded-xl p-space-md shadow-xl mb-space-lg">
+<!-- Chart Header & Interactive Legends -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-sm mb-space-md pb-space-sm">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-sm bg-primary"></span>
+<h2 class="font-headline-md text-headline-md text-on-surface font-semibold">Chrono-Synchronized Telemetry Trace</h2>
+<span class="px-2 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-code-sm text-code-sm ml-2">ALPHA SHIFT [06:00 – 14:00 UTC]</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Dual-metric axis: Wearable Photoplethysmography (BPM) correlated with Subterranean Fixed Station CO Gas Extraction (PPM).</p>
+</div>
+<div class="flex flex-wrap items-center gap-space-md">
+<div class="flex items-center gap-2">
+<span class="w-3 h-1 bg-primary rounded-full"></span>
+<span class="font-code-sm text-code-sm text-on-surface">Peter Kollie (W-088) HR</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-0.5 bg-error stroke-dashed border-b border-error border-dashed"></span>
+<span class="font-code-sm text-code-sm text-error">Threshold Limit (110 BPM)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-1 bg-tertiary rounded-full"></span>
+<span class="font-code-sm text-code-sm text-tertiary">Zone C Crusher CO (ppm)</span>
+</div>
+<div class="flex items-center gap-1.5 px-2 py-1 rounded bg-surface-container-highest text-outline font-code-sm text-code-sm">
+<span class="w-2 h-2 rounded bg-surface-variant"></span>
+<span>Radio Shadow Gap</span>
+</div>
+</div>
+</div>
+<!-- Inline High-Precision Telemetry Graph (Responsive SVG) -->
+<div class="relative w-full bg-surface-container-lowest rounded-lg p-space-sm overflow-hidden select-none" id="graphContainer">
+<!-- Axis Overlay / Legend Indicators -->
+<div class="flex justify-between items-center text-outline font-code-sm text-code-sm mb-1 px-8">
+<span>PRIMARY: PHYSIO HR (BPM) [0 - 150]</span>
+<span class="text-tertiary">SECONDARY: AMBIENT CO (PPM) [0 - 60]</span>
+</div>
+<!-- SVG Drawing Surface -->
+<div class="relative w-full aspect-[21/9] min-h-[340px] max-h-[480px]">
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 1000 360">
+<defs>
+<!-- Gradient for Heart Rate Fill -->
+<lineargradient id="primaryGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#4bdbcb" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#4bdbcb" stop-opacity="0.0"></stop>
+</lineargradient>
+<!-- Gradient for CO Gas -->
+<lineargradient id="coGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#ffb95f" stop-opacity="0.25"></stop>
+<stop offset="100%" stop-color="#ffb95f" stop-opacity="0.0"></stop>
+</lineargradient>
+<!-- Radio Shadow Hatch Pattern -->
+<pattern height="10" id="radioShadowPattern" patterntransform="rotate(45)" patternunits="userSpaceOnUse" width="10">
+<line stroke="#ffb95f" stroke-opacity="0.15" stroke-width="1.5" x1="0" x2="0" y1="0" y2="10"></line>
+</pattern>
+</defs>
+<!-- Grid Background Lines (Horizontal Y-divisions) -->
+<!-- 130 BPM / 52 PPM -->
+<line stroke="#192b3f" stroke-width="1" x1="60" x2="960" y1="50" y2="50"></line>
+<text fill="#859491" font-family="Inter" font-size="10" text-anchor="end" x="52" y="54">130</text>
+<text fill="#ffb95f" font-family="Inter" font-size="10" text-anchor="start" x="968" y="54">52</text>
+<!-- Critical Threshold Line: 110 BPM (Y = 100) -->
+<line stroke="#ffb4ab" stroke-dasharray="4 4" stroke-opacity="0.8" stroke-width="1.2" x1="60" x2="960" y1="95" y2="95"></line>
+<text fill="#ffb4ab" font-family="Inter" font-size="10" font-weight="600" text-anchor="end" x="52" y="99">110</text>
+<text fill="#ffb95f" font-family="Inter" font-size="10" text-anchor="start" x="968" y="99">40</text>
+<!-- 90 BPM / 30 PPM -->
+<line stroke="#192b3f" stroke-width="1" x1="60" x2="960" y1="145" y2="145"></line>
+<text fill="#859491" font-family="Inter" font-size="10" text-anchor="end" x="52" y="149">90</text>
+<text fill="#ffb95f" font-family="Inter" font-size="10" text-anchor="start" x="968" y="149">30</text>
+<!-- Nominal Baseline: 70 BPM / 15 PPM -->
+<line stroke="#192b3f" stroke-width="1" x1="60" x2="960" y1="195" y2="195"></line>
+<text fill="#859491" font-family="Inter" font-size="10" text-anchor="end" x="52" y="199">70</text>
+<text fill="#ffb95f" font-family="Inter" font-size="10" text-anchor="start" x="968" y="199">15</text>
+<!-- 50 BPM / 0 PPM -->
+<line stroke="#192b3f" stroke-width="1" x1="60" x2="960" y1="245" y2="245"></line>
+<text fill="#859491" font-family="Inter" font-size="10" text-anchor="end" x="52" y="249">50</text>
+<text fill="#ffb95f" font-family="Inter" font-size="10" text-anchor="start" x="968" y="249">0</text>
+<!-- RADIO SHADOW GAP ZONE (10:15 - 10:42 UTC) -->
+<!-- Total time span: 06:00 to 14:30 = 8.5 hours (510 minutes).
+               Offset from 60px to 960px = 900px width.
+               10:15 = 255 mins = X: 510
+               10:42 = 282 mins = X: 557
+          -->
+<rect fill="url(#radioShadowPattern)" height="255" width="54" x="508" y="30"></rect>
+<rect fill="#e49200" fill-opacity="0.05" height="255" width="54" x="508" y="30"></rect>
+<line stroke="#ffb95f" stroke-dasharray="2 2" stroke-opacity="0.6" stroke-width="1" x1="508" x2="508" y1="30" y2="285"></line>
+<line stroke="#ffb95f" stroke-dasharray="2 2" stroke-opacity="0.6" stroke-width="1" x1="562" x2="562" y1="30" y2="285"></line>
+<!-- Gap Callout Marker -->
+<g transform="translate(535, 120)">
+<rect fill="#0d2134" height="28" rx="4" stroke="#e49200" stroke-width="1" width="210" x="-105" y="-14"></rect>
+<text fill="#ffb95f" font-family="Inter" font-size="9" font-weight="600" letter-spacing="0.04em" text-anchor="middle" x="0" y="4">
+              RADIO SILENCE / 42m GAP (UNRECORDED)
+            </text>
+</g>
+<!-- Vertical Time Markers (X-axis ticks) -->
+<!-- 06:00 UTC -->
+<line stroke="#192b3f" stroke-width="1" x1="60" x2="60" y1="30" y2="285"></line>
+<text fill="#859491" font-family="Inter" font-size="10" text-anchor="middle" x="60" y="305">06:00 UTC</text>
+<!-- 07:30 UTC -->
+<line stroke="#192b3f" stroke-opacity="0.5" stroke-width="1" x1="220" x2="220" y1="30" y2="285"></line>
+<text fill="#859491" font-family="Inter" font-size="10" text-anchor="middle" x="220" y="305">07:30</text>
+<!-- 09:00 UTC -->
+<line stroke="#192b3f" stroke-opacity="0.5" stroke-width="1" x1="380" x2="380" y1="30" y2="285"></line>
+<text fill="#859491" font-family="Inter" font-size="10" text-anchor="middle" x="380" y="305">09:00</text>
+<!-- 10:30 UTC -->
+<line stroke="#192b3f" stroke-opacity="0.5" stroke-width="1" x1="535" x2="535" y1="30" y2="285"></line>
+<text fill="#ffb95f" font-family="Inter" font-size="10" font-weight="600" text-anchor="middle" x="535" y="305">10:30</text>
+<!-- 12:00 UTC -->
+<line stroke="#192b3f" stroke-opacity="0.5" stroke-width="1" x1="695" x2="695" y1="30" y2="285"></line>
+<text fill="#859491" font-family="Inter" font-size="10" text-anchor="middle" x="695" y="305">12:00</text>
+<!-- 13:30 UTC -->
+<line stroke="#192b3f" stroke-opacity="0.5" stroke-width="1" x1="855" x2="855" y1="30" y2="285"></line>
+<text fill="#859491" font-family="Inter" font-size="10" text-anchor="middle" x="855" y="305">13:30</text>
+<!-- 14:00 UTC -->
+<line stroke="#192b3f" stroke-opacity="0.5" stroke-width="1" x1="910" x2="910" y1="30" y2="285"></line>
+<text fill="#4bdbcb" font-family="Inter" font-size="10" font-weight="600" text-anchor="middle" x="910" y="305">14:00 UTC</text>
+<!-- DATA TRACE 1: Peter Kollie Heart Rate (BPM) -->
+<!-- Segment A: 06:00 to 10:15 UTC (X: 60 to 508) -->
+<!-- Path Area Fill -->
+<path d="M 60,195 
+                   C 90,190 120,200 150,193 
+                   C 190,185 220,180 250,188 
+                   C 290,196 320,175 360,182 
+                   C 400,190 440,165 470,170 
+                   L 508,172 L 508,285 L 60,285 Z" fill="url(#primaryGradient)"></path>
+<!-- Segment A: Line Stroke -->
+<path d="M 60,195 
+                   C 90,190 120,200 150,193 
+                   C 190,185 220,180 250,188 
+                   C 290,196 320,175 360,182 
+                   C 400,190 440,165 470,170 
+                   L 508,172" fill="none" stroke="#4bdbcb" stroke-linecap="round" stroke-width="2.2"></path>
+<!-- Segment B: Post-gap Re-acquisition from 10:42 to 14:30 (X: 562 to 960) -->
+<!-- Notice sharp surge climbing up to 128 BPM (Y: 55) at 14:20 (X: 935) -->
+<path d="M 562,174 
+                   C 600,175 640,168 680,160 
+                   C 720,152 760,148 800,135 
+                   C 840,120 870,110 890,92 
+                   C 910,75 925,58 935,55 
+                   C 945,52 952,65 960,70 
+                   L 960,285 L 562,285 Z" fill="url(#primaryGradient)"></path>
+<path d="M 562,174 
+                   C 600,175 640,168 680,160 
+                   C 720,152 760,148 800,135 
+                   C 840,120 870,110 890,92 
+                   C 910,75 925,58 935,55 
+                   C 945,52 952,65 960,70" fill="none" stroke="#4bdbcb" stroke-linecap="round" stroke-width="2.2"></path>
+<!-- Critical Spike Alert Pin at 14:20 UTC (X: 935, Y: 55) -->
+<circle class="animate-pulse" cx="935" cy="55" fill="#ffb4ab" r="5" stroke="#93000a" stroke-width="2"></circle>
+<line stroke="#ffb4ab" stroke-width="1.5" x1="935" x2="935" y1="55" y2="25"></line>
+<g transform="translate(935, 18)">
+<rect fill="#93000a" height="20" rx="3" width="84" x="-42" y="-12"></rect>
+<text fill="#ffdad6" font-family="Inter" font-size="9" font-weight="700" text-anchor="middle" x="0" y="2">128 BPM SURGE</text>
+</g>
+<!-- DATA TRACE 2: Zone C Crusher Ambient CO (ppm) - Continuous Line (Fixed Subterranean Power/Fiber) -->
+<!-- Ambient CO climbs steadily starting around 11:30 reaching 42 ppm at 14:00 -->
+<path d="M 60,225 
+                   C 160,228 260,223 360,220 
+                   C 460,217 560,210 660,185 
+                   C 760,160 840,135 910,88 
+                   C 935,72 950,68 960,65" fill="none" stroke="#ffb95f" stroke-dasharray="2 0" stroke-linecap="round" stroke-width="2"></path>
+<path d="M 60,225 
+                   C 160,228 260,223 360,220 
+                   C 460,217 560,210 660,185 
+                   C 760,160 840,135 910,88 
+                   C 935,72 950,68 960,65 
+                   L 960,285 L 60,285 Z" fill="url(#coGradient)"></path>
+<!-- Interactive Hover Focus Bar (Simulation Point at 13:45 UTC) -->
+<g class="cursor-pointer" id="hoverTracker">
+<line opacity="0.75" stroke="#d1e4fe" stroke-dasharray="3 3" stroke-width="1" x1="875" x2="875" y1="30" y2="285"></line>
+<circle cx="875" cy="100" fill="#4bdbcb" r="4.5" stroke="#003732" stroke-width="1.5"></circle>
+<circle cx="875" cy="115" fill="#ffb95f" r="4.5" stroke="#472a00" stroke-width="1.5"></circle>
+<!-- Embedded Precision Tooltip Box -->
+<g transform="translate(720, 45)">
+<rect fill="#091d30" filter="drop-shadow(0 4px 12px rgba(0,0,0,0.5))" height="74" rx="6" stroke="#3c4947" stroke-width="1" width="145"></rect>
+<text fill="#859491" font-family="Inter" font-size="9" font-weight="600" letter-spacing="0.05em" x="10" y="18">UTC 13:45:12 // PROV: BLE-09</text>
+<circle cx="15" cy="33" fill="#4bdbcb" r="3"></circle>
+<text fill="#d1e4fe" font-family="Inter" font-size="11" font-weight="600" x="24" y="36">HR: 104 BPM</text>
+<text fill="#4bdbcb" font-family="Inter" font-size="9" x="105" y="36">+32% Elev</text>
+<circle cx="15" cy="51" fill="#ffb95f" r="3"></circle>
+<text fill="#d1e4fe" font-family="Inter" font-size="11" font-weight="600" x="24" y="54">CO: 34.2 PPM</text>
+<text fill="#ffb95f" font-family="Inter" font-size="9" x="105" y="54">Elevated</text>
+<line stroke="#24364a" stroke-width="0.5" x1="10" x2="135" y1="61" y2="61"></line>
+<text fill="#859491" font-family="Inter" font-size="8" x="10" y="70">CONFIDENCE QUALITY: 99.4% (GOOD)</text>
+</g>
+</g>
+<!-- Zone Corridors Label Strip at the Base -->
+<rect fill="#24364a" height="7" opacity="0.6" width="448" x="60" y="278"></rect>
+<text fill="#bbcac6" font-family="Inter" font-size="7" x="65" y="284">ZONE B HAULAGE LEVEL 02</text>
+<rect fill="#93000a" height="7" opacity="0.3" width="398" x="562" y="278"></rect>
+<text fill="#ffdad6" font-family="Inter" font-size="7" x="568" y="284">CRUSHER LEVEL ZONE C (METHANE / CO RISK)</text>
+</svg>
+</div>
+<!-- Graph Footer Status Bar -->
+<div class="mt-2 pt-2 flex flex-col sm:flex-row items-center justify-between gap-2 font-code-sm text-code-sm text-outline px-2">
+<div class="flex items-center gap-space-sm">
+<span class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[14px]">sensors</span>
+            Continuous Sampling Frequency: 1.000 Hz
+          </span>
+<span class="text-outline-variant">|</span>
+<span>Buffer Dropout: 0.00%</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span>Stope 2 Ingress Recorded: 14:18:22 UTC</span>
+<span class="text-outline-variant">|</span>
+<span class="text-error font-semibold">TWA Threshold Tripped</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Detailed Historical Sample Record Audit Table -->
+<section class="bg-surface-container-low rounded-xl shadow-xl overflow-hidden mb-space-lg">
+<!-- Audit Table Control Bar -->
+<div class="p-space-md flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[22px]">table_rows</span>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Sample Record Telemetry Register</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Unmodified register payload extracts. Tabular numbers format with high-contrast threshold indicators.</p>
+</div>
+</div>
+<!-- Search & Column Quick Filter -->
+<div class="flex items-center gap-2 self-start sm:self-center">
+<div class="relative">
+<input class="h-9 w-64 px-3 pl-8 rounded-lg bg-surface-container text-on-surface placeholder-outline font-label-md text-label-md focus:outline-none focus:ring-1 focus:ring-primary" id="tableQuickSearch" placeholder="Filter hex ID, flag, or zone..." type="text"/>
+<span class="material-symbols-outlined absolute left-2 top-2 text-outline text-[18px]">search</span>
+</div>
+<button class="h-9 px-3 rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface font-label-md text-label-md flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[16px]">view_column</span>
+<span>Columns</span>
+</button>
+</div>
+</div>
+<!-- Data Table Container -->
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left font-body-md text-body-md border-collapse">
+<thead>
+<tr class="bg-surface-container text-outline font-code-sm text-code-sm uppercase tracking-wider h-11">
+<th class="px-space-md py-2 font-semibold">Timestamp (UTC)</th>
+<th class="px-space-md py-2 font-semibold">Entity / Worker</th>
+<th class="px-space-md py-2 font-semibold">Zone Location</th>
+<th class="px-space-md py-2 font-semibold">Metric Parameter</th>
+<th class="px-space-md py-2 font-semibold text-right">Recorded Value</th>
+<th class="px-space-md py-2 font-semibold text-right">Shift Variance</th>
+<th class="px-space-md py-2 font-semibold">Transport / Gateway</th>
+<th class="px-space-md py-2 font-semibold">Quality Status</th>
+<th class="px-space-md py-2 font-semibold text-center">Inspect</th>
+</tr>
+</thead>
+<tbody class="font-code-sm text-code-sm divide-y divide-surface-container-high" id="telemetryTableBody">
+<!-- Row 1: Exceedance Spike -->
+<tr class="hover:bg-surface-container-high/60 transition-colors bg-surface-container-low/40">
+<td class="px-space-md py-3.5 font-semibold text-on-surface">14:20:18.420</td>
+<td class="px-space-md py-3.5">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-error animate-ping"></span>
+<span class="text-on-surface font-medium">Peter Kollie [W-088]</span>
+</div>
+</td>
+<td class="px-space-md py-3.5 text-on-surface-variant">Zone C // Crusher Feed</td>
+<td class="px-space-md py-3.5 text-on-surface">Physio // Heart Rate</td>
+<td class="px-space-md py-3.5 text-right font-bold text-error text-[13px]">128 BPM</td>
+<td class="px-space-md py-3.5 text-right text-error font-medium">+54.0 Δ (Surge)</td>
+<td class="px-space-md py-3.5 text-on-surface-variant">
+<span class="px-2 py-0.5 rounded bg-surface-container-highest text-secondary text-[11px]">BLE-GW-CRUSHER-02</span>
+</td>
+<td class="px-space-md py-3.5">
+<span class="px-2 py-0.5 rounded bg-error-container text-on-error-container font-semibold text-[10px] tracking-wider uppercase">
+                EXCEEDANCE
+              </span>
+</td>
+<td class="px-space-md py-3.5 text-center">
+<button class="text-primary hover:text-primary-fixed p-1 transition-colors" onclick="inspectPacket('14:20:18.420', 'Peter Kollie [W-088]', '128 BPM', 'CRITICAL')">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+</button>
+</td>
+</tr>
+<!-- Row 2: Correlated CO Gas -->
+<tr class="hover:bg-surface-container-high/60 transition-colors bg-surface-container-low">
+<td class="px-space-md py-3.5 font-semibold text-on-surface">14:20:15.000</td>
+<td class="px-space-md py-3.5">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="text-on-surface font-medium">STAT-CRUSHER-03</span>
+</div>
+</td>
+<td class="px-space-md py-3.5 text-on-surface-variant">Zone C // Sub-Floor</td>
+<td class="px-space-md py-3.5 text-tertiary">Environmental // CO Gas</td>
+<td class="px-space-md py-3.5 text-right font-bold text-tertiary text-[13px]">42.4 PPM</td>
+<td class="px-space-md py-3.5 text-right text-tertiary font-medium">+27.4 Δ (Alarm)</td>
+<td class="px-space-md py-3.5 text-on-surface-variant">
+<span class="px-2 py-0.5 rounded bg-surface-container-highest text-secondary text-[11px]">OPTIC-MODBUS-F01</span>
+</td>
+<td class="px-space-md py-3.5">
+<span class="px-2 py-0.5 rounded bg-tertiary-container/30 text-tertiary font-semibold text-[10px] tracking-wider uppercase">
+                GAS WARNING
+              </span>
+</td>
+<td class="px-space-md py-3.5 text-center">
+<button class="text-primary hover:text-primary-fixed p-1 transition-colors" onclick="inspectPacket('14:20:15.000', 'STAT-CRUSHER-03', '42.4 PPM', 'WARNING')">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+</button>
+</td>
+</tr>
+<!-- Row 3: Nominal SpO2 -->
+<tr class="hover:bg-surface-container-high/60 transition-colors bg-surface-container-low/40">
+<td class="px-space-md py-3.5 font-semibold text-on-surface">13:58:02.110</td>
+<td class="px-space-md py-3.5">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="text-on-surface font-medium">Peter Kollie [W-088]</span>
+</div>
+</td>
+<td class="px-space-md py-3.5 text-on-surface-variant">Zone B // Haulage Transit</td>
+<td class="px-space-md py-3.5 text-on-surface">Physio // SpO2</td>
+<td class="px-space-md py-3.5 text-right font-bold text-on-surface text-[13px]">97.8 %</td>
+<td class="px-space-md py-3.5 text-right text-on-surface-variant font-medium">-0.4 Δ (Nominal)</td>
+<td class="px-space-md py-3.5 text-on-surface-variant">
+<span class="px-2 py-0.5 rounded bg-surface-container-highest text-secondary text-[11px]">BLE-GW-HAUL-04</span>
+</td>
+<td class="px-space-md py-3.5">
+<span class="px-2 py-0.5 rounded bg-primary-container/20 text-primary font-semibold text-[10px] tracking-wider uppercase">
+                NOMINAL
+              </span>
+</td>
+<td class="px-space-md py-3.5 text-center">
+<button class="text-primary hover:text-primary-fixed p-1 transition-colors" onclick="inspectPacket('13:58:02.110', 'Peter Kollie [W-088]', '97.8 %', 'OK')">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+</button>
+</td>
+</tr>
+<!-- Row 4: Tamba Fallah Ambient Temp -->
+<tr class="hover:bg-surface-container-high/60 transition-colors bg-surface-container-low">
+<td class="px-space-md py-3.5 font-semibold text-on-surface">13:12:44.890</td>
+<td class="px-space-md py-3.5">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="text-on-surface font-medium">Tamba Fallah [W-019]</span>
+</div>
+</td>
+<td class="px-space-md py-3.5 text-on-surface-variant">Zone A // Drill Stope 1</td>
+<td class="px-space-md py-3.5 text-on-surface">Physio // Skin Temp</td>
+<td class="px-space-md py-3.5 text-right font-bold text-on-surface text-[13px]">36.8 °C</td>
+<td class="px-space-md py-3.5 text-right text-on-surface-variant font-medium">+0.2 Δ (Stable)</td>
+<td class="px-space-md py-3.5 text-on-surface-variant">
+<span class="px-2 py-0.5 rounded bg-surface-container-highest text-secondary text-[11px]">WIFI-LF-AP04</span>
+</td>
+<td class="px-space-md py-3.5">
+<span class="px-2 py-0.5 rounded bg-primary-container/20 text-primary font-semibold text-[10px] tracking-wider uppercase">
+                NOMINAL
+              </span>
+</td>
+<td class="px-space-md py-3.5 text-center">
+<button class="text-primary hover:text-primary-fixed p-1 transition-colors" onclick="inspectPacket('13:12:44.890', 'Tamba Fallah [W-019]', '36.8 °C', 'OK')">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+</button>
+</td>
+</tr>
+<!-- Row 5: Re-sync Catchup Flag post Radio Silence -->
+<tr class="hover:bg-surface-container-high/60 transition-colors bg-surface-container-low/40">
+<td class="px-space-md py-3.5 font-semibold text-on-surface">10:42:08.012</td>
+<td class="px-space-md py-3.5">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="text-on-surface font-medium">Peter Kollie [W-088]</span>
+</div>
+</td>
+<td class="px-space-md py-3.5 text-on-surface-variant">Zone B // Haulage Exit</td>
+<td class="px-space-md py-3.5 text-on-surface">Network // Re-Sync Ping</td>
+<td class="px-space-md py-3.5 text-right font-bold text-on-surface text-[13px]">RSSI -74 dBm</td>
+<td class="px-space-md py-3.5 text-right text-tertiary font-medium">Catchup (42m Gap)</td>
+<td class="px-space-md py-3.5 text-on-surface-variant">
+<span class="px-2 py-0.5 rounded bg-surface-container-highest text-secondary text-[11px]">BLE-GW-HAUL-04</span>
+</td>
+<td class="px-space-md py-3.5">
+<span class="px-2 py-0.5 rounded bg-tertiary-container/30 text-tertiary font-semibold text-[10px] tracking-wider uppercase">
+                RE-SYNC BURST
+              </span>
+</td>
+<td class="px-space-md py-3.5 text-center">
+<button class="text-primary hover:text-primary-fixed p-1 transition-colors" onclick="inspectPacket('10:42:08.012', 'Peter Kollie [W-088]', 'RSSI -74 dBm', 'RESYNC')">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+</button>
+</td>
+</tr>
+<!-- Row 6: Stale Telemetry Marker prior to gap -->
+<tr class="hover:bg-surface-container-high/60 transition-colors bg-surface-container-low">
+<td class="px-space-md py-3.5 font-semibold text-on-surface">10:14:59.980</td>
+<td class="px-space-md py-3.5">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<span class="text-on-surface font-medium">Peter Kollie [W-088]</span>
+</div>
+</td>
+<td class="px-space-md py-3.5 text-on-surface-variant">Zone B // Shadow Zone Margin</td>
+<td class="px-space-md py-3.5 text-on-surface">Physio // Heart Rate</td>
+<td class="px-space-md py-3.5 text-right font-bold text-outline text-[13px]">82 BPM</td>
+<td class="px-space-md py-3.5 text-right text-outline font-medium">Last Known Pkt</td>
+<td class="px-space-md py-3.5 text-on-surface-variant">
+<span class="px-2 py-0.5 rounded bg-surface-container-highest text-secondary text-[11px]">BLE-GW-HAUL-02</span>
+</td>
+<td class="px-space-md py-3.5">
+<span class="px-2 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-semibold text-[10px] tracking-wider uppercase">
+                STALE BUFFER
+              </span>
+</td>
+<td class="px-space-md py-3.5 text-center">
+<button class="text-primary hover:text-primary-fixed p-1 transition-colors" onclick="inspectPacket('10:14:59.980', 'Peter Kollie [W-088]', '82 BPM', 'STALE')">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+</button>
+</td>
+</tr>
+<!-- Row 7: Airflow Velocity Nominal -->
+<tr class="hover:bg-surface-container-high/60 transition-colors bg-surface-container-low/40">
+<td class="px-space-md py-3.5 font-semibold text-on-surface">09:30:00.000</td>
+<td class="px-space-md py-3.5">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="text-on-surface font-medium">STAT-VENT-STP01</span>
+</div>
+</td>
+<td class="px-space-md py-3.5 text-on-surface-variant">Zone A // Auxiliary Raise</td>
+<td class="px-space-md py-3.5 text-on-surface">Environmental // Airflow</td>
+<td class="px-space-md py-3.5 text-right font-bold text-on-surface text-[13px]">2.14 m/s</td>
+<td class="px-space-md py-3.5 text-right text-on-surface-variant font-medium">+0.04 Δ (Optimal)</td>
+<td class="px-space-md py-3.5 text-on-surface-variant">
+<span class="px-2 py-0.5 rounded bg-surface-container-highest text-secondary text-[11px]">MODBUS-RTU-RS485</span>
+</td>
+<td class="px-space-md py-3.5">
+<span class="px-2 py-0.5 rounded bg-primary-container/20 text-primary font-semibold text-[10px] tracking-wider uppercase">
+                NOMINAL
+              </span>
+</td>
+<td class="px-space-md py-3.5 text-center">
+<button class="text-primary hover:text-primary-fixed p-1 transition-colors" onclick="inspectPacket('09:30:00.000', 'STAT-VENT-STP01', '2.14 m/s', 'OK')">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+</button>
+</td>
+</tr>
+<!-- Row 8: Shift Start Baseline -->
+<tr class="hover:bg-surface-container-high/60 transition-colors bg-surface-container-low">
+<td class="px-space-md py-3.5 font-semibold text-on-surface">06:05:12.604</td>
+<td class="px-space-md py-3.5">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="text-on-surface font-medium">Peter Kollie [W-088]</span>
+</div>
+</td>
+<td class="px-space-md py-3.5 text-on-surface-variant">Zone D // Workshop Staging</td>
+<td class="px-space-md py-3.5 text-on-surface">Physio // Heart Rate</td>
+<td class="px-space-md py-3.5 text-right font-bold text-on-surface text-[13px]">71 BPM</td>
+<td class="px-space-md py-3.5 text-right text-on-surface-variant font-medium">0.0 Δ (Baseline)</td>
+<td class="px-space-md py-3.5 text-on-surface-variant">
+<span class="px-2 py-0.5 rounded bg-surface-container-highest text-secondary text-[11px]">BLE-GW-SHOP-01</span>
+</td>
+<td class="px-space-md py-3.5">
+<span class="px-2 py-0.5 rounded bg-primary-container/20 text-primary font-semibold text-[10px] tracking-wider uppercase">
+                NOMINAL
+              </span>
+</td>
+<td class="px-space-md py-3.5 text-center">
+<button class="text-primary hover:text-primary-fixed p-1 transition-colors" onclick="inspectPacket('06:05:12.604', 'Peter Kollie [W-088]', '71 BPM', 'OK')">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination & Archival Compliance Status -->
+<div class="p-space-md bg-surface-container-lowest flex flex-col md:flex-row items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm font-code-sm text-code-sm text-on-surface-variant">
+<span>Showing <strong class="text-on-surface">1 - 25</strong> of <strong class="text-on-surface">1,420</strong> Recorded Telemetry Samples</span>
+<span class="text-outline">|</span>
+<span>Page 1 of 57</span>
+</div>
+<div class="flex items-center gap-1.5">
+<button class="px-3 py-1.5 rounded bg-surface-container text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors font-code-sm text-code-sm disabled:opacity-40" disabled="">
+          « First
+        </button>
+<button class="px-3 py-1.5 rounded bg-surface-container text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors font-code-sm text-code-sm disabled:opacity-40" disabled="">
+          Prev
+        </button>
+<span class="px-3 py-1.5 rounded bg-primary-container text-on-primary-container font-semibold font-code-sm text-code-sm">1</span>
+<button class="px-3 py-1.5 rounded bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-code-sm text-code-sm">2</button>
+<button class="px-3 py-1.5 rounded bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-code-sm text-code-sm">3</button>
+<span class="px-1 text-outline">...</span>
+<button class="px-3 py-1.5 rounded bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-code-sm text-code-sm">57</button>
+<button class="px-3 py-1.5 rounded bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-code-sm text-code-sm">Next</button>
+<button class="px-3 py-1.5 rounded bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-code-sm text-code-sm">Last »</button>
+</div>
+</div>
+</section>
+<!-- Industrial Archival Policy Callout -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-outline text-[20px] mt-0.5">policy</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Liberian Extractive Industry Telemetry Retention Notice</span>
+<span class="font-body-md text-body-md text-on-surface-variant max-w-3xl">
+          Archival policy: Raw sub-second biometric and multi-gas packets retained on local SCADA cluster storage for 90 full shifts (approx. 1,080 operating hours) before automated cold-tier cryptographic hashing. Tamper-evident checksum validation enabled.
+        </span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<div class="px-3 py-1.5 rounded bg-surface-container-high text-primary font-code-sm text-code-sm uppercase tracking-wider">
+        SHA-256: 8F9C...44A1 (VERIFIED)
+      </div>
+</div>
+</div>
+<!-- Raw Packet Inspection Modal (Hidden by default) -->
+<div class="fixed inset-0 bg-surface-container-lowest/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden" id="packetModal">
+<div class="bg-surface-container-high max-w-xl w-full rounded-xl shadow-2xl p-space-md">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">data_object</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">SCADA Raw Frame Inspection</span>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface p-1" onclick="closeModal()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="my-space-md space-y-space-sm font-code-sm text-code-sm">
+<div class="bg-surface-container-lowest p-space-sm rounded font-mono text-primary space-y-1">
+<div>// DACOS Frame Header: 0x5343414441</div>
+<div id="modalRawPayload">PAYLOAD_STREAM_BUFFERING...</div>
+<div class="text-on-surface-variant">// CRC32: 0x93E4A10B (VALID)</div>
+<div class="text-on-surface-variant">// Latency: 14.2ms | Hop Count: 2 (BLE Mesh)</div>
+</div>
+<div class="grid grid-cols-2 gap-2 text-on-surface">
+<div class="bg-surface-container p-2 rounded">
+<span class="text-outline block text-[10px] uppercase">Integrity Flag</span>
+<span class="text-primary font-bold">UNCOMPRESSED DIRECT</span>
+</div>
+<div class="bg-surface-container p-2 rounded">
+<span class="text-outline block text-[10px] uppercase">Compliance Status</span>
+<span class="text-secondary font-bold">LIB-SCADA-09 AUDIT PASS</span>
+</div>
+</div>
+</div>
+<div class="flex justify-end gap-space-sm pt-space-xs">
+<button class="px-space-md py-2 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-variant transition-colors" onclick="closeModal()">
+          Close Inspector
+        </button>
+</div>
+</div>
+</div>
+<!-- Interactive Script for Queries, Filtering, and Inspection -->
+<script>
+    function triggerExport(type) {
+      showToast(`EXPORT INITIATED: DACOS_${type}_ARCHIVE_20241120.zip`);
+    }
+
+    function executeQuery() {
+      const entity = document.getElementById('filterEntity').value;
+      const metric = document.getElementById('filterMetric').value;
+      const zone = document.getElementById('filterZone').value;
+      showToast(`RE-QUERY EXECUTED: [${entity}] | [${metric}] | [${zone}]`);
+    }
+
+    function resetForm() {
+      document.getElementById('filterForm').reset();
+      showToast('FILTERS RESET TO DEFAULT ALPHA SHIFT BASELINE');
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('queryToast');
+      const text = document.getElementById('toastMessage');
+      text.innerText = msg;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 3500);
+    }
+
+    function inspectPacket(timestamp, subject, value, status) {
+      const modal = document.getElementById('packetModal');
+      const payload = document.getElementById('modalRawPayload');
+      payload.innerHTML = `TIMESTAMP: ${timestamp}<br>SUBJECT: ${subject}<br>VALUE: ${value}<br>STATUS_VECTOR: [${status}]`;
+      modal.classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('packetModal').classList.add('hidden');
+    }
+
+    // Quick filter implementation for table rows
+    document.getElementById('tableQuickSearch').addEventListener('input', function(e) {
+      const val = e.target.value.toLowerCase();
+      const rows = document.querySelectorAll('#telemetryTableBody tr');
+      rows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        row.style.display = text.includes(val) ? '' : 'none';
+      });
+    });
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 py-space-sm px-space-md"><div class="flex flex-col sm:flex-row items-center justify-between gap-2 font-code-sm text-code-sm text-on-surface-variant"><div class="flex items-center gap-2"><span class="inline-block w-2 h-2 rounded-full bg-tertiary"></span><span>DACOS Liberia Prototype v0.9.4. Physical hardware integration pending. Never use for actual emergency dispatch.</span></div><div class="text-outline">LIB-EXT-MON-SEC-04 // NON-PROD ENV</div></div></footer></div></body></html>
